@@ -162,7 +162,6 @@ namespace kursovajaEF
             this.dataGridViewTextBoxColumn71 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contractInfoIdCol3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn74 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.disciplineNameCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numOfPeopleCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studyHoursCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contractIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1268,7 +1267,6 @@ namespace kursovajaEF
             this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.disciplineNameCol2,
             this.numOfPeopleCol2,
             this.studyHoursCol2,
             this.contractIdCol2,
@@ -1406,13 +1404,6 @@ namespace kursovajaEF
             this.dataGridViewTextBoxColumn74.ReadOnly = true;
             this.dataGridViewTextBoxColumn74.Visible = false;
             this.dataGridViewTextBoxColumn74.Width = 137;
-            // 
-            // disciplineNameCol2
-            // 
-            this.disciplineNameCol2.HeaderText = "Программа";
-            this.disciplineNameCol2.MinimumWidth = 6;
-            this.disciplineNameCol2.Name = "disciplineNameCol2";
-            this.disciplineNameCol2.ReadOnly = true;
             // 
             // numOfPeopleCol2
             // 
@@ -1593,7 +1584,6 @@ namespace kursovajaEF
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn71;
         private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn74;
-        private System.Windows.Forms.DataGridViewTextBoxColumn disciplineNameCol2;
         private System.Windows.Forms.DataGridViewTextBoxColumn numOfPeopleCol2;
         private System.Windows.Forms.DataGridViewTextBoxColumn studyHoursCol2;
         private System.Windows.Forms.DataGridViewTextBoxColumn contractIdCol2;
