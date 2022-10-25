@@ -92,15 +92,20 @@ namespace kursovajaEF
             this.updBtn = new System.Windows.Forms.Button();
             this.delBtn = new System.Windows.Forms.Button();
             this.extendedInfoGB = new System.Windows.Forms.GroupBox();
-            this.midname = new System.Windows.Forms.TextBox();
             this.firstname = new System.Windows.Forms.TextBox();
+            this.midname = new System.Windows.Forms.TextBox();
             this.lastname = new System.Windows.Forms.TextBox();
             this.yob = new System.Windows.Forms.TextBox();
             this.sex = new System.Windows.Forms.TextBox();
             this.phoneNum = new System.Windows.Forms.TextBox();
             this.email = new System.Windows.Forms.TextBox();
             this.schoolGrade = new System.Windows.Forms.TextBox();
+            this.endTime = new System.Windows.Forms.TextBox();
+            this.endLearning = new System.Windows.Forms.TextBox();
+            this.startTime = new System.Windows.Forms.TextBox();
+            this.weekday = new System.Windows.Forms.TextBox();
             this.crn = new System.Windows.Forms.TextBox();
+            this.startLearning = new System.Windows.Forms.TextBox();
             this.totalSum = new System.Windows.Forms.TextBox();
             this.payedSum = new System.Windows.Forms.TextBox();
             this.restOfSum = new System.Windows.Forms.TextBox();
@@ -108,14 +113,9 @@ namespace kursovajaEF
             this.paymentDeadline = new System.Windows.Forms.TextBox();
             this.whoPay = new System.Windows.Forms.TextBox();
             this.disciplineName = new System.Windows.Forms.TextBox();
-            this.startLearning = new System.Windows.Forms.TextBox();
-            this.endLearning = new System.Windows.Forms.TextBox();
             this.groupNum = new System.Windows.Forms.TextBox();
             this.numOfPeople = new System.Windows.Forms.TextBox();
             this.numOfHours = new System.Windows.Forms.TextBox();
-            this.weekday = new System.Windows.Forms.TextBox();
-            this.startTime = new System.Windows.Forms.TextBox();
-            this.endTime = new System.Windows.Forms.TextBox();
             this.matriculation = new System.Windows.Forms.TextBox();
             this.expulsionDate = new System.Windows.Forms.TextBox();
             this.listenedHours = new System.Windows.Forms.TextBox();
@@ -123,10 +123,12 @@ namespace kursovajaEF
             this.certificate = new System.Windows.Forms.TextBox();
             this.issueCertificate = new System.Windows.Forms.TextBox();
             this.studyHours = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -136,7 +138,6 @@ namespace kursovajaEF
             this.label13 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
@@ -147,7 +148,6 @@ namespace kursovajaEF
             this.label10 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -701,15 +701,6 @@ namespace kursovajaEF
             this.extendedInfoGB.Text = "groupBox1";
             this.extendedInfoGB.Visible = false;
             // 
-            // midname
-            // 
-            this.midname.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.midname.Location = new System.Drawing.Point(7, 27);
-            this.midname.Name = "midname";
-            this.midname.ReadOnly = true;
-            this.midname.Size = new System.Drawing.Size(181, 25);
-            this.midname.TabIndex = 1;
-            // 
             // firstname
             // 
             this.firstname.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -718,6 +709,15 @@ namespace kursovajaEF
             this.firstname.ReadOnly = true;
             this.firstname.Size = new System.Drawing.Size(181, 25);
             this.firstname.TabIndex = 2;
+            // 
+            // midname
+            // 
+            this.midname.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.midname.Location = new System.Drawing.Point(7, 27);
+            this.midname.Name = "midname";
+            this.midname.ReadOnly = true;
+            this.midname.Size = new System.Drawing.Size(181, 25);
+            this.midname.TabIndex = 1;
             // 
             // lastname
             // 
@@ -773,6 +773,42 @@ namespace kursovajaEF
             this.schoolGrade.Size = new System.Drawing.Size(44, 25);
             this.schoolGrade.TabIndex = 8;
             // 
+            // endTime
+            // 
+            this.endTime.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.endTime.Location = new System.Drawing.Point(353, 147);
+            this.endTime.Name = "endTime";
+            this.endTime.ReadOnly = true;
+            this.endTime.Size = new System.Drawing.Size(46, 25);
+            this.endTime.TabIndex = 24;
+            // 
+            // endLearning
+            // 
+            this.endLearning.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.endLearning.Location = new System.Drawing.Point(663, 146);
+            this.endLearning.Name = "endLearning";
+            this.endLearning.ReadOnly = true;
+            this.endLearning.Size = new System.Drawing.Size(78, 25);
+            this.endLearning.TabIndex = 18;
+            // 
+            // startTime
+            // 
+            this.startTime.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.startTime.Location = new System.Drawing.Point(216, 147);
+            this.startTime.Name = "startTime";
+            this.startTime.ReadOnly = true;
+            this.startTime.Size = new System.Drawing.Size(53, 25);
+            this.startTime.TabIndex = 23;
+            // 
+            // weekday
+            // 
+            this.weekday.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.weekday.Location = new System.Drawing.Point(63, 147);
+            this.weekday.Name = "weekday";
+            this.weekday.ReadOnly = true;
+            this.weekday.Size = new System.Drawing.Size(91, 25);
+            this.weekday.TabIndex = 22;
+            // 
             // crn
             // 
             this.crn.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -781,6 +817,15 @@ namespace kursovajaEF
             this.crn.ReadOnly = true;
             this.crn.Size = new System.Drawing.Size(70, 25);
             this.crn.TabIndex = 9;
+            // 
+            // startLearning
+            // 
+            this.startLearning.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.startLearning.Location = new System.Drawing.Point(498, 147);
+            this.startLearning.Name = "startLearning";
+            this.startLearning.ReadOnly = true;
+            this.startLearning.Size = new System.Drawing.Size(78, 25);
+            this.startLearning.TabIndex = 17;
             // 
             // totalSum
             // 
@@ -845,24 +890,6 @@ namespace kursovajaEF
             this.disciplineName.Size = new System.Drawing.Size(104, 25);
             this.disciplineName.TabIndex = 16;
             // 
-            // startLearning
-            // 
-            this.startLearning.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.startLearning.Location = new System.Drawing.Point(498, 147);
-            this.startLearning.Name = "startLearning";
-            this.startLearning.ReadOnly = true;
-            this.startLearning.Size = new System.Drawing.Size(78, 25);
-            this.startLearning.TabIndex = 17;
-            // 
-            // endLearning
-            // 
-            this.endLearning.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.endLearning.Location = new System.Drawing.Point(663, 146);
-            this.endLearning.Name = "endLearning";
-            this.endLearning.ReadOnly = true;
-            this.endLearning.Size = new System.Drawing.Size(78, 25);
-            this.endLearning.TabIndex = 18;
-            // 
             // groupNum
             // 
             this.groupNum.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -889,33 +916,6 @@ namespace kursovajaEF
             this.numOfHours.ReadOnly = true;
             this.numOfHours.Size = new System.Drawing.Size(40, 25);
             this.numOfHours.TabIndex = 21;
-            // 
-            // weekday
-            // 
-            this.weekday.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.weekday.Location = new System.Drawing.Point(63, 147);
-            this.weekday.Name = "weekday";
-            this.weekday.ReadOnly = true;
-            this.weekday.Size = new System.Drawing.Size(91, 25);
-            this.weekday.TabIndex = 22;
-            // 
-            // startTime
-            // 
-            this.startTime.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.startTime.Location = new System.Drawing.Point(216, 147);
-            this.startTime.Name = "startTime";
-            this.startTime.ReadOnly = true;
-            this.startTime.Size = new System.Drawing.Size(53, 25);
-            this.startTime.TabIndex = 23;
-            // 
-            // endTime
-            // 
-            this.endTime.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.endTime.Location = new System.Drawing.Point(353, 147);
-            this.endTime.Name = "endTime";
-            this.endTime.ReadOnly = true;
-            this.endTime.Size = new System.Drawing.Size(46, 25);
-            this.endTime.TabIndex = 24;
             // 
             // matriculation
             // 
@@ -980,26 +980,6 @@ namespace kursovajaEF
             this.studyHours.Size = new System.Drawing.Size(40, 25);
             this.studyHours.TabIndex = 31;
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(747, 150);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(77, 17);
-            this.label21.TabIndex = 55;
-            this.label21.Text = "Зачисление";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(275, 141);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(72, 34);
-            this.label20.TabIndex = 55;
-            this.label20.Text = "Время\r\nокончания\r\n";
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -1010,6 +990,16 @@ namespace kursovajaEF
             this.label19.TabIndex = 55;
             this.label19.Text = "Время\r\nначала";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(747, 150);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(77, 17);
+            this.label21.TabIndex = 55;
+            this.label21.Text = "Зачисление";
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -1019,6 +1009,36 @@ namespace kursovajaEF
             this.label18.Size = new System.Drawing.Size(50, 34);
             this.label18.TabIndex = 55;
             this.label18.Text = "День\r\nнедели";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(585, 140);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(72, 51);
+            this.label15.TabIndex = 55;
+            this.label15.Text = "Дата\r\nокончания\r\nобучения";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(427, 140);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 51);
+            this.label2.TabIndex = 55;
+            this.label2.Text = "Дата\r\nначала\r\nобучения";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(275, 141);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(72, 34);
+            this.label20.TabIndex = 55;
+            this.label20.Text = "Время\r\nокончания\r\n";
             // 
             // label1
             // 
@@ -1109,16 +1129,6 @@ namespace kursovajaEF
             this.label6.Size = new System.Drawing.Size(32, 17);
             this.label6.TabIndex = 55;
             this.label6.Text = "Пол";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(585, 140);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(72, 51);
-            this.label15.TabIndex = 55;
-            this.label15.Text = "Дата\r\nокончания\r\nобучения";
             // 
             // label12
             // 
@@ -1219,16 +1229,6 @@ namespace kursovajaEF
             this.label22.Size = new System.Drawing.Size(100, 34);
             this.label22.TabIndex = 55;
             this.label22.Text = "Прослушанные\r\nчасы";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(427, 140);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 51);
-            this.label2.TabIndex = 55;
-            this.label2.Text = "Дата\r\nначала\r\nобучения";
             // 
             // label9
             // 
@@ -1583,12 +1583,6 @@ namespace kursovajaEF
         private System.Windows.Forms.DataGridViewTextBoxColumn disciplineIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupInfoIdCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn disciplineNameCol2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numOfPeopleCol2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studyHoursCol2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contractIdCol2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn56;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn58;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn59;
@@ -1599,6 +1593,12 @@ namespace kursovajaEF
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn71;
         private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn74;
+        private System.Windows.Forms.DataGridViewTextBoxColumn disciplineNameCol2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numOfPeopleCol2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn studyHoursCol2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contractIdCol2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol2;
     }
 }
 
