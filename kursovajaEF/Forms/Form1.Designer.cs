@@ -635,8 +635,8 @@ namespace kursovajaEF
             // 
             this.extendedInfoGB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.extendedInfoGB.Controls.Add(this.midname);
             this.extendedInfoGB.Controls.Add(this.firstname);
+            this.extendedInfoGB.Controls.Add(this.midname);
             this.extendedInfoGB.Controls.Add(this.lastname);
             this.extendedInfoGB.Controls.Add(this.yob);
             this.extendedInfoGB.Controls.Add(this.sex);
