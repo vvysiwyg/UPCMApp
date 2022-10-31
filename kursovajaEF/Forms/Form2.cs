@@ -585,6 +585,8 @@ namespace kursovajaEF.Forms
             Form2_1 form = new(conn);
             form.contract_id.Text = contractId.Text;
             form.ShowDialog();
+            updatingCheck.Text = "1";
+            Close();
         }
 
         private void newGroupBtn_Click(object sender, EventArgs e)

@@ -13,6 +13,9 @@ namespace kursovajaEF
     public partial class Form1 : AdvancedForm
     {
         private NpgsqlConnection conn;
+        private DataGridViewCell currentCellDgv2;
+        private DataGridViewCell currentCellDgv3;
+        private DataGridViewCell currentCellDgv4;
         public Form1()
         {
             using (testDBContext db = new())
@@ -29,9 +32,10 @@ namespace kursovajaEF
             int it = 0;
             using (testDBContext db = new())
             {
-                var l_cs = db.Listeners.Include(l => l.Contract);
-                var ci_s = db.ContractInfos;
-                var g_gi_gicis = db.GroupInfoContractInfos.Include(gici => gici.GroupInfo).ThenInclude(gi => gi.Group);
+                var l_cs = db.Listeners.Include(l => l.Contract).AsNoTracking();
+                var ci_s = db.ContractInfos.AsNoTracking();
+                var g_gi_gicis = db.GroupInfoContractInfos.Include(gici => gici.GroupInfo).ThenInclude(gi => gi.Group).AsNoTracking();
+                var w_s = db.ListenerWishes.AsNoTracking();
 
                 foreach (var lc in l_cs.ToList())
                     dataGridView1.Rows.Add(
@@ -41,31 +45,21 @@ namespace kursovajaEF
                         lc.Yob,
                         lc.Sex,
                         lc.PhoneNum,
-                        lc.Email,
+                        lc.Email != null ? lc.Email : "",
                         lc.SchoolGrade,
                         lc.Contract.Crn,
                         lc.Contract.TotalSum,
                         lc.Contract.PayedSum,
                         lc.Contract.RestOfSum,
-                        lc.Contract.PayDate40pct,
-                        lc.Contract.PaymentDeadline,
+                        lc.Contract.PayDate40pct != null ? lc.Contract.PayDate40pct : "",
+                        lc.Contract.PaymentDeadline != null ? lc.Contract.PaymentDeadline : "",
                         lc.Contract.WhoPay,
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
-                        "",
+                        lc.Matriculation,
+                        lc.Contract.ExpulsionDate != null ? lc.Contract.ExpulsionDate : "",
+                        lc.Contract.ListenedHours != null ? lc.Contract.ListenedHours : "",
+                        lc.Contract.TransferGroup != null ? lc.Contract.TransferGroup : "",
+                        lc.Contract.Certificate != null ? lc.Contract.Certificate : "",
+                        lc.Contract.IssueCertificate != null ? lc.Contract.IssueCertificate : "",
                         lc.Id,
                         lc.ContractId);
 
@@ -74,20 +68,23 @@ namespace kursovajaEF
                     dataGridView2.Rows.Add(
                         ci.DisciplineName,
                         ci.NumOfPeople,
-                        ci.StudyHours,
+                        ci.StudyHours != null ? ci.StudyHours : "",
                         ci.ContractId,
                         ci.DisciplineId,
                         ci.ContractInfoId);
                     dataGridView2.Rows[it].Visible = false;
+                    dataGridView2.Rows[it].Selected = false;
                     it++;
                 }
+                if (dataGridView2.Rows.Count != 0)
+                    currentCellDgv2 = dataGridView2.Rows[0].Cells[0];
 
                 it = 0;
                 foreach (var ggigici in g_gi_gicis.ToList())
                 {
                     dataGridView3.Rows.Add(
                         ggigici.GroupInfo.Group.GroupNum,
-                        ggigici.GroupInfo.Group.NumOfHours,
+                        ggigici.GroupInfo.Group.NumOfHours != null ? ggigici.GroupInfo.Group.NumOfHours : "",
                         ggigici.GroupInfo.Weekday,
                         ggigici.GroupInfo.StartTime,
                         ggigici.GroupInfo.EndTime,
@@ -97,8 +94,27 @@ namespace kursovajaEF
                         ggigici.ContractInfoId,
                         ggigici.GroupInfo.GroupInfoId);
                     dataGridView3.Rows[it].Visible = false;
+                    dataGridView3.Rows[it].Selected = false;
                     it++;
                 }
+                if (dataGridView3.Rows.Count != 0)
+                    currentCellDgv3 = dataGridView3.Rows[0].Cells[0];
+
+                it = 0;
+                foreach (var w in w_s.ToList())
+                {
+                    dataGridView4.Rows.Add(
+                        w.Weekday,
+                        w.StartTime,
+                        w.EndTime,
+                        w.ContractId,
+                        w.WishId);
+                    dataGridView4.Rows[it].Visible = false;
+                    dataGridView4.Rows[it].Selected = false;
+                    it++;
+                }
+                if (dataGridView4.Rows.Count != 0)
+                    currentCellDgv4 = dataGridView4.Rows[0].Cells[0];
             }
             //string sql = "SELECT * FROM main_info;";
             //NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
@@ -378,9 +394,11 @@ namespace kursovajaEF
 
         private void updBtn_Click(object sender, EventArgs e)
         {
-            if (dataGridView1.SelectedRows.Count == 1)
+            if (dataGridView1.SelectedRows.Count == 1 || dataGridView1.SelectedCells.Count == 1)
             {
+                DataGridViewRow selectedRow = dataGridView1.SelectedCells[0].OwningRow;
                 Form2 fm = new(conn);
+
                 foreach (DataGridViewColumn col in fm.contract_info.Columns)
                     if (col.Name != "contractInfoIdCol" && col.Name != "groupInfoIdCol" && col.Name != "groupIdCol")
                         col.Visible = true;
@@ -398,32 +416,32 @@ namespace kursovajaEF
                 fm.delWishBtn2.Visible = true;
                 fm.wishes.Visible = true;
                 fm.contract_info.Visible = true;
-                fm.addingCheck.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["listenerIdCol"].Value.ToString();
-                fm.contractId.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["contractIdCol"].Value.ToString();
-                fm.midname.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["midnameCol"].Value.ToString();
-                fm.firstname.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["firstnameCol"].Value.ToString();
-                fm.lastname.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["lastnameCol"].Value.ToString();
-                fm.yob.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["yobCol"].Value.ToString();
+                fm.addingCheck.Text = selectedRow.Cells["listenerIdCol"].Value.ToString();
+                fm.contractId.Text = selectedRow.Cells["contractIdCol"].Value.ToString();
+                fm.midname.Text = selectedRow.Cells["midnameCol"].Value.ToString();
+                fm.firstname.Text = selectedRow.Cells["firstnameCol"].Value.ToString();
+                fm.lastname.Text = selectedRow.Cells["lastnameCol"].Value.ToString();
+                fm.yob.Text = selectedRow.Cells["yobCol"].Value.ToString();
                 
-                if (dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["sexCol"].Value.ToString() == "Ж")
+                if (selectedRow.Cells["sexCol"].Value.ToString() == "Ж")
                     fm.sexF.Checked = true;
                 else fm.sexM.Checked = true;
 
-                if (dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["matriculationCol"].Value.ToString() == "Да")
+                if (selectedRow.Cells["matriculationCol"].Value.ToString() == "Да")
                     fm.yes.Checked = true;
                 else fm.no.Checked = true;
 
-                fm.phoneNum.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["phoneNumCol"].Value.ToString();
-                fm.schoolGrade.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["schoolGradeCol"].Value.ToString();
-                fm.email.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["emailCol"].Value.ToString();
-                fm.crn.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["crnCol"].Value.ToString();
-                fm.totalSum.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["totalSumCol"].Value.ToString();
-                fm.payedSum.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["payedSumCol"].Value.ToString();
-                fm.PayDate40pct.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["PayDate40pctCol"].Value.ToString();
-                fm.transferGroup.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["transferGroupCol"].Value.ToString();
-                fm.restOfSum.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["restOfSumCol"].Value.ToString();
-                fm.whoPay.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["whoPayCol"].Value.ToString();
-                fm.paymentDeadline.Text = dataGridView1.Rows[dataGridView1.SelectedCells[0].RowIndex].Cells["paymentDeadlineCol"].Value.ToString();
+                fm.phoneNum.Text = selectedRow.Cells["phoneNumCol"].Value.ToString();
+                fm.schoolGrade.Text = selectedRow.Cells["schoolGradeCol"].Value.ToString();
+                fm.email.Text = selectedRow.Cells["emailCol"].Value.ToString();
+                fm.crn.Text = selectedRow.Cells["crnCol"].Value.ToString();
+                fm.totalSum.Text = selectedRow.Cells["totalSumCol"].Value.ToString();
+                fm.payedSum.Text = selectedRow.Cells["payedSumCol"].Value.ToString();
+                fm.PayDate40pct.Text = selectedRow.Cells["PayDate40pctCol"].Value.ToString();
+                fm.transferGroup.Text = selectedRow.Cells["transferGroupCol"].Value.ToString();
+                fm.restOfSum.Text = selectedRow.Cells["restOfSumCol"].Value.ToString();
+                fm.whoPay.Text = selectedRow.Cells["whoPayCol"].Value.ToString();
+                fm.paymentDeadline.Text = selectedRow.Cells["paymentDeadlineCol"].Value.ToString();
 
                 using (testDBContext db = new())
                 {
@@ -441,34 +459,52 @@ namespace kursovajaEF
                         
                     }
 
-                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    foreach (DataGridViewRow row in dataGridView2.Rows)
                     {
-                        if (row.Cells["listenerIdCol"].Value.ToString() == dataGridView1.SelectedRows[0].Cells["listenerIdCol"].Value.ToString()
-                            && !string.IsNullOrWhiteSpace(row.Cells["contractInfoIdCol"].Value.ToString())
-                            && !string.IsNullOrWhiteSpace(row.Cells["groupInfoIdCol"].Value.ToString()))
-                            fm.contract_info.Rows.Add(row.Cells["disciplineNameCol"].Value.ToString(),
-                                row.Cells["studyHoursCol"].Value.ToString(),
-                                row.Cells["numOfPeopleCol"].Value.ToString(),
-                                row.Cells["contractInfoIdCol"].Value.ToString(),
-                                row.Cells["groupNumCol"].Value.ToString(),
-                                row.Cells["numOfHoursCol"].Value.ToString(),
-                                row.Cells["groupInfoIdCol"].Value.ToString(),
-                                row.Cells["weekdayCol"].Value.ToString(),
-                                row.Cells["startTimeCol"].Value.ToString(),
-                                row.Cells["endTimeCol"].Value.ToString(),
-                                row.Cells["startLearningCol"].Value.ToString(),
-                                row.Cells["endLearningCol"].Value.ToString(),
-                                row.Cells["groupIdCol"].Value.ToString());
+                        if(row.Cells["contractIdCol2"].Value.ToString() == selectedRow.Cells["contractIdCol"].Value.ToString())
+                            foreach(DataGridViewRow row2 in dataGridView3.Rows)
+                                if(row2.Cells["contractInfoIdCol2"].Value.ToString() == row.Cells["contractInfoIdCol"].Value.ToString())
+                                    fm.contract_info.Rows.Add(row.Cells["disciplineNameCol"].Value.ToString(),
+                                        row.Cells["studyHoursCol"].Value.ToString(),
+                                        row.Cells["numOfPeopleCol"].Value.ToString(),
+                                        row.Cells["contractInfoIdCol"].Value.ToString(),
+                                        row2.Cells["groupNumCol"].Value.ToString(),
+                                        row2.Cells["numOfHoursCol"].Value.ToString(),
+                                        row2.Cells["groupInfoIdCol"].Value.ToString(),
+                                        row2.Cells["weekdayCol"].Value.ToString(),
+                                        row2.Cells["startTimeCol"].Value.ToString(),
+                                        row2.Cells["endTimeCol"].Value.ToString(),
+                                        row2.Cells["startLearningCol"].Value.ToString(),
+                                        row2.Cells["endLearningCol"].Value.ToString(),
+                                        row2.Cells["groupIdCol"].Value.ToString());
+
+                        //if (row.Cells["listenerIdCol"].Value.ToString() == dataGridView1.SelectedRows[0].Cells["listenerIdCol"].Value.ToString()
+                        //    && !string.IsNullOrWhiteSpace(row.Cells["contractInfoIdCol"].Value.ToString())
+                        //    && !string.IsNullOrWhiteSpace(row.Cells["groupInfoIdCol"].Value.ToString()))
+                        //    fm.contract_info.Rows.Add(row.Cells["disciplineNameCol"].Value.ToString(),
+                        //        row.Cells["studyHoursCol"].Value.ToString(),
+                        //        row.Cells["numOfPeopleCol"].Value.ToString(),
+                        //        row.Cells["contractInfoIdCol"].Value.ToString(),
+                        //        row.Cells["groupNumCol"].Value.ToString(),
+                        //        row.Cells["numOfHoursCol"].Value.ToString(),
+                        //        row.Cells["groupInfoIdCol"].Value.ToString(),
+                        //        row.Cells["weekdayCol"].Value.ToString(),
+                        //        row.Cells["startTimeCol"].Value.ToString(),
+                        //        row.Cells["endTimeCol"].Value.ToString(),
+                        //        row.Cells["startLearningCol"].Value.ToString(),
+                        //        row.Cells["endLearningCol"].Value.ToString(),
+                        //        row.Cells["groupIdCol"].Value.ToString());
                     }
                 }
                 fm.ShowDialog();
                 if (fm.updatingCheck.Text == "1") {
                     dataGridView1.Rows.Clear();
+                    dataGridView2.Rows.Clear();
+                    dataGridView3.Rows.Clear();
+                    dataGridView4.Rows.Clear();
+                    //Добавить обнуление полей в extendedInfoGB
 
                     fetch();
-
-                    if (dataGridView1.RowCount != 0)
-                        dataGridView1.Rows[0].Selected = true;
                 }
             }
             else MessageBox.Show("Изменить можно только одну строку.", "Ошибка");
@@ -544,33 +580,78 @@ namespace kursovajaEF
         {
             if(dataGridView1.SelectedCells.Count == 1)
             {
-                int index = 0;
                 DataGridViewRow selectedRow = dataGridView1.SelectedCells[0].OwningRow;
-                for (int i = 0; i < 26; i++)
-                    if(extendedInfoGB.Controls[i].GetType().ToString() == "System.Windows.Forms.TextBox")
-                    {
-                        TextBox tb = (TextBox)extendedInfoGB.Controls[i];
-                        tb.Text = selectedRow.Cells[index].Value.ToString();
-                        index++;
-                    }
+                bool flag = false;
+                for (int i = 0; i < 21; i++)
+                {
+                    TextBox tb = (TextBox)extendedInfoGB.Controls[i];
+                    tb.Text = selectedRow.Cells[i].Value.ToString();
+                }
 
-                for (int i = 26; i < 58; i++)
-                    if (extendedInfoGB.Controls[i].GetType().ToString() == "System.Windows.Forms.TextBox")
-                    {
-                        TextBox tb = (TextBox)extendedInfoGB.Controls[i];
-                        tb.Text = string.Empty;
-                    }
+                for (int i = 21; i < 31; i++)
+                {
+                    TextBox tb = (TextBox)extendedInfoGB.Controls[i];
+                    tb.Text = string.Empty;
+                }
+
+                for(int i = 0; i < 3; i++)
+                {
+                    TextBox tb = (TextBox)listenerWishesGB.Controls[i];
+                    tb.Text = string.Empty;
+                }
 
                 foreach(DataGridViewRow row in dataGridView2.Rows)
                 {
                     if (row.Cells["contractIdCol2"].Value.ToString() == selectedRow.Cells["contractIdCol"].Value.ToString())
+                    {
                         row.Visible = true;
+                        if (!flag)
+                        {
+                            flag = true;
+                            currentCellDgv2.Selected = false;
+                            currentCellDgv2 = row.Cells[0];
+                        }
+                    }
                     else
                         row.Visible = false;
                 }
 
+                flag = false;
+
+                foreach(DataGridViewRow row in dataGridView4.Rows)
+                {
+                    if (row.Cells["contractIdCol3"].Value.ToString() == selectedRow.Cells["contractIdCol"].Value.ToString())
+                    {
+                        row.Visible = true;
+                        if (!flag)
+                        {
+                            flag = true;
+                            currentCellDgv4.Selected = false;
+                            currentCellDgv4 = row.Cells[0];
+                        }
+                    }
+                    else
+                        row.Visible = false;
+                }
+
+                if (dataGridViewVisibleRowCount(dataGridView2, dataGridView2.Rows.Count - 1) == 0)
+                    foreach (DataGridViewRow row in dataGridView3.Rows)
+                        row.Visible = false;
+                else
+                {
+                    currentCellDgv2.Selected = true;
+                    dataGridView2_CellClick(dataGridView2, e);
+                }
+
+                if (dataGridViewVisibleRowCount(dataGridView4, dataGridView4.Rows.Count - 1) != 0)
+                {
+                    currentCellDgv4.Selected = true;
+                    dataGridView4_CellClick(dataGridView4, e);
+                }
+
                 extendedInfoGB.Text = midname.Text;
                 extendedInfoGB.Visible = true;
+                listenerWishesGB.Visible = true;
                 //int index = 0;
                 //DataGridViewRow selectedRow = dataGridView1.SelectedCells[0].OwningRow;
 
@@ -591,24 +672,44 @@ namespace kursovajaEF
         {
             if (dataGridView2.SelectedCells.Count == 1)
             {
+                int index = 0;
+                bool flag = false;
                 DataGridViewRow selectedRow = dataGridView2.SelectedCells[0].OwningRow;
-                disciplineName.Text = selectedRow.Cells["disciplineNameCol2"].Value.ToString();
-                studyHours.Text = selectedRow.Cells["studyHoursCol2"].Value.ToString();
-                numOfPeople.Text = selectedRow.Cells["numOfPeopleCol2"].Value.ToString();
+                currentCellDgv2 = dataGridView2.SelectedCells[0];
 
-                for (int i = 33; i < 58; i++)
-                    if (extendedInfoGB.Controls[i].GetType().ToString() == "System.Windows.Forms.TextBox")
-                    {
-                        TextBox tb = (TextBox)extendedInfoGB.Controls[i];
-                        tb.Text = string.Empty;
-                    }
+                for (int i = 21; i < 24; i++)
+                {
+                    TextBox tb = (TextBox)extendedInfoGB.Controls[i];
+                    tb.Text = selectedRow.Cells[index].Value.ToString();
+                    index++;
+                }
+
+                for (int i = 24; i < 31; i++)
+                {
+                    TextBox tb = (TextBox)extendedInfoGB.Controls[i];
+                    tb.Text = string.Empty;
+                }
 
                 foreach (DataGridViewRow row in dataGridView3.Rows)
                 {
-                    if (row.Cells["contractInfoIdCol3"].Value.ToString() == selectedRow.Cells["contractInfoIdCol2"].Value.ToString())
+                    if (row.Cells["contractInfoIdCol2"].Value.ToString() == selectedRow.Cells["contractInfoIdCol"].Value.ToString())
+                    {
                         row.Visible = true;
+                        if (!flag)
+                        {
+                            flag = true;
+                            currentCellDgv3.Selected = false;
+                            currentCellDgv3 = row.Cells[0];
+                        }
+                    }
                     else
                         row.Visible = false;
+                }
+
+                if (dataGridViewVisibleRowCount(dataGridView3, dataGridView3.Rows.Count - 1) != 0)
+                {
+                    currentCellDgv3.Selected = true;
+                    dataGridView3_CellClick(dataGridView3, e);
                 }
             }
         }
@@ -620,14 +721,58 @@ namespace kursovajaEF
                 int index = 0;
                 DataGridViewRow selectedRow = dataGridView3.SelectedCells[0].OwningRow;
 
-                for (int i = 33; i < 46; i++)
-                    if (extendedInfoGB.Controls[i].GetType().ToString() == "System.Windows.Forms.TextBox")
-                    {
-                        TextBox tb = (TextBox)extendedInfoGB.Controls[i];
-                        tb.Text = selectedRow.Cells[index].Value.ToString();
-                        index++;
-                    }
+                for (int i = 24; i < 31; i++)
+                {
+                    TextBox tb = (TextBox)extendedInfoGB.Controls[i];
+                    tb.Text = selectedRow.Cells[index].Value.ToString();
+                    index++;
+                }
             }
+        }
+
+        private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView4.SelectedCells.Count == 1)
+            {
+                int index = 0;
+                DataGridViewRow selectedRow = dataGridView4.SelectedCells[0].OwningRow;
+                currentCellDgv4 = dataGridView4.SelectedCells[0];
+
+                for (int i = 0; i < 3; i++)
+                {
+                    TextBox tb = (TextBox)listenerWishesGB.Controls[i];
+                    tb.Text = selectedRow.Cells[index].Value.ToString();
+                    index++;
+                }
+            }
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1_CellClick(sender, e);
+        }
+
+        private void dataGridView2_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView2_CellClick(sender, e);
+        }
+
+        private void dataGridView3_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView3_CellClick(sender, e);
+        }
+
+        private void dataGridView4_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView4_CellClick(sender, e);
+        }
+
+        private void listenerFilterCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listenerFilterCB.Text == "Все слушатели")
+                showAllListeners(dataGridView1, dataGridView1.Rows.Count - 1);
+            else
+                showExpelledListeners(dataGridView1, dataGridView1.Rows.Count - 1);
         }
     }
 }
