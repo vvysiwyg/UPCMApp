@@ -14,6 +14,7 @@ namespace kursovajaEF.Forms
     public partial class Form2 : AdvancedForm
     {
         private NpgsqlConnection conn;
+        private Dictionary<string, string> ids;
         public Form2(NpgsqlConnection conn)
         {
             this.conn = conn;
@@ -110,17 +111,26 @@ namespace kursovajaEF.Forms
             }
         }
 
+        private void delGIBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void delCIBtn_Click(object sender, EventArgs e)
         {
-            if (contract_info.SelectedRows.Count == 1)
-                contract_info.Rows.Remove(contract_info.SelectedRows[0]);
+            if (contract_info.SelectedRows.Count == 1 || contract_info.SelectedCells.Count == 1)
+            {
+                DataGridViewRow row = contract_info.SelectedCells[0].OwningRow;
+                dataGridViewDeleteRowsWithCondition(group_info, "contractInfoIdCol2", row.Cells["contractInfoIdCol"].Value.ToString());
+                contract_info.Rows.Remove(row);
+            }
         }
 
         private void addCIBtn_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(hours.Text) && !string.IsNullOrWhiteSpace(numOfPeople.Text))
             {
-                contract_info.Rows.Add(discipline.Text, hours.Text, numOfPeople.Text, "", "", "");
+                contract_info.Rows.Add(discipline.Text, hours.Text, numOfPeople.Text, "");
                 hours.Text = "";
                 numOfPeople.Text = "";
                 if (contract_info.Visible == false)
@@ -128,36 +138,25 @@ namespace kursovajaEF.Forms
             }
         }
 
+        private void delGIBtn2_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void delCIBtn2_Click(object sender, EventArgs e)
         {
-            if (contract_info.SelectedRows.Count == 1 &&
-                !string.IsNullOrWhiteSpace(contract_info.SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString()) &&
-                !string.IsNullOrWhiteSpace(contract_info.SelectedRows[0].Cells["groupInfoIdCol"].Value.ToString()))
+            if (contract_info.SelectedRows.Count == 1 || contract_info.SelectedCells.Count == 1)
             {
-                int count = 0;
-
-                foreach (DataGridViewRow row in contract_info.Rows)
-                    if (row.Cells["contractInfoIdCol"].Value.ToString() == contract_info.
-                        SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString())
-                        count++;
-
+                DataGridViewRow row = contract_info.SelectedCells[0].OwningRow;
                 using (testDBContext db = new())
                 {
-                    if (count == 1)
-                    {
-                        ContractInfo ci = db.ContractInfos.
-                            Find(int.Parse(contract_info.SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString()));
-                        db.Remove(ci);
-                    }
-
-                    var gici = db.GroupInfoContractInfos.
-                    Where(f => f.GroupInfoId == int.Parse(contract_info.SelectedRows[0].Cells["groupInfoIdCol"].Value.ToString())).
-                    Where(s => s.ContractInfoId == int.Parse(contract_info.SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString()));
-                   
-                    db.Remove(gici.FirstOrDefault());
+                    ContractInfo ci = db.ContractInfos.
+                        Find(int.Parse(row.Cells["contractInfoIdCol"].Value.ToString()));
+                    db.Remove(ci);
                     db.SaveChanges();
                 }
-                contract_info.Rows.Remove(contract_info.SelectedRows[0]);
+                dataGridViewDeleteRowsWithCondition(group_info, "contractInfoIdCol2", row.Cells["contractInfoIdCol"].Value.ToString());
+                contract_info.Rows.Remove(row);
             }
         }
 
@@ -193,9 +192,7 @@ namespace kursovajaEF.Forms
                         discipline.Text,
                         hours.Text,
                         numOfPeople.Text,
-                        contract_info_id,
-                        "",
-                        "");
+                        contract_info_id);
                 }
                 hours.Text = "";
                 numOfPeople.Text = "";
@@ -354,75 +351,52 @@ namespace kursovajaEF.Forms
 
         private void addGIBtn_Click(object sender, EventArgs e)
         {
-            int counter = 0;
-            foreach (Control ctrl in panel3.Controls)
+            if (panel3.Controls.Count != 0)
             {
-                if (ctrl.GetType().ToString().Equals("System.Windows.Forms.DataGridView"))
+                bool flag = false;
+                DataGridView dgv;
+
+                if (panel3.Controls[0].Visible == true)
+                    dgv = (DataGridView)panel3.Controls[0];
+                else
+                    dgv = (DataGridView)panel3.Controls[1];
+
+                if ((dgv.SelectedRows.Count == 1 || dgv.SelectedCells.Count == 1) &&
+                    (contract_info.SelectedRows.Count == 1 || contract_info.SelectedCells.Count == 1))
                 {
-                    DataGridView dgv = ((DataGridView)ctrl);
-                    if (dgv.SelectedRows.Count > 0 && contract_info.SelectedRows.Count == 1)
+                    DataGridViewRow r = dgv.SelectedCells[0].OwningRow, r2 = contract_info.SelectedCells[0].OwningRow;
+                    foreach (DataGridViewRow row in group_info.Rows)
+                        if (row.Cells["groupInfoIdCol"].Value.ToString() == r.Cells["dgvtbc4Col"].Value.ToString() &&
+                            row.Cells["contractInfoIdCol2"].Value.ToString() == r2.Cells["contractInfoIdCol"].Value.ToString())
+                            flag = true;
+
+                    if (!flag)
                     {
-                        foreach (DataGridViewRow row in contract_info.Rows)
+                        group_info.Rows.Add(
+                            r.Cells["dgvtbc2Col"].Value,
+                            r.Cells["dgvtbc3Col"].Value,
+                            r.Cells["dgvtbc4Col"].Value,
+                            r.Cells["dgvtbc5Col"].Value,
+                            r.Cells["dgvtbc6Col"].Value,
+                            r.Cells["dgvtbc7Col"].Value,
+                            r.Cells["dgvtbc8Col"].Value,
+                            r.Cells["dgvtbc9Col"].Value,
+                            r.Cells["dgvtbc10Col"].Value,
+                            r2.Cells["contractInfoIdCol"].Value);
+                    }
+                    if (updBtn.Visible == true)
+                    {
+                        GroupInfoContractInfo gici = new()
                         {
-                            if (row.Cells["disciplineNameCol"].Value.ToString() == contract_info.SelectedRows[0]
-                                .Cells["disciplineNameCol"].Value.ToString())
-                                counter++;
-                        }
-                        foreach (DataGridViewRow row in dgv.SelectedRows)
+                            GroupInfoId = int.Parse(r.Cells["dgvtbc4Col"].Value.ToString()),
+                            ContractInfoId = int.Parse(r2.Cells["contractInfoIdCol"].Value.ToString())
+                        };
+                        using (testDBContext db = new())
                         {
-                            if (string.IsNullOrWhiteSpace(contract_info.SelectedRows[0].Cells["groupNumCol"].Value.ToString()))
-                            {
-                                contract_info.SelectedRows[0].Cells["groupNumCol"].Value = row.Cells["dgvtbc2Col"].Value;
-                                contract_info.SelectedRows[0].Cells["numOfHoursCol"].Value = row.Cells["dgvtbc3Col"].Value;
-                                contract_info.SelectedRows[0].Cells["groupInfoIdCol"].Value = row.Cells["dgvtbc4Col"].Value;
-                                contract_info.SelectedRows[0].Cells["weekdayCol"].Value = row.Cells["dgvtbc5Col"].Value;
-                                contract_info.SelectedRows[0].Cells["startTimeCol"].Value = row.Cells["dgvtbc6Col"].Value;
-                                contract_info.SelectedRows[0].Cells["endTimeCol"].Value = row.Cells["dgvtbc7Col"].Value;
-                                contract_info.SelectedRows[0].Cells["startLearningCol"].Value = row.Cells["dgvtbc8Col"].Value;
-                                contract_info.SelectedRows[0].Cells["endLearningCol"].Value = row.Cells["dgvtbc9Col"].Value;
-                                contract_info.SelectedRows[0].Cells["groupIdCol"].Value = row.Cells["dgvtbc10Col"].Value;
-                            }
-                            else if (counter >= 1)
-                            {
-                                contract_info.Rows.Add(
-                                contract_info.SelectedRows[0].Cells["disciplineNameCol"].Value,
-                                contract_info.SelectedRows[0].Cells["hoursCol"].Value,
-                                contract_info.SelectedRows[0].Cells["numOfPeopleCol"].Value,
-                                contract_info.SelectedRows[0].Cells["contractInfoIdCol"].Value,
-                                row.Cells["dgvtbc2Col"].Value,
-                                row.Cells["dgvtbc3Col"].Value,
-                                row.Cells["dgvtbc4Col"].Value,
-                                row.Cells["dgvtbc5Col"].Value,
-                                row.Cells["dgvtbc6Col"].Value,
-                                row.Cells["dgvtbc7Col"].Value,
-                                row.Cells["dgvtbc8Col"].Value,
-                                row.Cells["dgvtbc9Col"].Value,
-                                row.Cells["dgvtbc10Col"].Value
-                                );
-                            }
-                            if (updBtn.Visible == true)
-                            {
-                                GroupInfoContractInfo gici = new()
-                                {
-                                    GroupInfoId = int.Parse(row.Cells["dgvtbc4Col"].Value.ToString()),
-                                    ContractInfoId = int.Parse(contract_info.SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString())
-                                };
-                                using (testDBContext db = new())
-                                {
-                                    db.GroupInfoContractInfos.Add(gici);
-                                    db.SaveChanges();
-                                }
-                            }
-                            counter++;
-                        }
-                        foreach (DataGridViewColumn col in contract_info.Columns)
-                        {
-                            if (col.Name == "contractInfoIdCol" || col.Name == "groupInfoIdCol" || col.Name == "groupIdCol")
-                                col.Visible = false;
-                            else col.Visible = true;
+                            db.GroupInfoContractInfos.Add(gici);
+                            db.SaveChanges();
                         }
                     }
-                    else MessageBox.Show("В таблице выше можно выбрать только одну строку, в таблице ниже - хотя бы одну строку.");
                 }
             }
         }
@@ -438,17 +412,10 @@ namespace kursovajaEF.Forms
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            contract_info.Sort(new RowComparer(SortOrder.Descending));
-
             string sex;
             string matriculation;
-            string dis;
 
-            int count = 0;
-            int contract_info_id = -1;
             int contract_id = -1;
-
-            dis = contract_info.Rows[0].Cells[0].Value.ToString();
 
             if (sexM.Checked == false && sexF.Checked == false)
             {
@@ -468,23 +435,9 @@ namespace kursovajaEF.Forms
                 matriculation = yes.Text;
             else matriculation = no.Text;
 
-            int[,] matr = new int[contract_info.Rows.Count, 3];
-
-            for (int i = 0; i < contract_info.Rows.Count; i++)
-                for (int j = i + 1; j < contract_info.Rows.Count; j++)
-                {
-                    if (contract_info.Rows[i].Cells[0].Value.ToString() == contract_info.Rows[j].Cells[0].Value.ToString() &&
-                        contract_info.Rows[i].Cells[1].Value.ToString() == contract_info.Rows[j].Cells[1].Value.ToString() &&
-                        contract_info.Rows[i].Cells[2].Value.ToString() == contract_info.Rows[j].Cells[2].Value.ToString())
-                    {
-                        matr[j, 0] = -1;
-                        matr[j, 1] = -1;
-                        matr[j, 2] = -1;
-                    }
-                }
-
             Dictionary<string, int> dis_name_id = new();
-            using (testDBContext db = new()) {
+            using (testDBContext db = new()) 
+            {
                 foreach (DataGridViewRow row in contract_info.Rows)
                 {
                     if (!dis_name_id.ContainsKey(row.Cells[0].Value.ToString()))
@@ -544,31 +497,18 @@ namespace kursovajaEF.Forms
 
                 foreach (DataGridViewRow row in contract_info.Rows)
                 {
-                    if (matr[count, 0] != -1 || matr[count, 1] != -1 || matr[count, 2] != -1)
-                    {
-                        ContractInfo ci = new()
+                    string contractInfoId = row.Cells["contractInfoIdCol"].Value.ToString();
+                    foreach (DataGridViewRow row2 in group_info.Rows)
+                        if (row2.Cells["contractInfoIdCol2"].Value.ToString() == contractInfoId)
                         {
-                            DisciplineName = row.Cells[0].Value.ToString(),
-                            StudyHours = Int16.Parse(row.Cells[1].Value.ToString()),
-                            NumOfPeople = Int16.Parse(row.Cells[2].Value.ToString()),
-                            ContractId = contract_id,
-                            DisciplineId = dis_name_id[row.Cells[0].Value.ToString()]
-                        };
-                        db.ContractInfos.Add(ci);
-                        db.SaveChanges();
-
-                        contract_info_id = (from Ci in db.ContractInfos
-                                            orderby Ci.ContractInfoId descending
-                                            select Ci.ContractInfoId).FirstOrDefault();
-                    }
-                    count++;
-                    GroupInfoContractInfo gici = new()
-                    {
-                        GroupInfoId = int.Parse(row.Cells["groupInfoIdCol"].Value.ToString()),
-                        ContractInfoId = contract_info_id
-                    };
-                    db.GroupInfoContractInfos.Add(gici);
-                    db.SaveChanges();
+                            GroupInfoContractInfo gici = new()
+                            {
+                                GroupInfoId = int.Parse(row2.Cells["groupInfoIdCol"].Value.ToString()),
+                                ContractInfoId = int.Parse(contractInfoId)
+                            };
+                            db.GroupInfoContractInfos.Add(gici);
+                            db.SaveChanges();
+                        }
                 }
             }
             Close();
@@ -790,6 +730,19 @@ namespace kursovajaEF.Forms
             f.ShowDialog();
             if(f.chosenDis != "0")
                 discipline.Text = f.chosenDis;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            group_info.Visible = true;
+            group_info.Rows.Add(1, 0);
+            group_info.Refresh();
+            DataGridViewRow row = new();
+            row.CreateCells(group_info);
+            row.Cells[0].Value = 1;
+            row.Cells[1].Value = 0;
+            System.Threading.Thread.Sleep(1000);
+            MessageBox.Show(group_info.Rows.Contains(row).ToString());
         }
     }
 }

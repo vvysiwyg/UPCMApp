@@ -95,5 +95,12 @@ namespace kursovajaEF.Forms
                 return rowIndex;
             else return dataGridViewFirstVisibleRowIndex(dgv, rowIndex + 1);
         }
+
+        public void dataGridViewDeleteRowsWithCondition(DataGridView dgv, string columnName, string condition)
+        {
+            for (int i = dgv.Rows.Count - 1; i > -1; i--)
+                if (dgv.Rows[i].Cells[columnName].Value.ToString() == condition)
+                    dgv.Rows.Remove(dgv.Rows[i]);
+        }
     }
 }

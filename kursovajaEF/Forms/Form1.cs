@@ -396,12 +396,9 @@ namespace kursovajaEF
         {
             if (dataGridView1.SelectedRows.Count == 1 || dataGridView1.SelectedCells.Count == 1)
             {
+                List<string> contractInfoIdList = new();
                 DataGridViewRow selectedRow = dataGridView1.SelectedCells[0].OwningRow;
                 Form2 fm = new(conn);
-
-                foreach (DataGridViewColumn col in fm.contract_info.Columns)
-                    if (col.Name != "contractInfoIdCol" && col.Name != "groupInfoIdCol" && col.Name != "groupIdCol")
-                        col.Visible = true;
 
                 fm.addBtn.Visible = false;
                 fm.updBtn.Visible = true;
@@ -416,6 +413,7 @@ namespace kursovajaEF
                 fm.delWishBtn2.Visible = true;
                 fm.wishes.Visible = true;
                 fm.contract_info.Visible = true;
+                fm.group_info.Visible = true;
                 fm.addingCheck.Text = selectedRow.Cells["listenerIdCol"].Value.ToString();
                 fm.contractId.Text = selectedRow.Cells["contractIdCol"].Value.ToString();
                 fm.midname.Text = selectedRow.Cells["midnameCol"].Value.ToString();
@@ -461,39 +459,30 @@ namespace kursovajaEF
 
                     foreach (DataGridViewRow row in dataGridView2.Rows)
                     {
-                        if(row.Cells["contractIdCol2"].Value.ToString() == selectedRow.Cells["contractIdCol"].Value.ToString())
-                            foreach(DataGridViewRow row2 in dataGridView3.Rows)
-                                if(row2.Cells["contractInfoIdCol2"].Value.ToString() == row.Cells["contractInfoIdCol"].Value.ToString())
-                                    fm.contract_info.Rows.Add(row.Cells["disciplineNameCol"].Value.ToString(),
+                        if (row.Cells["contractIdCol2"].Value.ToString() == selectedRow.Cells["contractIdCol"].Value.ToString())
+                        {
+                            fm.contract_info.Rows.Add(row.Cells["disciplineNameCol"].Value.ToString(),
                                         row.Cells["studyHoursCol"].Value.ToString(),
                                         row.Cells["numOfPeopleCol"].Value.ToString(),
-                                        row.Cells["contractInfoIdCol"].Value.ToString(),
-                                        row2.Cells["groupNumCol"].Value.ToString(),
-                                        row2.Cells["numOfHoursCol"].Value.ToString(),
-                                        row2.Cells["groupInfoIdCol"].Value.ToString(),
-                                        row2.Cells["weekdayCol"].Value.ToString(),
-                                        row2.Cells["startTimeCol"].Value.ToString(),
-                                        row2.Cells["endTimeCol"].Value.ToString(),
-                                        row2.Cells["startLearningCol"].Value.ToString(),
-                                        row2.Cells["endLearningCol"].Value.ToString(),
-                                        row2.Cells["groupIdCol"].Value.ToString());
+                                        row.Cells["contractInfoIdCol"].Value.ToString());
 
-                        //if (row.Cells["listenerIdCol"].Value.ToString() == dataGridView1.SelectedRows[0].Cells["listenerIdCol"].Value.ToString()
-                        //    && !string.IsNullOrWhiteSpace(row.Cells["contractInfoIdCol"].Value.ToString())
-                        //    && !string.IsNullOrWhiteSpace(row.Cells["groupInfoIdCol"].Value.ToString()))
-                        //    fm.contract_info.Rows.Add(row.Cells["disciplineNameCol"].Value.ToString(),
-                        //        row.Cells["studyHoursCol"].Value.ToString(),
-                        //        row.Cells["numOfPeopleCol"].Value.ToString(),
-                        //        row.Cells["contractInfoIdCol"].Value.ToString(),
-                        //        row.Cells["groupNumCol"].Value.ToString(),
-                        //        row.Cells["numOfHoursCol"].Value.ToString(),
-                        //        row.Cells["groupInfoIdCol"].Value.ToString(),
-                        //        row.Cells["weekdayCol"].Value.ToString(),
-                        //        row.Cells["startTimeCol"].Value.ToString(),
-                        //        row.Cells["endTimeCol"].Value.ToString(),
-                        //        row.Cells["startLearningCol"].Value.ToString(),
-                        //        row.Cells["endLearningCol"].Value.ToString(),
-                        //        row.Cells["groupIdCol"].Value.ToString());
+                            contractInfoIdList.Add(row.Cells["contractIdCol2"].Value.ToString());
+                        }
+                    }
+
+                    foreach (DataGridViewRow row in dataGridView3.Rows)
+                    {
+                        if (contractInfoIdList.Contains(row.Cells["contractInfoIdCol2"].Value.ToString()))
+                            fm.group_info.Rows.Add(row.Cells["groupNumCol"].Value.ToString(),
+                                row.Cells["numOfHoursCol"].Value.ToString(),
+                                row.Cells["groupInfoIdCol"].Value.ToString(),
+                                row.Cells["weekdayCol"].Value.ToString(),
+                                row.Cells["startTimeCol"].Value.ToString(),
+                                row.Cells["endTimeCol"].Value.ToString(),
+                                row.Cells["startLearningCol"].Value.ToString(),
+                                row.Cells["endLearningCol"].Value.ToString(),
+                                row.Cells["groupIdCol"].Value.ToString(),
+                                row.Cells["contractInfoIdCol2"].Value.ToString());
                     }
                 }
                 fm.ShowDialog();
