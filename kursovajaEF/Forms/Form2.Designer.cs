@@ -83,7 +83,6 @@ namespace kursovajaEF.Forms
             this.numOfPeopleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contractInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
-            this.delGIBtn2 = new System.Windows.Forms.Button();
             this.delGIBtn = new System.Windows.Forms.Button();
             this.delCIBtn = new System.Windows.Forms.Button();
             this.delCIBtn2 = new System.Windows.Forms.Button();
@@ -394,7 +393,6 @@ namespace kursovajaEF.Forms
             this.panel2.Controls.Add(this.addGIBtn);
             this.panel2.Controls.Add(this.contract_info);
             this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.delGIBtn2);
             this.panel2.Controls.Add(this.delGIBtn);
             this.panel2.Controls.Add(this.delCIBtn);
             this.panel2.Controls.Add(this.delCIBtn2);
@@ -431,8 +429,7 @@ namespace kursovajaEF.Forms
             // 
             this.group_info.AllowUserToAddRows = false;
             this.group_info.AllowUserToDeleteRows = false;
-            this.group_info.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.group_info.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.group_info.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.group_info.BackgroundColor = System.Drawing.SystemColors.Control;
             this.group_info.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -488,7 +485,6 @@ namespace kursovajaEF.Forms
             this.groupInfoIdCol.MinimumWidth = 6;
             this.groupInfoIdCol.Name = "groupInfoIdCol";
             this.groupInfoIdCol.ReadOnly = true;
-            this.groupInfoIdCol.Visible = false;
             // 
             // weekdayCol
             // 
@@ -541,7 +537,6 @@ namespace kursovajaEF.Forms
             this.contractInfoIdCol2.MinimumWidth = 6;
             this.contractInfoIdCol2.Name = "contractInfoIdCol2";
             this.contractInfoIdCol2.ReadOnly = true;
-            this.contractInfoIdCol2.Visible = false;
             // 
             // setDisBtn
             // 
@@ -673,7 +668,6 @@ namespace kursovajaEF.Forms
             this.contractInfoIdCol.MinimumWidth = 6;
             this.contractInfoIdCol.Name = "contractInfoIdCol";
             this.contractInfoIdCol.ReadOnly = true;
-            this.contractInfoIdCol.Visible = false;
             // 
             // button1
             // 
@@ -687,20 +681,6 @@ namespace kursovajaEF.Forms
             this.button1.Text = "x";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // delGIBtn2
-            // 
-            this.delGIBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.delGIBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.delGIBtn2.ForeColor = System.Drawing.Color.Red;
-            this.delGIBtn2.Location = new System.Drawing.Point(389, 390);
-            this.delGIBtn2.Name = "delGIBtn2";
-            this.delGIBtn2.Size = new System.Drawing.Size(46, 46);
-            this.delGIBtn2.TabIndex = 14;
-            this.delGIBtn2.Text = "x";
-            this.delGIBtn2.UseVisualStyleBackColor = true;
-            this.delGIBtn2.Visible = false;
-            this.delGIBtn2.Click += new System.EventHandler(this.delGIBtn2_Click);
             // 
             // delGIBtn
             // 
@@ -718,16 +698,14 @@ namespace kursovajaEF.Forms
             // delCIBtn
             // 
             this.delCIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.delCIBtn.Enabled = false;
             this.delCIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.delCIBtn.ForeColor = System.Drawing.Color.Red;
-            this.delCIBtn.Location = new System.Drawing.Point(799, 238);
+            this.delCIBtn.Location = new System.Drawing.Point(799, 239);
             this.delCIBtn.Name = "delCIBtn";
             this.delCIBtn.Size = new System.Drawing.Size(46, 46);
             this.delCIBtn.TabIndex = 14;
             this.delCIBtn.Text = "x";
             this.delCIBtn.UseVisualStyleBackColor = true;
-            this.delCIBtn.Visible = false;
             this.delCIBtn.Click += new System.EventHandler(this.delCIBtn_Click);
             // 
             // delCIBtn2
@@ -741,21 +719,20 @@ namespace kursovajaEF.Forms
             this.delCIBtn2.TabIndex = 14;
             this.delCIBtn2.Text = "x";
             this.delCIBtn2.UseVisualStyleBackColor = true;
+            this.delCIBtn2.Visible = false;
             this.delCIBtn2.Click += new System.EventHandler(this.delCIBtn2_Click);
             // 
             // addCIBtn
             // 
             this.addCIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addCIBtn.Enabled = false;
             this.addCIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.addCIBtn.ForeColor = System.Drawing.Color.Green;
-            this.addCIBtn.Location = new System.Drawing.Point(727, 238);
+            this.addCIBtn.Location = new System.Drawing.Point(727, 239);
             this.addCIBtn.Name = "addCIBtn";
             this.addCIBtn.Size = new System.Drawing.Size(46, 46);
             this.addCIBtn.TabIndex = 15;
             this.addCIBtn.Text = "+";
             this.addCIBtn.UseVisualStyleBackColor = true;
-            this.addCIBtn.Visible = false;
             this.addCIBtn.Click += new System.EventHandler(this.addCIBtn_Click);
             // 
             // addCIBtn2
@@ -769,6 +746,7 @@ namespace kursovajaEF.Forms
             this.addCIBtn2.TabIndex = 15;
             this.addCIBtn2.Text = "+";
             this.addCIBtn2.UseVisualStyleBackColor = true;
+            this.addCIBtn2.Visible = false;
             this.addCIBtn2.Click += new System.EventHandler(this.addCIBtn2_Click);
             // 
             // label22
@@ -1346,10 +1324,8 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.Button setDisBtn;
         public System.Windows.Forms.TextBox discipline;
         public System.Windows.Forms.DataGridView group_info;
-        private System.Windows.Forms.DataGridViewTextBoxColumn disciplineNameCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hoursCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numOfPeopleCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol;
+        public System.Windows.Forms.Button delGIBtn;
+        public System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupNumCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn numOfHoursCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupInfoIdCol;
@@ -1360,8 +1336,9 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn endLearningCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol2;
-        public System.Windows.Forms.Button delGIBtn2;
-        public System.Windows.Forms.Button delGIBtn;
-        public System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn disciplineNameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hoursCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numOfPeopleCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol;
     }
 }

@@ -31,6 +31,17 @@ namespace kursovajaEF.Forms
 
         }
 
+        public void resetForm(List<DataGridView> dgvs, List<GroupBox> gbs)
+        {
+            foreach (DataGridView dgv in dgvs)
+                dgv.Rows.Clear();
+
+            foreach (GroupBox gb in gbs)
+                foreach (Control ctrl in gb.Controls)
+                    if (ctrl.GetType().ToString().Equals("System.Windows.Forms.TextBox"))
+                        ctrl.Text = string.Empty;
+        }
+
         public void showAllListeners(DataGridView dgv, int rowIndex)
         {
             if (rowIndex == -1)

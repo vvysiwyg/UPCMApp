@@ -15,9 +15,11 @@ namespace kursovajaEF.Forms
     {
         private NpgsqlConnection conn;
         private Dictionary<string, string> ids;
+        private int tempIndex;
         public Form2(NpgsqlConnection conn)
         {
             this.conn = conn;
+            tempIndex = 0;
             InitializeComponent();
         }
 
@@ -113,7 +115,22 @@ namespace kursovajaEF.Forms
 
         private void delGIBtn_Click(object sender, EventArgs e)
         {
+            if(group_info.SelectedRows.Count == 1 || group_info.SelectedCells.Count == 1)
+            {
+                DataGridViewRow selectedRow = group_info.SelectedCells[0].OwningRow;
+                group_info.Rows.Remove(selectedRow);
 
+                if(updBtn.Visible)
+                    using(testDBContext db = new())
+                    {
+                        var gici = db.GroupInfoContractInfos.
+                            Where(f => f.GroupInfoId == int.Parse(selectedRow.Cells["groupInfoIdCol"].Value.ToString())).
+                            Where(s => s.ContractInfoId == int.Parse(selectedRow.Cells["contractInfoIdCol2"].Value.ToString()));
+
+                        db.Remove(gici.FirstOrDefault());
+                        db.SaveChanges();
+                    }
+            }
         }
 
         private void delCIBtn_Click(object sender, EventArgs e)
@@ -130,17 +147,16 @@ namespace kursovajaEF.Forms
         {
             if (!string.IsNullOrWhiteSpace(hours.Text) && !string.IsNullOrWhiteSpace(numOfPeople.Text))
             {
-                contract_info.Rows.Add(discipline.Text, hours.Text, numOfPeople.Text, "");
+                contract_info.Rows.Add(discipline.Text, hours.Text, numOfPeople.Text, tempIndex);
+                tempIndex++;
                 hours.Text = "";
                 numOfPeople.Text = "";
-                if (contract_info.Visible == false)
+                if (!contract_info.Visible)
+                {
                     contract_info.Visible = true;
+                    group_info.Visible = true;
+                }
             }
-        }
-
-        private void delGIBtn2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void delCIBtn2_Click(object sender, EventArgs e)
@@ -196,8 +212,6 @@ namespace kursovajaEF.Forms
                 }
                 hours.Text = "";
                 numOfPeople.Text = "";
-                if (contract_info.Visible == false)
-                    contract_info.Visible = true;
             }
         }
 
@@ -353,7 +367,7 @@ namespace kursovajaEF.Forms
         {
             if (panel3.Controls.Count != 0)
             {
-                bool flag = false;
+                bool similarRowsFlag = false;
                 DataGridView dgv;
 
                 if (panel3.Controls[0].Visible == true)
@@ -365,12 +379,13 @@ namespace kursovajaEF.Forms
                     (contract_info.SelectedRows.Count == 1 || contract_info.SelectedCells.Count == 1))
                 {
                     DataGridViewRow r = dgv.SelectedCells[0].OwningRow, r2 = contract_info.SelectedCells[0].OwningRow;
+
                     foreach (DataGridViewRow row in group_info.Rows)
                         if (row.Cells["groupInfoIdCol"].Value.ToString() == r.Cells["dgvtbc4Col"].Value.ToString() &&
                             row.Cells["contractInfoIdCol2"].Value.ToString() == r2.Cells["contractInfoIdCol"].Value.ToString())
-                            flag = true;
+                            similarRowsFlag = true;
 
-                    if (!flag)
+                    if (!similarRowsFlag)
                     {
                         group_info.Rows.Add(
                             r.Cells["dgvtbc2Col"].Value,
@@ -383,18 +398,19 @@ namespace kursovajaEF.Forms
                             r.Cells["dgvtbc9Col"].Value,
                             r.Cells["dgvtbc10Col"].Value,
                             r2.Cells["contractInfoIdCol"].Value);
-                    }
-                    if (updBtn.Visible == true)
-                    {
-                        GroupInfoContractInfo gici = new()
+
+                        if (updBtn.Visible == true)
                         {
-                            GroupInfoId = int.Parse(r.Cells["dgvtbc4Col"].Value.ToString()),
-                            ContractInfoId = int.Parse(r2.Cells["contractInfoIdCol"].Value.ToString())
-                        };
-                        using (testDBContext db = new())
-                        {
-                            db.GroupInfoContractInfos.Add(gici);
-                            db.SaveChanges();
+                            GroupInfoContractInfo gici = new()
+                            {
+                                GroupInfoId = int.Parse(r.Cells["dgvtbc4Col"].Value.ToString()),
+                                ContractInfoId = int.Parse(r2.Cells["contractInfoIdCol"].Value.ToString())
+                            };
+                            using (testDBContext db = new())
+                            {
+                                db.GroupInfoContractInfos.Add(gici);
+                                db.SaveChanges();
+                            }
                         }
                     }
                 }
@@ -415,6 +431,7 @@ namespace kursovajaEF.Forms
             string sex;
             string matriculation;
 
+            int contract_info_id = -1;
             int contract_id = -1;
 
             if (sexM.Checked == false && sexF.Checked == false)
@@ -497,14 +514,27 @@ namespace kursovajaEF.Forms
 
                 foreach (DataGridViewRow row in contract_info.Rows)
                 {
-                    string contractInfoId = row.Cells["contractInfoIdCol"].Value.ToString();
+                    ContractInfo ci = new()
+                    {
+                        DisciplineName = row.Cells[0].Value.ToString(),
+                        StudyHours = Int16.Parse(row.Cells[1].Value.ToString()),
+                        NumOfPeople = Int16.Parse(row.Cells[2].Value.ToString()),
+                        ContractId = contract_id,
+                        DisciplineId = dis_name_id[row.Cells[0].Value.ToString()]
+                    };
+                    db.ContractInfos.Add(ci);
+                    db.SaveChanges();
+
+                    contract_info_id = (from Ci in db.ContractInfos
+                                        orderby Ci.ContractInfoId descending
+                                        select Ci.ContractInfoId).FirstOrDefault();
                     foreach (DataGridViewRow row2 in group_info.Rows)
-                        if (row2.Cells["contractInfoIdCol2"].Value.ToString() == contractInfoId)
+                        if (row2.Cells["contractInfoIdCol2"].Value.ToString() == row.Cells["contractInfoIdCol"].Value.ToString())
                         {
                             GroupInfoContractInfo gici = new()
                             {
                                 GroupInfoId = int.Parse(row2.Cells["groupInfoIdCol"].Value.ToString()),
-                                ContractInfoId = int.Parse(contractInfoId)
+                                ContractInfoId = contract_info_id
                             };
                             db.GroupInfoContractInfos.Add(gici);
                             db.SaveChanges();
@@ -541,8 +571,18 @@ namespace kursovajaEF.Forms
             DataGridView contractInfo = ((DataGridView)sender);
             if (contractInfo.SelectedCells.Count == 1)
             {
+                DataGridViewRow selectedRow = contract_info.SelectedCells[0].OwningRow;
+
+                foreach (DataGridViewRow row in group_info.Rows)
+                {
+                    if (row.Cells["contractInfoIdCol2"].Value.ToString() == selectedRow.Cells["contractInfoIdCol"].Value.ToString())
+                        row.Visible = true;
+                    else
+                        row.Visible = true;
+                }
+
                 panel3.Controls.Clear();
-                string disName = contractInfo.SelectedCells[0].OwningRow.Cells["disciplineNameCol"].Value.ToString();
+                string disName = selectedRow.Cells["disciplineNameCol"].Value.ToString();
                 for (int i = 0; i < 2; i++)
                 {
                     DataGridView dgv = new();

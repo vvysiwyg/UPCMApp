@@ -385,8 +385,16 @@ namespace kursovajaEF
             form.ShowDialog();
             if (form.addingCheck.Text != "0")
             {
-                dataGridView1.Rows.Clear();
+                resetForm(new List<DataGridView> {
+                    dataGridView1,
+                    dataGridView2,
+                    dataGridView3,
+                    dataGridView4}, new List<GroupBox> {
+                    extendedInfoGB,
+                    listenerWishesGB});
+
                 fetch();
+
                 if (dataGridView1.RowCount != 0)
                     dataGridView1.Rows[0].Selected = true;
             }
@@ -466,13 +474,14 @@ namespace kursovajaEF
                                         row.Cells["numOfPeopleCol"].Value.ToString(),
                                         row.Cells["contractInfoIdCol"].Value.ToString());
 
-                            contractInfoIdList.Add(row.Cells["contractIdCol2"].Value.ToString());
+                            contractInfoIdList.Add(row.Cells["contractInfoIdCol"].Value.ToString());
                         }
                     }
 
                     foreach (DataGridViewRow row in dataGridView3.Rows)
                     {
                         if (contractInfoIdList.Contains(row.Cells["contractInfoIdCol2"].Value.ToString()))
+                        {
                             fm.group_info.Rows.Add(row.Cells["groupNumCol"].Value.ToString(),
                                 row.Cells["numOfHoursCol"].Value.ToString(),
                                 row.Cells["groupInfoIdCol"].Value.ToString(),
@@ -483,15 +492,21 @@ namespace kursovajaEF
                                 row.Cells["endLearningCol"].Value.ToString(),
                                 row.Cells["groupIdCol"].Value.ToString(),
                                 row.Cells["contractInfoIdCol2"].Value.ToString());
+
+                            fm.group_info.Rows[fm.group_info.Rows.Count - 1].Visible = false;
+                            fm.group_info.Rows[fm.group_info.Rows.Count - 1].Selected = false;
+                        }
                     }
                 }
                 fm.ShowDialog();
                 if (fm.updatingCheck.Text == "1") {
-                    dataGridView1.Rows.Clear();
-                    dataGridView2.Rows.Clear();
-                    dataGridView3.Rows.Clear();
-                    dataGridView4.Rows.Clear();
-                    //Добавить обнуление полей в extendedInfoGB
+                    resetForm(new List<DataGridView> {
+                    dataGridView1,
+                    dataGridView2,
+                    dataGridView3,
+                    dataGridView4}, new List<GroupBox> {
+                    extendedInfoGB,
+                    listenerWishesGB});
 
                     fetch();
                 }
@@ -571,6 +586,7 @@ namespace kursovajaEF
             {
                 DataGridViewRow selectedRow = dataGridView1.SelectedCells[0].OwningRow;
                 bool flag = false;
+                SuspendLayout();
                 for (int i = 0; i < 21; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
@@ -641,6 +657,7 @@ namespace kursovajaEF
                 extendedInfoGB.Text = midname.Text;
                 extendedInfoGB.Visible = true;
                 listenerWishesGB.Visible = true;
+                ResumeLayout();
                 //int index = 0;
                 //DataGridViewRow selectedRow = dataGridView1.SelectedCells[0].OwningRow;
 
@@ -758,10 +775,14 @@ namespace kursovajaEF
 
         private void listenerFilterCB_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SuspendLayout();
+
             if (listenerFilterCB.Text == "Все слушатели")
                 showAllListeners(dataGridView1, dataGridView1.Rows.Count - 1);
             else
                 showExpelledListeners(dataGridView1, dataGridView1.Rows.Count - 1);
+
+            ResumeLayout();
         }
     }
 }
