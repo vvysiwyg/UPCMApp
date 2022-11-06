@@ -61,16 +61,6 @@ namespace kursovajaEF.Forms
             this.phoneNum = new System.Windows.Forms.MaskedTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.group_info = new System.Windows.Forms.DataGridView();
-            this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numOfHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractInfoIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.setDisBtn = new System.Windows.Forms.Button();
             this.discipline = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -78,11 +68,6 @@ namespace kursovajaEF.Forms
             this.newGroupBtn = new System.Windows.Forms.Button();
             this.addGIBtn = new System.Windows.Forms.Button();
             this.contract_info = new System.Windows.Forms.DataGridView();
-            this.disciplineNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numOfPeopleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
             this.delGIBtn = new System.Windows.Forms.Button();
             this.delCIBtn = new System.Windows.Forms.Button();
             this.delCIBtn2 = new System.Windows.Forms.Button();
@@ -130,6 +115,20 @@ namespace kursovajaEF.Forms
             this.updBtn = new System.Windows.Forms.Button();
             this.closeBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
+            this.disciplineNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numOfPeopleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numOfHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractInfoIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -392,7 +391,6 @@ namespace kursovajaEF.Forms
             this.panel2.Controls.Add(this.newGroupBtn);
             this.panel2.Controls.Add(this.addGIBtn);
             this.panel2.Controls.Add(this.contract_info);
-            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.delGIBtn);
             this.panel2.Controls.Add(this.delCIBtn);
             this.panel2.Controls.Add(this.delCIBtn2);
@@ -464,79 +462,6 @@ namespace kursovajaEF.Forms
             this.group_info.Size = new System.Drawing.Size(472, 216);
             this.group_info.TabIndex = 17;
             this.group_info.Visible = false;
-            // 
-            // groupNumCol
-            // 
-            this.groupNumCol.HeaderText = "Номер группы";
-            this.groupNumCol.MinimumWidth = 6;
-            this.groupNumCol.Name = "groupNumCol";
-            this.groupNumCol.ReadOnly = true;
-            // 
-            // numOfHoursCol
-            // 
-            this.numOfHoursCol.HeaderText = "Часы";
-            this.numOfHoursCol.MinimumWidth = 6;
-            this.numOfHoursCol.Name = "numOfHoursCol";
-            this.numOfHoursCol.ReadOnly = true;
-            // 
-            // groupInfoIdCol
-            // 
-            this.groupInfoIdCol.HeaderText = "id информации о группе";
-            this.groupInfoIdCol.MinimumWidth = 6;
-            this.groupInfoIdCol.Name = "groupInfoIdCol";
-            this.groupInfoIdCol.ReadOnly = true;
-            // 
-            // weekdayCol
-            // 
-            this.weekdayCol.HeaderText = "День недели";
-            this.weekdayCol.MinimumWidth = 6;
-            this.weekdayCol.Name = "weekdayCol";
-            this.weekdayCol.ReadOnly = true;
-            // 
-            // startTimeCol
-            // 
-            this.startTimeCol.HeaderText = "Время начала";
-            this.startTimeCol.MinimumWidth = 6;
-            this.startTimeCol.Name = "startTimeCol";
-            this.startTimeCol.ReadOnly = true;
-            // 
-            // endTimeCol
-            // 
-            this.endTimeCol.HeaderText = "Время окончания";
-            this.endTimeCol.MinimumWidth = 6;
-            this.endTimeCol.Name = "endTimeCol";
-            this.endTimeCol.ReadOnly = true;
-            // 
-            // startLearningCol
-            // 
-            this.startLearningCol.HeaderText = "Дата начала обучения";
-            this.startLearningCol.MinimumWidth = 6;
-            this.startLearningCol.Name = "startLearningCol";
-            this.startLearningCol.ReadOnly = true;
-            this.startLearningCol.Visible = false;
-            // 
-            // endLearningCol
-            // 
-            this.endLearningCol.HeaderText = "Дата окончания обучения";
-            this.endLearningCol.MinimumWidth = 6;
-            this.endLearningCol.Name = "endLearningCol";
-            this.endLearningCol.ReadOnly = true;
-            this.endLearningCol.Visible = false;
-            // 
-            // groupIdCol
-            // 
-            this.groupIdCol.HeaderText = "id группы";
-            this.groupIdCol.MinimumWidth = 6;
-            this.groupIdCol.Name = "groupIdCol";
-            this.groupIdCol.ReadOnly = true;
-            this.groupIdCol.Visible = false;
-            // 
-            // contractInfoIdCol2
-            // 
-            this.contractInfoIdCol2.HeaderText = "id информации о договоре";
-            this.contractInfoIdCol2.MinimumWidth = 6;
-            this.contractInfoIdCol2.Name = "contractInfoIdCol2";
-            this.contractInfoIdCol2.ReadOnly = true;
             // 
             // setDisBtn
             // 
@@ -640,47 +565,6 @@ namespace kursovajaEF.Forms
             this.contract_info.TabIndex = 16;
             this.contract_info.Visible = false;
             this.contract_info.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contract_info_CellClick);
-            // 
-            // disciplineNameCol
-            // 
-            this.disciplineNameCol.HeaderText = "Программа";
-            this.disciplineNameCol.MinimumWidth = 6;
-            this.disciplineNameCol.Name = "disciplineNameCol";
-            this.disciplineNameCol.ReadOnly = true;
-            // 
-            // hoursCol
-            // 
-            this.hoursCol.HeaderText = "Количество часов";
-            this.hoursCol.MinimumWidth = 6;
-            this.hoursCol.Name = "hoursCol";
-            this.hoursCol.ReadOnly = true;
-            // 
-            // numOfPeopleCol
-            // 
-            this.numOfPeopleCol.HeaderText = "Количество человек";
-            this.numOfPeopleCol.MinimumWidth = 6;
-            this.numOfPeopleCol.Name = "numOfPeopleCol";
-            this.numOfPeopleCol.ReadOnly = true;
-            // 
-            // contractInfoIdCol
-            // 
-            this.contractInfoIdCol.HeaderText = "id информации о договоре";
-            this.contractInfoIdCol.MinimumWidth = 6;
-            this.contractInfoIdCol.Name = "contractInfoIdCol";
-            this.contractInfoIdCol.ReadOnly = true;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Red;
-            this.button1.Location = new System.Drawing.Point(431, 513);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(46, 46);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "x";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // delGIBtn
             // 
@@ -1182,6 +1066,110 @@ namespace kursovajaEF.Forms
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
+            // disciplineNameCol
+            // 
+            this.disciplineNameCol.HeaderText = "Программа";
+            this.disciplineNameCol.MinimumWidth = 6;
+            this.disciplineNameCol.Name = "disciplineNameCol";
+            this.disciplineNameCol.ReadOnly = true;
+            // 
+            // hoursCol
+            // 
+            this.hoursCol.HeaderText = "Количество часов";
+            this.hoursCol.MinimumWidth = 6;
+            this.hoursCol.Name = "hoursCol";
+            this.hoursCol.ReadOnly = true;
+            // 
+            // numOfPeopleCol
+            // 
+            this.numOfPeopleCol.HeaderText = "Количество человек";
+            this.numOfPeopleCol.MinimumWidth = 6;
+            this.numOfPeopleCol.Name = "numOfPeopleCol";
+            this.numOfPeopleCol.ReadOnly = true;
+            // 
+            // contractInfoIdCol
+            // 
+            this.contractInfoIdCol.HeaderText = "id информации о договоре";
+            this.contractInfoIdCol.MinimumWidth = 6;
+            this.contractInfoIdCol.Name = "contractInfoIdCol";
+            this.contractInfoIdCol.ReadOnly = true;
+            this.contractInfoIdCol.Visible = false;
+            // 
+            // groupNumCol
+            // 
+            this.groupNumCol.HeaderText = "Номер группы";
+            this.groupNumCol.MinimumWidth = 6;
+            this.groupNumCol.Name = "groupNumCol";
+            this.groupNumCol.ReadOnly = true;
+            // 
+            // numOfHoursCol
+            // 
+            this.numOfHoursCol.HeaderText = "Часы";
+            this.numOfHoursCol.MinimumWidth = 6;
+            this.numOfHoursCol.Name = "numOfHoursCol";
+            this.numOfHoursCol.ReadOnly = true;
+            // 
+            // groupInfoIdCol
+            // 
+            this.groupInfoIdCol.HeaderText = "id информации о группе";
+            this.groupInfoIdCol.MinimumWidth = 6;
+            this.groupInfoIdCol.Name = "groupInfoIdCol";
+            this.groupInfoIdCol.ReadOnly = true;
+            this.groupInfoIdCol.Visible = false;
+            // 
+            // weekdayCol
+            // 
+            this.weekdayCol.HeaderText = "День недели";
+            this.weekdayCol.MinimumWidth = 6;
+            this.weekdayCol.Name = "weekdayCol";
+            this.weekdayCol.ReadOnly = true;
+            // 
+            // startTimeCol
+            // 
+            this.startTimeCol.HeaderText = "Время начала";
+            this.startTimeCol.MinimumWidth = 6;
+            this.startTimeCol.Name = "startTimeCol";
+            this.startTimeCol.ReadOnly = true;
+            // 
+            // endTimeCol
+            // 
+            this.endTimeCol.HeaderText = "Время окончания";
+            this.endTimeCol.MinimumWidth = 6;
+            this.endTimeCol.Name = "endTimeCol";
+            this.endTimeCol.ReadOnly = true;
+            // 
+            // startLearningCol
+            // 
+            this.startLearningCol.HeaderText = "Дата начала обучения";
+            this.startLearningCol.MinimumWidth = 6;
+            this.startLearningCol.Name = "startLearningCol";
+            this.startLearningCol.ReadOnly = true;
+            this.startLearningCol.Visible = false;
+            // 
+            // endLearningCol
+            // 
+            this.endLearningCol.HeaderText = "Дата окончания обучения";
+            this.endLearningCol.MinimumWidth = 6;
+            this.endLearningCol.Name = "endLearningCol";
+            this.endLearningCol.ReadOnly = true;
+            this.endLearningCol.Visible = false;
+            // 
+            // groupIdCol
+            // 
+            this.groupIdCol.HeaderText = "id группы";
+            this.groupIdCol.MinimumWidth = 6;
+            this.groupIdCol.Name = "groupIdCol";
+            this.groupIdCol.ReadOnly = true;
+            this.groupIdCol.Visible = false;
+            // 
+            // contractInfoIdCol2
+            // 
+            this.contractInfoIdCol2.HeaderText = "id информации о договоре";
+            this.contractInfoIdCol2.MinimumWidth = 6;
+            this.contractInfoIdCol2.Name = "contractInfoIdCol2";
+            this.contractInfoIdCol2.ReadOnly = true;
+            this.contractInfoIdCol2.Visible = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1325,7 +1313,6 @@ namespace kursovajaEF.Forms
         public System.Windows.Forms.TextBox discipline;
         public System.Windows.Forms.DataGridView group_info;
         public System.Windows.Forms.Button delGIBtn;
-        public System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupNumCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn numOfHoursCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupInfoIdCol;

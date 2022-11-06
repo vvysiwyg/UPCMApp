@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,10 @@ namespace kursovajaEF.Forms
 {
     public partial class Form10 : Form
     {
-        public Form10()
+        private NpgsqlConnection conn;
+        public Form10(NpgsqlConnection conn)
         {
+            this.conn = conn;
             InitializeComponent();
         }
 
@@ -54,6 +57,30 @@ namespace kursovajaEF.Forms
                 teachId = (from teach in db.Teachers
                          orderby teach.TeacherId descending
                          select teach.TeacherId).FirstOrDefault();
+
+                foreach(DataGridViewRow row in disciplines.Rows)
+                {
+                    DisciplinesTeacher dt = new()
+                    {
+                        DisciplineId = int.Parse(row.Cells["disciplineIdCol"].Value.ToString()),
+                        TeacherId = teachId
+                    };
+
+                    db.DisciplinesTeachers.Add(dt);
+                    db.SaveChanges();
+                }
+
+                foreach (DataGridViewRow row in group_info.Rows)
+                {
+                    GroupInfoTeacher git = new()
+                    {
+                        GroupInfoId = int.Parse(row.Cells["groupInfoIdCol"].Value.ToString()),
+                        TeacherId = teachId
+                    };
+
+                    db.GroupInfoTeachers.Add(git);
+                    db.SaveChanges();
+                }
             }
             
             label10.Text = teachId.ToString();
@@ -96,18 +123,6 @@ namespace kursovajaEF.Forms
                 db.Update(t);
                 db.SaveChanges();
             }
-            //    sql = "UPDATE teachers SET fio = '" +
-            //fio.Text + "', dob = '" +
-            //dob.Value.ToString().Remove(10) + "', title = '" +
-            //title.Text + "', position = '" +
-            //position.Text + "', pedagogical_experience = '" +
-            //pedEx.Text + "', overall_experience = '" +
-            //overEx.Text + "', degree = '" +
-            //degree.Text + "', phone_num = " +
-            //phone_num.Text + ", email = '" +
-            //email.Text + "' WHERE teacher_id = '" + label11.Text + "';";
-            //    dml = gcnew OdbcCommand(sql, conn);
-            //    dml.ExecuteNonQuery();
             label10.Text = "1";
             Close();
         }
@@ -297,6 +312,25 @@ namespace kursovajaEF.Forms
                 button1.Enabled = true;
                 button3.Enabled = true;
             }
+        }
+
+        private void addDisBtn_Click(object sender, EventArgs e)
+        {
+            Form7 f = new(conn);
+            f.setDisBtn.Visible = true;
+            f.formName = "Form10";
+            f.ShowDialog();
+            if (f.disciplinesRow != null)
+                disciplines.Rows.Add(f.disciplinesRow);
+        }
+
+        private void addGIBtn_Click(object sender, EventArgs e)
+        {
+            Form15 f = new(conn);
+            f.chooseGIBtn.Visible = true;
+            f.ShowDialog();
+            if (f.gi_rows.Length != 0)
+                group_info.Rows.AddRange(f.gi_rows);
         }
     }
 }

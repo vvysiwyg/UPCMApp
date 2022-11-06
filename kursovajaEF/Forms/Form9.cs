@@ -40,7 +40,7 @@ namespace kursovajaEF.Forms
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            Form10 form = new();
+            Form10 form = new(conn);
             form.ShowDialog();
             if (form.label10.Text != "0") {
                 teachers.Rows.Add(form.fio.Text, form.dob.Value.ToString().Remove(10),
@@ -58,7 +58,7 @@ namespace kursovajaEF.Forms
         {
             if (teachers.SelectedRows.Count == 1)
             {
-                Form10 fm = new();
+                Form10 fm = new(conn);
                 fm.button1.Visible = false;
                 fm.button3.Visible = true;
                 fm.label11.Text = teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["teacherIdCol"].Value.ToString();

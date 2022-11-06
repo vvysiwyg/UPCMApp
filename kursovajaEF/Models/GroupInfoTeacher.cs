@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace kursovajaEF
 {
-    public partial class GroupInfoListener
+    public partial class GroupInfoTeacher
     {
         public int? GroupInfoId { get; set; }
-        public int? ListenerId { get; set; }
+        public int? TeacherId { get; set; }
 
         public virtual GroupInfo GroupInfo { get; set; }
-        public virtual Listener Listener { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }

@@ -767,22 +767,10 @@ namespace kursovajaEF.Forms
         {
             Form7 f = new(conn);
             f.setDisBtn.Visible = true;
+            f.formName = "Form2";
             f.ShowDialog();
             if(f.chosenDis != "0")
                 discipline.Text = f.chosenDis;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            group_info.Visible = true;
-            group_info.Rows.Add(1, 0);
-            group_info.Refresh();
-            DataGridViewRow row = new();
-            row.CreateCells(group_info);
-            row.Cells[0].Value = 1;
-            row.Cells[1].Value = 0;
-            System.Threading.Thread.Sleep(1000);
-            MessageBox.Show(group_info.Rows.Contains(row).ToString());
         }
     }
 }

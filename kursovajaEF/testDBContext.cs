@@ -33,7 +33,7 @@ namespace kursovajaEF
         public virtual DbSet<DisciplinesTimetable> DisciplinesTimetables { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<GroupInfo> GroupInfos { get; set; }
-        public virtual DbSet<GroupInfoListener> GroupInfoListeners { get; set; }
+        public virtual DbSet<GroupInfoTeacher> GroupInfoTeachers { get; set; }
         public virtual DbSet<GroupInfoContractInfo> GroupInfoContractInfos { get; set; }
         public virtual DbSet<GroupsListener> GroupsListeners { get; set; }
         public virtual DbSet<GroupsTeacher> GroupsTeachers { get; set; }
@@ -182,7 +182,7 @@ namespace kursovajaEF
 
             modelBuilder.Entity<DisciplinesTeacher>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(keys => new { keys.DisciplineId, keys.TeacherId });
 
                 entity.ToTable("disciplines_teachers");
 
@@ -289,27 +289,27 @@ namespace kursovajaEF
                     .HasConstraintName("group_id_fkey");
             });
 
-            modelBuilder.Entity<GroupInfoListener>(entity =>
+            modelBuilder.Entity<GroupInfoTeacher>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(keys => new { keys.GroupInfoId, keys.TeacherId });
 
-                entity.ToTable("group_info_listeners");
+                entity.ToTable("group_info_teacher");
 
                 entity.Property(e => e.GroupInfoId).HasColumnName("group_info_id");
 
-                entity.Property(e => e.ListenerId).HasColumnName("listener_id");
+                entity.Property(e => e.TeacherId).HasColumnName("teacher_id");
 
                 entity.HasOne(d => d.GroupInfo)
                     .WithMany()
                     .HasForeignKey(d => d.GroupInfoId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("group_info_id_fkey");
+                    .HasConstraintName("group_info_fkey");
 
-                entity.HasOne(d => d.Listener)
+                entity.HasOne(d => d.Teacher)
                     .WithMany()
-                    .HasForeignKey(d => d.ListenerId)
+                    .HasForeignKey(d => d.TeacherId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("listener_id_fkey");
+                    .HasConstraintName("teacher_fkey");
             });
 
             modelBuilder.Entity<GroupInfoContractInfo>(entity =>

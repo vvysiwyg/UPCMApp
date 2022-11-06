@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using kursovajaEF;
@@ -9,9 +10,10 @@ using kursovajaEF;
 namespace kursovajaEF.Migrations
 {
     [DbContext(typeof(testDBContext))]
-    partial class testDBContextModelSnapshot : ModelSnapshot
+    [Migration("20221105144242_add-group-info-teacher")]
+    partial class addgroupinfoteacher
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -292,6 +294,23 @@ namespace kursovajaEF.Migrations
                     b.HasIndex("GroupId");
 
                     b.ToTable("group_info");
+                });
+
+            modelBuilder.Entity("kursovajaEF.GroupInfoListener", b =>
+                {
+                    b.Property<int?>("GroupInfoId")
+                        .HasColumnType("integer")
+                        .HasColumnName("group_info_id");
+
+                    b.Property<int?>("ListenerId")
+                        .HasColumnType("integer")
+                        .HasColumnName("listener_id");
+
+                    b.HasIndex("GroupInfoId");
+
+                    b.HasIndex("ListenerId");
+
+                    b.ToTable("group_info_listeners");
                 });
 
             modelBuilder.Entity("kursovajaEF.GroupInfoTeacher", b =>
@@ -677,6 +696,25 @@ namespace kursovajaEF.Migrations
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Group");
+                });
+
+            modelBuilder.Entity("kursovajaEF.GroupInfoListener", b =>
+                {
+                    b.HasOne("kursovajaEF.GroupInfo", "GroupInfo")
+                        .WithMany()
+                        .HasForeignKey("GroupInfoId")
+                        .HasConstraintName("group_info_id_fkey")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("kursovajaEF.Listener", "Listener")
+                        .WithMany()
+                        .HasForeignKey("ListenerId")
+                        .HasConstraintName("listener_id_fkey")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("GroupInfo");
+
+                    b.Navigation("Listener");
                 });
 
             modelBuilder.Entity("kursovajaEF.GroupInfoTeacher", b =>

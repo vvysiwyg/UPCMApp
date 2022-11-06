@@ -30,6 +30,17 @@ namespace kursovajaEF.Forms
         private void InitializeComponent()
         {
             this.groups = new System.Windows.Forms.DataGridView();
+            this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disciplineIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numOfHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disciplineNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gWeekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teachers = new System.Windows.Forms.DataGridView();
             this.fioCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dobCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,17 +77,7 @@ namespace kursovajaEF.Forms
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.showLinkBtn = new System.Windows.Forms.Button();
             this.linkBtn = new System.Windows.Forms.Button();
-            this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.disciplineIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numOfHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.disciplineNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gWeekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chooseGIBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.groups)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listeners)).BeginInit();
@@ -113,6 +114,105 @@ namespace kursovajaEF.Forms
             this.groups.Size = new System.Drawing.Size(1120, 195);
             this.groups.TabIndex = 0;
             this.groups.Sorted += new System.EventHandler(this.dataGridView_Sorted);
+            // 
+            // groupNumCol
+            // 
+            this.groupNumCol.FillWeight = 25.66845F;
+            this.groupNumCol.HeaderText = "Номер группы";
+            this.groupNumCol.MinimumWidth = 6;
+            this.groupNumCol.Name = "groupNumCol";
+            this.groupNumCol.ReadOnly = true;
+            this.groupNumCol.Width = 129;
+            // 
+            // groupIdCol
+            // 
+            this.groupIdCol.HeaderText = "Id группы";
+            this.groupIdCol.MinimumWidth = 6;
+            this.groupIdCol.Name = "groupIdCol";
+            this.groupIdCol.ReadOnly = true;
+            this.groupIdCol.Visible = false;
+            this.groupIdCol.Width = 106;
+            // 
+            // disciplineIdCol
+            // 
+            this.disciplineIdCol.HeaderText = "id программы";
+            this.disciplineIdCol.MinimumWidth = 6;
+            this.disciplineIdCol.Name = "disciplineIdCol";
+            this.disciplineIdCol.ReadOnly = true;
+            this.disciplineIdCol.Visible = false;
+            this.disciplineIdCol.Width = 138;
+            // 
+            // numOfHoursCol
+            // 
+            this.numOfHoursCol.FillWeight = 25.66845F;
+            this.numOfHoursCol.HeaderText = "Количество часов";
+            this.numOfHoursCol.MinimumWidth = 6;
+            this.numOfHoursCol.Name = "numOfHoursCol";
+            this.numOfHoursCol.ReadOnly = true;
+            this.numOfHoursCol.Width = 149;
+            // 
+            // disciplineNameCol
+            // 
+            this.disciplineNameCol.FillWeight = 620.3209F;
+            this.disciplineNameCol.HeaderText = "Программа";
+            this.disciplineNameCol.MinimumWidth = 6;
+            this.disciplineNameCol.Name = "disciplineNameCol";
+            this.disciplineNameCol.ReadOnly = true;
+            this.disciplineNameCol.Width = 120;
+            // 
+            // groupInfoIdCol
+            // 
+            this.groupInfoIdCol.HeaderText = "id информации о группе";
+            this.groupInfoIdCol.MinimumWidth = 6;
+            this.groupInfoIdCol.Name = "groupInfoIdCol";
+            this.groupInfoIdCol.ReadOnly = true;
+            this.groupInfoIdCol.Visible = false;
+            this.groupInfoIdCol.Width = 150;
+            // 
+            // gWeekdayCol
+            // 
+            this.gWeekdayCol.FillWeight = 25.66845F;
+            this.gWeekdayCol.HeaderText = "День недели";
+            this.gWeekdayCol.MinimumWidth = 6;
+            this.gWeekdayCol.Name = "gWeekdayCol";
+            this.gWeekdayCol.ReadOnly = true;
+            this.gWeekdayCol.Width = 117;
+            // 
+            // startTimeCol
+            // 
+            this.startTimeCol.FillWeight = 25.66845F;
+            this.startTimeCol.HeaderText = "Время начала";
+            this.startTimeCol.MinimumWidth = 6;
+            this.startTimeCol.Name = "startTimeCol";
+            this.startTimeCol.ReadOnly = true;
+            this.startTimeCol.Width = 125;
+            // 
+            // endTimeCol
+            // 
+            this.endTimeCol.FillWeight = 25.66845F;
+            this.endTimeCol.HeaderText = "Время окончания";
+            this.endTimeCol.MinimumWidth = 6;
+            this.endTimeCol.Name = "endTimeCol";
+            this.endTimeCol.ReadOnly = true;
+            this.endTimeCol.Width = 149;
+            // 
+            // startLearningCol
+            // 
+            this.startLearningCol.FillWeight = 25.66845F;
+            this.startLearningCol.HeaderText = "Дата начала обучения";
+            this.startLearningCol.MinimumWidth = 6;
+            this.startLearningCol.Name = "startLearningCol";
+            this.startLearningCol.ReadOnly = true;
+            this.startLearningCol.Width = 177;
+            // 
+            // endLearningCol
+            // 
+            this.endLearningCol.FillWeight = 25.66845F;
+            this.endLearningCol.HeaderText = "Дата окончания обучения";
+            this.endLearningCol.MinimumWidth = 6;
+            this.endLearningCol.Name = "endLearningCol";
+            this.endLearningCol.ReadOnly = true;
+            this.endLearningCol.Width = 201;
             // 
             // teachers
             // 
@@ -472,104 +572,18 @@ namespace kursovajaEF.Forms
             this.linkBtn.UseVisualStyleBackColor = true;
             this.linkBtn.Click += new System.EventHandler(this.linkBtn_Click);
             // 
-            // groupNumCol
+            // chooseGIBtn
             // 
-            this.groupNumCol.FillWeight = 25.66845F;
-            this.groupNumCol.HeaderText = "Номер группы";
-            this.groupNumCol.MinimumWidth = 6;
-            this.groupNumCol.Name = "groupNumCol";
-            this.groupNumCol.ReadOnly = true;
-            this.groupNumCol.Width = 141;
-            // 
-            // groupIdCol
-            // 
-            this.groupIdCol.HeaderText = "Id группы";
-            this.groupIdCol.MinimumWidth = 6;
-            this.groupIdCol.Name = "groupIdCol";
-            this.groupIdCol.ReadOnly = true;
-            this.groupIdCol.Visible = false;
-            this.groupIdCol.Width = 106;
-            // 
-            // disciplineIdCol
-            // 
-            this.disciplineIdCol.HeaderText = "id программы";
-            this.disciplineIdCol.MinimumWidth = 6;
-            this.disciplineIdCol.Name = "disciplineIdCol";
-            this.disciplineIdCol.ReadOnly = true;
-            this.disciplineIdCol.Visible = false;
-            this.disciplineIdCol.Width = 138;
-            // 
-            // numOfHoursCol
-            // 
-            this.numOfHoursCol.FillWeight = 25.66845F;
-            this.numOfHoursCol.HeaderText = "Количество часов";
-            this.numOfHoursCol.MinimumWidth = 6;
-            this.numOfHoursCol.Name = "numOfHoursCol";
-            this.numOfHoursCol.ReadOnly = true;
-            this.numOfHoursCol.Width = 149;
-            // 
-            // disciplineNameCol
-            // 
-            this.disciplineNameCol.FillWeight = 620.3209F;
-            this.disciplineNameCol.HeaderText = "Программа";
-            this.disciplineNameCol.MinimumWidth = 6;
-            this.disciplineNameCol.Name = "disciplineNameCol";
-            this.disciplineNameCol.ReadOnly = true;
-            this.disciplineNameCol.Width = 120;
-            // 
-            // groupInfoIdCol
-            // 
-            this.groupInfoIdCol.HeaderText = "id информации о группе";
-            this.groupInfoIdCol.MinimumWidth = 6;
-            this.groupInfoIdCol.Name = "groupInfoIdCol";
-            this.groupInfoIdCol.ReadOnly = true;
-            this.groupInfoIdCol.Visible = false;
-            this.groupInfoIdCol.Width = 150;
-            // 
-            // gWeekdayCol
-            // 
-            this.gWeekdayCol.FillWeight = 25.66845F;
-            this.gWeekdayCol.HeaderText = "День недели";
-            this.gWeekdayCol.MinimumWidth = 6;
-            this.gWeekdayCol.Name = "gWeekdayCol";
-            this.gWeekdayCol.ReadOnly = true;
-            this.gWeekdayCol.Width = 117;
-            // 
-            // startTimeCol
-            // 
-            this.startTimeCol.FillWeight = 25.66845F;
-            this.startTimeCol.HeaderText = "Время начала";
-            this.startTimeCol.MinimumWidth = 6;
-            this.startTimeCol.Name = "startTimeCol";
-            this.startTimeCol.ReadOnly = true;
-            this.startTimeCol.Width = 125;
-            // 
-            // endTimeCol
-            // 
-            this.endTimeCol.FillWeight = 25.66845F;
-            this.endTimeCol.HeaderText = "Время окончания";
-            this.endTimeCol.MinimumWidth = 6;
-            this.endTimeCol.Name = "endTimeCol";
-            this.endTimeCol.ReadOnly = true;
-            this.endTimeCol.Width = 149;
-            // 
-            // startLearningCol
-            // 
-            this.startLearningCol.FillWeight = 25.66845F;
-            this.startLearningCol.HeaderText = "Дата начала обучения";
-            this.startLearningCol.MinimumWidth = 6;
-            this.startLearningCol.Name = "startLearningCol";
-            this.startLearningCol.ReadOnly = true;
-            this.startLearningCol.Width = 177;
-            // 
-            // endLearningCol
-            // 
-            this.endLearningCol.FillWeight = 25.66845F;
-            this.endLearningCol.HeaderText = "Дата окончания обучения";
-            this.endLearningCol.MinimumWidth = 6;
-            this.endLearningCol.Name = "endLearningCol";
-            this.endLearningCol.ReadOnly = true;
-            this.endLearningCol.Width = 201;
+            this.chooseGIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chooseGIBtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.chooseGIBtn.Location = new System.Drawing.Point(386, 222);
+            this.chooseGIBtn.Name = "chooseGIBtn";
+            this.chooseGIBtn.Size = new System.Drawing.Size(269, 32);
+            this.chooseGIBtn.TabIndex = 1;
+            this.chooseGIBtn.Text = "Выбрать расписание";
+            this.chooseGIBtn.UseVisualStyleBackColor = true;
+            this.chooseGIBtn.Visible = false;
+            this.chooseGIBtn.Click += new System.EventHandler(this.chooseGIBtn_Click);
             // 
             // Form15
             // 
@@ -581,6 +595,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.linkBtn);
             this.Controls.Add(this.showLinkBtn);
+            this.Controls.Add(this.chooseGIBtn);
             this.Controls.Add(this.delBtn);
             this.Controls.Add(this.updBtn);
             this.Controls.Add(this.addBtn);
@@ -651,5 +666,6 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn endTimeCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn startLearningCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn endLearningCol;
+        public System.Windows.Forms.Button chooseGIBtn;
     }
 }
