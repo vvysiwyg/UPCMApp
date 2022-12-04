@@ -6,10 +6,8 @@ namespace kursovajaEF.Forms
 {
     public partial class Form2_1 : AdvancedForm
     {
-        private NpgsqlConnection conn;
-        public Form2_1(NpgsqlConnection conn)
+        public Form2_1()
         {
-            this.conn = conn;
             InitializeComponent();
         }
 

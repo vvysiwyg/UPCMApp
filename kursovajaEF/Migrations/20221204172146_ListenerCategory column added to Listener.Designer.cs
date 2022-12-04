@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using kursovajaEF;
@@ -9,9 +10,10 @@ using kursovajaEF;
 namespace kursovajaEF.Migrations
 {
     [DbContext(typeof(testDBContext))]
-    partial class testDBContextModelSnapshot : ModelSnapshot
+    [Migration("20221204172146_ListenerCategory column added to Listener")]
+    partial class ListenerCategorycolumnaddedtoListener
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -412,8 +414,8 @@ namespace kursovajaEF.Migrations
                         .HasColumnName("lastname");
 
                     b.Property<string>("ListenerCategory")
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)")
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
                         .HasColumnName("listener_category");
 
                     b.Property<string>("Matriculation")

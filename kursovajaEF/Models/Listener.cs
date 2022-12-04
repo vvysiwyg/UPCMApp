@@ -25,6 +25,7 @@ namespace kursovajaEF
         public string SchoolName { get; set; }
         public string SchoolGrade { get; set; }
         public string Email { get; set; }
+        public string ListenerCategory { get; set; }
 
         public virtual Contract Contract { get; set; }
     }

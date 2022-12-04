@@ -47,6 +47,7 @@ namespace kursovajaEF
                         lc.PhoneNum,
                         lc.Email != null ? lc.Email : "",
                         lc.SchoolGrade,
+                        lc.ListenerCategory,
                         lc.Contract.Crn,
                         lc.Contract.TotalSum,
                         lc.Contract.PayedSum,
@@ -60,6 +61,7 @@ namespace kursovajaEF
                         lc.Contract.TransferGroup != null ? lc.Contract.TransferGroup : "",
                         lc.Contract.Certificate != null ? lc.Contract.Certificate : "",
                         lc.Contract.IssueCertificate != null ? lc.Contract.IssueCertificate : "",
+                        lc.Contract.Bank != null ? lc.Contract.Bank : "",
                         lc.Id,
                         lc.ContractId);
 
@@ -411,6 +413,7 @@ namespace kursovajaEF
                 fm.addBtn.Visible = false;
                 fm.updBtn.Visible = true;
                 fm.endEduBtn.Visible = true;
+                fm.transferGroupBtn.Visible = true;
                 fm.addCIBtn.Visible = false;
                 fm.addCIBtn2.Visible = true;
                 fm.delCIBtn.Visible = false;
@@ -440,14 +443,22 @@ namespace kursovajaEF
                 fm.phoneNum.Text = selectedRow.Cells["phoneNumCol"].Value.ToString();
                 fm.schoolGrade.Text = selectedRow.Cells["schoolGradeCol"].Value.ToString();
                 fm.email.Text = selectedRow.Cells["emailCol"].Value.ToString();
+                fm.listenerCategory.Text = selectedRow.Cells["listenerCategoryCol"].Value.ToString();
+
+                if(fm.listenerCategory.Text != "Школьник")
+                {
+                    fm.label8.Visible = false;
+                    fm.schoolGrade.Visible = false;
+                }
+
                 fm.crn.Text = selectedRow.Cells["crnCol"].Value.ToString();
                 fm.totalSum.Text = selectedRow.Cells["totalSumCol"].Value.ToString();
                 fm.payedSum.Text = selectedRow.Cells["payedSumCol"].Value.ToString();
                 fm.PayDate40pct.Text = selectedRow.Cells["PayDate40pctCol"].Value.ToString();
-                fm.transferGroup.Text = selectedRow.Cells["transferGroupCol"].Value.ToString();
                 fm.restOfSum.Text = selectedRow.Cells["restOfSumCol"].Value.ToString();
                 fm.whoPay.Text = selectedRow.Cells["whoPayCol"].Value.ToString();
                 fm.paymentDeadline.Text = selectedRow.Cells["paymentDeadlineCol"].Value.ToString();
+                fm.bank.Text = selectedRow.Cells["bankCol"].Value.ToString();
 
                 using (testDBContext db = new())
                 {
@@ -587,13 +598,13 @@ namespace kursovajaEF
                 DataGridViewRow selectedRow = dataGridView1.SelectedCells[0].OwningRow;
                 bool flag = false;
                 SuspendLayout();
-                for (int i = 0; i < 21; i++)
+                for (int i = 0; i < 23; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = selectedRow.Cells[i].Value.ToString();
                 }
 
-                for (int i = 21; i < 31; i++)
+                for (int i = 23; i < 33; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = string.Empty;
@@ -683,14 +694,14 @@ namespace kursovajaEF
                 DataGridViewRow selectedRow = dataGridView2.SelectedCells[0].OwningRow;
                 currentCellDgv2 = dataGridView2.SelectedCells[0];
 
-                for (int i = 21; i < 24; i++)
+                for (int i = 23; i < 26; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = selectedRow.Cells[index].Value.ToString();
                     index++;
                 }
 
-                for (int i = 24; i < 31; i++)
+                for (int i = 26; i < 33; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = string.Empty;
@@ -727,7 +738,7 @@ namespace kursovajaEF
                 int index = 0;
                 DataGridViewRow selectedRow = dataGridView3.SelectedCells[0].OwningRow;
 
-                for (int i = 24; i < 31; i++)
+                for (int i = 26; i < 33; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = selectedRow.Cells[index].Value.ToString();

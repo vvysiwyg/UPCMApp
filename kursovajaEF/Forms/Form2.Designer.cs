@@ -29,11 +29,11 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.addingCheck = new System.Windows.Forms.Label();
             this.contractId = new System.Windows.Forms.Label();
             this.updatingCheck = new System.Windows.Forms.Label();
@@ -61,6 +61,16 @@ namespace kursovajaEF.Forms
             this.phoneNum = new System.Windows.Forms.MaskedTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.group_info = new System.Windows.Forms.DataGridView();
+            this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numOfHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractInfoIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.setDisBtn = new System.Windows.Forms.Button();
             this.discipline = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -68,6 +78,10 @@ namespace kursovajaEF.Forms
             this.newGroupBtn = new System.Windows.Forms.Button();
             this.addGIBtn = new System.Windows.Forms.Button();
             this.contract_info = new System.Windows.Forms.DataGridView();
+            this.disciplineNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numOfPeopleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.delGIBtn = new System.Windows.Forms.Button();
             this.delCIBtn = new System.Windows.Forms.Button();
             this.delCIBtn2 = new System.Windows.Forms.Button();
@@ -80,17 +94,17 @@ namespace kursovajaEF.Forms
             this.numOfPeople = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.PayDate40pct = new System.Windows.Forms.DateTimePicker();
-            this.paymentDeadline = new System.Windows.Forms.DateTimePicker();
+            this.paymentDeadline = new System.Windows.Forms.TextBox();
+            this.bank = new System.Windows.Forms.TextBox();
             this.restOfSum = new System.Windows.Forms.TextBox();
-            this.transferGroup = new System.Windows.Forms.TextBox();
             this.whoPay = new System.Windows.Forms.TextBox();
             this.payedSum = new System.Windows.Forms.TextBox();
+            this.PayDate40pct = new System.Windows.Forms.TextBox();
             this.totalSum = new System.Windows.Forms.TextBox();
             this.crn = new System.Windows.Forms.TextBox();
             this.wishes = new System.Windows.Forms.DataGridView();
@@ -115,20 +129,9 @@ namespace kursovajaEF.Forms
             this.updBtn = new System.Windows.Forms.Button();
             this.closeBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
-            this.disciplineNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numOfPeopleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numOfHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractInfoIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transferGroupBtn = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.listenerCategory = new System.Windows.Forms.ComboBox();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -241,7 +244,7 @@ namespace kursovajaEF.Forms
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(12, 353);
+            this.label8.Location = new System.Drawing.Point(12, 406);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 28);
             this.label8.TabIndex = 1;
@@ -251,7 +254,7 @@ namespace kursovajaEF.Forms
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(12, 403);
+            this.label9.Location = new System.Drawing.Point(12, 451);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(59, 28);
             this.label9.TabIndex = 1;
@@ -335,7 +338,7 @@ namespace kursovajaEF.Forms
             // schoolGrade
             // 
             this.schoolGrade.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.schoolGrade.Location = new System.Drawing.Point(222, 350);
+            this.schoolGrade.Location = new System.Drawing.Point(222, 403);
             this.schoolGrade.Name = "schoolGrade";
             this.schoolGrade.Size = new System.Drawing.Size(494, 34);
             this.schoolGrade.TabIndex = 10;
@@ -343,7 +346,7 @@ namespace kursovajaEF.Forms
             // email
             // 
             this.email.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.email.Location = new System.Drawing.Point(222, 400);
+            this.email.Location = new System.Drawing.Point(222, 448);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(494, 34);
             this.email.TabIndex = 11;
@@ -403,17 +406,17 @@ namespace kursovajaEF.Forms
             this.panel2.Controls.Add(this.numOfPeople);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.PayDate40pct);
             this.panel2.Controls.Add(this.paymentDeadline);
+            this.panel2.Controls.Add(this.bank);
             this.panel2.Controls.Add(this.restOfSum);
-            this.panel2.Controls.Add(this.transferGroup);
             this.panel2.Controls.Add(this.whoPay);
             this.panel2.Controls.Add(this.payedSum);
+            this.panel2.Controls.Add(this.PayDate40pct);
             this.panel2.Controls.Add(this.totalSum);
             this.panel2.Controls.Add(this.crn);
             this.panel2.Controls.Add(this.label2);
@@ -431,14 +434,14 @@ namespace kursovajaEF.Forms
             this.group_info.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.group_info.BackgroundColor = System.Drawing.SystemColors.Control;
             this.group_info.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.group_info.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.group_info.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.group_info.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.group_info.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.groupNumCol,
@@ -451,649 +454,17 @@ namespace kursovajaEF.Forms
             this.endLearningCol,
             this.groupIdCol,
             this.contractInfoIdCol2});
-            this.group_info.Location = new System.Drawing.Point(440, 291);
+            this.group_info.Location = new System.Drawing.Point(439, 289);
             this.group_info.Name = "group_info";
             this.group_info.ReadOnly = true;
             this.group_info.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.group_info.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.group_info.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.group_info.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_info.RowTemplate.Height = 29;
             this.group_info.Size = new System.Drawing.Size(472, 216);
             this.group_info.TabIndex = 17;
             this.group_info.Visible = false;
-            // 
-            // setDisBtn
-            // 
-            this.setDisBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.setDisBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.setDisBtn.ForeColor = System.Drawing.Color.Green;
-            this.setDisBtn.Location = new System.Drawing.Point(244, 239);
-            this.setDisBtn.Name = "setDisBtn";
-            this.setDisBtn.Size = new System.Drawing.Size(46, 46);
-            this.setDisBtn.TabIndex = 21;
-            this.setDisBtn.Text = "+";
-            this.setDisBtn.UseVisualStyleBackColor = true;
-            this.setDisBtn.Click += new System.EventHandler(this.setDisBtn_Click);
-            // 
-            // discipline
-            // 
-            this.discipline.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.discipline.Location = new System.Drawing.Point(22, 249);
-            this.discipline.Name = "discipline";
-            this.discipline.ReadOnly = true;
-            this.discipline.Size = new System.Drawing.Size(208, 34);
-            this.discipline.TabIndex = 20;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.AutoScroll = true;
-            this.panel3.Location = new System.Drawing.Point(21, 650);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(865, 265);
-            this.panel3.TabIndex = 19;
-            // 
-            // cbWish
-            // 
-            this.cbWish.AutoSize = true;
-            this.cbWish.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbWish.Location = new System.Drawing.Point(22, 602);
-            this.cbWish.Name = "cbWish";
-            this.cbWish.Size = new System.Drawing.Size(253, 24);
-            this.cbWish.TabIndex = 18;
-            this.cbWish.Text = "С учетом пожеланий слушателя";
-            this.cbWish.UseVisualStyleBackColor = true;
-            this.cbWish.CheckedChanged += new System.EventHandler(this.cbWish_CheckedChanged);
-            // 
-            // newGroupBtn
-            // 
-            this.newGroupBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.newGroupBtn.Location = new System.Drawing.Point(497, 522);
-            this.newGroupBtn.Name = "newGroupBtn";
-            this.newGroupBtn.Size = new System.Drawing.Size(389, 49);
-            this.newGroupBtn.TabIndex = 17;
-            this.newGroupBtn.Text = "Добавить новую группу";
-            this.newGroupBtn.UseVisualStyleBackColor = true;
-            this.newGroupBtn.Click += new System.EventHandler(this.newGroupBtn_Click);
-            // 
-            // addGIBtn
-            // 
-            this.addGIBtn.Location = new System.Drawing.Point(22, 522);
-            this.addGIBtn.Name = "addGIBtn";
-            this.addGIBtn.Size = new System.Drawing.Size(389, 49);
-            this.addGIBtn.TabIndex = 17;
-            this.addGIBtn.Text = "Назначить группу(-ы)";
-            this.addGIBtn.UseVisualStyleBackColor = true;
-            this.addGIBtn.Click += new System.EventHandler(this.addGIBtn_Click);
-            // 
-            // contract_info
-            // 
-            this.contract_info.AllowUserToAddRows = false;
-            this.contract_info.AllowUserToDeleteRows = false;
-            this.contract_info.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.contract_info.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.contract_info.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.contract_info.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.contract_info.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.contract_info.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.contract_info.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.disciplineNameCol,
-            this.hoursCol,
-            this.numOfPeopleCol,
-            this.contractInfoIdCol});
-            this.contract_info.Location = new System.Drawing.Point(22, 291);
-            this.contract_info.Name = "contract_info";
-            this.contract_info.ReadOnly = true;
-            this.contract_info.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.contract_info.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.contract_info.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.contract_info.RowTemplate.Height = 29;
-            this.contract_info.Size = new System.Drawing.Size(361, 216);
-            this.contract_info.TabIndex = 16;
-            this.contract_info.Visible = false;
-            this.contract_info.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contract_info_CellClick);
-            // 
-            // delGIBtn
-            // 
-            this.delGIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.delGIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.delGIBtn.ForeColor = System.Drawing.Color.Red;
-            this.delGIBtn.Location = new System.Drawing.Point(389, 390);
-            this.delGIBtn.Name = "delGIBtn";
-            this.delGIBtn.Size = new System.Drawing.Size(46, 46);
-            this.delGIBtn.TabIndex = 14;
-            this.delGIBtn.Text = "x";
-            this.delGIBtn.UseVisualStyleBackColor = true;
-            this.delGIBtn.Click += new System.EventHandler(this.delGIBtn_Click);
-            // 
-            // delCIBtn
-            // 
-            this.delCIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.delCIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.delCIBtn.ForeColor = System.Drawing.Color.Red;
-            this.delCIBtn.Location = new System.Drawing.Point(799, 239);
-            this.delCIBtn.Name = "delCIBtn";
-            this.delCIBtn.Size = new System.Drawing.Size(46, 46);
-            this.delCIBtn.TabIndex = 14;
-            this.delCIBtn.Text = "x";
-            this.delCIBtn.UseVisualStyleBackColor = true;
-            this.delCIBtn.Click += new System.EventHandler(this.delCIBtn_Click);
-            // 
-            // delCIBtn2
-            // 
-            this.delCIBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.delCIBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.delCIBtn2.ForeColor = System.Drawing.Color.Red;
-            this.delCIBtn2.Location = new System.Drawing.Point(799, 239);
-            this.delCIBtn2.Name = "delCIBtn2";
-            this.delCIBtn2.Size = new System.Drawing.Size(46, 46);
-            this.delCIBtn2.TabIndex = 14;
-            this.delCIBtn2.Text = "x";
-            this.delCIBtn2.UseVisualStyleBackColor = true;
-            this.delCIBtn2.Visible = false;
-            this.delCIBtn2.Click += new System.EventHandler(this.delCIBtn2_Click);
-            // 
-            // addCIBtn
-            // 
-            this.addCIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addCIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addCIBtn.ForeColor = System.Drawing.Color.Green;
-            this.addCIBtn.Location = new System.Drawing.Point(727, 239);
-            this.addCIBtn.Name = "addCIBtn";
-            this.addCIBtn.Size = new System.Drawing.Size(46, 46);
-            this.addCIBtn.TabIndex = 15;
-            this.addCIBtn.Text = "+";
-            this.addCIBtn.UseVisualStyleBackColor = true;
-            this.addCIBtn.Click += new System.EventHandler(this.addCIBtn_Click);
-            // 
-            // addCIBtn2
-            // 
-            this.addCIBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addCIBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addCIBtn2.ForeColor = System.Drawing.Color.Green;
-            this.addCIBtn2.Location = new System.Drawing.Point(727, 239);
-            this.addCIBtn2.Name = "addCIBtn2";
-            this.addCIBtn2.Size = new System.Drawing.Size(46, 46);
-            this.addCIBtn2.TabIndex = 15;
-            this.addCIBtn2.Text = "+";
-            this.addCIBtn2.UseVisualStyleBackColor = true;
-            this.addCIBtn2.Visible = false;
-            this.addCIBtn2.Click += new System.EventHandler(this.addCIBtn2_Click);
-            // 
-            // label22
-            // 
-            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(525, 205);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(200, 28);
-            this.label22.TabIndex = 8;
-            this.label22.Text = "Количество человек";
-            // 
-            // label23
-            // 
-            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.Location = new System.Drawing.Point(323, 205);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(178, 28);
-            this.label23.TabIndex = 9;
-            this.label23.Text = "Количество часов";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(22, 207);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(118, 28);
-            this.label24.TabIndex = 10;
-            this.label24.Text = "Программа";
-            // 
-            // hours
-            // 
-            this.hours.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.hours.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.hours.Location = new System.Drawing.Point(323, 251);
-            this.hours.Name = "hours";
-            this.hours.Size = new System.Drawing.Size(143, 34);
-            this.hours.TabIndex = 11;
-            // 
-            // numOfPeople
-            // 
-            this.numOfPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.numOfPeople.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numOfPeople.Location = new System.Drawing.Point(525, 251);
-            this.numOfPeople.Name = "numOfPeople";
-            this.numOfPeople.Size = new System.Drawing.Size(143, 34);
-            this.numOfPeople.TabIndex = 12;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(576, 155);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(130, 28);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "Срок оплаты";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(22, 156);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(219, 28);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Кто оплатил обучение";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(411, 110);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(231, 28);
-            this.label14.TabIndex = 1;
-            this.label14.Text = "Остаток по оплате(руб.)";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(21, 110);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(227, 28);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Переведен(-а) в группу";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(348, 60);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(174, 28);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Дата оплаты 40 %";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(22, 60);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(155, 28);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Оплачено(руб.)";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(530, 14);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(187, 28);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Общая сумма(руб.)";
-            // 
-            // PayDate40pct
-            // 
-            this.PayDate40pct.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PayDate40pct.Location = new System.Drawing.Point(548, 62);
-            this.PayDate40pct.Name = "PayDate40pct";
-            this.PayDate40pct.Size = new System.Drawing.Size(184, 27);
-            this.PayDate40pct.TabIndex = 4;
-            // 
-            // paymentDeadline
-            // 
-            this.paymentDeadline.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.paymentDeadline.Location = new System.Drawing.Point(728, 157);
-            this.paymentDeadline.Name = "paymentDeadline";
-            this.paymentDeadline.Size = new System.Drawing.Size(184, 27);
-            this.paymentDeadline.TabIndex = 4;
-            // 
-            // restOfSum
-            // 
-            this.restOfSum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.restOfSum.Location = new System.Drawing.Point(668, 107);
-            this.restOfSum.Name = "restOfSum";
-            this.restOfSum.Size = new System.Drawing.Size(132, 34);
-            this.restOfSum.TabIndex = 1;
-            // 
-            // transferGroup
-            // 
-            this.transferGroup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.transferGroup.Location = new System.Drawing.Point(274, 107);
-            this.transferGroup.Name = "transferGroup";
-            this.transferGroup.Size = new System.Drawing.Size(132, 34);
-            this.transferGroup.TabIndex = 1;
-            // 
-            // whoPay
-            // 
-            this.whoPay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.whoPay.Location = new System.Drawing.Point(247, 153);
-            this.whoPay.Name = "whoPay";
-            this.whoPay.Size = new System.Drawing.Size(323, 34);
-            this.whoPay.TabIndex = 1;
-            // 
-            // payedSum
-            // 
-            this.payedSum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.payedSum.Location = new System.Drawing.Point(203, 57);
-            this.payedSum.Name = "payedSum";
-            this.payedSum.Size = new System.Drawing.Size(132, 34);
-            this.payedSum.TabIndex = 1;
-            this.payedSum.Leave += new System.EventHandler(this.totalSum_Leave);
-            // 
-            // totalSum
-            // 
-            this.totalSum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalSum.Location = new System.Drawing.Point(743, 11);
-            this.totalSum.Name = "totalSum";
-            this.totalSum.Size = new System.Drawing.Size(132, 34);
-            this.totalSum.TabIndex = 1;
-            this.totalSum.Leave += new System.EventHandler(this.totalSum_Leave);
-            // 
-            // crn
-            // 
-            this.crn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.crn.Location = new System.Drawing.Point(384, 11);
-            this.crn.Name = "crn";
-            this.crn.Size = new System.Drawing.Size(132, 34);
-            this.crn.TabIndex = 1;
-            // 
-            // wishes
-            // 
-            this.wishes.AllowUserToAddRows = false;
-            this.wishes.AllowUserToDeleteRows = false;
-            this.wishes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.wishes.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.wishes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.wishes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.wishes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.wishIdCol,
-            this.wWeekdayCol,
-            this.wStartTimeCol,
-            this.wEndTimeCol,
-            this.wContractIdCol});
-            this.wishes.Location = new System.Drawing.Point(35, 613);
-            this.wishes.Name = "wishes";
-            this.wishes.ReadOnly = true;
-            this.wishes.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.wishes.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.wishes.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.wishes.RowTemplate.Height = 29;
-            this.wishes.Size = new System.Drawing.Size(700, 206);
-            this.wishes.TabIndex = 7;
-            this.wishes.Visible = false;
-            // 
-            // wishIdCol
-            // 
-            this.wishIdCol.HeaderText = "Id пожелания";
-            this.wishIdCol.MinimumWidth = 6;
-            this.wishIdCol.Name = "wishIdCol";
-            this.wishIdCol.ReadOnly = true;
-            this.wishIdCol.Visible = false;
-            // 
-            // wWeekdayCol
-            // 
-            this.wWeekdayCol.HeaderText = "День недели";
-            this.wWeekdayCol.MinimumWidth = 6;
-            this.wWeekdayCol.Name = "wWeekdayCol";
-            this.wWeekdayCol.ReadOnly = true;
-            // 
-            // wStartTimeCol
-            // 
-            this.wStartTimeCol.HeaderText = "Время начала";
-            this.wStartTimeCol.MinimumWidth = 6;
-            this.wStartTimeCol.Name = "wStartTimeCol";
-            this.wStartTimeCol.ReadOnly = true;
-            // 
-            // wEndTimeCol
-            // 
-            this.wEndTimeCol.HeaderText = "Время окончания";
-            this.wEndTimeCol.MinimumWidth = 6;
-            this.wEndTimeCol.Name = "wEndTimeCol";
-            this.wEndTimeCol.ReadOnly = true;
-            // 
-            // wContractIdCol
-            // 
-            this.wContractIdCol.HeaderText = "id контракта";
-            this.wContractIdCol.MinimumWidth = 6;
-            this.wContractIdCol.Name = "wContractIdCol";
-            this.wContractIdCol.ReadOnly = true;
-            this.wContractIdCol.Visible = false;
-            // 
-            // delWishBtn
-            // 
-            this.delWishBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.delWishBtn.ForeColor = System.Drawing.Color.Red;
-            this.delWishBtn.Location = new System.Drawing.Point(689, 548);
-            this.delWishBtn.Name = "delWishBtn";
-            this.delWishBtn.Size = new System.Drawing.Size(46, 46);
-            this.delWishBtn.TabIndex = 6;
-            this.delWishBtn.Text = "x";
-            this.delWishBtn.UseVisualStyleBackColor = true;
-            this.delWishBtn.Click += new System.EventHandler(this.delWishBtn_Click);
-            // 
-            // delWishBtn2
-            // 
-            this.delWishBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.delWishBtn2.ForeColor = System.Drawing.Color.Red;
-            this.delWishBtn2.Location = new System.Drawing.Point(689, 548);
-            this.delWishBtn2.Name = "delWishBtn2";
-            this.delWishBtn2.Size = new System.Drawing.Size(46, 46);
-            this.delWishBtn2.TabIndex = 6;
-            this.delWishBtn2.Text = "x";
-            this.delWishBtn2.UseVisualStyleBackColor = true;
-            this.delWishBtn2.Visible = false;
-            this.delWishBtn2.Click += new System.EventHandler(this.delWishBtn2_Click);
-            // 
-            // addWishBtn
-            // 
-            this.addWishBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addWishBtn.ForeColor = System.Drawing.Color.Green;
-            this.addWishBtn.Location = new System.Drawing.Point(614, 548);
-            this.addWishBtn.Name = "addWishBtn";
-            this.addWishBtn.Size = new System.Drawing.Size(46, 46);
-            this.addWishBtn.TabIndex = 6;
-            this.addWishBtn.Text = "+";
-            this.addWishBtn.UseVisualStyleBackColor = true;
-            this.addWishBtn.Click += new System.EventHandler(this.addWishBtn_Click);
-            // 
-            // addWishBtn2
-            // 
-            this.addWishBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addWishBtn2.ForeColor = System.Drawing.Color.Green;
-            this.addWishBtn2.Location = new System.Drawing.Point(614, 548);
-            this.addWishBtn2.Name = "addWishBtn2";
-            this.addWishBtn2.Size = new System.Drawing.Size(46, 46);
-            this.addWishBtn2.TabIndex = 6;
-            this.addWishBtn2.Text = "+";
-            this.addWishBtn2.UseVisualStyleBackColor = true;
-            this.addWishBtn2.Visible = false;
-            this.addWishBtn2.Click += new System.EventHandler(this.addWishBtn2_Click);
-            // 
-            // weekday
-            // 
-            this.weekday.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.weekday.FormattingEnabled = true;
-            this.weekday.Items.AddRange(new object[] {
-            "Пн",
-            "Вт",
-            "Ср",
-            "Чт",
-            "Пт",
-            "Сб",
-            "Вс"});
-            this.weekday.Location = new System.Drawing.Point(35, 558);
-            this.weekday.Name = "weekday";
-            this.weekday.Size = new System.Drawing.Size(151, 36);
-            this.weekday.TabIndex = 5;
-            this.weekday.Text = "Пн";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(422, 512);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(175, 28);
-            this.label21.TabIndex = 1;
-            this.label21.Text = "Время окончания";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(225, 512);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(138, 28);
-            this.label20.TabIndex = 1;
-            this.label20.Text = "Время начала";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(35, 514);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(129, 28);
-            this.label19.TabIndex = 1;
-            this.label19.Text = "День недели";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(12, 461);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(218, 28);
-            this.label17.TabIndex = 1;
-            this.label17.Text = "Пожелания слушателя";
-            // 
-            // startTime
-            // 
-            this.startTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.startTime.Location = new System.Drawing.Point(225, 558);
-            this.startTime.Name = "startTime";
-            this.startTime.Size = new System.Drawing.Size(175, 34);
-            this.startTime.TabIndex = 1;
-            // 
-            // endTime
-            // 
-            this.endTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.endTime.Location = new System.Drawing.Point(422, 558);
-            this.endTime.Name = "endTime";
-            this.endTime.Size = new System.Drawing.Size(175, 34);
-            this.endTime.TabIndex = 1;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(12, 26);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(96, 28);
-            this.label18.TabIndex = 1;
-            this.label18.Text = "Фамилия";
-            // 
-            // endEduBtn
-            // 
-            this.endEduBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.endEduBtn.AutoSize = true;
-            this.endEduBtn.Location = new System.Drawing.Point(35, 834);
-            this.endEduBtn.Name = "endEduBtn";
-            this.endEduBtn.Size = new System.Drawing.Size(267, 40);
-            this.endEduBtn.TabIndex = 13;
-            this.endEduBtn.Text = "Завершить обучение";
-            this.endEduBtn.UseVisualStyleBackColor = true;
-            this.endEduBtn.Visible = false;
-            this.endEduBtn.Click += new System.EventHandler(this.endEduBtn_Click);
-            // 
-            // updBtn
-            // 
-            this.updBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.updBtn.AutoSize = true;
-            this.updBtn.Location = new System.Drawing.Point(35, 893);
-            this.updBtn.Name = "updBtn";
-            this.updBtn.Size = new System.Drawing.Size(267, 40);
-            this.updBtn.TabIndex = 13;
-            this.updBtn.Text = "Изменить";
-            this.updBtn.UseVisualStyleBackColor = true;
-            this.updBtn.Visible = false;
-            this.updBtn.Click += new System.EventHandler(this.updBtn_Click);
-            // 
-            // closeBtn
-            // 
-            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.closeBtn.AutoSize = true;
-            this.closeBtn.Location = new System.Drawing.Point(330, 893);
-            this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(267, 40);
-            this.closeBtn.TabIndex = 13;
-            this.closeBtn.Text = "Отмена";
-            this.closeBtn.UseVisualStyleBackColor = true;
-            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
-            // 
-            // addBtn
-            // 
-            this.addBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addBtn.AutoSize = true;
-            this.addBtn.Location = new System.Drawing.Point(35, 893);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(267, 40);
-            this.addBtn.TabIndex = 13;
-            this.addBtn.Text = "Добавить";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
-            // 
-            // disciplineNameCol
-            // 
-            this.disciplineNameCol.HeaderText = "Программа";
-            this.disciplineNameCol.MinimumWidth = 6;
-            this.disciplineNameCol.Name = "disciplineNameCol";
-            this.disciplineNameCol.ReadOnly = true;
-            // 
-            // hoursCol
-            // 
-            this.hoursCol.HeaderText = "Количество часов";
-            this.hoursCol.MinimumWidth = 6;
-            this.hoursCol.Name = "hoursCol";
-            this.hoursCol.ReadOnly = true;
-            // 
-            // numOfPeopleCol
-            // 
-            this.numOfPeopleCol.HeaderText = "Количество человек";
-            this.numOfPeopleCol.MinimumWidth = 6;
-            this.numOfPeopleCol.Name = "numOfPeopleCol";
-            this.numOfPeopleCol.ReadOnly = true;
-            // 
-            // contractInfoIdCol
-            // 
-            this.contractInfoIdCol.HeaderText = "id информации о договоре";
-            this.contractInfoIdCol.MinimumWidth = 6;
-            this.contractInfoIdCol.Name = "contractInfoIdCol";
-            this.contractInfoIdCol.ReadOnly = true;
-            this.contractInfoIdCol.Visible = false;
             // 
             // groupNumCol
             // 
@@ -1170,14 +541,686 @@ namespace kursovajaEF.Forms
             this.contractInfoIdCol2.ReadOnly = true;
             this.contractInfoIdCol2.Visible = false;
             // 
+            // setDisBtn
+            // 
+            this.setDisBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.setDisBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.setDisBtn.ForeColor = System.Drawing.Color.Green;
+            this.setDisBtn.Location = new System.Drawing.Point(243, 237);
+            this.setDisBtn.Name = "setDisBtn";
+            this.setDisBtn.Size = new System.Drawing.Size(46, 46);
+            this.setDisBtn.TabIndex = 21;
+            this.setDisBtn.Text = "+";
+            this.setDisBtn.UseVisualStyleBackColor = true;
+            this.setDisBtn.Click += new System.EventHandler(this.setDisBtn_Click);
+            // 
+            // discipline
+            // 
+            this.discipline.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.discipline.Location = new System.Drawing.Point(21, 247);
+            this.discipline.Name = "discipline";
+            this.discipline.ReadOnly = true;
+            this.discipline.Size = new System.Drawing.Size(208, 34);
+            this.discipline.TabIndex = 20;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.AutoScroll = true;
+            this.panel3.Location = new System.Drawing.Point(21, 633);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(865, 282);
+            this.panel3.TabIndex = 19;
+            // 
+            // cbWish
+            // 
+            this.cbWish.AutoSize = true;
+            this.cbWish.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbWish.Location = new System.Drawing.Point(21, 600);
+            this.cbWish.Name = "cbWish";
+            this.cbWish.Size = new System.Drawing.Size(253, 24);
+            this.cbWish.TabIndex = 18;
+            this.cbWish.Text = "С учетом пожеланий слушателя";
+            this.cbWish.UseVisualStyleBackColor = true;
+            this.cbWish.CheckedChanged += new System.EventHandler(this.cbWish_CheckedChanged);
+            // 
+            // newGroupBtn
+            // 
+            this.newGroupBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.newGroupBtn.Location = new System.Drawing.Point(496, 520);
+            this.newGroupBtn.Name = "newGroupBtn";
+            this.newGroupBtn.Size = new System.Drawing.Size(389, 49);
+            this.newGroupBtn.TabIndex = 17;
+            this.newGroupBtn.Text = "Добавить новую группу";
+            this.newGroupBtn.UseVisualStyleBackColor = true;
+            this.newGroupBtn.Click += new System.EventHandler(this.newGroupBtn_Click);
+            // 
+            // addGIBtn
+            // 
+            this.addGIBtn.Location = new System.Drawing.Point(21, 520);
+            this.addGIBtn.Name = "addGIBtn";
+            this.addGIBtn.Size = new System.Drawing.Size(389, 49);
+            this.addGIBtn.TabIndex = 17;
+            this.addGIBtn.Text = "Назначить группу(-ы)";
+            this.addGIBtn.UseVisualStyleBackColor = true;
+            this.addGIBtn.Click += new System.EventHandler(this.addGIBtn_Click);
+            // 
+            // contract_info
+            // 
+            this.contract_info.AllowUserToAddRows = false;
+            this.contract_info.AllowUserToDeleteRows = false;
+            this.contract_info.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.contract_info.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.contract_info.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.contract_info.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.contract_info.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.contract_info.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.contract_info.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.disciplineNameCol,
+            this.hoursCol,
+            this.numOfPeopleCol,
+            this.contractInfoIdCol});
+            this.contract_info.Location = new System.Drawing.Point(21, 289);
+            this.contract_info.Name = "contract_info";
+            this.contract_info.ReadOnly = true;
+            this.contract_info.RowHeadersWidth = 51;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.contract_info.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.contract_info.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.contract_info.RowTemplate.Height = 29;
+            this.contract_info.Size = new System.Drawing.Size(361, 216);
+            this.contract_info.TabIndex = 16;
+            this.contract_info.Visible = false;
+            this.contract_info.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contract_info_CellClick);
+            // 
+            // disciplineNameCol
+            // 
+            this.disciplineNameCol.HeaderText = "Программа";
+            this.disciplineNameCol.MinimumWidth = 6;
+            this.disciplineNameCol.Name = "disciplineNameCol";
+            this.disciplineNameCol.ReadOnly = true;
+            // 
+            // hoursCol
+            // 
+            this.hoursCol.HeaderText = "Количество часов";
+            this.hoursCol.MinimumWidth = 6;
+            this.hoursCol.Name = "hoursCol";
+            this.hoursCol.ReadOnly = true;
+            // 
+            // numOfPeopleCol
+            // 
+            this.numOfPeopleCol.HeaderText = "Количество человек";
+            this.numOfPeopleCol.MinimumWidth = 6;
+            this.numOfPeopleCol.Name = "numOfPeopleCol";
+            this.numOfPeopleCol.ReadOnly = true;
+            // 
+            // contractInfoIdCol
+            // 
+            this.contractInfoIdCol.HeaderText = "id информации о договоре";
+            this.contractInfoIdCol.MinimumWidth = 6;
+            this.contractInfoIdCol.Name = "contractInfoIdCol";
+            this.contractInfoIdCol.ReadOnly = true;
+            this.contractInfoIdCol.Visible = false;
+            // 
+            // delGIBtn
+            // 
+            this.delGIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.delGIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.delGIBtn.ForeColor = System.Drawing.Color.Red;
+            this.delGIBtn.Location = new System.Drawing.Point(388, 388);
+            this.delGIBtn.Name = "delGIBtn";
+            this.delGIBtn.Size = new System.Drawing.Size(46, 46);
+            this.delGIBtn.TabIndex = 14;
+            this.delGIBtn.Text = "x";
+            this.delGIBtn.UseVisualStyleBackColor = true;
+            this.delGIBtn.Click += new System.EventHandler(this.delGIBtn_Click);
+            // 
+            // delCIBtn
+            // 
+            this.delCIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.delCIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.delCIBtn.ForeColor = System.Drawing.Color.Red;
+            this.delCIBtn.Location = new System.Drawing.Point(798, 237);
+            this.delCIBtn.Name = "delCIBtn";
+            this.delCIBtn.Size = new System.Drawing.Size(46, 46);
+            this.delCIBtn.TabIndex = 14;
+            this.delCIBtn.Text = "x";
+            this.delCIBtn.UseVisualStyleBackColor = true;
+            this.delCIBtn.Click += new System.EventHandler(this.delCIBtn_Click);
+            // 
+            // delCIBtn2
+            // 
+            this.delCIBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.delCIBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.delCIBtn2.ForeColor = System.Drawing.Color.Red;
+            this.delCIBtn2.Location = new System.Drawing.Point(798, 237);
+            this.delCIBtn2.Name = "delCIBtn2";
+            this.delCIBtn2.Size = new System.Drawing.Size(46, 46);
+            this.delCIBtn2.TabIndex = 14;
+            this.delCIBtn2.Text = "x";
+            this.delCIBtn2.UseVisualStyleBackColor = true;
+            this.delCIBtn2.Visible = false;
+            this.delCIBtn2.Click += new System.EventHandler(this.delCIBtn2_Click);
+            // 
+            // addCIBtn
+            // 
+            this.addCIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addCIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addCIBtn.ForeColor = System.Drawing.Color.Green;
+            this.addCIBtn.Location = new System.Drawing.Point(726, 237);
+            this.addCIBtn.Name = "addCIBtn";
+            this.addCIBtn.Size = new System.Drawing.Size(46, 46);
+            this.addCIBtn.TabIndex = 15;
+            this.addCIBtn.Text = "+";
+            this.addCIBtn.UseVisualStyleBackColor = true;
+            this.addCIBtn.Click += new System.EventHandler(this.addCIBtn_Click);
+            // 
+            // addCIBtn2
+            // 
+            this.addCIBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.addCIBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addCIBtn2.ForeColor = System.Drawing.Color.Green;
+            this.addCIBtn2.Location = new System.Drawing.Point(726, 237);
+            this.addCIBtn2.Name = "addCIBtn2";
+            this.addCIBtn2.Size = new System.Drawing.Size(46, 46);
+            this.addCIBtn2.TabIndex = 15;
+            this.addCIBtn2.Text = "+";
+            this.addCIBtn2.UseVisualStyleBackColor = true;
+            this.addCIBtn2.Visible = false;
+            this.addCIBtn2.Click += new System.EventHandler(this.addCIBtn2_Click);
+            // 
+            // label22
+            // 
+            this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label22.Location = new System.Drawing.Point(524, 203);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(200, 28);
+            this.label22.TabIndex = 8;
+            this.label22.Text = "Количество человек";
+            // 
+            // label23
+            // 
+            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label23.Location = new System.Drawing.Point(322, 203);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(178, 28);
+            this.label23.TabIndex = 9;
+            this.label23.Text = "Количество часов";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label24.Location = new System.Drawing.Point(21, 205);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(118, 28);
+            this.label24.TabIndex = 10;
+            this.label24.Text = "Программа";
+            // 
+            // hours
+            // 
+            this.hours.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.hours.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.hours.Location = new System.Drawing.Point(322, 249);
+            this.hours.Name = "hours";
+            this.hours.Size = new System.Drawing.Size(143, 34);
+            this.hours.TabIndex = 11;
+            // 
+            // numOfPeople
+            // 
+            this.numOfPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.numOfPeople.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numOfPeople.Location = new System.Drawing.Point(524, 249);
+            this.numOfPeople.Name = "numOfPeople";
+            this.numOfPeople.Size = new System.Drawing.Size(143, 34);
+            this.numOfPeople.TabIndex = 12;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(635, 60);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(130, 28);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "Срок оплаты";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.Location = new System.Drawing.Point(397, 113);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(219, 28);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "Кто оплатил обучение";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(21, 161);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(55, 28);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Банк";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(22, 113);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(231, 28);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Остаток по оплате(руб.)";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(321, 60);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(174, 28);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Дата оплаты 40 %";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(22, 60);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(155, 28);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Оплачено(руб.)";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(502, 14);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(187, 28);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Общая сумма(руб.)";
+            // 
+            // paymentDeadline
+            // 
+            this.paymentDeadline.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.paymentDeadline.Location = new System.Drawing.Point(771, 57);
+            this.paymentDeadline.Name = "paymentDeadline";
+            this.paymentDeadline.Size = new System.Drawing.Size(132, 34);
+            this.paymentDeadline.TabIndex = 1;
+            // 
+            // bank
+            // 
+            this.bank.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bank.Location = new System.Drawing.Point(82, 159);
+            this.bank.Name = "bank";
+            this.bank.Size = new System.Drawing.Size(192, 34);
+            this.bank.TabIndex = 1;
+            // 
+            // restOfSum
+            // 
+            this.restOfSum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.restOfSum.Location = new System.Drawing.Point(259, 110);
+            this.restOfSum.Name = "restOfSum";
+            this.restOfSum.Size = new System.Drawing.Size(132, 34);
+            this.restOfSum.TabIndex = 1;
+            // 
+            // whoPay
+            // 
+            this.whoPay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.whoPay.Location = new System.Drawing.Point(622, 110);
+            this.whoPay.Name = "whoPay";
+            this.whoPay.Size = new System.Drawing.Size(299, 34);
+            this.whoPay.TabIndex = 1;
+            // 
+            // payedSum
+            // 
+            this.payedSum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.payedSum.Location = new System.Drawing.Point(183, 57);
+            this.payedSum.Name = "payedSum";
+            this.payedSum.Size = new System.Drawing.Size(132, 34);
+            this.payedSum.TabIndex = 1;
+            this.payedSum.Leave += new System.EventHandler(this.totalSum_Leave);
+            // 
+            // PayDate40pct
+            // 
+            this.PayDate40pct.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PayDate40pct.Location = new System.Drawing.Point(497, 57);
+            this.PayDate40pct.Name = "PayDate40pct";
+            this.PayDate40pct.Size = new System.Drawing.Size(132, 34);
+            this.PayDate40pct.TabIndex = 1;
+            this.PayDate40pct.Leave += new System.EventHandler(this.totalSum_Leave);
+            // 
+            // totalSum
+            // 
+            this.totalSum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.totalSum.Location = new System.Drawing.Point(695, 10);
+            this.totalSum.Name = "totalSum";
+            this.totalSum.Size = new System.Drawing.Size(132, 34);
+            this.totalSum.TabIndex = 1;
+            this.totalSum.Leave += new System.EventHandler(this.totalSum_Leave);
+            // 
+            // crn
+            // 
+            this.crn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.crn.Location = new System.Drawing.Point(364, 11);
+            this.crn.Name = "crn";
+            this.crn.Size = new System.Drawing.Size(132, 34);
+            this.crn.TabIndex = 1;
+            // 
+            // wishes
+            // 
+            this.wishes.AllowUserToAddRows = false;
+            this.wishes.AllowUserToDeleteRows = false;
+            this.wishes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.wishes.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.wishes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.wishes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.wishes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.wishIdCol,
+            this.wWeekdayCol,
+            this.wStartTimeCol,
+            this.wEndTimeCol,
+            this.wContractIdCol});
+            this.wishes.Location = new System.Drawing.Point(35, 646);
+            this.wishes.Name = "wishes";
+            this.wishes.ReadOnly = true;
+            this.wishes.RowHeadersWidth = 51;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.wishes.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.wishes.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.wishes.RowTemplate.Height = 29;
+            this.wishes.Size = new System.Drawing.Size(700, 179);
+            this.wishes.TabIndex = 7;
+            this.wishes.Visible = false;
+            // 
+            // wishIdCol
+            // 
+            this.wishIdCol.HeaderText = "Id пожелания";
+            this.wishIdCol.MinimumWidth = 6;
+            this.wishIdCol.Name = "wishIdCol";
+            this.wishIdCol.ReadOnly = true;
+            this.wishIdCol.Visible = false;
+            // 
+            // wWeekdayCol
+            // 
+            this.wWeekdayCol.HeaderText = "День недели";
+            this.wWeekdayCol.MinimumWidth = 6;
+            this.wWeekdayCol.Name = "wWeekdayCol";
+            this.wWeekdayCol.ReadOnly = true;
+            // 
+            // wStartTimeCol
+            // 
+            this.wStartTimeCol.HeaderText = "Время начала";
+            this.wStartTimeCol.MinimumWidth = 6;
+            this.wStartTimeCol.Name = "wStartTimeCol";
+            this.wStartTimeCol.ReadOnly = true;
+            // 
+            // wEndTimeCol
+            // 
+            this.wEndTimeCol.HeaderText = "Время окончания";
+            this.wEndTimeCol.MinimumWidth = 6;
+            this.wEndTimeCol.Name = "wEndTimeCol";
+            this.wEndTimeCol.ReadOnly = true;
+            // 
+            // wContractIdCol
+            // 
+            this.wContractIdCol.HeaderText = "id контракта";
+            this.wContractIdCol.MinimumWidth = 6;
+            this.wContractIdCol.Name = "wContractIdCol";
+            this.wContractIdCol.ReadOnly = true;
+            this.wContractIdCol.Visible = false;
+            // 
+            // delWishBtn
+            // 
+            this.delWishBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.delWishBtn.ForeColor = System.Drawing.Color.Red;
+            this.delWishBtn.Location = new System.Drawing.Point(689, 548);
+            this.delWishBtn.Name = "delWishBtn";
+            this.delWishBtn.Size = new System.Drawing.Size(46, 46);
+            this.delWishBtn.TabIndex = 6;
+            this.delWishBtn.Text = "x";
+            this.delWishBtn.UseVisualStyleBackColor = true;
+            this.delWishBtn.Click += new System.EventHandler(this.delWishBtn_Click);
+            // 
+            // delWishBtn2
+            // 
+            this.delWishBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.delWishBtn2.ForeColor = System.Drawing.Color.Red;
+            this.delWishBtn2.Location = new System.Drawing.Point(689, 548);
+            this.delWishBtn2.Name = "delWishBtn2";
+            this.delWishBtn2.Size = new System.Drawing.Size(46, 46);
+            this.delWishBtn2.TabIndex = 6;
+            this.delWishBtn2.Text = "x";
+            this.delWishBtn2.UseVisualStyleBackColor = true;
+            this.delWishBtn2.Visible = false;
+            this.delWishBtn2.Click += new System.EventHandler(this.delWishBtn2_Click);
+            // 
+            // addWishBtn
+            // 
+            this.addWishBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addWishBtn.ForeColor = System.Drawing.Color.Green;
+            this.addWishBtn.Location = new System.Drawing.Point(614, 581);
+            this.addWishBtn.Name = "addWishBtn";
+            this.addWishBtn.Size = new System.Drawing.Size(46, 46);
+            this.addWishBtn.TabIndex = 6;
+            this.addWishBtn.Text = "+";
+            this.addWishBtn.UseVisualStyleBackColor = true;
+            this.addWishBtn.Click += new System.EventHandler(this.addWishBtn_Click);
+            // 
+            // addWishBtn2
+            // 
+            this.addWishBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addWishBtn2.ForeColor = System.Drawing.Color.Green;
+            this.addWishBtn2.Location = new System.Drawing.Point(614, 581);
+            this.addWishBtn2.Name = "addWishBtn2";
+            this.addWishBtn2.Size = new System.Drawing.Size(46, 46);
+            this.addWishBtn2.TabIndex = 6;
+            this.addWishBtn2.Text = "+";
+            this.addWishBtn2.UseVisualStyleBackColor = true;
+            this.addWishBtn2.Visible = false;
+            this.addWishBtn2.Click += new System.EventHandler(this.addWishBtn2_Click);
+            // 
+            // weekday
+            // 
+            this.weekday.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.weekday.FormattingEnabled = true;
+            this.weekday.Items.AddRange(new object[] {
+            "Пн",
+            "Вт",
+            "Ср",
+            "Чт",
+            "Пт",
+            "Сб",
+            "Вс"});
+            this.weekday.Location = new System.Drawing.Point(35, 591);
+            this.weekday.Name = "weekday";
+            this.weekday.Size = new System.Drawing.Size(151, 36);
+            this.weekday.TabIndex = 5;
+            this.weekday.Text = "Пн";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(422, 545);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(175, 28);
+            this.label21.TabIndex = 1;
+            this.label21.Text = "Время окончания";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(225, 545);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(138, 28);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Время начала";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(35, 547);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(129, 28);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "День недели";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(12, 494);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(218, 28);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "Пожелания слушателя";
+            // 
+            // startTime
+            // 
+            this.startTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.startTime.Location = new System.Drawing.Point(225, 591);
+            this.startTime.Name = "startTime";
+            this.startTime.Size = new System.Drawing.Size(175, 34);
+            this.startTime.TabIndex = 1;
+            // 
+            // endTime
+            // 
+            this.endTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.endTime.Location = new System.Drawing.Point(422, 591);
+            this.endTime.Name = "endTime";
+            this.endTime.Size = new System.Drawing.Size(175, 34);
+            this.endTime.TabIndex = 1;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(12, 26);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(96, 28);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "Фамилия";
+            // 
+            // endEduBtn
+            // 
+            this.endEduBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.endEduBtn.AutoSize = true;
+            this.endEduBtn.Location = new System.Drawing.Point(35, 834);
+            this.endEduBtn.Name = "endEduBtn";
+            this.endEduBtn.Size = new System.Drawing.Size(267, 40);
+            this.endEduBtn.TabIndex = 13;
+            this.endEduBtn.Text = "Завершить обучение";
+            this.endEduBtn.UseVisualStyleBackColor = true;
+            this.endEduBtn.Visible = false;
+            this.endEduBtn.Click += new System.EventHandler(this.endEduBtn_Click);
+            // 
+            // updBtn
+            // 
+            this.updBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.updBtn.AutoSize = true;
+            this.updBtn.Location = new System.Drawing.Point(35, 893);
+            this.updBtn.Name = "updBtn";
+            this.updBtn.Size = new System.Drawing.Size(267, 40);
+            this.updBtn.TabIndex = 13;
+            this.updBtn.Text = "Изменить";
+            this.updBtn.UseVisualStyleBackColor = true;
+            this.updBtn.Visible = false;
+            this.updBtn.Click += new System.EventHandler(this.updBtn_Click);
+            // 
+            // closeBtn
+            // 
+            this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.closeBtn.AutoSize = true;
+            this.closeBtn.Location = new System.Drawing.Point(330, 893);
+            this.closeBtn.Name = "closeBtn";
+            this.closeBtn.Size = new System.Drawing.Size(267, 40);
+            this.closeBtn.TabIndex = 13;
+            this.closeBtn.Text = "Отмена";
+            this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
+            // 
+            // addBtn
+            // 
+            this.addBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addBtn.AutoSize = true;
+            this.addBtn.Location = new System.Drawing.Point(35, 893);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(267, 40);
+            this.addBtn.TabIndex = 13;
+            this.addBtn.Text = "Добавить";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // transferGroupBtn
+            // 
+            this.transferGroupBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.transferGroupBtn.AutoSize = true;
+            this.transferGroupBtn.Location = new System.Drawing.Point(330, 834);
+            this.transferGroupBtn.Name = "transferGroupBtn";
+            this.transferGroupBtn.Size = new System.Drawing.Size(267, 40);
+            this.transferGroupBtn.TabIndex = 13;
+            this.transferGroupBtn.Text = "Перевести в группу";
+            this.transferGroupBtn.UseVisualStyleBackColor = true;
+            this.transferGroupBtn.Visible = false;
+            this.transferGroupBtn.Click += new System.EventHandler(this.transferGroupBtn_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label25.Location = new System.Drawing.Point(12, 351);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(206, 28);
+            this.label25.TabIndex = 1;
+            this.label25.Text = "Категория слушателя";
+            // 
+            // listenerCategory
+            // 
+            this.listenerCategory.FormattingEnabled = true;
+            this.listenerCategory.Items.AddRange(new object[] {
+            "Школьник",
+            "Студент",
+            "Взрослый"});
+            this.listenerCategory.Location = new System.Drawing.Point(222, 355);
+            this.listenerCategory.Name = "listenerCategory";
+            this.listenerCategory.Size = new System.Drawing.Size(494, 28);
+            this.listenerCategory.TabIndex = 14;
+            this.listenerCategory.Text = "Школьник";
+            this.listenerCategory.SelectedIndexChanged += new System.EventHandler(this.listenerCategory_SelectedIndexChanged);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1772, 940);
+            this.Controls.Add(this.listenerCategory);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.closeBtn);
             this.Controls.Add(this.updBtn);
+            this.Controls.Add(this.transferGroupBtn);
             this.Controls.Add(this.endEduBtn);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.phoneNum);
@@ -1190,6 +1233,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.midname);
             this.Controls.Add(this.yob);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.label25);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.delWishBtn);
             this.Controls.Add(this.delWishBtn2);
@@ -1242,7 +1286,6 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.TextBox firstname;
         private System.Windows.Forms.Panel panel4;
@@ -1267,16 +1310,12 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.TextBox startTime;
         public System.Windows.Forms.TextBox endTime;
-        public System.Windows.Forms.DateTimePicker PayDate40pct;
-        public System.Windows.Forms.DateTimePicker paymentDeadline;
         public System.Windows.Forms.TextBox restOfSum;
-        public System.Windows.Forms.TextBox transferGroup;
         public System.Windows.Forms.TextBox whoPay;
         public System.Windows.Forms.TextBox payedSum;
         public System.Windows.Forms.TextBox totalSum;
@@ -1327,5 +1366,13 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn hoursCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn numOfPeopleCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol;
+        public System.Windows.Forms.TextBox PayDate40pct;
+        public System.Windows.Forms.TextBox paymentDeadline;
+        public System.Windows.Forms.Button transferGroupBtn;
+        private System.Windows.Forms.Label label13;
+        public System.Windows.Forms.TextBox bank;
+        private System.Windows.Forms.Label label25;
+        public System.Windows.Forms.ComboBox listenerCategory;
+        public System.Windows.Forms.Label label8;
     }
 }

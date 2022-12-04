@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using kursovajaEF;
@@ -9,9 +10,10 @@ using kursovajaEF;
 namespace kursovajaEF.Migrations
 {
     [DbContext(typeof(testDBContext))]
-    partial class testDBContextModelSnapshot : ModelSnapshot
+    [Migration("20221204172706_ListenerCategory column max length changed to 30")]
+    partial class ListenerCategorycolumnmaxlengthchangedto30
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

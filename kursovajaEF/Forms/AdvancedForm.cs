@@ -13,10 +13,13 @@ namespace kursovajaEF.Forms
     {
         Font fontRegular;
         Font fontBold;
+        private DataGridViewCellStyle selectedCellStyle;
         public AdvancedForm()
         {
             fontRegular = new Font("SegoeUI", 9, FontStyle.Regular);
             fontBold = new Font("SegoeUI", 9, FontStyle.Bold);
+            selectedCellStyle = new();
+            selectedCellStyle.BackColor = Color.Lavender;
         }
 
         private void InitializeComponent()
@@ -29,6 +32,11 @@ namespace kursovajaEF.Forms
             this.Name = "AdvancedForm";
             this.ResumeLayout(false);
 
+        }
+
+        public DataGridViewCellStyle getSelectedCellStyle()
+        {
+            return selectedCellStyle;
         }
 
         public void resetForm(List<DataGridView> dgvs, List<GroupBox> gbs)
@@ -85,6 +93,18 @@ namespace kursovajaEF.Forms
 
             return count;
         }
+
+        public int dataGridViewSelectedCellStyleCount(DataGridView dgv, int rowIndex)
+        {
+            if (rowIndex == -1)
+                return 0;
+
+            if (dgv.Rows[rowIndex].DefaultCellStyle.BackColor == selectedCellStyle.BackColor)
+                return dataGridViewSelectedCellStyleCount(dgv, rowIndex - 1) + 1;
+            else
+                return dataGridViewSelectedCellStyleCount(dgv, rowIndex - 1);
+        }
+
 
         public int dataGridViewVisibleRowCount(DataGridView dgv, int rowIndex)
         {

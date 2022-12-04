@@ -92,7 +92,6 @@ namespace kursovajaEF
                 entity.Property(e => e.Paid40pct).HasColumnName("paid_40pct");
 
                 entity.Property(e => e.PayDate40pct)
-                    .IsRequired()
                     .HasMaxLength(10)
                     .HasColumnName("pay_date_40pct");
 
@@ -119,6 +118,10 @@ namespace kursovajaEF
                 entity.Property(e => e.WhoPay)
                     .HasMaxLength(55)
                     .HasColumnName("who_pay");
+
+                entity.Property(e => e.Bank)
+                    .HasMaxLength(55)
+                    .HasColumnName("bank");
             });
 
             modelBuilder.Entity<ContractInfo>(entity =>
@@ -162,7 +165,7 @@ namespace kursovajaEF
                     .HasMaxLength(100)
                     .HasColumnName("department_name");
             });
-
+            
             modelBuilder.Entity<Discipline>(entity =>
             {
                 entity.ToTable("disciplines");
@@ -476,6 +479,10 @@ namespace kursovajaEF
                 entity.Property(e => e.Yob)
                     .HasMaxLength(10)
                     .HasColumnName("yob");
+
+                entity.Property(e => e.ListenerCategory)
+                    .HasMaxLength(30)
+                    .HasColumnName("listener_category");
 
                 entity.HasOne(d => d.Contract)
                     .WithOne(p => p.Listener)

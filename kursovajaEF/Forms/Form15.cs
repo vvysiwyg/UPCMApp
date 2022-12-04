@@ -343,32 +343,35 @@ namespace kursovajaEF.Forms
 
         private void chooseGIBtn_Click(object sender, EventArgs e)
         {
-            int[] selRow = new int[groups.SelectedCells.Count];
-            int similarRowsCount = 0;
+            if (groups.SelectedCells.Count != 0)
+            { 
+                int[] selRow = new int[groups.SelectedCells.Count];
+                int similarRowsCount = 0;
 
-            for (int i = 0; i < groups.SelectedCells.Count; i++)
-                selRow[i] = groups.SelectedCells[i].RowIndex;
+                for (int i = 0; i < groups.SelectedCells.Count; i++)
+                    selRow[i] = groups.SelectedCells[i].RowIndex;
 
-            for (int i = 0; i < selRow.Length; i++)
-                for (int j = i + 1; j < selRow.Length; j++)
-                    if (selRow[i] == selRow[j])
-                    {
-                        selRow[j] = -1;
-                        similarRowsCount++;
-                    }
+                for (int i = 0; i < selRow.Length; i++)
+                    for (int j = i + 1; j < selRow.Length; j++)
+                        if (selRow[i] == selRow[j] && selRow[i] != -1)
+                        {
+                            selRow[j] = -1;
+                            similarRowsCount++;
+                        }
 
-            gi_rows = new DataGridViewRow[selRow.Length - similarRowsCount];
-            for (int i = 0; i < selRow.Length; i++)
-            {
-                if (selRow[i] != -1)
+                gi_rows = new DataGridViewRow[selRow.Length - similarRowsCount];
+                for (int i = 0; i < selRow.Length; i++)
                 {
-                    DataGridViewRow newRow = (DataGridViewRow)groups.Rows[selRow[i]].Clone();
-                    for (int j = 0; j < groups.Rows[selRow[i]].Cells.Count; ++j)
-                        newRow.Cells[j].Value = groups.Rows[selRow[i]].Cells[j].Value;
-                    gi_rows[i] = newRow;
+                    if (selRow[i] != -1)
+                    {
+                        DataGridViewRow newRow = (DataGridViewRow)groups.Rows[selRow[i]].Clone();
+                        for (int j = 0; j < groups.Rows[selRow[i]].Cells.Count; ++j)
+                            newRow.Cells[j].Value = groups.Rows[selRow[i]].Cells[j].Value;
+                        gi_rows[i] = newRow;
+                    }
                 }
+                Close();
             }
-            Close();
         }
     }
 }

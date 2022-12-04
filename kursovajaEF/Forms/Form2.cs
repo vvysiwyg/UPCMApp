@@ -14,7 +14,6 @@ namespace kursovajaEF.Forms
     public partial class Form2 : AdvancedForm
     {
         private NpgsqlConnection conn;
-        private Dictionary<string, string> ids;
         private int tempIndex;
         public Form2(NpgsqlConnection conn)
         {
@@ -145,7 +144,7 @@ namespace kursovajaEF.Forms
 
         private void addCIBtn_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(hours.Text) && !string.IsNullOrWhiteSpace(numOfPeople.Text))
+            if (!string.IsNullOrWhiteSpace(numOfPeople.Text))
             {
                 contract_info.Rows.Add(discipline.Text, hours.Text, numOfPeople.Text, tempIndex);
                 tempIndex++;
@@ -178,7 +177,7 @@ namespace kursovajaEF.Forms
 
         private void addCIBtn2_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(hours.Text) && !string.IsNullOrWhiteSpace(numOfPeople.Text))
+            if (!string.IsNullOrWhiteSpace(numOfPeople.Text))
             {
                 int discipline_id, contract_info_id;
 
@@ -333,6 +332,9 @@ namespace kursovajaEF.Forms
             using (testDBContext db = new()) {
                 Listener l = db.Listeners.Find(int.Parse(addingCheck.Text));
 
+                if (listenerCategory.Text != "Школьник")
+                    schoolGrade.Text = string.Empty;
+
                 l.Firstname = firstname.Text;
                 l.Midname = midname.Text;
                 l.Lastname = lastname.Text;
@@ -341,6 +343,7 @@ namespace kursovajaEF.Forms
                 l.PhoneNum = decimal.Parse(phoneNum.Text);
                 l.SchoolGrade = schoolGrade.Text;
                 l.Email = email.Text;
+                l.ListenerCategory = listenerCategory.Text;
 
                 db.Listeners.Update(l);
 
@@ -349,11 +352,11 @@ namespace kursovajaEF.Forms
                 c.Crn = crn.Text;
                 c.TotalSum = decimal.Parse(totalSum.Text);
                 c.PayedSum = decimal.Parse(payedSum.Text);
-                c.PayDate40pct = PayDate40pct.Value.ToString().Remove(10);
-                c.TransferGroup = transferGroup.Text;
+                c.PayDate40pct = PayDate40pct.Text;
                 c.RestOfSum = decimal.Parse(restOfSum.Text);
                 c.WhoPay = whoPay.Text;
-                c.PaymentDeadline = paymentDeadline.Value.ToString().Remove(10);
+                c.PaymentDeadline = paymentDeadline.Text;
+                c.Bank = bank.Text;
 
                 db.Contracts.Update(c);
 
@@ -471,11 +474,11 @@ namespace kursovajaEF.Forms
                     Crn = crn.Text,
                     TotalSum = decimal.Parse(totalSum.Text),
                     PayedSum = decimal.Parse(payedSum.Text),
-                    PayDate40pct = PayDate40pct.Value.ToString().Remove(10),
-                    TransferGroup = transferGroup.Text,
+                    PayDate40pct = PayDate40pct.Text,
                     RestOfSum = decimal.Parse(restOfSum.Text),
                     WhoPay = whoPay.Text,
-                    PaymentDeadline = paymentDeadline.Value.ToString().Remove(10)
+                    PaymentDeadline = paymentDeadline.Text,
+                    Bank = bank.Text
                 };
                 db.Contracts.Add(c);
                 db.SaveChanges();
@@ -507,7 +510,8 @@ namespace kursovajaEF.Forms
                     ContractId = contract_id,
                     PhoneNum = decimal.Parse(phoneNum.Text),
                     SchoolGrade = schoolGrade.Text,
-                    Email = email.Text
+                    Email = email.Text,
+                    ListenerCategory = listenerCategory.Text
                 };
                 db.Listeners.Add(l);
                 db.SaveChanges();
@@ -552,11 +556,10 @@ namespace kursovajaEF.Forms
 
         private void endEduBtn_Click(object sender, EventArgs e)
         {
-            Form2_1 form = new(conn);
+            Form2_1 form = new();
             form.contract_id.Text = contractId.Text;
             form.ShowDialog();
             updatingCheck.Text = "1";
-            Close();
         }
 
         private void newGroupBtn_Click(object sender, EventArgs e)
@@ -771,6 +774,28 @@ namespace kursovajaEF.Forms
             f.ShowDialog();
             if(f.chosenDis != "0")
                 discipline.Text = f.chosenDis;
+        }
+
+        private void transferGroupBtn_Click(object sender, EventArgs e)
+        {
+            Form2_2 form = new();
+            form.contract_id.Text = contractId.Text;
+            form.ShowDialog();
+            updatingCheck.Text = "1";
+        }
+
+        private void listenerCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listenerCategory.Text == "Школьник")
+            {
+                label8.Visible = true;
+                schoolGrade.Visible = true;
+            }
+            else
+            {
+                label8.Visible = false;
+                schoolGrade.Visible = false;
+            }
         }
     }
 }

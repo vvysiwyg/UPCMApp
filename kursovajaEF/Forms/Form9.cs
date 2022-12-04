@@ -15,27 +15,72 @@ namespace kursovajaEF.Forms
     public partial class Form9 : AdvancedForm
     {
         private NpgsqlConnection conn;
+        private DataGridViewCell currentCellDiscipline;
+        private DataGridViewCell currentCellGI;
+        private DataGridViewCellStyle defaultCellStyle;
         public Form9(NpgsqlConnection conn)
         {
             this.conn = conn;
             InitializeComponent();
+            defaultCellStyle = teachers.DefaultCellStyle;
+            fetch();
         }
 
-        private void fetch(testDBContext db)
+        private void fetch()
         {
-            foreach (Teacher t in db.Teachers.AsNoTracking().ToList())
-                teachers.Rows.Add(
-                    t.Fio,
-                    t.Dob,
-                    t.Title,
-                    t.Position,
-                    t.PedagogicalExperience,
-                    t.OverallExperience,
-                    t.Degree,
-                    t.PhoneNum,
-                    t.Email,
-                    t.TeacherId
-                    );
+            using (testDBContext db = new())
+            {
+                int it = 0;
+                var ts = db.Teachers.AsNoTracking();
+                var ds = db.DisciplinesTeachers.Include(i => i.Discipline).AsNoTracking();
+                var gis = db.GroupInfoTeachers.Include(i => i.GroupInfo).ThenInclude(i => i.Group).AsNoTracking();
+
+                foreach (Teacher t in ts.ToList())
+                    teachers.Rows.Add(
+                        t.Fio,
+                        t.Dob,
+                        t.Title,
+                        t.Position,
+                        t.PedagogicalExperience,
+                        t.OverallExperience,
+                        t.Degree,
+                        t.PhoneNum,
+                        t.Email,
+                        t.TeacherId
+                        );
+
+                foreach (var d in ds.ToList())
+                {
+                    disciplines.Rows.Add(
+                        d.DisciplineId,
+                        d.Discipline.DisciplineName,
+                        d.Discipline.StudyPeriod,
+                        d.Discipline.HoursOfStudy,
+                        d.TeacherId
+                        );
+                    disciplines.Rows[it].Visible = false;
+                    disciplines.Rows[it].Selected = false;
+                    it++;
+                }
+                if (disciplines.Rows.Count != 0)
+                    currentCellDiscipline = disciplines.Rows[0].Cells[0];
+
+                foreach (var gi in gis.ToList())
+                    group_info.Rows.Add(
+                        gi.GroupInfo.Group.GroupNum,
+                        gi.GroupInfo.Weekday,
+                        gi.GroupInfo.StartTime,
+                        gi.GroupInfo.EndTime,
+                        gi.GroupInfo.StartLearning,
+                        gi.GroupInfo.EndLearning,
+                        gi.GroupInfo.GroupId,
+                        gi.GroupInfo.Group.DisciplineId,
+                        gi.GroupInfo.Group.NumOfHours,
+                        gi.GroupInfo.Group.DisciplineName,
+                        gi.GroupInfoId,
+                        gi.TeacherId
+                        );
+            }
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -56,32 +101,61 @@ namespace kursovajaEF.Forms
 
         private void updBtn_Click(object sender, EventArgs e)
         {
-            if (teachers.SelectedRows.Count == 1)
+            if (teachers.SelectedRows.Count == 1 || teachers.SelectedCells.Count == 1)
             {
                 Form10 fm = new(conn);
+                DataGridViewRow selectedRow = teachers.SelectedCells[0].OwningRow;
                 fm.button1.Visible = false;
                 fm.button3.Visible = true;
-                fm.label11.Text = teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["teacherIdCol"].Value.ToString();
-                fm.fio.Text = teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["fioCol"].Value.ToString();
-                fm.dob.Text = teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["dobCol"].Value.ToString();
-                fm.title.Text = teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["titleCol"].Value.ToString();
-                fm.position.Text = teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["posCol"].Value.ToString();
-                fm.pedEx.Text = teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["pedExCol"].Value.ToString();
-                fm.overEx.Text = teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["overExCol"].Value.ToString();
-                fm.degree.Text = teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["degreeCol"].Value.ToString();
-                fm.phone_num.Text = teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["phoneCol"].Value.ToString();
-                fm.email.Text = teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["emailCol"].Value.ToString();
+                fm.addDisBtn.Visible = false;
+                fm.addDisBtn2.Visible = true;
+                fm.addGIBtn.Visible = false;
+                fm.addGIBtn2.Visible = true;
+                fm.label11.Text = selectedRow.Cells["teacherIdCol"].Value.ToString();
+                fm.fio.Text = selectedRow.Cells["fioCol"].Value.ToString();
+                fm.dob.Text = selectedRow.Cells["dobCol"].Value.ToString();
+                fm.title.Text = selectedRow.Cells["titleCol"].Value.ToString();
+                fm.position.Text = selectedRow.Cells["posCol"].Value.ToString();
+                fm.pedEx.Text = selectedRow.Cells["pedExCol"].Value.ToString();
+                fm.overEx.Text = selectedRow.Cells["overExCol"].Value.ToString();
+                fm.degree.Text = selectedRow.Cells["degreeCol"].Value.ToString();
+                fm.phone_num.Text = selectedRow.Cells["phoneCol"].Value.ToString();
+                fm.email.Text = selectedRow.Cells["emailCol"].Value.ToString();
+
+                foreach (DataGridViewRow row in disciplines.Rows)
+                    if (row.Cells["teacherIdCol2"].Value.ToString() == selectedRow.Cells["teacherIdCol"].Value.ToString())
+                        fm.disciplines.Rows.Add(
+                            row.Cells["disciplineIdCol"].Value,
+                            row.Cells["disCol"].Value,
+                            row.Cells["stdperCol"].Value,
+                            row.Cells["hoursCol"].Value);
+
+                foreach (DataGridViewRow row in group_info.Rows)
+                    if (row.Cells["teacherIdCol3"].Value.ToString() == selectedRow.Cells["teacherIdCol"].Value.ToString())
+                        fm.group_info.Rows.Add(
+                            row.Cells["groupNumCol"].Value,
+                            row.Cells["groupIdCol"].Value,
+                            row.Cells["disciplineIdCol2"].Value,
+                            row.Cells["numOfHoursCol"].Value,
+                            row.Cells["dataGridViewTextBoxColumn2"].Value,
+                            row.Cells["groupInfoIdCol"].Value,
+                            row.Cells["weekdayCol"].Value,
+                            row.Cells["startTimeCol"].Value,
+                            row.Cells["endTimeCol"].Value,
+                            row.Cells["startLearningCol"].Value,
+                            row.Cells["endLearningCol"].Value);
+
                 fm.ShowDialog();
                 if (fm.label10.Text == "1") {
-                    teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["fioCol"].Value = fm.fio.Text;
-                    teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["dobCol"].Value = fm.dob.Value.ToString().Remove(10);
-                    teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["titleCol"].Value = fm.title.Text;
-                    teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["posCol"].Value = fm.position.Text;
-                    teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["pedExCol"].Value = fm.pedEx.Text;
-                    teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["overExCol"].Value = fm.overEx.Text;
-                    teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["degreeCol"].Value = fm.degree.Text;
-                    teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["phoneCol"].Value = fm.phone_num.Text;
-                    teachers.Rows[teachers.SelectedCells[0].RowIndex].Cells["emailCol"].Value = fm.email.Text;
+                    resetForm(new List<DataGridView> {
+                    teachers,
+                    disciplines,
+                    group_info}, new List<GroupBox> {
+                    extendedInfoGB});
+
+                    fetch();
+                    if (teachers.RowCount != 0)
+                        teachers.Rows[0].Selected = true;
                 }
             }
             else MessageBox.Show("Изменить можно только одну строку.", "Ошибка");
@@ -160,107 +234,143 @@ namespace kursovajaEF.Forms
             }
             else
             {
-                teachers.Rows.Clear();
-                using (testDBContext db = new())
-                {
-                    fetch(db);
-                }
+                resetForm(new List<DataGridView> {
+                    teachers,
+                    disciplines,
+                    group_info}, new List<GroupBox> {
+                    extendedInfoGB});
+
+                fetch();
                 if (teachers.RowCount != 0)
                     teachers.Rows[0].Selected = true;
             }
-        }
-
-        private void Form9_Load(object sender, EventArgs e)
-        {
-            using (testDBContext db = new())
-            {
-                fetch(db);
-                if (teachers.RowCount != 0)
-                    teachers.Rows[0].Selected = true;
-
-                foreach (Discipline d in db.Disciplines.AsNoTracking().ToList())
-                    disciplines.Rows.Add(
-                        d.DisciplineId,
-                        d.DisciplineName,
-                        d.StudyPeriod,
-                        d.HoursOfStudy
-                        );
-                if (disciplines.RowCount != 0)
-                    disciplines.Rows[0].Selected = true;
-
-                foreach (Group g in db.Groups.AsNoTracking().ToList())
-                    groups.Rows.Add(
-                        g.GroupNum,
-                        g.GroupId
-                        );
-                if (groups.RowCount != 0)
-                    groups.Rows[0].Selected = true;
-            }
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBox2.Text == "Группы") {
-                groups.Visible = true;
-                disciplines.Visible = false;
-            }
-            else
-            {
-                disciplines.Visible = true;
-                groups.Visible = false;
-            }
-        }
-
-        private void linkBtn_Click(object sender, EventArgs e)
-        {
-            if (teachers.SelectedRows.Count == 1)
-            {
-                DataGridView dgv;
-                string idCol;
-                string table;
-
-                if (groups.Visible == true)
-                {
-                    dgv = groups;
-                    idCol = dgv.Columns[1].Name;
-                }
-                else
-                {
-                    dgv = disciplines;
-                    idCol = dgv.Columns[0].Name;
-                }
-
-                table = dgv.Name + "_" + "teachers";
-
-                if (dgv.SelectedRows.Count == 1)
-                {
-                    string sql = $"INSERT INTO {table} VALUES((@dgvIdCol), (@idCol));";
-                    NpgsqlCommand cmd = new NpgsqlCommand(sql, conn)
-                    {
-                        Parameters =
-                        {
-                            new("idCol", int.Parse(teachers.
-                            Rows[teachers.SelectedCells[0].RowIndex].Cells["teacherIdCol"].Value.ToString())),
-                            new("dgvIdCol", int.Parse(dgv.Rows[dgv.SelectedCells[0].RowIndex].Cells[idCol].Value.ToString()))
-                        }
-                    };
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Данные связаны", Text.ToString());
-                }
-                else MessageBox.Show("Для создания соотношения между двумя таблицами должно быть выделено ровно по одной строке в каждой из таблиц.", "Ошибка");
-            }
-            else MessageBox.Show("Для создания соотношения между двумя таблицами должно быть выделено ровно по одной строке в каждой из таблиц.", "Ошибка");
-        }
-
-        private void showLinkBtn_Click(object sender, EventArgs e)
-        {
-            Form9_1 fm = new();
-            fm.Show();
         }
 
         private void dataGridView_Sorted(object sender, EventArgs e)
         {
             dataGridViewSorted(sender);
+        }
+
+        private void teachers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (teachers.SelectedCells.Count == 1)
+            {
+                DataGridViewRow selectedRow = teachers.SelectedCells[0].OwningRow;
+                bool flag = false;
+                SuspendLayout();
+                for (int i = 0; i < 9; i++)
+                {
+                    TextBox tb = (TextBox)extendedInfoGB.Controls[i];
+                    tb.Text = selectedRow.Cells[i].Value.ToString();
+                }
+
+                for (int i = 9; i < 18; i++)
+                {
+                    TextBox tb = (TextBox)extendedInfoGB.Controls[i];
+                    tb.Text = string.Empty;
+                }
+
+                foreach (DataGridViewRow row in disciplines.Rows)
+                {
+                    if (row.Cells["teacherIdCol2"].Value.ToString() == selectedRow.Cells["teacherIdCol"].Value.ToString())
+                    {
+                        row.Visible = true;
+                        if (!flag)
+                        {
+                            flag = true;
+                            currentCellDiscipline.Selected = false;
+                            currentCellDiscipline = row.Cells[0];
+                        }
+                    }
+                    else
+                        row.Visible = false;
+                }
+
+                if (dataGridViewVisibleRowCount(disciplines, disciplines.Rows.Count - 1) == 0)
+                    foreach (DataGridViewRow row in group_info.Rows)
+                        row.DefaultCellStyle = defaultCellStyle;
+                else
+                {
+                    currentCellDiscipline.Selected = true;
+                    currentCellGI.Selected = false;
+                    disciplines_CellClick(disciplines, e);
+                }
+
+                extendedInfoGB.Text = fio.Text;
+                extendedInfoGB.Visible = true;
+                ResumeLayout();
+            }
+        }
+
+        private void disciplines_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (disciplines.SelectedCells.Count == 1)
+            {
+                int index = 1;
+                bool flag = false;
+                DataGridViewRow selectedRow = disciplines.SelectedCells[0].OwningRow;
+                currentCellDiscipline = disciplines.SelectedCells[0];
+
+                for (int i = 9; i < 12; i++)
+                {
+                    TextBox tb = (TextBox)extendedInfoGB.Controls[i];
+                    tb.Text = selectedRow.Cells[index].Value.ToString();
+                    index++;
+                }
+
+                for (int i = 12; i < 18; i++)
+                {
+                    TextBox tb = (TextBox)extendedInfoGB.Controls[i];
+                    tb.Text = string.Empty;
+                }
+
+                foreach (DataGridViewRow row in group_info.Rows)
+                {
+                    if (row.Cells["disciplineIdCol2"].Value.ToString() == selectedRow.Cells["disciplineIdCol"].Value.ToString())
+                    {
+                        row.DefaultCellStyle = getSelectedCellStyle();
+                        if (!flag)
+                        {
+                            flag = true;
+                            currentCellGI.Selected = false;
+                            currentCellGI = row.Cells[0];
+                        }
+                    }
+                    else
+                        row.DefaultCellStyle = defaultCellStyle;
+                }
+
+                if (dataGridViewSelectedCellStyleCount(group_info, group_info.Rows.Count - 1) != 0)
+                {
+                    currentCellGI.Selected = true;
+                    group_info_CellClick(group_info, e);
+                }
+            }
+        }
+
+        private void group_info_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (group_info.SelectedCells.Count == 1)
+            {
+                int index = 0;
+                DataGridViewRow selectedRow = group_info.SelectedCells[0].OwningRow;
+                currentCellGI = group_info.SelectedCells[0];
+
+                for (int i = 12; i < 18; i++)
+                {
+                    TextBox tb = (TextBox)extendedInfoGB.Controls[i];
+                    tb.Text = selectedRow.Cells[index].Value.ToString();
+                    index++;
+                }
+            }
+        }
+
+        private void Form9_Load(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in group_info.Rows)
+                row.Selected = false;
+            if (group_info.Rows.Count != 0)
+                currentCellGI = group_info.Rows[0].Cells[0];
         }
     }
 }

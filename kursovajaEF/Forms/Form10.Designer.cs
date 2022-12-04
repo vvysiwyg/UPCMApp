@@ -61,10 +61,6 @@ namespace kursovajaEF.Forms
             this.studyPeriodCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hoursOfStudyCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.group_info = new System.Windows.Forms.DataGridView();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.addDisBtn = new System.Windows.Forms.Button();
-            this.addGIBtn = new System.Windows.Forms.Button();
             this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +72,12 @@ namespace kursovajaEF.Forms
             this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.addDisBtn = new System.Windows.Forms.Button();
+            this.addGIBtn = new System.Windows.Forms.Button();
+            this.addDisBtn2 = new System.Windows.Forms.Button();
+            this.addGIBtn2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.disciplines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.group_info)).BeginInit();
             this.SuspendLayout();
@@ -407,50 +409,6 @@ namespace kursovajaEF.Forms
             this.group_info.Size = new System.Drawing.Size(945, 283);
             this.group_info.TabIndex = 9;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(12, 216);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(275, 28);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Преподаваемые программы";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(527, 216);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(263, 28);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Расписание преподавателя";
-            // 
-            // addDisBtn
-            // 
-            this.addDisBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addDisBtn.ForeColor = System.Drawing.Color.Green;
-            this.addDisBtn.Location = new System.Drawing.Point(293, 208);
-            this.addDisBtn.Name = "addDisBtn";
-            this.addDisBtn.Size = new System.Drawing.Size(46, 46);
-            this.addDisBtn.TabIndex = 22;
-            this.addDisBtn.Text = "+";
-            this.addDisBtn.UseVisualStyleBackColor = true;
-            this.addDisBtn.Click += new System.EventHandler(this.addDisBtn_Click);
-            // 
-            // addGIBtn
-            // 
-            this.addGIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addGIBtn.ForeColor = System.Drawing.Color.Green;
-            this.addGIBtn.Location = new System.Drawing.Point(796, 208);
-            this.addGIBtn.Name = "addGIBtn";
-            this.addGIBtn.Size = new System.Drawing.Size(46, 46);
-            this.addGIBtn.TabIndex = 22;
-            this.addGIBtn.Text = "+";
-            this.addGIBtn.UseVisualStyleBackColor = true;
-            this.addGIBtn.Click += new System.EventHandler(this.addGIBtn_Click);
-            // 
             // groupNumCol
             // 
             this.groupNumCol.HeaderText = "Группа";
@@ -533,11 +491,83 @@ namespace kursovajaEF.Forms
             this.endLearningCol.Name = "endLearningCol";
             this.endLearningCol.ReadOnly = true;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(12, 216);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(275, 28);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Преподаваемые программы";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(527, 216);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(263, 28);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Расписание преподавателя";
+            // 
+            // addDisBtn
+            // 
+            this.addDisBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addDisBtn.ForeColor = System.Drawing.Color.Green;
+            this.addDisBtn.Location = new System.Drawing.Point(293, 208);
+            this.addDisBtn.Name = "addDisBtn";
+            this.addDisBtn.Size = new System.Drawing.Size(46, 46);
+            this.addDisBtn.TabIndex = 22;
+            this.addDisBtn.Text = "+";
+            this.addDisBtn.UseVisualStyleBackColor = true;
+            this.addDisBtn.Click += new System.EventHandler(this.addDisBtn_Click);
+            // 
+            // addGIBtn
+            // 
+            this.addGIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addGIBtn.ForeColor = System.Drawing.Color.Green;
+            this.addGIBtn.Location = new System.Drawing.Point(796, 208);
+            this.addGIBtn.Name = "addGIBtn";
+            this.addGIBtn.Size = new System.Drawing.Size(46, 46);
+            this.addGIBtn.TabIndex = 22;
+            this.addGIBtn.Text = "+";
+            this.addGIBtn.UseVisualStyleBackColor = true;
+            this.addGIBtn.Click += new System.EventHandler(this.addGIBtn_Click);
+            // 
+            // addDisBtn2
+            // 
+            this.addDisBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addDisBtn2.ForeColor = System.Drawing.Color.Green;
+            this.addDisBtn2.Location = new System.Drawing.Point(293, 208);
+            this.addDisBtn2.Name = "addDisBtn2";
+            this.addDisBtn2.Size = new System.Drawing.Size(46, 46);
+            this.addDisBtn2.TabIndex = 22;
+            this.addDisBtn2.Text = "+";
+            this.addDisBtn2.UseVisualStyleBackColor = true;
+            this.addDisBtn2.Visible = false;
+            this.addDisBtn2.Click += new System.EventHandler(this.addDisBtn2_Click);
+            // 
+            // addGIBtn2
+            // 
+            this.addGIBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addGIBtn2.ForeColor = System.Drawing.Color.Green;
+            this.addGIBtn2.Location = new System.Drawing.Point(796, 208);
+            this.addGIBtn2.Name = "addGIBtn2";
+            this.addGIBtn2.Size = new System.Drawing.Size(46, 46);
+            this.addGIBtn2.TabIndex = 22;
+            this.addGIBtn2.Text = "+";
+            this.addGIBtn2.UseVisualStyleBackColor = true;
+            this.addGIBtn2.Visible = false;
+            this.addGIBtn2.Click += new System.EventHandler(this.addGIBtn2_Click);
+            // 
             // Form10
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1484, 553);
+            this.Controls.Add(this.addGIBtn2);
+            this.Controls.Add(this.addDisBtn2);
             this.Controls.Add(this.addGIBtn);
             this.Controls.Add(this.addDisBtn);
             this.Controls.Add(this.group_info);
@@ -611,8 +641,6 @@ namespace kursovajaEF.Forms
         public System.Windows.Forms.DataGridView group_info;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button addDisBtn;
-        private System.Windows.Forms.Button addGIBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupNumCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -624,5 +652,9 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn endTimeCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn startLearningCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn endLearningCol;
+        public System.Windows.Forms.Button addDisBtn2;
+        public System.Windows.Forms.Button addGIBtn2;
+        public System.Windows.Forms.Button addDisBtn;
+        public System.Windows.Forms.Button addGIBtn;
     }
 }

@@ -29,27 +29,27 @@ namespace kursovajaEF
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Слушатели");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Подразделения");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Программы");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Преподаватели");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Расписания");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Договоры");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Группы");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Таблицы", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6,
-            treeNode7});
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Отчеты");
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Слушатели");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Подразделения");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Программы");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Преподаватели");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Расписания");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Договоры");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Группы");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Таблицы", new System.Windows.Forms.TreeNode[] {
+            treeNode10,
+            treeNode11,
+            treeNode12,
+            treeNode13,
+            treeNode14,
+            treeNode15,
+            treeNode16});
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Отчеты");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.addBtn = new System.Windows.Forms.Button();
@@ -77,6 +77,7 @@ namespace kursovajaEF
             this.transferGroup = new System.Windows.Forms.TextBox();
             this.certificate = new System.Windows.Forms.TextBox();
             this.issueCertificate = new System.Windows.Forms.TextBox();
+            this.bank = new System.Windows.Forms.TextBox();
             this.disciplineName = new System.Windows.Forms.TextBox();
             this.studyHours = new System.Windows.Forms.TextBox();
             this.numOfPeople = new System.Windows.Forms.TextBox();
@@ -107,6 +108,7 @@ namespace kursovajaEF
             this.label24 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -115,7 +117,23 @@ namespace kursovajaEF
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.disciplineNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studyHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numOfPeopleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disciplineIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numOfHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractInfoIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.wishWeekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.wishStartTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -140,6 +158,7 @@ namespace kursovajaEF
             this.phoneNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schoolGradeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenerCategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.crnCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalSumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.payedSumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -153,24 +172,11 @@ namespace kursovajaEF
             this.transferGroupCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.certificateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.issueCertificateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bankCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listenerIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contractIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.disciplineNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studyHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numOfPeopleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.disciplineIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numOfHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractInfoIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label34 = new System.Windows.Forms.Label();
+            this.listenerCategory = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.extendedInfoGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -186,28 +192,28 @@ namespace kursovajaEF
             this.treeView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.treeView1.Location = new System.Drawing.Point(12, 6);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "listenerNode";
-            treeNode1.Text = "Слушатели";
-            treeNode2.Name = "departmentNode";
-            treeNode2.Text = "Подразделения";
-            treeNode3.Name = "disciplineNode";
-            treeNode3.Text = "Программы";
-            treeNode4.Name = "teacherNode";
-            treeNode4.Text = "Преподаватели";
-            treeNode5.Name = "timetableNode";
-            treeNode5.Text = "Расписания";
-            treeNode6.Name = "contractNode";
-            treeNode6.Text = "Договоры";
-            treeNode7.Name = "groupNode";
-            treeNode7.Text = "Группы";
-            treeNode8.Name = "tableNode";
-            treeNode8.Text = "Таблицы";
-            treeNode9.Name = "reportNode";
-            treeNode9.Text = "Отчеты";
+            treeNode10.Name = "listenerNode";
+            treeNode10.Text = "Слушатели";
+            treeNode11.Name = "departmentNode";
+            treeNode11.Text = "Подразделения";
+            treeNode12.Name = "disciplineNode";
+            treeNode12.Text = "Программы";
+            treeNode13.Name = "teacherNode";
+            treeNode13.Text = "Преподаватели";
+            treeNode14.Name = "timetableNode";
+            treeNode14.Text = "Расписания";
+            treeNode15.Name = "contractNode";
+            treeNode15.Text = "Договоры";
+            treeNode16.Name = "groupNode";
+            treeNode16.Text = "Группы";
+            treeNode17.Name = "tableNode";
+            treeNode17.Text = "Таблицы";
+            treeNode18.Name = "reportNode";
+            treeNode18.Text = "Отчеты";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode8,
-            treeNode9});
-            this.treeView1.Size = new System.Drawing.Size(169, 821);
+            treeNode17,
+            treeNode18});
+            this.treeView1.Size = new System.Drawing.Size(169, 832);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             // 
@@ -220,14 +226,14 @@ namespace kursovajaEF
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.midNameCol,
@@ -238,6 +244,7 @@ namespace kursovajaEF
             this.phoneNumCol,
             this.emailCol,
             this.schoolGradeCol,
+            this.listenerCategoryCol,
             this.crnCol,
             this.totalSumCol,
             this.payedSumCol,
@@ -251,6 +258,7 @@ namespace kursovajaEF
             this.transferGroupCol,
             this.certificateCol,
             this.issueCertificateCol,
+            this.bankCol,
             this.listenerIdCol,
             this.contractIdCol});
             this.dataGridView1.Location = new System.Drawing.Point(187, 57);
@@ -259,7 +267,7 @@ namespace kursovajaEF
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(625, 770);
+            this.dataGridView1.Size = new System.Drawing.Size(625, 757);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
@@ -308,6 +316,7 @@ namespace kursovajaEF
             this.extendedInfoGB.Controls.Add(this.phoneNum);
             this.extendedInfoGB.Controls.Add(this.email);
             this.extendedInfoGB.Controls.Add(this.schoolGrade);
+            this.extendedInfoGB.Controls.Add(this.listenerCategory);
             this.extendedInfoGB.Controls.Add(this.crn);
             this.extendedInfoGB.Controls.Add(this.totalSum);
             this.extendedInfoGB.Controls.Add(this.payedSum);
@@ -321,6 +330,7 @@ namespace kursovajaEF
             this.extendedInfoGB.Controls.Add(this.transferGroup);
             this.extendedInfoGB.Controls.Add(this.certificate);
             this.extendedInfoGB.Controls.Add(this.issueCertificate);
+            this.extendedInfoGB.Controls.Add(this.bank);
             this.extendedInfoGB.Controls.Add(this.disciplineName);
             this.extendedInfoGB.Controls.Add(this.studyHours);
             this.extendedInfoGB.Controls.Add(this.numOfPeople);
@@ -350,7 +360,9 @@ namespace kursovajaEF
             this.extendedInfoGB.Controls.Add(this.label4);
             this.extendedInfoGB.Controls.Add(this.label24);
             this.extendedInfoGB.Controls.Add(this.label7);
+            this.extendedInfoGB.Controls.Add(this.label34);
             this.extendedInfoGB.Controls.Add(this.label11);
+            this.extendedInfoGB.Controls.Add(this.label33);
             this.extendedInfoGB.Controls.Add(this.label23);
             this.extendedInfoGB.Controls.Add(this.label3);
             this.extendedInfoGB.Controls.Add(this.label10);
@@ -358,9 +370,9 @@ namespace kursovajaEF
             this.extendedInfoGB.Controls.Add(this.label22);
             this.extendedInfoGB.Controls.Add(this.label9);
             this.extendedInfoGB.Controls.Add(this.label8);
-            this.extendedInfoGB.Location = new System.Drawing.Point(12, 833);
+            this.extendedInfoGB.Location = new System.Drawing.Point(12, 820);
             this.extendedInfoGB.Name = "extendedInfoGB";
-            this.extendedInfoGB.Size = new System.Drawing.Size(1808, 190);
+            this.extendedInfoGB.Size = new System.Drawing.Size(1808, 214);
             this.extendedInfoGB.TabIndex = 4;
             this.extendedInfoGB.TabStop = false;
             this.extendedInfoGB.Text = "groupBox1";
@@ -441,7 +453,7 @@ namespace kursovajaEF
             // crn
             // 
             this.crn.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.crn.Location = new System.Drawing.Point(1536, 29);
+            this.crn.Location = new System.Drawing.Point(125, 78);
             this.crn.Name = "crn";
             this.crn.ReadOnly = true;
             this.crn.Size = new System.Drawing.Size(70, 25);
@@ -450,7 +462,7 @@ namespace kursovajaEF
             // totalSum
             // 
             this.totalSum.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalSum.Location = new System.Drawing.Point(1710, 29);
+            this.totalSum.Location = new System.Drawing.Point(299, 78);
             this.totalSum.Name = "totalSum";
             this.totalSum.ReadOnly = true;
             this.totalSum.Size = new System.Drawing.Size(78, 25);
@@ -459,7 +471,7 @@ namespace kursovajaEF
             // payedSum
             // 
             this.payedSum.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.payedSum.Location = new System.Drawing.Point(81, 77);
+            this.payedSum.Location = new System.Drawing.Point(457, 75);
             this.payedSum.Name = "payedSum";
             this.payedSum.ReadOnly = true;
             this.payedSum.Size = new System.Drawing.Size(78, 25);
@@ -468,7 +480,7 @@ namespace kursovajaEF
             // restOfSum
             // 
             this.restOfSum.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.restOfSum.Location = new System.Drawing.Point(290, 78);
+            this.restOfSum.Location = new System.Drawing.Point(666, 76);
             this.restOfSum.Name = "restOfSum";
             this.restOfSum.ReadOnly = true;
             this.restOfSum.Size = new System.Drawing.Size(78, 25);
@@ -477,7 +489,7 @@ namespace kursovajaEF
             // payDate40Pct
             // 
             this.payDate40Pct.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.payDate40Pct.Location = new System.Drawing.Point(463, 78);
+            this.payDate40Pct.Location = new System.Drawing.Point(839, 76);
             this.payDate40Pct.Name = "payDate40Pct";
             this.payDate40Pct.ReadOnly = true;
             this.payDate40Pct.Size = new System.Drawing.Size(75, 25);
@@ -486,7 +498,7 @@ namespace kursovajaEF
             // paymentDeadline
             // 
             this.paymentDeadline.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.paymentDeadline.Location = new System.Drawing.Point(601, 78);
+            this.paymentDeadline.Location = new System.Drawing.Point(977, 76);
             this.paymentDeadline.Name = "paymentDeadline";
             this.paymentDeadline.ReadOnly = true;
             this.paymentDeadline.Size = new System.Drawing.Size(75, 25);
@@ -495,7 +507,7 @@ namespace kursovajaEF
             // whoPay
             // 
             this.whoPay.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.whoPay.Location = new System.Drawing.Point(744, 78);
+            this.whoPay.Location = new System.Drawing.Point(1120, 76);
             this.whoPay.Name = "whoPay";
             this.whoPay.ReadOnly = true;
             this.whoPay.Size = new System.Drawing.Size(292, 25);
@@ -504,7 +516,7 @@ namespace kursovajaEF
             // matriculation
             // 
             this.matriculation.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.matriculation.Location = new System.Drawing.Point(825, 146);
+            this.matriculation.Location = new System.Drawing.Point(1604, 125);
             this.matriculation.Name = "matriculation";
             this.matriculation.ReadOnly = true;
             this.matriculation.Size = new System.Drawing.Size(31, 25);
@@ -513,7 +525,7 @@ namespace kursovajaEF
             // expulsionDate
             // 
             this.expulsionDate.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.expulsionDate.Location = new System.Drawing.Point(947, 147);
+            this.expulsionDate.Location = new System.Drawing.Point(1726, 126);
             this.expulsionDate.Name = "expulsionDate";
             this.expulsionDate.ReadOnly = true;
             this.expulsionDate.Size = new System.Drawing.Size(76, 25);
@@ -522,7 +534,7 @@ namespace kursovajaEF
             // listenedHours
             // 
             this.listenedHours.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.listenedHours.Location = new System.Drawing.Point(1135, 147);
+            this.listenedHours.Location = new System.Drawing.Point(113, 173);
             this.listenedHours.Name = "listenedHours";
             this.listenedHours.ReadOnly = true;
             this.listenedHours.Size = new System.Drawing.Size(41, 25);
@@ -531,7 +543,7 @@ namespace kursovajaEF
             // transferGroup
             // 
             this.transferGroup.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.transferGroup.Location = new System.Drawing.Point(1282, 147);
+            this.transferGroup.Location = new System.Drawing.Point(260, 173);
             this.transferGroup.Name = "transferGroup";
             this.transferGroup.ReadOnly = true;
             this.transferGroup.Size = new System.Drawing.Size(52, 25);
@@ -540,7 +552,7 @@ namespace kursovajaEF
             // certificate
             // 
             this.certificate.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.certificate.Location = new System.Drawing.Point(1430, 147);
+            this.certificate.Location = new System.Drawing.Point(408, 174);
             this.certificate.Name = "certificate";
             this.certificate.ReadOnly = true;
             this.certificate.Size = new System.Drawing.Size(190, 25);
@@ -549,25 +561,34 @@ namespace kursovajaEF
             // issueCertificate
             // 
             this.issueCertificate.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.issueCertificate.Location = new System.Drawing.Point(1730, 146);
+            this.issueCertificate.Location = new System.Drawing.Point(694, 171);
             this.issueCertificate.Name = "issueCertificate";
             this.issueCertificate.ReadOnly = true;
             this.issueCertificate.Size = new System.Drawing.Size(72, 25);
             this.issueCertificate.TabIndex = 30;
             // 
+            // bank
+            // 
+            this.bank.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bank.Location = new System.Drawing.Point(1459, 76);
+            this.bank.Name = "bank";
+            this.bank.ReadOnly = true;
+            this.bank.Size = new System.Drawing.Size(194, 25);
+            this.bank.TabIndex = 30;
+            // 
             // disciplineName
             // 
             this.disciplineName.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.disciplineName.Location = new System.Drawing.Point(1126, 76);
+            this.disciplineName.Location = new System.Drawing.Point(91, 129);
             this.disciplineName.Name = "disciplineName";
             this.disciplineName.ReadOnly = true;
-            this.disciplineName.Size = new System.Drawing.Size(104, 25);
+            this.disciplineName.Size = new System.Drawing.Size(132, 25);
             this.disciplineName.TabIndex = 16;
             // 
             // studyHours
             // 
             this.studyHours.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.studyHours.Location = new System.Drawing.Point(1365, 77);
+            this.studyHours.Location = new System.Drawing.Point(358, 129);
             this.studyHours.Name = "studyHours";
             this.studyHours.ReadOnly = true;
             this.studyHours.Size = new System.Drawing.Size(40, 25);
@@ -576,7 +597,7 @@ namespace kursovajaEF
             // numOfPeople
             // 
             this.numOfPeople.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numOfPeople.Location = new System.Drawing.Point(1513, 76);
+            this.numOfPeople.Location = new System.Drawing.Point(502, 125);
             this.numOfPeople.Name = "numOfPeople";
             this.numOfPeople.ReadOnly = true;
             this.numOfPeople.Size = new System.Drawing.Size(37, 25);
@@ -585,7 +606,7 @@ namespace kursovajaEF
             // groupNum
             // 
             this.groupNum.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupNum.Location = new System.Drawing.Point(1612, 78);
+            this.groupNum.Location = new System.Drawing.Point(598, 125);
             this.groupNum.Name = "groupNum";
             this.groupNum.ReadOnly = true;
             this.groupNum.Size = new System.Drawing.Size(49, 25);
@@ -594,7 +615,7 @@ namespace kursovajaEF
             // numOfHours
             // 
             this.numOfHours.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numOfHours.Location = new System.Drawing.Point(1762, 78);
+            this.numOfHours.Location = new System.Drawing.Point(740, 126);
             this.numOfHours.Name = "numOfHours";
             this.numOfHours.ReadOnly = true;
             this.numOfHours.Size = new System.Drawing.Size(40, 25);
@@ -603,7 +624,7 @@ namespace kursovajaEF
             // weekday
             // 
             this.weekday.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.weekday.Location = new System.Drawing.Point(63, 147);
+            this.weekday.Location = new System.Drawing.Point(842, 126);
             this.weekday.Name = "weekday";
             this.weekday.ReadOnly = true;
             this.weekday.Size = new System.Drawing.Size(91, 25);
@@ -612,7 +633,7 @@ namespace kursovajaEF
             // startTime
             // 
             this.startTime.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.startTime.Location = new System.Drawing.Point(216, 147);
+            this.startTime.Location = new System.Drawing.Point(995, 126);
             this.startTime.Name = "startTime";
             this.startTime.ReadOnly = true;
             this.startTime.Size = new System.Drawing.Size(53, 25);
@@ -621,7 +642,7 @@ namespace kursovajaEF
             // endTime
             // 
             this.endTime.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.endTime.Location = new System.Drawing.Point(353, 147);
+            this.endTime.Location = new System.Drawing.Point(1132, 126);
             this.endTime.Name = "endTime";
             this.endTime.ReadOnly = true;
             this.endTime.Size = new System.Drawing.Size(46, 25);
@@ -630,7 +651,7 @@ namespace kursovajaEF
             // startLearning
             // 
             this.startLearning.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.startLearning.Location = new System.Drawing.Point(498, 147);
+            this.startLearning.Location = new System.Drawing.Point(1277, 126);
             this.startLearning.Name = "startLearning";
             this.startLearning.ReadOnly = true;
             this.startLearning.Size = new System.Drawing.Size(78, 25);
@@ -639,7 +660,7 @@ namespace kursovajaEF
             // endLearning
             // 
             this.endLearning.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.endLearning.Location = new System.Drawing.Point(663, 146);
+            this.endLearning.Location = new System.Drawing.Point(1442, 125);
             this.endLearning.Name = "endLearning";
             this.endLearning.ReadOnly = true;
             this.endLearning.Size = new System.Drawing.Size(78, 25);
@@ -649,7 +670,7 @@ namespace kursovajaEF
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(160, 141);
+            this.label19.Location = new System.Drawing.Point(939, 120);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(50, 34);
             this.label19.TabIndex = 55;
@@ -659,7 +680,7 @@ namespace kursovajaEF
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(747, 150);
+            this.label21.Location = new System.Drawing.Point(1526, 129);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(77, 17);
             this.label21.TabIndex = 55;
@@ -669,7 +690,7 @@ namespace kursovajaEF
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(7, 141);
+            this.label18.Location = new System.Drawing.Point(786, 120);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(50, 34);
             this.label18.TabIndex = 55;
@@ -679,7 +700,7 @@ namespace kursovajaEF
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(585, 140);
+            this.label15.Location = new System.Drawing.Point(1364, 119);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(72, 51);
             this.label15.TabIndex = 55;
@@ -689,7 +710,7 @@ namespace kursovajaEF
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(427, 140);
+            this.label2.Location = new System.Drawing.Point(1206, 119);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 51);
             this.label2.TabIndex = 55;
@@ -699,7 +720,7 @@ namespace kursovajaEF
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(275, 141);
+            this.label20.Location = new System.Drawing.Point(1054, 120);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(72, 34);
             this.label20.TabIndex = 55;
@@ -709,7 +730,7 @@ namespace kursovajaEF
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(682, 71);
+            this.label1.Location = new System.Drawing.Point(1058, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 34);
             this.label1.TabIndex = 55;
@@ -719,7 +740,7 @@ namespace kursovajaEF
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label27.Location = new System.Drawing.Point(1236, 71);
+            this.label27.Location = new System.Drawing.Point(229, 123);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(123, 34);
             this.label27.TabIndex = 55;
@@ -729,7 +750,7 @@ namespace kursovajaEF
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(1678, 71);
+            this.label17.Location = new System.Drawing.Point(656, 119);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(78, 34);
             this.label17.TabIndex = 55;
@@ -739,7 +760,7 @@ namespace kursovajaEF
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(544, 71);
+            this.label14.Location = new System.Drawing.Point(920, 69);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(51, 34);
             this.label14.TabIndex = 55;
@@ -749,7 +770,7 @@ namespace kursovajaEF
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(1340, 149);
+            this.label26.Location = new System.Drawing.Point(318, 176);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(77, 17);
             this.label26.TabIndex = 55;
@@ -759,7 +780,7 @@ namespace kursovajaEF
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(1556, 71);
+            this.label16.Location = new System.Drawing.Point(542, 118);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(50, 34);
             this.label16.TabIndex = 55;
@@ -769,7 +790,7 @@ namespace kursovajaEF
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(165, 71);
+            this.label13.Location = new System.Drawing.Point(541, 69);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(119, 34);
             this.label13.TabIndex = 55;
@@ -779,7 +800,7 @@ namespace kursovajaEF
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label25.Location = new System.Drawing.Point(1182, 141);
+            this.label25.Location = new System.Drawing.Point(160, 167);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(94, 34);
             this.label25.TabIndex = 55;
@@ -799,7 +820,7 @@ namespace kursovajaEF
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(7, 71);
+            this.label12.Location = new System.Drawing.Point(383, 69);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 34);
             this.label12.TabIndex = 55;
@@ -819,7 +840,7 @@ namespace kursovajaEF
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(865, 141);
+            this.label24.Location = new System.Drawing.Point(1644, 120);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(76, 34);
             this.label24.TabIndex = 55;
@@ -829,7 +850,7 @@ namespace kursovajaEF
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(1042, 80);
+            this.label7.Location = new System.Drawing.Point(7, 133);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 17);
             this.label7.TabIndex = 55;
@@ -839,17 +860,27 @@ namespace kursovajaEF
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(1418, 23);
+            this.label11.Location = new System.Drawing.Point(7, 72);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(112, 34);
             this.label11.TabIndex = 55;
             this.label11.Text = "Регистрационный\r\nномер договора";
             // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label33.Location = new System.Drawing.Point(1418, 79);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(35, 17);
+            this.label33.TabIndex = 55;
+            this.label33.Text = "Банк";
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.Location = new System.Drawing.Point(1640, 140);
+            this.label23.Location = new System.Drawing.Point(604, 165);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(84, 34);
             this.label23.TabIndex = 55;
@@ -859,7 +890,7 @@ namespace kursovajaEF
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(1415, 70);
+            this.label3.Location = new System.Drawing.Point(404, 118);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 51);
             this.label3.TabIndex = 55;
@@ -869,7 +900,7 @@ namespace kursovajaEF
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(374, 71);
+            this.label10.Location = new System.Drawing.Point(750, 69);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 34);
             this.label10.TabIndex = 55;
@@ -889,7 +920,7 @@ namespace kursovajaEF
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(1029, 141);
+            this.label22.Location = new System.Drawing.Point(7, 167);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(100, 34);
             this.label22.TabIndex = 55;
@@ -899,7 +930,7 @@ namespace kursovajaEF
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(1612, 23);
+            this.label9.Location = new System.Drawing.Point(201, 72);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(92, 34);
             this.label9.TabIndex = 55;
@@ -922,14 +953,14 @@ namespace kursovajaEF
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.disciplineNameCol,
@@ -949,6 +980,51 @@ namespace kursovajaEF
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_RowEnter);
             // 
+            // disciplineNameCol
+            // 
+            this.disciplineNameCol.HeaderText = "Программа";
+            this.disciplineNameCol.MinimumWidth = 6;
+            this.disciplineNameCol.Name = "disciplineNameCol";
+            this.disciplineNameCol.ReadOnly = true;
+            // 
+            // studyHoursCol
+            // 
+            this.studyHoursCol.HeaderText = "Общее количество часов";
+            this.studyHoursCol.MinimumWidth = 6;
+            this.studyHoursCol.Name = "studyHoursCol";
+            this.studyHoursCol.ReadOnly = true;
+            // 
+            // numOfPeopleCol
+            // 
+            this.numOfPeopleCol.HeaderText = "Число обучающихся в группе";
+            this.numOfPeopleCol.MinimumWidth = 6;
+            this.numOfPeopleCol.Name = "numOfPeopleCol";
+            this.numOfPeopleCol.ReadOnly = true;
+            // 
+            // contractIdCol2
+            // 
+            this.contractIdCol2.HeaderText = "ID договора";
+            this.contractIdCol2.MinimumWidth = 6;
+            this.contractIdCol2.Name = "contractIdCol2";
+            this.contractIdCol2.ReadOnly = true;
+            this.contractIdCol2.Visible = false;
+            // 
+            // disciplineIdCol
+            // 
+            this.disciplineIdCol.HeaderText = "ID программы";
+            this.disciplineIdCol.MinimumWidth = 6;
+            this.disciplineIdCol.Name = "disciplineIdCol";
+            this.disciplineIdCol.ReadOnly = true;
+            this.disciplineIdCol.Visible = false;
+            // 
+            // contractInfoIdCol
+            // 
+            this.contractInfoIdCol.HeaderText = "ID информации о договоре";
+            this.contractInfoIdCol.MinimumWidth = 6;
+            this.contractInfoIdCol.Name = "contractInfoIdCol";
+            this.contractInfoIdCol.ReadOnly = true;
+            this.contractInfoIdCol.Visible = false;
+            // 
             // dataGridView3
             // 
             this.dataGridView3.AllowUserToAddRows = false;
@@ -957,14 +1033,14 @@ namespace kursovajaEF
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.groupNumCol,
@@ -983,10 +1059,85 @@ namespace kursovajaEF
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(682, 770);
+            this.dataGridView3.Size = new System.Drawing.Size(682, 757);
             this.dataGridView3.TabIndex = 6;
             this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
             this.dataGridView3.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_RowEnter);
+            // 
+            // groupNumCol
+            // 
+            this.groupNumCol.HeaderText = "Номер группы";
+            this.groupNumCol.MinimumWidth = 6;
+            this.groupNumCol.Name = "groupNumCol";
+            this.groupNumCol.ReadOnly = true;
+            // 
+            // numOfHoursCol
+            // 
+            this.numOfHoursCol.HeaderText = "Количество часов";
+            this.numOfHoursCol.MinimumWidth = 6;
+            this.numOfHoursCol.Name = "numOfHoursCol";
+            this.numOfHoursCol.ReadOnly = true;
+            // 
+            // weekdayCol
+            // 
+            this.weekdayCol.HeaderText = "День недели";
+            this.weekdayCol.MinimumWidth = 6;
+            this.weekdayCol.Name = "weekdayCol";
+            this.weekdayCol.ReadOnly = true;
+            // 
+            // startTimeCol
+            // 
+            this.startTimeCol.HeaderText = "Время начала";
+            this.startTimeCol.MinimumWidth = 6;
+            this.startTimeCol.Name = "startTimeCol";
+            this.startTimeCol.ReadOnly = true;
+            // 
+            // endTimeCol
+            // 
+            this.endTimeCol.HeaderText = "Время окончания";
+            this.endTimeCol.MinimumWidth = 6;
+            this.endTimeCol.Name = "endTimeCol";
+            this.endTimeCol.ReadOnly = true;
+            // 
+            // startLearningCol
+            // 
+            this.startLearningCol.HeaderText = "Дата начала обучения";
+            this.startLearningCol.MinimumWidth = 6;
+            this.startLearningCol.Name = "startLearningCol";
+            this.startLearningCol.ReadOnly = true;
+            this.startLearningCol.Visible = false;
+            // 
+            // endLearningCol
+            // 
+            this.endLearningCol.HeaderText = "Дата окончания обучения";
+            this.endLearningCol.MinimumWidth = 6;
+            this.endLearningCol.Name = "endLearningCol";
+            this.endLearningCol.ReadOnly = true;
+            this.endLearningCol.Visible = false;
+            // 
+            // groupIdCol
+            // 
+            this.groupIdCol.HeaderText = "ID группы";
+            this.groupIdCol.MinimumWidth = 6;
+            this.groupIdCol.Name = "groupIdCol";
+            this.groupIdCol.ReadOnly = true;
+            this.groupIdCol.Visible = false;
+            // 
+            // contractInfoIdCol2
+            // 
+            this.contractInfoIdCol2.HeaderText = "ID информации о договоре";
+            this.contractInfoIdCol2.MinimumWidth = 6;
+            this.contractInfoIdCol2.Name = "contractInfoIdCol2";
+            this.contractInfoIdCol2.ReadOnly = true;
+            this.contractInfoIdCol2.Visible = false;
+            // 
+            // groupInfoIdCol
+            // 
+            this.groupInfoIdCol.HeaderText = "ID информации о группе";
+            this.groupInfoIdCol.MinimumWidth = 6;
+            this.groupInfoIdCol.Name = "groupInfoIdCol";
+            this.groupInfoIdCol.ReadOnly = true;
+            this.groupInfoIdCol.Visible = false;
             // 
             // dataGridView4
             // 
@@ -996,14 +1147,14 @@ namespace kursovajaEF
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView4.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.wishWeekdayCol,
@@ -1017,7 +1168,7 @@ namespace kursovajaEF
             this.dataGridView4.RowHeadersWidth = 51;
             this.dataGridView4.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.dataGridView4.RowTemplate.Height = 24;
-            this.dataGridView4.Size = new System.Drawing.Size(314, 310);
+            this.dataGridView4.Size = new System.Drawing.Size(314, 297);
             this.dataGridView4.TabIndex = 7;
             this.dataGridView4.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellClick);
             this.dataGridView4.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_RowEnter);
@@ -1079,7 +1230,7 @@ namespace kursovajaEF
             this.listenerWishesGB.Controls.Add(this.label31);
             this.listenerWishesGB.Controls.Add(this.label30);
             this.listenerWishesGB.Controls.Add(this.label29);
-            this.listenerWishesGB.Location = new System.Drawing.Point(818, 676);
+            this.listenerWishesGB.Location = new System.Drawing.Point(818, 663);
             this.listenerWishesGB.Name = "listenerWishesGB";
             this.listenerWishesGB.Size = new System.Drawing.Size(264, 151);
             this.listenerWishesGB.TabIndex = 9;
@@ -1169,8 +1320,8 @@ namespace kursovajaEF
             // 
             // firstnameCol
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.firstnameCol.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.firstnameCol.DefaultCellStyle = dataGridViewCellStyle7;
             this.firstnameCol.HeaderText = "Имя";
             this.firstnameCol.MinimumWidth = 6;
             this.firstnameCol.Name = "firstnameCol";
@@ -1220,6 +1371,14 @@ namespace kursovajaEF
             this.schoolGradeCol.Name = "schoolGradeCol";
             this.schoolGradeCol.ReadOnly = true;
             this.schoolGradeCol.Visible = false;
+            // 
+            // listenerCategoryCol
+            // 
+            this.listenerCategoryCol.HeaderText = "Категория слушателя";
+            this.listenerCategoryCol.MinimumWidth = 6;
+            this.listenerCategoryCol.Name = "listenerCategoryCol";
+            this.listenerCategoryCol.ReadOnly = true;
+            this.listenerCategoryCol.Visible = false;
             // 
             // crnCol
             // 
@@ -1324,6 +1483,14 @@ namespace kursovajaEF
             this.issueCertificateCol.ReadOnly = true;
             this.issueCertificateCol.Visible = false;
             // 
+            // bankCol
+            // 
+            this.bankCol.HeaderText = "Банк";
+            this.bankCol.MinimumWidth = 6;
+            this.bankCol.Name = "bankCol";
+            this.bankCol.ReadOnly = true;
+            this.bankCol.Visible = false;
+            // 
             // listenerIdCol
             // 
             this.listenerIdCol.HeaderText = "ID слушателя";
@@ -1340,131 +1507,30 @@ namespace kursovajaEF
             this.contractIdCol.ReadOnly = true;
             this.contractIdCol.Visible = false;
             // 
-            // disciplineNameCol
+            // label34
             // 
-            this.disciplineNameCol.HeaderText = "Программа";
-            this.disciplineNameCol.MinimumWidth = 6;
-            this.disciplineNameCol.Name = "disciplineNameCol";
-            this.disciplineNameCol.ReadOnly = true;
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label34.Location = new System.Drawing.Point(1427, 31);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(137, 17);
+            this.label34.TabIndex = 55;
+            this.label34.Text = "Категория слушателя";
             // 
-            // studyHoursCol
+            // listenerCategory
             // 
-            this.studyHoursCol.HeaderText = "Общее количество часов";
-            this.studyHoursCol.MinimumWidth = 6;
-            this.studyHoursCol.Name = "studyHoursCol";
-            this.studyHoursCol.ReadOnly = true;
-            // 
-            // numOfPeopleCol
-            // 
-            this.numOfPeopleCol.HeaderText = "Число обучающихся в группе";
-            this.numOfPeopleCol.MinimumWidth = 6;
-            this.numOfPeopleCol.Name = "numOfPeopleCol";
-            this.numOfPeopleCol.ReadOnly = true;
-            // 
-            // contractIdCol2
-            // 
-            this.contractIdCol2.HeaderText = "ID договора";
-            this.contractIdCol2.MinimumWidth = 6;
-            this.contractIdCol2.Name = "contractIdCol2";
-            this.contractIdCol2.ReadOnly = true;
-            this.contractIdCol2.Visible = false;
-            // 
-            // disciplineIdCol
-            // 
-            this.disciplineIdCol.HeaderText = "ID программы";
-            this.disciplineIdCol.MinimumWidth = 6;
-            this.disciplineIdCol.Name = "disciplineIdCol";
-            this.disciplineIdCol.ReadOnly = true;
-            this.disciplineIdCol.Visible = false;
-            // 
-            // contractInfoIdCol
-            // 
-            this.contractInfoIdCol.HeaderText = "ID информации о договоре";
-            this.contractInfoIdCol.MinimumWidth = 6;
-            this.contractInfoIdCol.Name = "contractInfoIdCol";
-            this.contractInfoIdCol.ReadOnly = true;
-            this.contractInfoIdCol.Visible = false;
-            // 
-            // groupNumCol
-            // 
-            this.groupNumCol.HeaderText = "Номер группы";
-            this.groupNumCol.MinimumWidth = 6;
-            this.groupNumCol.Name = "groupNumCol";
-            this.groupNumCol.ReadOnly = true;
-            // 
-            // numOfHoursCol
-            // 
-            this.numOfHoursCol.HeaderText = "Количество часов";
-            this.numOfHoursCol.MinimumWidth = 6;
-            this.numOfHoursCol.Name = "numOfHoursCol";
-            this.numOfHoursCol.ReadOnly = true;
-            // 
-            // weekdayCol
-            // 
-            this.weekdayCol.HeaderText = "День недели";
-            this.weekdayCol.MinimumWidth = 6;
-            this.weekdayCol.Name = "weekdayCol";
-            this.weekdayCol.ReadOnly = true;
-            // 
-            // startTimeCol
-            // 
-            this.startTimeCol.HeaderText = "Время начала";
-            this.startTimeCol.MinimumWidth = 6;
-            this.startTimeCol.Name = "startTimeCol";
-            this.startTimeCol.ReadOnly = true;
-            // 
-            // endTimeCol
-            // 
-            this.endTimeCol.HeaderText = "Время окончания";
-            this.endTimeCol.MinimumWidth = 6;
-            this.endTimeCol.Name = "endTimeCol";
-            this.endTimeCol.ReadOnly = true;
-            // 
-            // startLearningCol
-            // 
-            this.startLearningCol.HeaderText = "Дата начала обучения";
-            this.startLearningCol.MinimumWidth = 6;
-            this.startLearningCol.Name = "startLearningCol";
-            this.startLearningCol.ReadOnly = true;
-            this.startLearningCol.Visible = false;
-            // 
-            // endLearningCol
-            // 
-            this.endLearningCol.HeaderText = "Дата окончания обучения";
-            this.endLearningCol.MinimumWidth = 6;
-            this.endLearningCol.Name = "endLearningCol";
-            this.endLearningCol.ReadOnly = true;
-            this.endLearningCol.Visible = false;
-            // 
-            // groupIdCol
-            // 
-            this.groupIdCol.HeaderText = "ID группы";
-            this.groupIdCol.MinimumWidth = 6;
-            this.groupIdCol.Name = "groupIdCol";
-            this.groupIdCol.ReadOnly = true;
-            this.groupIdCol.Visible = false;
-            // 
-            // contractInfoIdCol2
-            // 
-            this.contractInfoIdCol2.HeaderText = "ID информации о договоре";
-            this.contractInfoIdCol2.MinimumWidth = 6;
-            this.contractInfoIdCol2.Name = "contractInfoIdCol2";
-            this.contractInfoIdCol2.ReadOnly = true;
-            this.contractInfoIdCol2.Visible = false;
-            // 
-            // groupInfoIdCol
-            // 
-            this.groupInfoIdCol.HeaderText = "ID информации о группе";
-            this.groupInfoIdCol.MinimumWidth = 6;
-            this.groupInfoIdCol.Name = "groupInfoIdCol";
-            this.groupInfoIdCol.ReadOnly = true;
-            this.groupInfoIdCol.Visible = false;
+            this.listenerCategory.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listenerCategory.Location = new System.Drawing.Point(1570, 26);
+            this.listenerCategory.Name = "listenerCategory";
+            this.listenerCategory.ReadOnly = true;
+            this.listenerCategory.Size = new System.Drawing.Size(102, 25);
+            this.listenerCategory.TabIndex = 30;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1832, 1035);
+            this.ClientSize = new System.Drawing.Size(1832, 1046);
             this.Controls.Add(this.listenerFilterCB);
             this.Controls.Add(this.label32);
             this.Controls.Add(this.listenerWishesGB);
@@ -1578,29 +1644,6 @@ namespace kursovajaEF
         private System.Windows.Forms.TextBox wStartTime;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.ComboBox listenerFilterCB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn midNameCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstnameCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn yobCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sexCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn schoolGradeCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn crnCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalSumCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn payedSumCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn restOfSumCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PayDate40pctCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paymentDeadlineCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn whoPayCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn matriculationCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expulsionDateCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn listenedHoursCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn transferGroupCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn certificateCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn issueCertificateCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn listenerIdCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contractIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn disciplineNameCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn studyHoursCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn numOfPeopleCol;
@@ -1617,6 +1660,35 @@ namespace kursovajaEF
         private System.Windows.Forms.DataGridViewTextBoxColumn groupIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol2;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupInfoIdCol;
+        private System.Windows.Forms.TextBox bank;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.DataGridViewTextBoxColumn midNameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstnameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn yobCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sexCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn schoolGradeCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn listenerCategoryCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn crnCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalSumCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn payedSumCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn restOfSumCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PayDate40pctCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentDeadlineCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn whoPayCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn matriculationCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn expulsionDateCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn listenedHoursCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn transferGroupCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn certificateCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn issueCertificateCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bankCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn listenerIdCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contractIdCol;
+        private System.Windows.Forms.TextBox listenerCategory;
+        private System.Windows.Forms.Label label34;
     }
 }
 

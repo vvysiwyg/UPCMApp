@@ -329,8 +329,60 @@ namespace kursovajaEF.Forms
             Form15 f = new(conn);
             f.chooseGIBtn.Visible = true;
             f.ShowDialog();
-            if (f.gi_rows.Length != 0)
+            if (f.gi_rows != null)
                 group_info.Rows.AddRange(f.gi_rows);
+        }
+
+        private void addDisBtn2_Click(object sender, EventArgs e)
+        {
+            int discipline_id;
+            Form7 f = new(conn);
+            f.setDisBtn.Visible = true;
+            f.formName = "Form10";
+            f.ShowDialog();
+            if (f.disciplinesRow != null)
+            {
+                discipline_id = int.Parse(f.disciplinesRow.Cells["idCol"].Value.ToString());
+                using(testDBContext db = new())
+                {
+                    DisciplinesTeacher dt = new()
+                    {
+                        DisciplineId = discipline_id,
+                        TeacherId = int.Parse(label11.Text)
+                    };
+
+                    db.DisciplinesTeachers.Add(dt);
+                    db.SaveChanges();
+                }
+                disciplines.Rows.Add(f.disciplinesRow);
+            }
+        }
+
+        private void addGIBtn2_Click(object sender, EventArgs e)
+        {
+            int group_info_id;
+            Form15 f = new(conn);
+            f.chooseGIBtn.Visible = true;
+            f.ShowDialog();
+            if (f.gi_rows != null)
+            {
+                foreach (DataGridViewRow row in f.gi_rows)
+                {
+                    group_info_id = int.Parse(row.Cells[5].Value.ToString());
+                    using (testDBContext db = new())
+                    {
+                        GroupInfoTeacher git = new()
+                        {
+                            GroupInfoId = group_info_id,
+                            TeacherId = int.Parse(label11.Text)
+                        };
+
+                        db.GroupInfoTeachers.Add(git);
+                        db.SaveChanges();
+                    }
+                }
+                group_info.Rows.AddRange(f.gi_rows);
+            }
         }
     }
 }
