@@ -34,16 +34,6 @@ namespace kursovajaEF.Forms
             this.updBtn = new System.Windows.Forms.Button();
             this.delBtn = new System.Windows.Forms.Button();
             this.teachers = new System.Windows.Forms.DataGridView();
-            this.fioCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dobCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.posCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pedExCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.overExCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.degreeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teacherIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.disciplines = new System.Windows.Forms.DataGridView();
@@ -62,6 +52,7 @@ namespace kursovajaEF.Forms
             this.degree = new System.Windows.Forms.TextBox();
             this.phone = new System.Windows.Forms.TextBox();
             this.email = new System.Windows.Forms.TextBox();
+            this.chairName = new System.Windows.Forms.TextBox();
             this.dis = new System.Windows.Forms.TextBox();
             this.stdper = new System.Windows.Forms.TextBox();
             this.hours = new System.Windows.Forms.TextBox();
@@ -80,6 +71,7 @@ namespace kursovajaEF.Forms
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -101,6 +93,18 @@ namespace kursovajaEF.Forms
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teacherIdCol3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fioCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dobCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.posCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pedExCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.overExCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.degreeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chairNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.teacherIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chairIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.teachers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disciplines)).BeginInit();
             this.extendedInfoGB.SuspendLayout();
@@ -157,7 +161,9 @@ namespace kursovajaEF.Forms
             this.degreeCol,
             this.phoneCol,
             this.emailCol,
-            this.teacherIdCol});
+            this.chairNameCol,
+            this.teacherIdCol,
+            this.chairIdCol});
             this.teachers.Location = new System.Drawing.Point(12, 53);
             this.teachers.Name = "teachers";
             this.teachers.ReadOnly = true;
@@ -167,81 +173,6 @@ namespace kursovajaEF.Forms
             this.teachers.TabIndex = 1;
             this.teachers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.teachers_CellClick);
             this.teachers.Sorted += new System.EventHandler(this.dataGridView_Sorted);
-            // 
-            // fioCol
-            // 
-            this.fioCol.HeaderText = "ФИО";
-            this.fioCol.MinimumWidth = 6;
-            this.fioCol.Name = "fioCol";
-            this.fioCol.ReadOnly = true;
-            // 
-            // dobCol
-            // 
-            this.dobCol.HeaderText = "Дата рождения";
-            this.dobCol.MinimumWidth = 6;
-            this.dobCol.Name = "dobCol";
-            this.dobCol.ReadOnly = true;
-            // 
-            // titleCol
-            // 
-            this.titleCol.HeaderText = "Звание";
-            this.titleCol.MinimumWidth = 6;
-            this.titleCol.Name = "titleCol";
-            this.titleCol.ReadOnly = true;
-            this.titleCol.Visible = false;
-            // 
-            // posCol
-            // 
-            this.posCol.HeaderText = "Должность";
-            this.posCol.MinimumWidth = 6;
-            this.posCol.Name = "posCol";
-            this.posCol.ReadOnly = true;
-            this.posCol.Visible = false;
-            // 
-            // pedExCol
-            // 
-            this.pedExCol.HeaderText = "Педагогический стаж";
-            this.pedExCol.MinimumWidth = 6;
-            this.pedExCol.Name = "pedExCol";
-            this.pedExCol.ReadOnly = true;
-            this.pedExCol.Visible = false;
-            // 
-            // overExCol
-            // 
-            this.overExCol.HeaderText = "Общий стаж";
-            this.overExCol.MinimumWidth = 6;
-            this.overExCol.Name = "overExCol";
-            this.overExCol.ReadOnly = true;
-            this.overExCol.Visible = false;
-            // 
-            // degreeCol
-            // 
-            this.degreeCol.HeaderText = "Образование по диплому";
-            this.degreeCol.MinimumWidth = 6;
-            this.degreeCol.Name = "degreeCol";
-            this.degreeCol.ReadOnly = true;
-            this.degreeCol.Visible = false;
-            // 
-            // phoneCol
-            // 
-            this.phoneCol.HeaderText = "Номер телефона";
-            this.phoneCol.MinimumWidth = 6;
-            this.phoneCol.Name = "phoneCol";
-            this.phoneCol.ReadOnly = true;
-            // 
-            // emailCol
-            // 
-            this.emailCol.HeaderText = "email";
-            this.emailCol.MinimumWidth = 6;
-            this.emailCol.Name = "emailCol";
-            this.emailCol.ReadOnly = true;
-            // 
-            // teacherIdCol
-            // 
-            this.teacherIdCol.HeaderText = "Id преподавателя";
-            this.teacherIdCol.MinimumWidth = 6;
-            this.teacherIdCol.Name = "teacherIdCol";
-            this.teacherIdCol.ReadOnly = true;
             // 
             // label1
             // 
@@ -337,6 +268,7 @@ namespace kursovajaEF.Forms
             this.extendedInfoGB.Controls.Add(this.degree);
             this.extendedInfoGB.Controls.Add(this.phone);
             this.extendedInfoGB.Controls.Add(this.email);
+            this.extendedInfoGB.Controls.Add(this.chairName);
             this.extendedInfoGB.Controls.Add(this.dis);
             this.extendedInfoGB.Controls.Add(this.stdper);
             this.extendedInfoGB.Controls.Add(this.hours);
@@ -355,6 +287,7 @@ namespace kursovajaEF.Forms
             this.extendedInfoGB.Controls.Add(this.label13);
             this.extendedInfoGB.Controls.Add(this.label12);
             this.extendedInfoGB.Controls.Add(this.label11);
+            this.extendedInfoGB.Controls.Add(this.label19);
             this.extendedInfoGB.Controls.Add(this.label10);
             this.extendedInfoGB.Controls.Add(this.label9);
             this.extendedInfoGB.Controls.Add(this.label8);
@@ -441,9 +374,17 @@ namespace kursovajaEF.Forms
             this.email.Size = new System.Drawing.Size(213, 27);
             this.email.TabIndex = 0;
             // 
+            // chairName
+            // 
+            this.chairName.Location = new System.Drawing.Point(1118, 85);
+            this.chairName.Name = "chairName";
+            this.chairName.ReadOnly = true;
+            this.chairName.Size = new System.Drawing.Size(315, 27);
+            this.chairName.TabIndex = 0;
+            // 
             // dis
             // 
-            this.dis.Location = new System.Drawing.Point(1143, 85);
+            this.dis.Location = new System.Drawing.Point(1536, 85);
             this.dis.Name = "dis";
             this.dis.ReadOnly = true;
             this.dis.Size = new System.Drawing.Size(211, 27);
@@ -451,7 +392,7 @@ namespace kursovajaEF.Forms
             // 
             // stdper
             // 
-            this.stdper.Location = new System.Drawing.Point(1480, 85);
+            this.stdper.Location = new System.Drawing.Point(126, 136);
             this.stdper.Name = "stdper";
             this.stdper.ReadOnly = true;
             this.stdper.Size = new System.Drawing.Size(160, 27);
@@ -459,7 +400,7 @@ namespace kursovajaEF.Forms
             // 
             // hours
             // 
-            this.hours.Location = new System.Drawing.Point(146, 130);
+            this.hours.Location = new System.Drawing.Point(426, 136);
             this.hours.Name = "hours";
             this.hours.ReadOnly = true;
             this.hours.Size = new System.Drawing.Size(41, 27);
@@ -467,7 +408,7 @@ namespace kursovajaEF.Forms
             // 
             // groupNum
             // 
-            this.groupNum.Location = new System.Drawing.Point(257, 130);
+            this.groupNum.Location = new System.Drawing.Point(537, 136);
             this.groupNum.Name = "groupNum";
             this.groupNum.ReadOnly = true;
             this.groupNum.Size = new System.Drawing.Size(67, 27);
@@ -475,7 +416,7 @@ namespace kursovajaEF.Forms
             // 
             // weekday
             // 
-            this.weekday.Location = new System.Drawing.Point(434, 130);
+            this.weekday.Location = new System.Drawing.Point(714, 136);
             this.weekday.Name = "weekday";
             this.weekday.ReadOnly = true;
             this.weekday.Size = new System.Drawing.Size(105, 27);
@@ -483,7 +424,7 @@ namespace kursovajaEF.Forms
             // 
             // startTime
             // 
-            this.startTime.Location = new System.Drawing.Point(658, 130);
+            this.startTime.Location = new System.Drawing.Point(938, 136);
             this.startTime.Name = "startTime";
             this.startTime.ReadOnly = true;
             this.startTime.Size = new System.Drawing.Size(56, 27);
@@ -491,7 +432,7 @@ namespace kursovajaEF.Forms
             // 
             // endTime
             // 
-            this.endTime.Location = new System.Drawing.Point(860, 130);
+            this.endTime.Location = new System.Drawing.Point(1140, 136);
             this.endTime.Name = "endTime";
             this.endTime.ReadOnly = true;
             this.endTime.Size = new System.Drawing.Size(51, 27);
@@ -499,7 +440,7 @@ namespace kursovajaEF.Forms
             // 
             // startLearning
             // 
-            this.startLearning.Location = new System.Drawing.Point(1088, 130);
+            this.startLearning.Location = new System.Drawing.Point(1368, 136);
             this.startLearning.Name = "startLearning";
             this.startLearning.ReadOnly = true;
             this.startLearning.Size = new System.Drawing.Size(90, 27);
@@ -507,7 +448,7 @@ namespace kursovajaEF.Forms
             // 
             // endLearning
             // 
-            this.endLearning.Location = new System.Drawing.Point(1382, 130);
+            this.endLearning.Location = new System.Drawing.Point(1662, 136);
             this.endLearning.Name = "endLearning";
             this.endLearning.ReadOnly = true;
             this.endLearning.Size = new System.Drawing.Size(85, 27);
@@ -525,7 +466,7 @@ namespace kursovajaEF.Forms
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(1184, 133);
+            this.label18.Location = new System.Drawing.Point(1464, 139);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(192, 20);
             this.label18.TabIndex = 1;
@@ -534,7 +475,7 @@ namespace kursovajaEF.Forms
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(917, 133);
+            this.label17.Location = new System.Drawing.Point(1197, 139);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(165, 20);
             this.label17.TabIndex = 1;
@@ -543,7 +484,7 @@ namespace kursovajaEF.Forms
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(720, 133);
+            this.label16.Location = new System.Drawing.Point(1000, 139);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(134, 20);
             this.label16.TabIndex = 1;
@@ -552,7 +493,7 @@ namespace kursovajaEF.Forms
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(545, 133);
+            this.label15.Location = new System.Drawing.Point(825, 139);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(107, 20);
             this.label15.TabIndex = 1;
@@ -561,7 +502,7 @@ namespace kursovajaEF.Forms
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(330, 133);
+            this.label14.Location = new System.Drawing.Point(610, 139);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(98, 20);
             this.label14.TabIndex = 1;
@@ -570,7 +511,7 @@ namespace kursovajaEF.Forms
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(193, 133);
+            this.label13.Location = new System.Drawing.Point(473, 139);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(58, 20);
             this.label13.TabIndex = 1;
@@ -579,7 +520,7 @@ namespace kursovajaEF.Forms
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 133);
+            this.label12.Location = new System.Drawing.Point(292, 139);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(134, 20);
             this.label12.TabIndex = 1;
@@ -588,16 +529,25 @@ namespace kursovajaEF.Forms
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1360, 88);
+            this.label11.Location = new System.Drawing.Point(6, 139);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(114, 20);
             this.label11.TabIndex = 1;
             this.label11.Text = "Срок обучения";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(1043, 88);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(69, 20);
+            this.label19.TabIndex = 1;
+            this.label19.Text = "Кафедра";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1046, 88);
+            this.label10.Location = new System.Drawing.Point(1439, 88);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(91, 20);
             this.label10.TabIndex = 1;
@@ -798,6 +748,95 @@ namespace kursovajaEF.Forms
             this.teacherIdCol3.ReadOnly = true;
             this.teacherIdCol3.Visible = false;
             // 
+            // fioCol
+            // 
+            this.fioCol.HeaderText = "ФИО";
+            this.fioCol.MinimumWidth = 6;
+            this.fioCol.Name = "fioCol";
+            this.fioCol.ReadOnly = true;
+            // 
+            // dobCol
+            // 
+            this.dobCol.HeaderText = "Дата рождения";
+            this.dobCol.MinimumWidth = 6;
+            this.dobCol.Name = "dobCol";
+            this.dobCol.ReadOnly = true;
+            // 
+            // titleCol
+            // 
+            this.titleCol.HeaderText = "Звание";
+            this.titleCol.MinimumWidth = 6;
+            this.titleCol.Name = "titleCol";
+            this.titleCol.ReadOnly = true;
+            this.titleCol.Visible = false;
+            // 
+            // posCol
+            // 
+            this.posCol.HeaderText = "Должность";
+            this.posCol.MinimumWidth = 6;
+            this.posCol.Name = "posCol";
+            this.posCol.ReadOnly = true;
+            this.posCol.Visible = false;
+            // 
+            // pedExCol
+            // 
+            this.pedExCol.HeaderText = "Педагогический стаж";
+            this.pedExCol.MinimumWidth = 6;
+            this.pedExCol.Name = "pedExCol";
+            this.pedExCol.ReadOnly = true;
+            this.pedExCol.Visible = false;
+            // 
+            // overExCol
+            // 
+            this.overExCol.HeaderText = "Общий стаж";
+            this.overExCol.MinimumWidth = 6;
+            this.overExCol.Name = "overExCol";
+            this.overExCol.ReadOnly = true;
+            this.overExCol.Visible = false;
+            // 
+            // degreeCol
+            // 
+            this.degreeCol.HeaderText = "Образование по диплому";
+            this.degreeCol.MinimumWidth = 6;
+            this.degreeCol.Name = "degreeCol";
+            this.degreeCol.ReadOnly = true;
+            this.degreeCol.Visible = false;
+            // 
+            // phoneCol
+            // 
+            this.phoneCol.HeaderText = "Номер телефона";
+            this.phoneCol.MinimumWidth = 6;
+            this.phoneCol.Name = "phoneCol";
+            this.phoneCol.ReadOnly = true;
+            // 
+            // emailCol
+            // 
+            this.emailCol.HeaderText = "email";
+            this.emailCol.MinimumWidth = 6;
+            this.emailCol.Name = "emailCol";
+            this.emailCol.ReadOnly = true;
+            // 
+            // chairNameCol
+            // 
+            this.chairNameCol.HeaderText = "Кафедра";
+            this.chairNameCol.MinimumWidth = 6;
+            this.chairNameCol.Name = "chairNameCol";
+            this.chairNameCol.ReadOnly = true;
+            // 
+            // teacherIdCol
+            // 
+            this.teacherIdCol.HeaderText = "Id преподавателя";
+            this.teacherIdCol.MinimumWidth = 6;
+            this.teacherIdCol.Name = "teacherIdCol";
+            this.teacherIdCol.ReadOnly = true;
+            // 
+            // chairIdCol
+            // 
+            this.chairIdCol.HeaderText = "id кафедры";
+            this.chairIdCol.MinimumWidth = 6;
+            this.chairIdCol.Name = "chairIdCol";
+            this.chairIdCol.ReadOnly = true;
+            // 
             // Form9
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -872,16 +911,6 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fioCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dobCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn posCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pedExCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn overExCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn degreeCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacherIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn disciplineIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn disCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn stdperCol;
@@ -899,5 +928,19 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupInfoIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn teacherIdCol3;
+        private System.Windows.Forms.TextBox chairName;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fioCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dobCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn titleCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn posCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pedExCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn overExCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn degreeCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn chairNameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacherIdCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn chairIdCol;
     }
 }

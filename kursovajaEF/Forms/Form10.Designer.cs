@@ -78,6 +78,10 @@ namespace kursovajaEF.Forms
             this.addGIBtn = new System.Windows.Forms.Button();
             this.addDisBtn2 = new System.Windows.Forms.Button();
             this.addGIBtn2 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.chair = new System.Windows.Forms.TextBox();
+            this.addChairBtn = new System.Windows.Forms.Button();
+            this.chairId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.disciplines)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.group_info)).BeginInit();
             this.SuspendLayout();
@@ -561,11 +565,53 @@ namespace kursovajaEF.Forms
             this.addGIBtn2.Visible = false;
             this.addGIBtn2.Click += new System.EventHandler(this.addGIBtn2_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(573, 166);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(91, 28);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "Кафедра";
+            // 
+            // chair
+            // 
+            this.chair.Location = new System.Drawing.Point(832, 171);
+            this.chair.Name = "chair";
+            this.chair.ReadOnly = true;
+            this.chair.Size = new System.Drawing.Size(341, 27);
+            this.chair.TabIndex = 2;
+            // 
+            // addChairBtn
+            // 
+            this.addChairBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addChairBtn.ForeColor = System.Drawing.Color.Green;
+            this.addChairBtn.Location = new System.Drawing.Point(670, 159);
+            this.addChairBtn.Name = "addChairBtn";
+            this.addChairBtn.Size = new System.Drawing.Size(46, 46);
+            this.addChairBtn.TabIndex = 22;
+            this.addChairBtn.Text = "+";
+            this.addChairBtn.UseVisualStyleBackColor = true;
+            this.addChairBtn.Click += new System.EventHandler(this.addChairBtn_Click);
+            // 
+            // chairId
+            // 
+            this.chairId.AutoSize = true;
+            this.chairId.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.chairId.Location = new System.Drawing.Point(1058, 9);
+            this.chairId.Name = "chairId";
+            this.chairId.Size = new System.Drawing.Size(17, 20);
+            this.chairId.TabIndex = 1;
+            this.chairId.Text = "0";
+            this.chairId.Visible = false;
+            // 
             // Form10
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1484, 553);
+            this.Controls.Add(this.addChairBtn);
             this.Controls.Add(this.addGIBtn2);
             this.Controls.Add(this.addDisBtn2);
             this.Controls.Add(this.addGIBtn);
@@ -574,6 +620,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.disciplines);
             this.Controls.Add(this.phone_num);
             this.Controls.Add(this.dob);
+            this.Controls.Add(this.chair);
             this.Controls.Add(this.email);
             this.Controls.Add(this.degree);
             this.Controls.Add(this.overEx);
@@ -583,6 +630,8 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.fio);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label11);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.chairId);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -656,5 +705,9 @@ namespace kursovajaEF.Forms
         public System.Windows.Forms.Button addGIBtn2;
         public System.Windows.Forms.Button addDisBtn;
         public System.Windows.Forms.Button addGIBtn;
+        private System.Windows.Forms.Label label14;
+        public System.Windows.Forms.TextBox chair;
+        public System.Windows.Forms.Button addChairBtn;
+        public System.Windows.Forms.Label chairId;
     }
 }

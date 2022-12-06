@@ -1,124 +1,162 @@
-info: 04.12.2022 20:28:30.480 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+info: 05.12.2022 13:21:34.999 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
       Entity Framework Core 5.0.10 initialized 'testDBContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL' with options: None
-dbug: 04.12.2022 20:28:30.660 RelationalEventId.MigrateUsingConnection[20400] (Microsoft.EntityFrameworkCore.Migrations) 
+dbug: 05.12.2022 13:21:35.022 RelationalEventId.MigrateUsingConnection[20400] (Microsoft.EntityFrameworkCore.Migrations) 
       Migrating using database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:30.707 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.029 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Opening connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:32.835 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.320 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Opened connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:32.840 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.321 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closing connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:32.857 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.324 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closed connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:32.928 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.330 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
       Creating DbCommand for 'ExecuteScalar'.
-dbug: 04.12.2022 20:28:32.944 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Created DbCommand for 'ExecuteScalar' (48ms).
-dbug: 04.12.2022 20:28:32.945 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.333 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (3ms).
+dbug: 05.12.2022 13:21:35.333 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Opening connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.094 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.363 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Opened connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.122 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.367 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
       Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
       SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');
-info: 04.12.2022 20:28:33.200 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (86ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+info: 05.12.2022 13:21:35.382 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
       SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');
-dbug: 04.12.2022 20:28:33.203 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.383 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closing connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.211 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.384 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closed connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.216 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.384 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Opening connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.377 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.409 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Opened connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.377 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.409 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closing connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.378 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.409 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closed connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.378 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.409 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
       Creating DbCommand for 'ExecuteScalar'.
-dbug: 04.12.2022 20:28:33.379 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.409 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
       Created DbCommand for 'ExecuteScalar' (0ms).
-dbug: 04.12.2022 20:28:33.379 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.409 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Opening connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.379 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.409 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Opened connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.379 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.409 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
       Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
       SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');
-info: 04.12.2022 20:28:33.384 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+info: 05.12.2022 13:21:35.410 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
       SELECT EXISTS (SELECT 1 FROM pg_catalog.pg_class c JOIN pg_catalog.pg_namespace n ON n.oid=c.relnamespace WHERE c.relname='__EFMigrationsHistory');
-dbug: 04.12.2022 20:28:33.384 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.410 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closing connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.384 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.410 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closed connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.424 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.415 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
       Creating DbCommand for 'ExecuteReader'.
-dbug: 04.12.2022 20:28:33.424 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.415 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
       Created DbCommand for 'ExecuteReader' (0ms).
-dbug: 04.12.2022 20:28:33.424 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.415 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Opening connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.425 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.416 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Opened connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.426 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.416 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
       Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
       SELECT "MigrationId", "ProductVersion"
       FROM "__EFMigrationsHistory"
       ORDER BY "MigrationId";
-info: 04.12.2022 20:28:33.435 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (9ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+info: 05.12.2022 13:21:35.417 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
       SELECT "MigrationId", "ProductVersion"
       FROM "__EFMigrationsHistory"
       ORDER BY "MigrationId";
-dbug: 04.12.2022 20:28:33.454 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.420 RelationalEventId.DataReaderDisposing[20300] (Microsoft.EntityFrameworkCore.Database.Command) 
       A data reader was disposed.
-dbug: 04.12.2022 20:28:33.454 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.420 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closing connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.455 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.420 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closed connection to database 'testDB' on server 'tcp://localhost:5432'.
-info: 04.12.2022 20:28:33.537 RelationalEventId.MigrationApplying[20402] (Microsoft.EntityFrameworkCore.Migrations) 
-      Applying migration '20221204172706_ListenerCategory column max length changed to 30'.
-dbug: 04.12.2022 20:28:33.871 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+info: 05.12.2022 13:21:35.429 RelationalEventId.MigrationApplying[20402] (Microsoft.EntityFrameworkCore.Migrations) 
+      Applying migration '20221205102045_New table Chair added. New connection Chair(parent)-Teacher(child)'.
+dbug: 05.12.2022 13:21:35.465 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Opening connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.871 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.465 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Opened connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.880 RelationalEventId.TransactionStarting[20209] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+dbug: 05.12.2022 13:21:35.466 RelationalEventId.TransactionStarting[20209] (Microsoft.EntityFrameworkCore.Database.Transaction) 
       Beginning transaction with isolation level 'Unspecified'.
-dbug: 04.12.2022 20:28:33.895 RelationalEventId.TransactionStarted[20200] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+dbug: 05.12.2022 13:21:35.469 RelationalEventId.TransactionStarted[20200] (Microsoft.EntityFrameworkCore.Database.Transaction) 
       Began transaction with isolation level 'ReadCommitted'.
-dbug: 04.12.2022 20:28:33.901 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.469 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
       Creating DbCommand for 'ExecuteNonQuery'.
-dbug: 04.12.2022 20:28:33.901 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.469 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
       Created DbCommand for 'ExecuteNonQuery' (0ms).
-dbug: 04.12.2022 20:28:33.903 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.470 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
       Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
-      ALTER TABLE listeners ALTER COLUMN listener_category TYPE character varying(30);
-info: 04.12.2022 20:28:33.926 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (22ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      ALTER TABLE listeners ALTER COLUMN listener_category TYPE character varying(30);
-dbug: 04.12.2022 20:28:33.926 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      ALTER TABLE teachers ADD chair_id integer NULL;
+info: 05.12.2022 13:21:35.473 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (4ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE teachers ADD chair_id integer NULL;
+dbug: 05.12.2022 13:21:35.473 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
       Creating DbCommand for 'ExecuteNonQuery'.
-dbug: 04.12.2022 20:28:33.927 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.473 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
       Created DbCommand for 'ExecuteNonQuery' (0ms).
-dbug: 04.12.2022 20:28:33.928 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+dbug: 05.12.2022 13:21:35.474 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
       Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
-      INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
-      VALUES ('20221204172706_ListenerCategory column max length changed to 30', '5.0.10');
-info: 04.12.2022 20:28:33.930 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      CREATE TABLE chairs (
+          chair_id integer GENERATED BY DEFAULT AS IDENTITY,
+          chair_name character varying(65) NULL,
+          CONSTRAINT "PK_chairs" PRIMARY KEY (chair_id)
+      );
+info: 05.12.2022 13:21:35.528 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (54ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE chairs (
+          chair_id integer GENERATED BY DEFAULT AS IDENTITY,
+          chair_name character varying(65) NULL,
+          CONSTRAINT "PK_chairs" PRIMARY KEY (chair_id)
+      );
+dbug: 05.12.2022 13:21:35.528 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 05.12.2022 13:21:35.528 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 05.12.2022 13:21:35.528 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_teachers_chair_id" ON teachers (chair_id);
+info: 05.12.2022 13:21:35.636 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (109ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX "IX_teachers_chair_id" ON teachers (chair_id);
+dbug: 05.12.2022 13:21:35.636 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 05.12.2022 13:21:35.636 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 05.12.2022 13:21:35.636 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE teachers ADD CONSTRAINT chair_id_fkey FOREIGN KEY (chair_id) REFERENCES chairs (chair_id) ON DELETE CASCADE;
+info: 05.12.2022 13:21:35.640 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
       Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE teachers ADD CONSTRAINT chair_id_fkey FOREIGN KEY (chair_id) REFERENCES chairs (chair_id) ON DELETE CASCADE;
+dbug: 05.12.2022 13:21:35.640 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteNonQuery'.
+dbug: 05.12.2022 13:21:35.640 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteNonQuery' (0ms).
+dbug: 05.12.2022 13:21:35.640 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
       INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
-      VALUES ('20221204172706_ListenerCategory column max length changed to 30', '5.0.10');
-dbug: 04.12.2022 20:28:33.937 RelationalEventId.TransactionCommitting[20210] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+      VALUES ('20221205102045_New table Chair added. New connection Chair(parent)-Teacher(child)', '5.0.10');
+info: 05.12.2022 13:21:35.640 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (0ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+      VALUES ('20221205102045_New table Chair added. New connection Chair(parent)-Teacher(child)', '5.0.10');
+dbug: 05.12.2022 13:21:35.641 RelationalEventId.TransactionCommitting[20210] (Microsoft.EntityFrameworkCore.Database.Transaction) 
       Committing transaction.
-dbug: 04.12.2022 20:28:33.953 RelationalEventId.TransactionCommitted[20202] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+dbug: 05.12.2022 13:21:35.644 RelationalEventId.TransactionCommitted[20202] (Microsoft.EntityFrameworkCore.Database.Transaction) 
       Committed transaction.
-dbug: 04.12.2022 20:28:33.960 RelationalEventId.TransactionDisposed[20204] (Microsoft.EntityFrameworkCore.Database.Transaction) 
+dbug: 05.12.2022 13:21:35.645 RelationalEventId.TransactionDisposed[20204] (Microsoft.EntityFrameworkCore.Database.Transaction) 
       Disposing transaction.
-dbug: 04.12.2022 20:28:33.960 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.645 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closing connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.960 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+dbug: 05.12.2022 13:21:35.645 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closed connection to database 'testDB' on server 'tcp://localhost:5432'.
-dbug: 04.12.2022 20:28:33.966 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
+dbug: 05.12.2022 13:21:35.646 CoreEventId.ContextDisposed[10407] (Microsoft.EntityFrameworkCore.Infrastructure) 
       'testDBContext' disposed.

@@ -30,8 +30,7 @@ namespace kursovajaEF.Forms
                 pedEx.Text.Length == 0 || 
                 overEx.Text.Length == 0 || 
                 degree.Text.Length == 0 || 
-                phone_num.Text.Length == 0 || 
-                email.Text.Length == 0)
+                chair.Text.Length == 0)
             {
                 MessageBox.Show("Строка не может быть пустой", "Ошибка");
                 return;
@@ -48,7 +47,8 @@ namespace kursovajaEF.Forms
                     OverallExperience = overEx.Text,
                     Degree = degree.Text,
                     PhoneNum = decimal.Parse(phone_num.Text),
-                    Email = email.Text
+                    Email = email.Text,
+                    ChairId = int.Parse(chairId.Text)
                 };
 
                 db.Teachers.Add(t);
@@ -100,8 +100,7 @@ namespace kursovajaEF.Forms
                 pedEx.Text.Length == 0 || 
                 overEx.Text.Length == 0 ||
                 degree.Text.Length == 0 || 
-                phone_num.Text.Length == 0 || 
-                email.Text.Length == 0)
+                chair.Text.Length == 0)
             {
                 MessageBox.Show("Строка не может быть пустой", "Ошибка");
                 return;
@@ -119,6 +118,7 @@ namespace kursovajaEF.Forms
                 t.Degree = degree.Text;
                 t.PhoneNum = decimal.Parse(phone_num.Text);
                 t.Email = email.Text;
+                t.ChairId = int.Parse(chairId.Text);
 
                 db.Update(t);
                 db.SaveChanges();
@@ -138,6 +138,8 @@ namespace kursovajaEF.Forms
             degree.Text = "";
             phone_num.Text = "";
             email.Text = "";
+            chair.Text = "";
+            chairId.Text = "0";
         }
 
         private void fio_TextChanged(object sender, EventArgs e)
@@ -382,6 +384,18 @@ namespace kursovajaEF.Forms
                     }
                 }
                 group_info.Rows.AddRange(f.gi_rows);
+            }
+        }
+
+        private void addChairBtn_Click(object sender, EventArgs e)
+        {
+            Form17 f = new();
+            f.chooseСBtn.Visible = true;
+            f.ShowDialog();
+            if (f.chosenChair != "0")
+            {
+                chair.Text = f.chosenChair;
+                chairId.Text = f.chosenChairId;
             }
         }
     }

@@ -31,7 +31,7 @@ namespace kursovajaEF.Forms
             using (testDBContext db = new())
             {
                 int it = 0;
-                var ts = db.Teachers.AsNoTracking();
+                var ts = db.Teachers.Include(i => i.Chair).AsNoTracking();
                 var ds = db.DisciplinesTeachers.Include(i => i.Discipline).AsNoTracking();
                 var gis = db.GroupInfoTeachers.Include(i => i.GroupInfo).ThenInclude(i => i.Group).AsNoTracking();
 
@@ -46,7 +46,9 @@ namespace kursovajaEF.Forms
                         t.Degree,
                         t.PhoneNum,
                         t.Email,
-                        t.TeacherId
+                        t.Chair == null ? "": t.Chair.ChairName,
+                        t.TeacherId,
+                        t.ChairId == null ? "": t.ChairId
                         );
 
                 foreach (var d in ds.ToList())
@@ -90,7 +92,7 @@ namespace kursovajaEF.Forms
             if (form.label10.Text != "0") {
                 teachers.Rows.Add(form.fio.Text, form.dob.Value.ToString().Remove(10),
                     form.title.Text, form.position.Text, form.pedEx.Text, form.overEx.Text, form.degree.Text,
-                    form.phone_num.Text, form.email.Text, form.label10.Text);
+                    form.phone_num.Text, form.email.Text, form.chair.Text, form.label10.Text, form.chairId.Text);
                 for (int i = 0; i < teachers.RowCount - 1; i++)
                     teachers.Rows[i].Selected = false;
 
@@ -112,6 +114,7 @@ namespace kursovajaEF.Forms
                 fm.addGIBtn.Visible = false;
                 fm.addGIBtn2.Visible = true;
                 fm.label11.Text = selectedRow.Cells["teacherIdCol"].Value.ToString();
+                fm.chairId.Text = selectedRow.Cells["chairIdCol"].Value.ToString();
                 fm.fio.Text = selectedRow.Cells["fioCol"].Value.ToString();
                 fm.dob.Text = selectedRow.Cells["dobCol"].Value.ToString();
                 fm.title.Text = selectedRow.Cells["titleCol"].Value.ToString();
@@ -121,6 +124,7 @@ namespace kursovajaEF.Forms
                 fm.degree.Text = selectedRow.Cells["degreeCol"].Value.ToString();
                 fm.phone_num.Text = selectedRow.Cells["phoneCol"].Value.ToString();
                 fm.email.Text = selectedRow.Cells["emailCol"].Value.ToString();
+                fm.chair.Text = selectedRow.Cells["chairNameCol"].Value.ToString();
 
                 foreach (DataGridViewRow row in disciplines.Rows)
                     if (row.Cells["teacherIdCol2"].Value.ToString() == selectedRow.Cells["teacherIdCol"].Value.ToString())
@@ -211,7 +215,8 @@ namespace kursovajaEF.Forms
                     EF.Functions.Like(w.OverallExperience, $"%{txt}%") ||
                     EF.Functions.Like(w.Degree, $"%{txt}%") ||
                     EF.Functions.Like(w.PhoneNum.ToString(), $"%{txt}%") ||
-                    EF.Functions.Like(w.Email, $"%{txt}%"));
+                    EF.Functions.Like(w.Email, $"%{txt}%") ||
+                    EF.Functions.Like(w.Chair.ChairName, $"%{txt}%"));
 
                     teachers.Rows.Clear();
 
@@ -227,7 +232,9 @@ namespace kursovajaEF.Forms
                             elem.Degree,
                             elem.PhoneNum,
                             elem.Email,
-                            elem.TeacherId
+                            elem.Chair.ChairName,
+                            elem.TeacherId,
+                            elem.ChairId
                             );
                     }
                 }
@@ -258,13 +265,13 @@ namespace kursovajaEF.Forms
                 DataGridViewRow selectedRow = teachers.SelectedCells[0].OwningRow;
                 bool flag = false;
                 SuspendLayout();
-                for (int i = 0; i < 9; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = selectedRow.Cells[i].Value.ToString();
                 }
 
-                for (int i = 9; i < 18; i++)
+                for (int i = 10; i < 19; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = string.Empty;
@@ -311,14 +318,14 @@ namespace kursovajaEF.Forms
                 DataGridViewRow selectedRow = disciplines.SelectedCells[0].OwningRow;
                 currentCellDiscipline = disciplines.SelectedCells[0];
 
-                for (int i = 9; i < 12; i++)
+                for (int i = 10; i < 13; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = selectedRow.Cells[index].Value.ToString();
                     index++;
                 }
 
-                for (int i = 12; i < 18; i++)
+                for (int i = 13; i < 19; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = string.Empty;
@@ -356,7 +363,7 @@ namespace kursovajaEF.Forms
                 DataGridViewRow selectedRow = group_info.SelectedCells[0].OwningRow;
                 currentCellGI = group_info.SelectedCells[0];
 
-                for (int i = 12; i < 18; i++)
+                for (int i = 13; i < 19; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = selectedRow.Cells[index].Value.ToString();

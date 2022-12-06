@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading.Tasks;
 using kursovajaEF.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -42,6 +41,7 @@ namespace kursovajaEF
         public virtual DbSet<ListenerWish> ListenerWishes { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Timetable> Timetables { get; set; }
+        public virtual DbSet<Chair> Chairs { get; set; }
 
         public override void Dispose()
         {
@@ -562,6 +562,14 @@ namespace kursovajaEF
                 entity.Property(e => e.Title)
                     .HasMaxLength(40)
                     .HasColumnName("title");
+
+                entity.Property(e => e.ChairId).HasColumnName("chair_id");
+
+                entity.HasOne(t => t.Chair)
+                    .WithMany(c => c.Teachers)
+                    .HasForeignKey(t => t.ChairId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("chair_id_fkey");
             });
 
             modelBuilder.Entity<Timetable>(entity =>
@@ -584,6 +592,19 @@ namespace kursovajaEF
                 entity.Property(e => e.Weekday)
                     .HasMaxLength(11)
                     .HasColumnName("weekday");
+            });
+
+            modelBuilder.Entity<Chair>(entity =>
+            {
+                entity.ToTable("chairs");
+
+                entity.HasKey(key => key.ChairId);
+
+                entity.Property(e => e.ChairId).HasColumnName("chair_id");
+
+                entity.Property(e => e.ChairName)
+                    .HasMaxLength(65)
+                    .HasColumnName("chair_name");
             });
 
             OnModelCreatingPartial(modelBuilder);
