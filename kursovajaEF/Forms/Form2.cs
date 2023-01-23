@@ -581,7 +581,7 @@ namespace kursovajaEF.Forms
                     if (row.Cells["contractInfoIdCol2"].Value.ToString() == selectedRow.Cells["contractInfoIdCol"].Value.ToString())
                         row.Visible = true;
                     else
-                        row.Visible = true;
+                        row.Visible = false;
                 }
 
                 panel3.Controls.Clear();
