@@ -27,18 +27,38 @@ namespace kursovajaEF.Forms
         {
             using (testDBContext db = new()) 
             {
-                foreach (DisciplinesTeacher dt in db.DisciplinesTeachers.AsNoTracking().ToList())
+                foreach (var dt in db.DisciplinesTeachers.
+                    Include(i => i.Discipline).
+                    Include(i => i.Teacher).
+                    Select(s => new
+                    {
+                        DisciplineName = s.Discipline.DisciplineName,
+                        TeacherFio = s.Teacher.Fio
+                    }).
+                    AsNoTracking().ToList())
                     disciplines_teachers.Rows.Add(
-                        dt.DisciplineId,
-                        dt.TeacherId
+                        dt.DisciplineName,
+                        dt.TeacherFio
                         );
                 if (disciplines_teachers.RowCount != 0)
                     disciplines_teachers.Rows[0].Selected = true;
 
-                foreach (DisciplinesTimetable dtt in db.DisciplinesTimetables.AsNoTracking().ToList())
+                foreach (var dtt in db.DisciplinesTimetables.
+                    Include(i => i.Discipline).
+                    Include(i => i.Tt).
+                    Select(s => new
+                    {
+                        DisciplineName = s.Discipline.DisciplineName,
+                        Weekday = s.Tt.Weekday,
+                        StartTime = s.Tt.StartTime,
+                        EndTime = s.Tt.EndTime,
+                    }).
+                    AsNoTracking().ToList())
                     disciplines_timetable.Rows.Add(
-                        dtt.DisciplineId,
-                        dtt.TtId
+                        dtt.DisciplineName,
+                        dtt.Weekday,
+                        dtt.StartTime,
+                        dtt.EndTime
                         );
                 if (disciplines_timetable.RowCount != 0)
                     disciplines_timetable.Rows[0].Selected = true;

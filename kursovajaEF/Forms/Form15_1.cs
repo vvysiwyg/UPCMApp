@@ -27,26 +27,54 @@ namespace kursovajaEF.Forms
         {
             using (testDBContext db = new())
             {
-                foreach (GroupsTeacher gt in db.GroupsTeachers.AsNoTracking().ToList())
+                foreach (var gt in db.GroupsTeachers.
+                    Include(i => i.Group).
+                    Include(i => i.Teacher).
+                    Select(s => new
+                    { 
+                        GroupNum = s.Group.GroupNum,
+                        TeacherFio = s.Teacher.Fio
+                    }).
+                    AsNoTracking().ToList())
                     groups_teachers.Rows.Add(
-                        gt.GroupId,
-                        gt.TeacherId
+                        gt.GroupNum,
+                        gt.TeacherFio
                         );
                 if (groups_teachers.RowCount != 0)
                     groups_teachers.Rows[0].Selected = true;
 
-                foreach (GroupsTimetable gtt in db.GroupsTimetables.AsNoTracking().ToList())
+                foreach (var gtt in db.GroupsTimetables.
+                    Include(i => i.Group).
+                    Include(i => i.Tt).
+                    Select(s => new
+                    {
+                        GroupNum = s.Group.GroupNum,
+                        Weekday = s.Tt.Weekday,
+                        StartTime = s.Tt.StartTime,
+                        EndTime = s.Tt.EndTime
+                    }).
+                    AsNoTracking().ToList())
                     groups_timetable.Rows.Add(
-                        gtt.GroupId,
-                        gtt.TtId
+                        gtt.GroupNum,
+                        gtt.Weekday,
+                        gtt.StartTime,
+                        gtt.EndTime
                         );
                 if (groups_timetable.RowCount != 0)
                     groups_timetable.Rows[0].Selected = true;
 
-                foreach (GroupsListener gl in db.GroupsListeners.AsNoTracking().ToList())
+                foreach (var gl in db.GroupsListeners.
+                    Include(i => i.Group).
+                    Include(i => i.Listener).
+                    Select(s => new
+                    {
+                        GroupNum = s.Group.GroupNum,
+                        ListenerFio = $"{s.Listener.Midname}  {s.Listener.Firstname}  {s.Listener.Lastname}"
+                    }).
+                    AsNoTracking().ToList())
                     groups_listeners.Rows.Add(
-                        gl.ListenerId,
-                        gl.GroupId
+                        gl.GroupNum,
+                        gl.ListenerFio
                         );
                 if (groups_listeners.RowCount != 0)
                     groups_listeners.Rows[0].Selected = true;

@@ -30,11 +30,15 @@ namespace kursovajaEF.Forms
         private void InitializeComponent()
         {
             this.groups_timetable = new System.Windows.Forms.DataGridView();
-            this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ttIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.disciplines_timetable = new System.Windows.Forms.DataGridView();
-            this.disciplineIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ttIdCol3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disciplineCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weekdayCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTimeCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endTimeCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groups_timetable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.disciplines_timetable)).BeginInit();
             this.SuspendLayout();
@@ -47,30 +51,18 @@ namespace kursovajaEF.Forms
             this.groups_timetable.BackgroundColor = System.Drawing.Color.White;
             this.groups_timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.groups_timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.groupIdCol,
-            this.ttIdCol2});
-            this.groups_timetable.Location = new System.Drawing.Point(553, 33);
+            this.groupNumCol,
+            this.weekdayCol,
+            this.startTimeCol,
+            this.endTimeCol});
+            this.groups_timetable.Location = new System.Drawing.Point(667, 33);
             this.groups_timetable.Name = "groups_timetable";
             this.groups_timetable.ReadOnly = true;
             this.groups_timetable.RowHeadersWidth = 51;
             this.groups_timetable.RowTemplate.Height = 29;
-            this.groups_timetable.Size = new System.Drawing.Size(422, 413);
+            this.groups_timetable.Size = new System.Drawing.Size(570, 413);
             this.groups_timetable.TabIndex = 0;
             this.groups_timetable.Sorted += new System.EventHandler(this.dataGridView_Sorted);
-            // 
-            // groupIdCol
-            // 
-            this.groupIdCol.HeaderText = "Id группы";
-            this.groupIdCol.MinimumWidth = 6;
-            this.groupIdCol.Name = "groupIdCol";
-            this.groupIdCol.ReadOnly = true;
-            // 
-            // ttIdCol2
-            // 
-            this.ttIdCol2.HeaderText = "Id расписания";
-            this.ttIdCol2.MinimumWidth = 6;
-            this.ttIdCol2.Name = "ttIdCol2";
-            this.ttIdCol2.ReadOnly = true;
             // 
             // disciplines_timetable
             // 
@@ -80,36 +72,80 @@ namespace kursovajaEF.Forms
             this.disciplines_timetable.BackgroundColor = System.Drawing.Color.White;
             this.disciplines_timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.disciplines_timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.disciplineIdCol,
-            this.ttIdCol3});
+            this.disciplineCol,
+            this.weekdayCol2,
+            this.startTimeCol2,
+            this.endTimeCol2});
             this.disciplines_timetable.Location = new System.Drawing.Point(12, 33);
             this.disciplines_timetable.Name = "disciplines_timetable";
             this.disciplines_timetable.ReadOnly = true;
             this.disciplines_timetable.RowHeadersWidth = 51;
             this.disciplines_timetable.RowTemplate.Height = 29;
-            this.disciplines_timetable.Size = new System.Drawing.Size(422, 413);
+            this.disciplines_timetable.Size = new System.Drawing.Size(570, 413);
             this.disciplines_timetable.TabIndex = 0;
             this.disciplines_timetable.Sorted += new System.EventHandler(this.dataGridView_Sorted);
             // 
-            // disciplineIdCol
+            // groupNumCol
             // 
-            this.disciplineIdCol.HeaderText = "Id дисциплины";
-            this.disciplineIdCol.MinimumWidth = 6;
-            this.disciplineIdCol.Name = "disciplineIdCol";
-            this.disciplineIdCol.ReadOnly = true;
+            this.groupNumCol.HeaderText = "Номер группы";
+            this.groupNumCol.MinimumWidth = 6;
+            this.groupNumCol.Name = "groupNumCol";
+            this.groupNumCol.ReadOnly = true;
             // 
-            // ttIdCol3
+            // weekdayCol
             // 
-            this.ttIdCol3.HeaderText = "Id расписания";
-            this.ttIdCol3.MinimumWidth = 6;
-            this.ttIdCol3.Name = "ttIdCol3";
-            this.ttIdCol3.ReadOnly = true;
+            this.weekdayCol.HeaderText = "День недели";
+            this.weekdayCol.MinimumWidth = 6;
+            this.weekdayCol.Name = "weekdayCol";
+            this.weekdayCol.ReadOnly = true;
+            // 
+            // startTimeCol
+            // 
+            this.startTimeCol.HeaderText = "Время начала";
+            this.startTimeCol.MinimumWidth = 6;
+            this.startTimeCol.Name = "startTimeCol";
+            this.startTimeCol.ReadOnly = true;
+            // 
+            // endTimeCol
+            // 
+            this.endTimeCol.HeaderText = "Время окончания";
+            this.endTimeCol.MinimumWidth = 6;
+            this.endTimeCol.Name = "endTimeCol";
+            this.endTimeCol.ReadOnly = true;
+            // 
+            // disciplineCol
+            // 
+            this.disciplineCol.HeaderText = "Дисциплина";
+            this.disciplineCol.MinimumWidth = 6;
+            this.disciplineCol.Name = "disciplineCol";
+            this.disciplineCol.ReadOnly = true;
+            // 
+            // weekdayCol2
+            // 
+            this.weekdayCol2.HeaderText = "День недели";
+            this.weekdayCol2.MinimumWidth = 6;
+            this.weekdayCol2.Name = "weekdayCol2";
+            this.weekdayCol2.ReadOnly = true;
+            // 
+            // startTimeCol2
+            // 
+            this.startTimeCol2.HeaderText = "Время начала";
+            this.startTimeCol2.MinimumWidth = 6;
+            this.startTimeCol2.Name = "startTimeCol2";
+            this.startTimeCol2.ReadOnly = true;
+            // 
+            // endTimeCol2
+            // 
+            this.endTimeCol2.HeaderText = "Время окончания";
+            this.endTimeCol2.MinimumWidth = 6;
+            this.endTimeCol2.Name = "endTimeCol2";
+            this.endTimeCol2.ReadOnly = true;
             // 
             // Form11_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(987, 458);
+            this.ClientSize = new System.Drawing.Size(1249, 474);
             this.Controls.Add(this.disciplines_timetable);
             this.Controls.Add(this.groups_timetable);
             this.Name = "Form11_1";
@@ -125,9 +161,13 @@ namespace kursovajaEF.Forms
         #endregion
         private System.Windows.Forms.DataGridView groups_timetable;
         private System.Windows.Forms.DataGridView disciplines_timetable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn disciplineIdCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ttIdCol3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn groupIdCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ttIdCol2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn groupNumCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn weekdayCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startTimeCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endTimeCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn disciplineCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn weekdayCol2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startTimeCol2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endTimeCol2;
     }
 }
