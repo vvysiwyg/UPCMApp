@@ -57,11 +57,11 @@ namespace kursovajaEF.Forms
             this.sexCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listenerIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.matriculationCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schoolGradeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenerCategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.contracts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listeners)).BeginInit();
             this.SuspendLayout();
@@ -286,11 +286,11 @@ namespace kursovajaEF.Forms
             this.sexCol,
             this.listenerIdCol,
             this.matriculationCol,
-            this.contractIdCol2,
             this.groupIdCol,
             this.phoneNumCol,
             this.schoolGradeCol,
-            this.emailCol});
+            this.emailCol,
+            this.listenerCategoryCol});
             this.listeners.Location = new System.Drawing.Point(12, 391);
             this.listeners.Name = "listeners";
             this.listeners.ReadOnly = true;
@@ -350,14 +350,6 @@ namespace kursovajaEF.Forms
             this.matriculationCol.Name = "matriculationCol";
             this.matriculationCol.ReadOnly = true;
             // 
-            // contractIdCol2
-            // 
-            this.contractIdCol2.HeaderText = "Id контракта";
-            this.contractIdCol2.MinimumWidth = 6;
-            this.contractIdCol2.Name = "contractIdCol2";
-            this.contractIdCol2.ReadOnly = true;
-            this.contractIdCol2.Visible = false;
-            // 
             // groupIdCol
             // 
             this.groupIdCol.HeaderText = "Id группы";
@@ -386,6 +378,13 @@ namespace kursovajaEF.Forms
             this.emailCol.MinimumWidth = 6;
             this.emailCol.Name = "emailCol";
             this.emailCol.ReadOnly = true;
+            // 
+            // listenerCategoryCol
+            // 
+            this.listenerCategoryCol.HeaderText = "Категория слушателя";
+            this.listenerCategoryCol.MinimumWidth = 6;
+            this.listenerCategoryCol.Name = "listenerCategoryCol";
+            this.listenerCategoryCol.ReadOnly = true;
             // 
             // Form13
             // 
@@ -441,10 +440,10 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn sexCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn listenerIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn matriculationCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contractIdCol2;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn schoolGradeCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn listenerCategoryCol;
     }
 }

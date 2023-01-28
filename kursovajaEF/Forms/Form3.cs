@@ -37,12 +37,12 @@ namespace kursovajaEF.Forms
                     Sex = s.Sex, 
                     Id = s.Id, 
                     Matriculation = s.Matriculation, 
-                    ContractId = s.ContractId, 
                     PhoneNum = s.PhoneNum, 
                     SchoolGrade = s.SchoolGrade, 
-                    Email = s.Email}))
-                    dataGridView1.Rows.Add(l.Firstname, l.Midname, l.Lastname, l.Yob, l.Sex, l.Id, l.Matriculation, l.ContractId,
-                        l.PhoneNum, l.SchoolGrade, l.Email);
+                    Email = s.Email,
+                    ListenerCategory = s.ListenerCategory}))
+                    dataGridView1.Rows.Add(l.Firstname, l.Midname, l.Lastname, l.Yob, l.Sex, l.Id, l.Matriculation,
+                        l.PhoneNum, l.SchoolGrade, l.Email, l.ListenerCategory);
             }
         }
 
@@ -231,7 +231,8 @@ namespace kursovajaEF.Forms
                     EF.Functions.Like(w.Matriculation, $"%{txt}%") ||
                     EF.Functions.Like(w.PhoneNum.ToString(), $"{txt}%") ||
                     EF.Functions.Like(w.SchoolGrade, $"%{txt}%") ||
-                    EF.Functions.Like(w.Email, $"%{txt}%"));
+                    EF.Functions.Like(w.Email, $"%{txt}%") ||
+                    EF.Functions.Like(w.ListenerCategory, $"%{txt}%"));
 
                     dataGridView1.Rows.Clear();
 
@@ -245,10 +246,10 @@ namespace kursovajaEF.Forms
                             elem.Sex,
                             elem.Id,
                             elem.Matriculation,
-                            elem.ContractId,
                             elem.PhoneNum,
                             elem.SchoolGrade,
-                            elem.Email
+                            elem.Email,
+                            elem.ListenerCategory
                             );
                     }
                 }

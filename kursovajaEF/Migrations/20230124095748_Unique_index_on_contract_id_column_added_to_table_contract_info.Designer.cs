@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using kursovajaEF;
@@ -9,9 +10,10 @@ using kursovajaEF;
 namespace kursovajaEF.Migrations
 {
     [DbContext(typeof(testDBContext))]
-    partial class testDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230124095748_Unique_index_on_contract_id_column_added_to_table_contract_info")]
+    partial class Unique_index_on_contract_id_column_added_to_table_contract_info
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

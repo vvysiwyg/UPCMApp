@@ -63,11 +63,11 @@ namespace kursovajaEF.Forms
                         l.Sex,
                         l.Id,
                         l.Matriculation,
-                        l.ContractId,
                         "",
                         l.PhoneNum,
                         l.SchoolGrade,
-                        l.Email
+                        l.Email,
+                        l.ListenerCategory
                         );
                 if (listeners.RowCount != 0)
                     listeners.Rows[0].Selected = true;

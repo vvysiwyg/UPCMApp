@@ -53,17 +53,6 @@ namespace kursovajaEF.Forms
             this.emailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teacherIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listeners = new System.Windows.Forms.DataGridView();
-            this.firstnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.midnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yobCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sexCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listenerIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.matriculationCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.schoolGradeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timetable = new System.Windows.Forms.DataGridView();
             this.ttIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +67,17 @@ namespace kursovajaEF.Forms
             this.showLinkBtn = new System.Windows.Forms.Button();
             this.linkBtn = new System.Windows.Forms.Button();
             this.chooseGIBtn = new System.Windows.Forms.Button();
+            this.firstnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.midnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yobCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sexCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenerIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.matriculationCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.schoolGradeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenerCategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groups)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listeners)).BeginInit();
@@ -113,6 +113,7 @@ namespace kursovajaEF.Forms
             this.groups.RowTemplate.Height = 29;
             this.groups.Size = new System.Drawing.Size(1120, 195);
             this.groups.TabIndex = 0;
+            this.groups.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.groups_CellDoubleClick);
             this.groups.Sorted += new System.EventHandler(this.dataGridView_Sorted);
             // 
             // groupNumCol
@@ -332,10 +333,10 @@ namespace kursovajaEF.Forms
             this.sexCol,
             this.listenerIdCol,
             this.matriculationCol,
-            this.contractIdCol,
             this.phoneNumCol,
             this.schoolGradeCol,
-            this.dataGridViewTextBoxColumn1});
+            this.dataGridViewTextBoxColumn1,
+            this.listenerCategoryCol});
             this.listeners.Location = new System.Drawing.Point(15, 325);
             this.listeners.Name = "listeners";
             this.listeners.ReadOnly = true;
@@ -345,85 +346,6 @@ namespace kursovajaEF.Forms
             this.listeners.TabIndex = 0;
             this.listeners.Visible = false;
             this.listeners.Sorted += new System.EventHandler(this.dataGridView_Sorted);
-            // 
-            // firstnameCol
-            // 
-            this.firstnameCol.HeaderText = "Имя";
-            this.firstnameCol.MinimumWidth = 6;
-            this.firstnameCol.Name = "firstnameCol";
-            this.firstnameCol.ReadOnly = true;
-            // 
-            // midnameCol
-            // 
-            this.midnameCol.HeaderText = "Фамилия";
-            this.midnameCol.MinimumWidth = 6;
-            this.midnameCol.Name = "midnameCol";
-            this.midnameCol.ReadOnly = true;
-            // 
-            // lastnameCol
-            // 
-            this.lastnameCol.HeaderText = "Отчество";
-            this.lastnameCol.MinimumWidth = 6;
-            this.lastnameCol.Name = "lastnameCol";
-            this.lastnameCol.ReadOnly = true;
-            // 
-            // yobCol
-            // 
-            this.yobCol.HeaderText = "Дата рождения";
-            this.yobCol.MinimumWidth = 6;
-            this.yobCol.Name = "yobCol";
-            this.yobCol.ReadOnly = true;
-            // 
-            // sexCol
-            // 
-            this.sexCol.HeaderText = "Пол";
-            this.sexCol.MinimumWidth = 6;
-            this.sexCol.Name = "sexCol";
-            this.sexCol.ReadOnly = true;
-            // 
-            // listenerIdCol
-            // 
-            this.listenerIdCol.HeaderText = "Id слушателя";
-            this.listenerIdCol.MinimumWidth = 6;
-            this.listenerIdCol.Name = "listenerIdCol";
-            this.listenerIdCol.ReadOnly = true;
-            this.listenerIdCol.Visible = false;
-            // 
-            // matriculationCol
-            // 
-            this.matriculationCol.HeaderText = "Зачисление";
-            this.matriculationCol.MinimumWidth = 6;
-            this.matriculationCol.Name = "matriculationCol";
-            this.matriculationCol.ReadOnly = true;
-            // 
-            // contractIdCol
-            // 
-            this.contractIdCol.HeaderText = "Id контракта";
-            this.contractIdCol.MinimumWidth = 6;
-            this.contractIdCol.Name = "contractIdCol";
-            this.contractIdCol.ReadOnly = true;
-            this.contractIdCol.Visible = false;
-            // 
-            // phoneNumCol
-            // 
-            this.phoneNumCol.HeaderText = "Номер телефона";
-            this.phoneNumCol.MinimumWidth = 6;
-            this.phoneNumCol.Name = "phoneNumCol";
-            this.phoneNumCol.ReadOnly = true;
-            // 
-            // schoolGradeCol
-            // 
-            this.schoolGradeCol.HeaderText = "Класс";
-            this.schoolGradeCol.MinimumWidth = 6;
-            this.schoolGradeCol.Name = "schoolGradeCol";
-            this.schoolGradeCol.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "email";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // timetable
             // 
@@ -585,6 +507,84 @@ namespace kursovajaEF.Forms
             this.chooseGIBtn.Visible = false;
             this.chooseGIBtn.Click += new System.EventHandler(this.chooseGIBtn_Click);
             // 
+            // firstnameCol
+            // 
+            this.firstnameCol.HeaderText = "Имя";
+            this.firstnameCol.MinimumWidth = 6;
+            this.firstnameCol.Name = "firstnameCol";
+            this.firstnameCol.ReadOnly = true;
+            // 
+            // midnameCol
+            // 
+            this.midnameCol.HeaderText = "Фамилия";
+            this.midnameCol.MinimumWidth = 6;
+            this.midnameCol.Name = "midnameCol";
+            this.midnameCol.ReadOnly = true;
+            // 
+            // lastnameCol
+            // 
+            this.lastnameCol.HeaderText = "Отчество";
+            this.lastnameCol.MinimumWidth = 6;
+            this.lastnameCol.Name = "lastnameCol";
+            this.lastnameCol.ReadOnly = true;
+            // 
+            // yobCol
+            // 
+            this.yobCol.HeaderText = "Дата рождения";
+            this.yobCol.MinimumWidth = 6;
+            this.yobCol.Name = "yobCol";
+            this.yobCol.ReadOnly = true;
+            // 
+            // sexCol
+            // 
+            this.sexCol.HeaderText = "Пол";
+            this.sexCol.MinimumWidth = 6;
+            this.sexCol.Name = "sexCol";
+            this.sexCol.ReadOnly = true;
+            // 
+            // listenerIdCol
+            // 
+            this.listenerIdCol.HeaderText = "Id слушателя";
+            this.listenerIdCol.MinimumWidth = 6;
+            this.listenerIdCol.Name = "listenerIdCol";
+            this.listenerIdCol.ReadOnly = true;
+            this.listenerIdCol.Visible = false;
+            // 
+            // matriculationCol
+            // 
+            this.matriculationCol.HeaderText = "Зачисление";
+            this.matriculationCol.MinimumWidth = 6;
+            this.matriculationCol.Name = "matriculationCol";
+            this.matriculationCol.ReadOnly = true;
+            // 
+            // phoneNumCol
+            // 
+            this.phoneNumCol.HeaderText = "Номер телефона";
+            this.phoneNumCol.MinimumWidth = 6;
+            this.phoneNumCol.Name = "phoneNumCol";
+            this.phoneNumCol.ReadOnly = true;
+            // 
+            // schoolGradeCol
+            // 
+            this.schoolGradeCol.HeaderText = "Класс";
+            this.schoolGradeCol.MinimumWidth = 6;
+            this.schoolGradeCol.Name = "schoolGradeCol";
+            this.schoolGradeCol.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "email";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // listenerCategoryCol
+            // 
+            this.listenerCategoryCol.HeaderText = "Категория слушателя";
+            this.listenerCategoryCol.MinimumWidth = 6;
+            this.listenerCategoryCol.Name = "listenerCategoryCol";
+            this.listenerCategoryCol.ReadOnly = true;
+            // 
             // Form15
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -631,17 +631,6 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn emailCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn teacherIdCol;
         private System.Windows.Forms.DataGridView listeners;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstnameCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn midnameCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastnameCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn yobCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sexCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn listenerIdCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn matriculationCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contractIdCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn schoolGradeCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridView timetable;
         private System.Windows.Forms.DataGridViewTextBoxColumn ttIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn startCol;
@@ -667,5 +656,16 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn startLearningCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn endLearningCol;
         public System.Windows.Forms.Button chooseGIBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstnameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn midnameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastnameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn yobCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sexCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn listenerIdCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn matriculationCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn schoolGradeCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn listenerCategoryCol;
     }
 }

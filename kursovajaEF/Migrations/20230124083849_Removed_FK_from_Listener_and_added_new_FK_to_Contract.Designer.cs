@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using kursovajaEF;
@@ -9,9 +10,10 @@ using kursovajaEF;
 namespace kursovajaEF.Migrations
 {
     [DbContext(typeof(testDBContext))]
-    partial class testDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230124083849_Removed_FK_from_Listener_and_added_new_FK_to_Contract")]
+    partial class Removed_FK_from_Listener_and_added_new_FK_to_Contract
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,10 +141,9 @@ namespace kursovajaEF.Migrations
 
                     b.HasKey("ContractInfoId");
 
-                    b.HasIndex("DisciplineId");
+                    b.HasIndex("ContractId");
 
-                    b.HasIndex(new[] { "ContractId" }, "unique_index_contract_id")
-                        .IsUnique();
+                    b.HasIndex("DisciplineId");
 
                     b.ToTable("contract_info");
                 });

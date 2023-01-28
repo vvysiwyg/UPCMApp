@@ -28,6 +28,7 @@ namespace kursovajaEF
         public int ContractId { get; set; }
         public string PaymentDeadline { get; set; }
         public string Bank { get; set; }
+        public int? ListenerId { get; set; }
 
         public virtual Listener Listener { get; set; }
         public virtual ICollection<ContractInfo> ContractInfos { get; set; }
