@@ -212,12 +212,15 @@ namespace kursovajaEF
 
                 entity.ToTable("disciplines_teachers");
 
-                entity.HasIndex(e => new { e.DisciplineId, e.TeacherId }, "unique_dis_teach")
-                    .IsUnique();
-
                 entity.Property(e => e.DisciplineId).HasColumnName("discipline_id");
 
                 entity.Property(e => e.TeacherId).HasColumnName("teacher_id");
+
+                entity.Property(e => e.Number).HasColumnName("number");
+
+                entity.Property(e => e.Date).
+                    HasMaxLength(10).
+                    HasColumnName("date");
 
                 entity.HasOne(d => d.Discipline)
                     .WithMany()

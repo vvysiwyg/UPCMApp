@@ -58,6 +58,8 @@ namespace kursovajaEF.Forms
                         d.Discipline.DisciplineName,
                         d.Discipline.StudyPeriod,
                         d.Discipline.HoursOfStudy,
+                        d.Number != null ? d.Number: "",
+                        d.Date != null ? d.Date: "",
                         d.TeacherId
                         );
                     disciplines.Rows[it].Visible = false;
@@ -271,7 +273,7 @@ namespace kursovajaEF.Forms
                     tb.Text = selectedRow.Cells[i].Value.ToString();
                 }
 
-                for (int i = 10; i < 19; i++)
+                for (int i = 10; i < 21; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = string.Empty;
@@ -318,14 +320,14 @@ namespace kursovajaEF.Forms
                 DataGridViewRow selectedRow = disciplines.SelectedCells[0].OwningRow;
                 currentCellDiscipline = disciplines.SelectedCells[0];
 
-                for (int i = 10; i < 13; i++)
+                for (int i = 10; i < 15; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = selectedRow.Cells[index].Value.ToString();
                     index++;
                 }
 
-                for (int i = 13; i < 19; i++)
+                for (int i = 15; i < 21; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = string.Empty;
@@ -363,7 +365,7 @@ namespace kursovajaEF.Forms
                 DataGridViewRow selectedRow = group_info.SelectedCells[0].OwningRow;
                 currentCellGI = group_info.SelectedCells[0];
 
-                for (int i = 13; i < 19; i++)
+                for (int i = 15; i < 21; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = selectedRow.Cells[index].Value.ToString();
@@ -378,6 +380,34 @@ namespace kursovajaEF.Forms
                 row.Selected = false;
             if (group_info.Rows.Count != 0)
                 currentCellGI = group_info.Rows[0].Cells[0];
+        }
+
+        private void addAppointmentTeacherOrderBtn_Click(object sender, EventArgs e)
+        {
+            if ((teachers.SelectedRows.Count == 1 || teachers.SelectedCells.Count == 1) &&
+                (disciplines.SelectedRows.Count == 1 || disciplines.SelectedCells.Count == 1))
+            {
+                Form9_2 form = new();
+                DataGridViewRow selectedRow = teachers.SelectedCells[0].OwningRow;
+                DataGridViewRow selectedRow2 = disciplines.SelectedCells[0].OwningRow;
+                form.teacher_id.Text = selectedRow.Cells["teacherIdCol"].Value.ToString();
+                form.discipline_id.Text = selectedRow2.Cells["disciplineIdCol"].Value.ToString();
+                form.teacher.Text = selectedRow.Cells["fioCol"].Value.ToString();
+                form.discipline.Text = selectedRow2.Cells["disCol"].Value.ToString();
+                form.ShowDialog();
+                if (form.teacher_id.Text == "-1")
+                {
+                    resetForm(new List<DataGridView> {
+                    teachers,
+                    disciplines,
+                    group_info}, new List<GroupBox> {
+                    extendedInfoGB});
+
+                    fetch();
+                    if (teachers.RowCount != 0)
+                        teachers.Rows[0].Selected = true;
+                }
+            }
         }
     }
 }

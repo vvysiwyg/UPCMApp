@@ -9,6 +9,8 @@ namespace kursovajaEF
     {
         public int DisciplineId { get; set; }
         public int? TeacherId { get; set; }
+        public int? Number { get; set; }
+        public string Date { get; set; }
 
         public virtual Discipline Discipline { get; set; }
         public virtual Teacher Teacher { get; set; }
