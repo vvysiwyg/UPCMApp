@@ -591,7 +591,8 @@ namespace kursovajaEF.Forms
             Form2_1 form = new();
             form.contract_id.Text = contractId.Text;
             form.ShowDialog();
-            updatingCheck.Text = "1";
+            if(form.contract_id.Text == "-1")
+                updatingCheck.Text = "1";
         }
 
         private void newGroupBtn_Click(object sender, EventArgs e)
@@ -813,7 +814,8 @@ namespace kursovajaEF.Forms
             Form2_2 form = new();
             form.contract_id.Text = contractId.Text;
             form.ShowDialog();
-            updatingCheck.Text = "1";
+            if(form.contract_id.Text == "-1")
+                updatingCheck.Text = "1";
         }
 
         private void listenerCategory_SelectedIndexChanged(object sender, EventArgs e)
@@ -828,6 +830,15 @@ namespace kursovajaEF.Forms
                 label8.Visible = false;
                 schoolGrade.Visible = false;
             }
+        }
+
+        private void addOrderBtn_Click(object sender, EventArgs e)
+        {
+            Form2_3 form = new();
+            form.contract_id.Text = contractId.Text;
+            form.ShowDialog();
+            if(form.contract_id.Text == "-1")
+                updatingCheck.Text = "1";
         }
     }
 }

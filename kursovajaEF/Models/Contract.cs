@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kursovajaEF.Models;
+using System;
 using System.Collections.Generic;
 
 #nullable disable
@@ -11,6 +12,8 @@ namespace kursovajaEF
         {
             ContractInfos = new HashSet<ContractInfo>();
             ListenerWishes = new HashSet<ListenerWish>();
+            ListenerEnrollmentOrders = new HashSet<ListenerEnrollmentOrder>();
+            ListenerExpulsionOrders = new HashSet<ListenerExpulsionOrder>();
         }
 
         public string Crn { get; set; }
@@ -31,6 +34,8 @@ namespace kursovajaEF
         public int? ListenerId { get; set; }
 
         public virtual Listener Listener { get; set; }
+        public virtual ICollection<ListenerEnrollmentOrder> ListenerEnrollmentOrders { get; set; }
+        public virtual ICollection<ListenerExpulsionOrder> ListenerExpulsionOrders { get; set; }
         public virtual ICollection<ContractInfo> ContractInfos { get; set; }
         public virtual ICollection<ListenerWish> ListenerWishes { get; set; }
     }

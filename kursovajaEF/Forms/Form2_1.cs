@@ -34,6 +34,7 @@ namespace kursovajaEF.Forms
                 }
                 db.SaveChanges();
             }
+            contract_id.Text = "-1";
             Close();
         }
 

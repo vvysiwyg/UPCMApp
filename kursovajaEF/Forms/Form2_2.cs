@@ -33,6 +33,7 @@ namespace kursovajaEF.Forms
                 db.Contracts.Update(c);
                 db.SaveChanges();
             }
+            contract_id.Text = "-1";
             Close();
         }
     }

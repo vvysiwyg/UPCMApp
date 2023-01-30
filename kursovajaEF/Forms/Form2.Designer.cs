@@ -132,6 +132,7 @@ namespace kursovajaEF.Forms
             this.transferGroupBtn = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.listenerCategory = new System.Windows.Forms.ComboBox();
+            this.addOrderBtn = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -1130,7 +1131,7 @@ namespace kursovajaEF.Forms
             this.endEduBtn.AutoSize = true;
             this.endEduBtn.Location = new System.Drawing.Point(35, 834);
             this.endEduBtn.Name = "endEduBtn";
-            this.endEduBtn.Size = new System.Drawing.Size(267, 40);
+            this.endEduBtn.Size = new System.Drawing.Size(194, 40);
             this.endEduBtn.TabIndex = 13;
             this.endEduBtn.Text = "Завершить обучение";
             this.endEduBtn.UseVisualStyleBackColor = true;
@@ -1143,7 +1144,7 @@ namespace kursovajaEF.Forms
             this.updBtn.AutoSize = true;
             this.updBtn.Location = new System.Drawing.Point(35, 893);
             this.updBtn.Name = "updBtn";
-            this.updBtn.Size = new System.Drawing.Size(267, 40);
+            this.updBtn.Size = new System.Drawing.Size(194, 40);
             this.updBtn.TabIndex = 13;
             this.updBtn.Text = "Изменить";
             this.updBtn.UseVisualStyleBackColor = true;
@@ -1154,9 +1155,9 @@ namespace kursovajaEF.Forms
             // 
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.closeBtn.AutoSize = true;
-            this.closeBtn.Location = new System.Drawing.Point(330, 893);
+            this.closeBtn.Location = new System.Drawing.Point(246, 893);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(267, 40);
+            this.closeBtn.Size = new System.Drawing.Size(194, 40);
             this.closeBtn.TabIndex = 13;
             this.closeBtn.Text = "Отмена";
             this.closeBtn.UseVisualStyleBackColor = true;
@@ -1168,7 +1169,7 @@ namespace kursovajaEF.Forms
             this.addBtn.AutoSize = true;
             this.addBtn.Location = new System.Drawing.Point(35, 893);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(267, 40);
+            this.addBtn.Size = new System.Drawing.Size(194, 40);
             this.addBtn.TabIndex = 13;
             this.addBtn.Text = "Добавить";
             this.addBtn.UseVisualStyleBackColor = true;
@@ -1178,9 +1179,9 @@ namespace kursovajaEF.Forms
             // 
             this.transferGroupBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.transferGroupBtn.AutoSize = true;
-            this.transferGroupBtn.Location = new System.Drawing.Point(330, 834);
+            this.transferGroupBtn.Location = new System.Drawing.Point(246, 834);
             this.transferGroupBtn.Name = "transferGroupBtn";
-            this.transferGroupBtn.Size = new System.Drawing.Size(267, 40);
+            this.transferGroupBtn.Size = new System.Drawing.Size(194, 40);
             this.transferGroupBtn.TabIndex = 13;
             this.transferGroupBtn.Text = "Перевести в группу";
             this.transferGroupBtn.UseVisualStyleBackColor = true;
@@ -1211,6 +1212,19 @@ namespace kursovajaEF.Forms
             this.listenerCategory.Text = "Школьник";
             this.listenerCategory.SelectedIndexChanged += new System.EventHandler(this.listenerCategory_SelectedIndexChanged);
             // 
+            // addOrderBtn
+            // 
+            this.addOrderBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addOrderBtn.AutoSize = true;
+            this.addOrderBtn.Location = new System.Drawing.Point(457, 893);
+            this.addOrderBtn.Name = "addOrderBtn";
+            this.addOrderBtn.Size = new System.Drawing.Size(194, 40);
+            this.addOrderBtn.TabIndex = 13;
+            this.addOrderBtn.Text = "Добавить распоряжение";
+            this.addOrderBtn.UseVisualStyleBackColor = true;
+            this.addOrderBtn.Visible = false;
+            this.addOrderBtn.Click += new System.EventHandler(this.addOrderBtn_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1218,6 +1232,7 @@ namespace kursovajaEF.Forms
             this.ClientSize = new System.Drawing.Size(1772, 940);
             this.Controls.Add(this.listenerCategory);
             this.Controls.Add(this.addBtn);
+            this.Controls.Add(this.addOrderBtn);
             this.Controls.Add(this.closeBtn);
             this.Controls.Add(this.updBtn);
             this.Controls.Add(this.transferGroupBtn);
@@ -1374,5 +1389,6 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.Label label25;
         public System.Windows.Forms.ComboBox listenerCategory;
         public System.Windows.Forms.Label label8;
+        public System.Windows.Forms.Button addOrderBtn;
     }
 }

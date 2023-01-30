@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using kursovajaEF;
@@ -9,9 +10,10 @@ using kursovajaEF;
 namespace kursovajaEF.Migrations
 {
     [DbContext(typeof(testDBContext))]
-    partial class testDBContextModelSnapshot : ModelSnapshot
+    [Migration("20230129145034_New_tables_listener_enrollment_orders_and_listener_expulsion_orders_Both_of_them_connected_to_table_contracts")]
+    partial class New_tables_listener_enrollment_orders_and_listener_expulsion_orders_Both_of_them_connected_to_table_contracts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

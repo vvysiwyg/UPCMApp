@@ -93,6 +93,10 @@ namespace kursovajaEF
             this.disciplineName = new System.Windows.Forms.TextBox();
             this.studyHours = new System.Windows.Forms.TextBox();
             this.numOfPeople = new System.Windows.Forms.TextBox();
+            this.listenerEnrollmentOrderNumber = new System.Windows.Forms.TextBox();
+            this.listenerEnrollmentOrderDate = new System.Windows.Forms.TextBox();
+            this.listenerExpulsionOrderNumber = new System.Windows.Forms.TextBox();
+            this.listenerExpulsionOrderDate = new System.Windows.Forms.TextBox();
             this.groupNum = new System.Windows.Forms.TextBox();
             this.numOfHours = new System.Windows.Forms.TextBox();
             this.weekday = new System.Windows.Forms.TextBox();
@@ -109,9 +113,11 @@ namespace kursovajaEF
             this.label1 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -121,35 +127,17 @@ namespace kursovajaEF
             this.label7 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.crnCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalSumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.payedSumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.restOfSumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PayDate40pctCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentDeadlineCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.whoPayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expulsionDateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listenedHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.transferGroupCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.certificateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.issueCertificateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bankCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.disciplineNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studyHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numOfPeopleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.disciplineIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listenerIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contractIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -179,6 +167,30 @@ namespace kursovajaEF
             this.label32 = new System.Windows.Forms.Label();
             this.listenerFilterCB = new System.Windows.Forms.ComboBox();
             this.newContractBtn = new System.Windows.Forms.Button();
+            this.crnCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalSumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payedSumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.restOfSumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PayDate40pctCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentDeadlineCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.whoPayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expulsionDateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenedHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.transferGroupCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.certificateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.issueCertificateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bankCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disciplineNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studyHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numOfPeopleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenerEnrollmentOrderNumberCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenerEnrollmentOrderDateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenerExpulsionOrderNumberCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenerExpulsionOrderDateCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disciplineIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenerIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.extendedInfoGB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -407,6 +419,10 @@ namespace kursovajaEF
             this.extendedInfoGB.Controls.Add(this.disciplineName);
             this.extendedInfoGB.Controls.Add(this.studyHours);
             this.extendedInfoGB.Controls.Add(this.numOfPeople);
+            this.extendedInfoGB.Controls.Add(this.listenerEnrollmentOrderNumber);
+            this.extendedInfoGB.Controls.Add(this.listenerEnrollmentOrderDate);
+            this.extendedInfoGB.Controls.Add(this.listenerExpulsionOrderNumber);
+            this.extendedInfoGB.Controls.Add(this.listenerExpulsionOrderDate);
             this.extendedInfoGB.Controls.Add(this.groupNum);
             this.extendedInfoGB.Controls.Add(this.numOfHours);
             this.extendedInfoGB.Controls.Add(this.weekday);
@@ -423,9 +439,11 @@ namespace kursovajaEF
             this.extendedInfoGB.Controls.Add(this.label1);
             this.extendedInfoGB.Controls.Add(this.label27);
             this.extendedInfoGB.Controls.Add(this.label17);
+            this.extendedInfoGB.Controls.Add(this.label38);
             this.extendedInfoGB.Controls.Add(this.label14);
             this.extendedInfoGB.Controls.Add(this.label26);
             this.extendedInfoGB.Controls.Add(this.label16);
+            this.extendedInfoGB.Controls.Add(this.label37);
             this.extendedInfoGB.Controls.Add(this.label13);
             this.extendedInfoGB.Controls.Add(this.label25);
             this.extendedInfoGB.Controls.Add(this.label6);
@@ -435,10 +453,12 @@ namespace kursovajaEF
             this.extendedInfoGB.Controls.Add(this.label7);
             this.extendedInfoGB.Controls.Add(this.label34);
             this.extendedInfoGB.Controls.Add(this.label11);
+            this.extendedInfoGB.Controls.Add(this.label36);
             this.extendedInfoGB.Controls.Add(this.label33);
             this.extendedInfoGB.Controls.Add(this.label23);
             this.extendedInfoGB.Controls.Add(this.label3);
             this.extendedInfoGB.Controls.Add(this.label10);
+            this.extendedInfoGB.Controls.Add(this.label35);
             this.extendedInfoGB.Controls.Add(this.label5);
             this.extendedInfoGB.Controls.Add(this.label22);
             this.extendedInfoGB.Controls.Add(this.label9);
@@ -685,6 +705,42 @@ namespace kursovajaEF
             this.numOfPeople.Size = new System.Drawing.Size(37, 25);
             this.numOfPeople.TabIndex = 20;
             // 
+            // listenerEnrollmentOrderNumber
+            // 
+            this.listenerEnrollmentOrderNumber.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listenerEnrollmentOrderNumber.Location = new System.Drawing.Point(915, 171);
+            this.listenerEnrollmentOrderNumber.Name = "listenerEnrollmentOrderNumber";
+            this.listenerEnrollmentOrderNumber.ReadOnly = true;
+            this.listenerEnrollmentOrderNumber.Size = new System.Drawing.Size(129, 25);
+            this.listenerEnrollmentOrderNumber.TabIndex = 27;
+            // 
+            // listenerEnrollmentOrderDate
+            // 
+            this.listenerEnrollmentOrderDate.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listenerEnrollmentOrderDate.Location = new System.Drawing.Point(1184, 171);
+            this.listenerEnrollmentOrderDate.Name = "listenerEnrollmentOrderDate";
+            this.listenerEnrollmentOrderDate.ReadOnly = true;
+            this.listenerEnrollmentOrderDate.Size = new System.Drawing.Size(78, 25);
+            this.listenerEnrollmentOrderDate.TabIndex = 28;
+            // 
+            // listenerExpulsionOrderNumber
+            // 
+            this.listenerExpulsionOrderNumber.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listenerExpulsionOrderNumber.Location = new System.Drawing.Point(1418, 171);
+            this.listenerExpulsionOrderNumber.Name = "listenerExpulsionOrderNumber";
+            this.listenerExpulsionOrderNumber.ReadOnly = true;
+            this.listenerExpulsionOrderNumber.Size = new System.Drawing.Size(129, 25);
+            this.listenerExpulsionOrderNumber.TabIndex = 29;
+            // 
+            // listenerExpulsionOrderDate
+            // 
+            this.listenerExpulsionOrderDate.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listenerExpulsionOrderDate.Location = new System.Drawing.Point(1687, 171);
+            this.listenerExpulsionOrderDate.Name = "listenerExpulsionOrderDate";
+            this.listenerExpulsionOrderDate.ReadOnly = true;
+            this.listenerExpulsionOrderDate.Size = new System.Drawing.Size(78, 25);
+            this.listenerExpulsionOrderDate.TabIndex = 30;
+            // 
             // groupNum
             // 
             this.groupNum.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -782,7 +838,7 @@ namespace kursovajaEF
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(1364, 119);
+            this.label15.Location = new System.Drawing.Point(1364, 112);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(72, 51);
             this.label15.TabIndex = 55;
@@ -792,7 +848,7 @@ namespace kursovajaEF
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(1206, 119);
+            this.label2.Location = new System.Drawing.Point(1206, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 51);
             this.label2.TabIndex = 55;
@@ -838,6 +894,16 @@ namespace kursovajaEF
             this.label17.TabIndex = 55;
             this.label17.Text = "Количество\r\nчасов";
             // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label38.Location = new System.Drawing.Point(1268, 167);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(141, 34);
+            this.label38.TabIndex = 55;
+            this.label38.Text = "Номер распоряжения\r\nоб отчислении";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -867,6 +933,16 @@ namespace kursovajaEF
             this.label16.Size = new System.Drawing.Size(50, 34);
             this.label16.TabIndex = 55;
             this.label16.Text = "Номер\r\nгруппы";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label37.Location = new System.Drawing.Point(1050, 167);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(128, 34);
+            this.label37.TabIndex = 55;
+            this.label37.Text = "Дата распоряжения\r\nо зачислении\r\n";
             // 
             // label13
             // 
@@ -958,6 +1034,16 @@ namespace kursovajaEF
             this.label11.TabIndex = 55;
             this.label11.Text = "Регистрационный\r\nномер договора";
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label36.Location = new System.Drawing.Point(1553, 165);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(128, 34);
+            this.label36.TabIndex = 55;
+            this.label36.Text = "Дата распоряжения\r\nоб отчислении";
+            // 
             // label33
             // 
             this.label33.AutoSize = true;
@@ -997,6 +1083,16 @@ namespace kursovajaEF
             this.label10.Size = new System.Drawing.Size(83, 34);
             this.label10.TabIndex = 55;
             this.label10.Text = "Дата оплаты\r\n40 %";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label35.Location = new System.Drawing.Point(772, 167);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(141, 34);
+            this.label35.TabIndex = 55;
+            this.label35.Text = "Номер распоряжения\r\nо зачислении";
             // 
             // label5
             // 
@@ -1071,6 +1167,10 @@ namespace kursovajaEF
             this.disciplineNameCol,
             this.studyHoursCol,
             this.numOfPeopleCol,
+            this.listenerEnrollmentOrderNumberCol,
+            this.listenerEnrollmentOrderDateCol,
+            this.listenerExpulsionOrderNumberCol,
+            this.listenerExpulsionOrderDateCol,
             this.contractIdCol,
             this.disciplineIdCol,
             this.contractInfoIdCol,
@@ -1085,164 +1185,6 @@ namespace kursovajaEF
             this.dataGridView2.TabIndex = 5;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_RowEnter);
-            // 
-            // crnCol
-            // 
-            this.crnCol.HeaderText = "Регистрационный номер договора";
-            this.crnCol.MinimumWidth = 6;
-            this.crnCol.Name = "crnCol";
-            this.crnCol.ReadOnly = true;
-            // 
-            // totalSumCol
-            // 
-            this.totalSumCol.HeaderText = "Общая сумма(руб.)";
-            this.totalSumCol.MinimumWidth = 6;
-            this.totalSumCol.Name = "totalSumCol";
-            this.totalSumCol.ReadOnly = true;
-            this.totalSumCol.Visible = false;
-            // 
-            // payedSumCol
-            // 
-            this.payedSumCol.HeaderText = "Оплачено(руб.)";
-            this.payedSumCol.MinimumWidth = 6;
-            this.payedSumCol.Name = "payedSumCol";
-            this.payedSumCol.ReadOnly = true;
-            this.payedSumCol.Visible = false;
-            // 
-            // restOfSumCol
-            // 
-            this.restOfSumCol.HeaderText = "Остаток по оплате(руб.)";
-            this.restOfSumCol.MinimumWidth = 6;
-            this.restOfSumCol.Name = "restOfSumCol";
-            this.restOfSumCol.ReadOnly = true;
-            this.restOfSumCol.Visible = false;
-            // 
-            // PayDate40pctCol
-            // 
-            this.PayDate40pctCol.HeaderText = "Дата оплаты 40 %";
-            this.PayDate40pctCol.MinimumWidth = 6;
-            this.PayDate40pctCol.Name = "PayDate40pctCol";
-            this.PayDate40pctCol.ReadOnly = true;
-            this.PayDate40pctCol.Visible = false;
-            // 
-            // paymentDeadlineCol
-            // 
-            this.paymentDeadlineCol.HeaderText = "Срок оплаты";
-            this.paymentDeadlineCol.MinimumWidth = 6;
-            this.paymentDeadlineCol.Name = "paymentDeadlineCol";
-            this.paymentDeadlineCol.ReadOnly = true;
-            this.paymentDeadlineCol.Visible = false;
-            // 
-            // whoPayCol
-            // 
-            this.whoPayCol.HeaderText = "Кто оплатил";
-            this.whoPayCol.MinimumWidth = 6;
-            this.whoPayCol.Name = "whoPayCol";
-            this.whoPayCol.ReadOnly = true;
-            this.whoPayCol.Visible = false;
-            // 
-            // expulsionDateCol
-            // 
-            this.expulsionDateCol.HeaderText = "Дата отчисления";
-            this.expulsionDateCol.MinimumWidth = 6;
-            this.expulsionDateCol.Name = "expulsionDateCol";
-            this.expulsionDateCol.ReadOnly = true;
-            this.expulsionDateCol.Visible = false;
-            // 
-            // listenedHoursCol
-            // 
-            this.listenedHoursCol.HeaderText = "Прослушанные часы";
-            this.listenedHoursCol.MinimumWidth = 6;
-            this.listenedHoursCol.Name = "listenedHoursCol";
-            this.listenedHoursCol.ReadOnly = true;
-            this.listenedHoursCol.Visible = false;
-            // 
-            // transferGroupCol
-            // 
-            this.transferGroupCol.HeaderText = "Переведен(-а) в группу";
-            this.transferGroupCol.MinimumWidth = 6;
-            this.transferGroupCol.Name = "transferGroupCol";
-            this.transferGroupCol.ReadOnly = true;
-            this.transferGroupCol.Visible = false;
-            // 
-            // certificateCol
-            // 
-            this.certificateCol.HeaderText = "Сертификат";
-            this.certificateCol.MinimumWidth = 6;
-            this.certificateCol.Name = "certificateCol";
-            this.certificateCol.ReadOnly = true;
-            this.certificateCol.Visible = false;
-            // 
-            // issueCertificateCol
-            // 
-            this.issueCertificateCol.HeaderText = "Дата выдачи сертификата";
-            this.issueCertificateCol.MinimumWidth = 6;
-            this.issueCertificateCol.Name = "issueCertificateCol";
-            this.issueCertificateCol.ReadOnly = true;
-            this.issueCertificateCol.Visible = false;
-            // 
-            // bankCol
-            // 
-            this.bankCol.HeaderText = "Банк";
-            this.bankCol.MinimumWidth = 6;
-            this.bankCol.Name = "bankCol";
-            this.bankCol.ReadOnly = true;
-            this.bankCol.Visible = false;
-            // 
-            // disciplineNameCol
-            // 
-            this.disciplineNameCol.HeaderText = "Программа";
-            this.disciplineNameCol.MinimumWidth = 6;
-            this.disciplineNameCol.Name = "disciplineNameCol";
-            this.disciplineNameCol.ReadOnly = true;
-            // 
-            // studyHoursCol
-            // 
-            this.studyHoursCol.HeaderText = "Общее количество часов";
-            this.studyHoursCol.MinimumWidth = 6;
-            this.studyHoursCol.Name = "studyHoursCol";
-            this.studyHoursCol.ReadOnly = true;
-            this.studyHoursCol.Visible = false;
-            // 
-            // numOfPeopleCol
-            // 
-            this.numOfPeopleCol.HeaderText = "Число обучающихся в группе";
-            this.numOfPeopleCol.MinimumWidth = 6;
-            this.numOfPeopleCol.Name = "numOfPeopleCol";
-            this.numOfPeopleCol.ReadOnly = true;
-            this.numOfPeopleCol.Visible = false;
-            // 
-            // contractIdCol
-            // 
-            this.contractIdCol.HeaderText = "ID договора";
-            this.contractIdCol.MinimumWidth = 6;
-            this.contractIdCol.Name = "contractIdCol";
-            this.contractIdCol.ReadOnly = true;
-            this.contractIdCol.Visible = false;
-            // 
-            // disciplineIdCol
-            // 
-            this.disciplineIdCol.HeaderText = "ID программы";
-            this.disciplineIdCol.MinimumWidth = 6;
-            this.disciplineIdCol.Name = "disciplineIdCol";
-            this.disciplineIdCol.ReadOnly = true;
-            this.disciplineIdCol.Visible = false;
-            // 
-            // contractInfoIdCol
-            // 
-            this.contractInfoIdCol.HeaderText = "ID информации о договоре";
-            this.contractInfoIdCol.MinimumWidth = 6;
-            this.contractInfoIdCol.Name = "contractInfoIdCol";
-            this.contractInfoIdCol.ReadOnly = true;
-            this.contractInfoIdCol.Visible = false;
-            // 
-            // listenerIdCol2
-            // 
-            this.listenerIdCol2.HeaderText = "ID слушателя";
-            this.listenerIdCol2.MinimumWidth = 6;
-            this.listenerIdCol2.Name = "listenerIdCol2";
-            this.listenerIdCol2.ReadOnly = true;
-            this.listenerIdCol2.Visible = false;
             // 
             // contractIdCol2
             // 
@@ -1549,6 +1491,196 @@ namespace kursovajaEF
             this.newContractBtn.UseVisualStyleBackColor = true;
             this.newContractBtn.Click += new System.EventHandler(this.newContractBtn_Click);
             // 
+            // crnCol
+            // 
+            this.crnCol.HeaderText = "Регистрационный номер договора";
+            this.crnCol.MinimumWidth = 6;
+            this.crnCol.Name = "crnCol";
+            this.crnCol.ReadOnly = true;
+            // 
+            // totalSumCol
+            // 
+            this.totalSumCol.HeaderText = "Общая сумма(руб.)";
+            this.totalSumCol.MinimumWidth = 6;
+            this.totalSumCol.Name = "totalSumCol";
+            this.totalSumCol.ReadOnly = true;
+            this.totalSumCol.Visible = false;
+            // 
+            // payedSumCol
+            // 
+            this.payedSumCol.HeaderText = "Оплачено(руб.)";
+            this.payedSumCol.MinimumWidth = 6;
+            this.payedSumCol.Name = "payedSumCol";
+            this.payedSumCol.ReadOnly = true;
+            this.payedSumCol.Visible = false;
+            // 
+            // restOfSumCol
+            // 
+            this.restOfSumCol.HeaderText = "Остаток по оплате(руб.)";
+            this.restOfSumCol.MinimumWidth = 6;
+            this.restOfSumCol.Name = "restOfSumCol";
+            this.restOfSumCol.ReadOnly = true;
+            this.restOfSumCol.Visible = false;
+            // 
+            // PayDate40pctCol
+            // 
+            this.PayDate40pctCol.HeaderText = "Дата оплаты 40 %";
+            this.PayDate40pctCol.MinimumWidth = 6;
+            this.PayDate40pctCol.Name = "PayDate40pctCol";
+            this.PayDate40pctCol.ReadOnly = true;
+            this.PayDate40pctCol.Visible = false;
+            // 
+            // paymentDeadlineCol
+            // 
+            this.paymentDeadlineCol.HeaderText = "Срок оплаты";
+            this.paymentDeadlineCol.MinimumWidth = 6;
+            this.paymentDeadlineCol.Name = "paymentDeadlineCol";
+            this.paymentDeadlineCol.ReadOnly = true;
+            this.paymentDeadlineCol.Visible = false;
+            // 
+            // whoPayCol
+            // 
+            this.whoPayCol.HeaderText = "Кто оплатил";
+            this.whoPayCol.MinimumWidth = 6;
+            this.whoPayCol.Name = "whoPayCol";
+            this.whoPayCol.ReadOnly = true;
+            this.whoPayCol.Visible = false;
+            // 
+            // expulsionDateCol
+            // 
+            this.expulsionDateCol.HeaderText = "Дата отчисления";
+            this.expulsionDateCol.MinimumWidth = 6;
+            this.expulsionDateCol.Name = "expulsionDateCol";
+            this.expulsionDateCol.ReadOnly = true;
+            this.expulsionDateCol.Visible = false;
+            // 
+            // listenedHoursCol
+            // 
+            this.listenedHoursCol.HeaderText = "Прослушанные часы";
+            this.listenedHoursCol.MinimumWidth = 6;
+            this.listenedHoursCol.Name = "listenedHoursCol";
+            this.listenedHoursCol.ReadOnly = true;
+            this.listenedHoursCol.Visible = false;
+            // 
+            // transferGroupCol
+            // 
+            this.transferGroupCol.HeaderText = "Переведен(-а) в группу";
+            this.transferGroupCol.MinimumWidth = 6;
+            this.transferGroupCol.Name = "transferGroupCol";
+            this.transferGroupCol.ReadOnly = true;
+            this.transferGroupCol.Visible = false;
+            // 
+            // certificateCol
+            // 
+            this.certificateCol.HeaderText = "Сертификат";
+            this.certificateCol.MinimumWidth = 6;
+            this.certificateCol.Name = "certificateCol";
+            this.certificateCol.ReadOnly = true;
+            this.certificateCol.Visible = false;
+            // 
+            // issueCertificateCol
+            // 
+            this.issueCertificateCol.HeaderText = "Дата выдачи сертификата";
+            this.issueCertificateCol.MinimumWidth = 6;
+            this.issueCertificateCol.Name = "issueCertificateCol";
+            this.issueCertificateCol.ReadOnly = true;
+            this.issueCertificateCol.Visible = false;
+            // 
+            // bankCol
+            // 
+            this.bankCol.HeaderText = "Банк";
+            this.bankCol.MinimumWidth = 6;
+            this.bankCol.Name = "bankCol";
+            this.bankCol.ReadOnly = true;
+            this.bankCol.Visible = false;
+            // 
+            // disciplineNameCol
+            // 
+            this.disciplineNameCol.HeaderText = "Программа";
+            this.disciplineNameCol.MinimumWidth = 6;
+            this.disciplineNameCol.Name = "disciplineNameCol";
+            this.disciplineNameCol.ReadOnly = true;
+            // 
+            // studyHoursCol
+            // 
+            this.studyHoursCol.HeaderText = "Общее количество часов";
+            this.studyHoursCol.MinimumWidth = 6;
+            this.studyHoursCol.Name = "studyHoursCol";
+            this.studyHoursCol.ReadOnly = true;
+            this.studyHoursCol.Visible = false;
+            // 
+            // numOfPeopleCol
+            // 
+            this.numOfPeopleCol.HeaderText = "Число обучающихся в группе";
+            this.numOfPeopleCol.MinimumWidth = 6;
+            this.numOfPeopleCol.Name = "numOfPeopleCol";
+            this.numOfPeopleCol.ReadOnly = true;
+            this.numOfPeopleCol.Visible = false;
+            // 
+            // listenerEnrollmentOrderNumberCol
+            // 
+            this.listenerEnrollmentOrderNumberCol.HeaderText = "Номер распоряжения о зачислении";
+            this.listenerEnrollmentOrderNumberCol.MinimumWidth = 6;
+            this.listenerEnrollmentOrderNumberCol.Name = "listenerEnrollmentOrderNumberCol";
+            this.listenerEnrollmentOrderNumberCol.ReadOnly = true;
+            this.listenerEnrollmentOrderNumberCol.Visible = false;
+            // 
+            // listenerEnrollmentOrderDateCol
+            // 
+            this.listenerEnrollmentOrderDateCol.HeaderText = "Дата распоряжения о зачислении";
+            this.listenerEnrollmentOrderDateCol.MinimumWidth = 6;
+            this.listenerEnrollmentOrderDateCol.Name = "listenerEnrollmentOrderDateCol";
+            this.listenerEnrollmentOrderDateCol.ReadOnly = true;
+            this.listenerEnrollmentOrderDateCol.Visible = false;
+            // 
+            // listenerExpulsionOrderNumberCol
+            // 
+            this.listenerExpulsionOrderNumberCol.HeaderText = "Номер распоряжения об отчислении";
+            this.listenerExpulsionOrderNumberCol.MinimumWidth = 6;
+            this.listenerExpulsionOrderNumberCol.Name = "listenerExpulsionOrderNumberCol";
+            this.listenerExpulsionOrderNumberCol.ReadOnly = true;
+            this.listenerExpulsionOrderNumberCol.Visible = false;
+            // 
+            // listenerExpulsionOrderDateCol
+            // 
+            this.listenerExpulsionOrderDateCol.HeaderText = "Дата распоряжения об отчислении";
+            this.listenerExpulsionOrderDateCol.MinimumWidth = 6;
+            this.listenerExpulsionOrderDateCol.Name = "listenerExpulsionOrderDateCol";
+            this.listenerExpulsionOrderDateCol.ReadOnly = true;
+            this.listenerExpulsionOrderDateCol.Visible = false;
+            // 
+            // contractIdCol
+            // 
+            this.contractIdCol.HeaderText = "ID договора";
+            this.contractIdCol.MinimumWidth = 6;
+            this.contractIdCol.Name = "contractIdCol";
+            this.contractIdCol.ReadOnly = true;
+            this.contractIdCol.Visible = false;
+            // 
+            // disciplineIdCol
+            // 
+            this.disciplineIdCol.HeaderText = "ID программы";
+            this.disciplineIdCol.MinimumWidth = 6;
+            this.disciplineIdCol.Name = "disciplineIdCol";
+            this.disciplineIdCol.ReadOnly = true;
+            this.disciplineIdCol.Visible = false;
+            // 
+            // contractInfoIdCol
+            // 
+            this.contractInfoIdCol.HeaderText = "ID информации о договоре";
+            this.contractInfoIdCol.MinimumWidth = 6;
+            this.contractInfoIdCol.Name = "contractInfoIdCol";
+            this.contractInfoIdCol.ReadOnly = true;
+            this.contractInfoIdCol.Visible = false;
+            // 
+            // listenerIdCol2
+            // 
+            this.listenerIdCol2.HeaderText = "ID слушателя";
+            this.listenerIdCol2.MinimumWidth = 6;
+            this.listenerIdCol2.Name = "listenerIdCol2";
+            this.listenerIdCol2.ReadOnly = true;
+            this.listenerIdCol2.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -1694,6 +1826,15 @@ namespace kursovajaEF
         private System.Windows.Forms.TextBox listenerCategory;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.DataGridViewTextBoxColumn matriculationCol;
+        private System.Windows.Forms.Button newContractBtn;
+        private System.Windows.Forms.TextBox listenerEnrollmentOrderNumber;
+        private System.Windows.Forms.TextBox listenerEnrollmentOrderDate;
+        private System.Windows.Forms.TextBox listenerExpulsionOrderNumber;
+        private System.Windows.Forms.TextBox listenerExpulsionOrderDate;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label35;
         private System.Windows.Forms.DataGridViewTextBoxColumn crnCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalSumCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn payedSumCol;
@@ -1710,11 +1851,14 @@ namespace kursovajaEF
         private System.Windows.Forms.DataGridViewTextBoxColumn disciplineNameCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn studyHoursCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn numOfPeopleCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn listenerEnrollmentOrderNumberCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn listenerEnrollmentOrderDateCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn listenerExpulsionOrderNumberCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn listenerExpulsionOrderDateCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn contractIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn disciplineIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn listenerIdCol2;
-        private System.Windows.Forms.Button newContractBtn;
     }
 }
 

@@ -33,8 +33,49 @@ namespace kursovajaEF
             using (testDBContext db = new())
             {
                 var l_s = db.Listeners.AsNoTracking();
-                var с_ci_s = db.ContractInfos.Include(ci => ci.Contract).AsNoTracking();
-                var g_gi_gicis = db.GroupInfoContractInfos.Include(gici => gici.GroupInfo).ThenInclude(gi => gi.Group).AsNoTracking();
+                var с_ci_leno_lexo_s = db.Contracts.Include(i => i.ContractInfos).
+                    Include(i => i.ListenerEnrollmentOrders).
+                    Include(i => i.ListenerExpulsionOrders).
+                    Select(s => new 
+                    {
+                        Crn = s.Crn,
+                        TotalSum = s.TotalSum,
+                        PayedSum = s.PayedSum,
+                        RestOfSum = s.RestOfSum,
+                        PayDate40pct = s.PayDate40pct,
+                        PaymentDeadline = s.PaymentDeadline,
+                        WhoPay = s.WhoPay,
+                        ExpulsionDate = s.ExpulsionDate,
+                        ListenedHours = s.ListenedHours,
+                        TransferGroup = s.TransferGroup,
+                        Certificate = s.Certificate,
+                        IssueCertificate = s.IssueCertificate,
+                        Bank = s.Bank,
+                        ContractId = s.ContractId,
+                        ListenerId = s.ListenerId,
+                        ContractInfo = s.ContractInfos.Select(s2 => new 
+                            {
+                                DisciplineName = s2.DisciplineName,
+                                StudyHours = s2.StudyHours,
+                                NumOfPeople = s2.NumOfPeople,
+                                DisciplineId = s2.DisciplineId,
+                                ContractInfoId = s2.ContractInfoId,
+                            }),
+                        ListenerExpulsionOrder = s.ListenerExpulsionOrders.Select(s3 => new 
+                            {
+                                Number = s3.Number,
+                                Date = s3.Date
+                            }),
+                        ListenerEnrollmentOrder = s.ListenerEnrollmentOrders.Select(s3 => new
+                            {
+                                Number = s3.Number,
+                                Date = s3.Date
+                            })
+                    }).
+                    AsNoTracking();
+                var g_gi_gicis = db.GroupInfoContractInfos.Include(gici => gici.GroupInfo).
+                    ThenInclude(gi => gi.Group).
+                    AsNoTracking();
                 var w_s = db.ListenerWishes.AsNoTracking();
 
                 foreach (var l in l_s.ToList())
@@ -51,29 +92,49 @@ namespace kursovajaEF
                         l.Matriculation != null ? l.Matriculation : "",
                         l.Id);
 
-                foreach (var c_ci in с_ci_s.ToList())
+                foreach (var с_ci_leno_lexo in с_ci_leno_lexo_s.ToList())
                 {
+                    var ci = с_ci_leno_lexo.ContractInfo.ToArray()[0];
+
+                    var leno = с_ci_leno_lexo.ListenerEnrollmentOrder.ToArray().Length == 1 ? 
+                        с_ci_leno_lexo.ListenerEnrollmentOrder.ToArray()[0]: new 
+                        {
+                            Number = -1,
+                            Date = ""
+                        };
+
+                    var lexo = с_ci_leno_lexo.ListenerExpulsionOrder.ToArray().Length == 1 ?
+                        с_ci_leno_lexo.ListenerExpulsionOrder.ToArray()[0]: new
+                        {
+                            Number = -1,
+                            Date = ""
+                        };
+
                     dataGridView2.Rows.Add(
-                        c_ci.Contract.Crn,
-                        c_ci.Contract.TotalSum,
-                        c_ci.Contract.PayedSum,
-                        c_ci.Contract.RestOfSum != null ? c_ci.Contract.RestOfSum : "",
-                        c_ci.Contract.PayDate40pct != null ? c_ci.Contract.PayDate40pct : "",
-                        c_ci.Contract.PaymentDeadline != null ? c_ci.Contract.PaymentDeadline : "",
-                        c_ci.Contract.WhoPay,
-                        c_ci.Contract.ExpulsionDate != null ? c_ci.Contract.ExpulsionDate : "",
-                        c_ci.Contract.ListenedHours != null ? c_ci.Contract.ListenedHours : "",
-                        c_ci.Contract.TransferGroup != null ? c_ci.Contract.TransferGroup : "",
-                        c_ci.Contract.Certificate != null ? c_ci.Contract.Certificate : "",
-                        c_ci.Contract.IssueCertificate != null ? c_ci.Contract.IssueCertificate : "",
-                        c_ci.Contract.Bank,
-                        c_ci.DisciplineName,
-                        c_ci.StudyHours != null ? c_ci.StudyHours : "",
-                        c_ci.NumOfPeople,
-                        c_ci.ContractId,
-                        c_ci.DisciplineId,
-                        c_ci.ContractInfoId,
-                        c_ci.Contract.ListenerId);
+                        с_ci_leno_lexo.Crn,
+                        с_ci_leno_lexo.TotalSum,
+                        с_ci_leno_lexo.PayedSum,
+                        с_ci_leno_lexo.RestOfSum != null ? с_ci_leno_lexo.RestOfSum : "",
+                        с_ci_leno_lexo.PayDate40pct != null ? с_ci_leno_lexo.PayDate40pct : "",
+                        с_ci_leno_lexo.PaymentDeadline != null ? с_ci_leno_lexo.PaymentDeadline : "",
+                        с_ci_leno_lexo.WhoPay,
+                        с_ci_leno_lexo.ExpulsionDate != null ? с_ci_leno_lexo.ExpulsionDate : "",
+                        с_ci_leno_lexo.ListenedHours != null ? с_ci_leno_lexo.ListenedHours : "",
+                        с_ci_leno_lexo.TransferGroup != null ? с_ci_leno_lexo.TransferGroup : "",
+                        с_ci_leno_lexo.Certificate != null ? с_ci_leno_lexo.Certificate : "",
+                        с_ci_leno_lexo.IssueCertificate != null ? с_ci_leno_lexo.IssueCertificate : "",
+                        с_ci_leno_lexo.Bank,
+                        ci.DisciplineName,
+                        ci.StudyHours != null ? ci.StudyHours : "",
+                        ci.NumOfPeople,
+                        leno.Number != -1 ? leno.Number: "",
+                        leno.Date,
+                        lexo.Number != -1 ? lexo.Number: "",
+                        lexo.Date,
+                        с_ci_leno_lexo.ContractId,
+                        ci.DisciplineId,
+                        ci.ContractInfoId,
+                        с_ci_leno_lexo.ListenerId);
                     dataGridView2.Rows[it].Visible = false;
                     dataGridView2.Rows[it].Selected = false;
                     it++;
@@ -415,6 +476,7 @@ namespace kursovajaEF
                 fm.addBtn.Visible = false;
                 fm.updBtn.Visible = true;
                 fm.endEduBtn.Visible = true;
+                fm.addOrderBtn.Visible = true;
                 fm.transferGroupBtn.Visible = true;
                 fm.addCIBtn.Visible = false;
                 fm.addCIBtn2.Visible = true;
@@ -600,7 +662,7 @@ namespace kursovajaEF
                     tb.Text = selectedRow.Cells[i].Value.ToString();
                 }
 
-                for (int i = 10; i < 33; i++)
+                for (int i = 10; i < 37; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = string.Empty;
@@ -666,14 +728,14 @@ namespace kursovajaEF
                 DataGridViewRow selectedRow = dataGridView2.SelectedCells[0].OwningRow;
                 currentCellDgv2 = dataGridView2.SelectedCells[0];
 
-                for (int i = 10; i < 26; i++)
+                for (int i = 10; i < 30; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = selectedRow.Cells[index].Value.ToString();
                     index++;
                 }
 
-                for (int i = 26; i < 33; i++)
+                for (int i = 30; i < 37; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = string.Empty;
@@ -741,7 +803,7 @@ namespace kursovajaEF
                 int index = 0;
                 DataGridViewRow selectedRow = dataGridView3.SelectedCells[0].OwningRow;
 
-                for (int i = 26; i < 33; i++)
+                for (int i = 30; i < 37; i++)
                 {
                     TextBox tb = (TextBox)extendedInfoGB.Controls[i];
                     tb.Text = selectedRow.Cells[index].Value.ToString();
