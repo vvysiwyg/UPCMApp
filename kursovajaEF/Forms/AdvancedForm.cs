@@ -50,28 +50,28 @@ namespace kursovajaEF.Forms
                         ctrl.Text = string.Empty;
         }
 
-        public void showAllListeners(DataGridView dgv, int rowIndex)
+        public void showAllRows(DataGridView dgv, int rowIndex)
         {
             if (rowIndex == -1)
                 return;
 
             dgv.Rows[rowIndex].Visible = true;
 
-            showAllListeners(dgv, rowIndex - 1);
+            showAllRows(dgv, rowIndex - 1);
         }
 
-        public void showExpelledListeners(DataGridView dgv, int rowIndex)
-        {
-            if (rowIndex == -1)
-                return;
+        //public void showExpelledListeners(DataGridView dgv, int rowIndex)
+        //{
+        //    if (rowIndex == -1)
+        //        return;
 
-            if(!string.IsNullOrWhiteSpace(dgv.Rows[rowIndex].Cells["expulsionDateCol"].Value.ToString()))
-                dgv.Rows[rowIndex].Visible = true;
-            else
-                dgv.Rows[rowIndex].Visible = false;
+        //    if(!string.IsNullOrWhiteSpace(dgv.Rows[rowIndex].Cells["expulsionDateCol"].Value.ToString()))
+        //        dgv.Rows[rowIndex].Visible = true;
+        //    else
+        //        dgv.Rows[rowIndex].Visible = false;
 
-            showExpelledListeners(dgv, rowIndex - 1);
-        }
+        //    showExpelledListeners(dgv, rowIndex - 1);
+        //}
 
         public void dataGridViewSorted(object sender)
         {

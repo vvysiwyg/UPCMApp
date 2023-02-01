@@ -7,6 +7,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using kursovajaEF.Models;
+using System.Diagnostics;
 
 namespace kursovajaEF
 {
@@ -16,8 +17,10 @@ namespace kursovajaEF
         private DataGridViewCell currentCellDgv2;
         private DataGridViewCell currentCellDgv3;
         private DataGridViewCell currentCellDgv4;
+        private Dictionary<int, DataGridViewRow> notExpelledListenersDictionary;
         public Form1()
         {
+            notExpelledListenersDictionary = new();
             using (testDBContext db = new())
             {
                 conn = new NpgsqlConnection(db.connectionString);
@@ -77,8 +80,10 @@ namespace kursovajaEF
                     ThenInclude(gi => gi.Group).
                     AsNoTracking();
                 var w_s = db.ListenerWishes.AsNoTracking();
-
+                var sw = new Stopwatch();
+                sw.Start();
                 foreach (var l in l_s.ToList())
+                {
                     dataGridView1.Rows.Add(
                         l.Midname,
                         l.Firstname,
@@ -91,6 +96,14 @@ namespace kursovajaEF
                         l.ListenerCategory != null ? l.ListenerCategory : "",
                         l.Matriculation != null ? l.Matriculation : "",
                         l.Id);
+
+                    notExpelledListenersDictionary.Add(l.Id, dataGridView1.Rows[it]);
+                    it++;
+                }
+                sw.Stop();
+                MessageBox.Show($"1 замер: {sw.ElapsedMilliseconds} мс");
+
+                it = 0;
 
                 foreach (var с_ci_leno_lexo in с_ci_leno_lexo_s.ToList())
                 {
@@ -135,6 +148,11 @@ namespace kursovajaEF
                         ci.DisciplineId,
                         ci.ContractInfoId,
                         с_ci_leno_lexo.ListenerId);
+
+                    if (!string.IsNullOrWhiteSpace(с_ci_leno_lexo.ExpulsionDate) &&
+                        notExpelledListenersDictionary.ContainsKey((int)с_ci_leno_lexo.ListenerId))
+                        notExpelledListenersDictionary.Remove((int)с_ci_leno_lexo.ListenerId);
+
                     dataGridView2.Rows[it].Visible = false;
                     dataGridView2.Rows[it].Selected = false;
                     it++;
@@ -851,14 +869,17 @@ namespace kursovajaEF
 
         private void listenerFilterCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //SuspendLayout();
+            SuspendLayout();
 
-            //if (listenerFilterCB.Text == "Все слушатели")
-            //    showAllListeners(dataGridView1, dataGridView1.Rows.Count - 1);
-            //else
-            //    showExpelledListeners(dataGridView1, dataGridView1.Rows.Count - 1);
+            if (listenerFilterCB.Text == "Все слушатели")
+                showAllRows(dataGridView1, dataGridView1.Rows.Count - 1);
+            else
+            {
+                foreach (DataGridViewRow row in notExpelledListenersDictionary.Values)
+                    row.Visible = false;
+            }
 
-            //ResumeLayout();
+            ResumeLayout();
         }
 
         private void newContractBtn_Click(object sender, EventArgs e)
