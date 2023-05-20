@@ -15,6 +15,7 @@ namespace kursovajaEF.Forms
     public partial class Form15 : AdvancedForm
     {
         private NpgsqlConnection conn;
+        public DataGridViewRow[] gi_rows;
         public Form15(NpgsqlConnection conn)
         {
             this.conn = conn;
@@ -170,10 +171,10 @@ namespace kursovajaEF.Forms
                         l.Sex,
                         l.Id,
                         l.Matriculation,
-                        l.ContractId,
                         l.PhoneNum,
                         l.SchoolGrade,
-                        l.Email
+                        l.Email,
+                        l.ListenerCategory
                         );
                 if (listeners.RowCount != 0)
                     listeners.Rows[0].Selected = true;
@@ -338,6 +339,55 @@ namespace kursovajaEF.Forms
         private void dataGridView_Sorted(object sender, EventArgs e)
         {
             dataGridViewSorted(sender);
+        }
+
+        private void chooseGIBtn_Click(object sender, EventArgs e)
+        {
+            if (groups.SelectedCells.Count != 0)
+            { 
+                int[] selRow = new int[groups.SelectedCells.Count];
+                int similarRowsCount = 0;
+
+                for (int i = 0; i < groups.SelectedCells.Count; i++)
+                    selRow[i] = groups.SelectedCells[i].RowIndex;
+
+                for (int i = 0; i < selRow.Length; i++)
+                    for (int j = i + 1; j < selRow.Length; j++)
+                        if (selRow[i] == selRow[j] && selRow[i] != -1)
+                        {
+                            selRow[j] = -1;
+                            similarRowsCount++;
+                        }
+
+                gi_rows = new DataGridViewRow[selRow.Length - similarRowsCount];
+                for (int i = 0; i < selRow.Length; i++)
+                {
+                    if (selRow[i] != -1)
+                    {
+                        DataGridViewRow newRow = (DataGridViewRow)groups.Rows[selRow[i]].Clone();
+                        for (int j = 0; j < groups.Rows[selRow[i]].Cells.Count; ++j)
+                            newRow.Cells[j].Value = groups.Rows[selRow[i]].Cells[j].Value;
+                        gi_rows[i] = newRow;
+                    }
+                }
+                Close();
+            }
+        }
+
+        private void groups_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (groups.SelectedCells.Count == 1)
+            {
+                DataGridViewRow selectedRow = groups.SelectedCells[0].OwningRow;
+                DataGridViewRow newRow = (DataGridViewRow)selectedRow.Clone();
+
+                for (int i = 0; i < selectedRow.Cells.Count; ++i)
+                    newRow.Cells[i].Value = selectedRow.Cells[i].Value;
+
+                gi_rows = new DataGridViewRow[1];
+                gi_rows[0] = newRow;
+                Close();
+            }
         }
     }
 }

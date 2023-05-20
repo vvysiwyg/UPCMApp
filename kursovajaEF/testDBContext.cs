@@ -1,10 +1,6 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Threading.Tasks;
+﻿using System.IO;
 using kursovajaEF.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
@@ -22,7 +18,7 @@ namespace kursovajaEF
         {
         }
 
-        public string connectionString = "Host=localhost;Port=5432;Database=testDB;Username=postgres;Password=112358";
+        public string connectionString = "Host=localhost;Port=5432;Database=testDB;Username=postgres;Password=112358;Include Error Detail=true";
 
         private readonly StreamWriter logWriter;
         public virtual DbSet<Contract> Contracts { get; set; }
@@ -33,7 +29,7 @@ namespace kursovajaEF
         public virtual DbSet<DisciplinesTimetable> DisciplinesTimetables { get; set; }
         public virtual DbSet<Group> Groups { get; set; }
         public virtual DbSet<GroupInfo> GroupInfos { get; set; }
-        public virtual DbSet<GroupInfoListener> GroupInfoListeners { get; set; }
+        public virtual DbSet<GroupInfoTeacher> GroupInfoTeachers { get; set; }
         public virtual DbSet<GroupInfoContractInfo> GroupInfoContractInfos { get; set; }
         public virtual DbSet<GroupsListener> GroupsListeners { get; set; }
         public virtual DbSet<GroupsTeacher> GroupsTeachers { get; set; }
@@ -42,6 +38,9 @@ namespace kursovajaEF
         public virtual DbSet<ListenerWish> ListenerWishes { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Timetable> Timetables { get; set; }
+        public virtual DbSet<Chair> Chairs { get; set; }
+        public virtual DbSet<ListenerEnrollmentOrder> ListenerEnrollmentOrders { get; set; }
+        public virtual DbSet<ListenerExpulsionOrder> ListenerExpulsionOrders { get; set; }
 
         public override void Dispose()
         {
@@ -53,7 +52,6 @@ namespace kursovajaEF
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseNpgsql(connectionString);
                 optionsBuilder.LogTo(logWriter.WriteLine);
             }
@@ -63,11 +61,23 @@ namespace kursovajaEF
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Russian_Russia.1251");
 
+            modelBuilder.HasSequence<int>("ListenerEnrollmentOrderIdSequence", schema: "public")
+                .StartsAt(1)
+                .HasMax(2147483647)
+                .IncrementsBy(1);
+
+            modelBuilder.HasSequence<int>("ListenerExpulsionOrderIdSequence", schema: "public")
+                .StartsAt(1)
+                .HasMax(2147483647)
+                .IncrementsBy(1);
+
             modelBuilder.Entity<Contract>(entity =>
             {
                 entity.ToTable("contracts");
 
                 entity.Property(e => e.ContractId).HasColumnName("contract_id");
+
+                entity.Property(e => e.ListenerId).HasColumnName("listener_id");
 
                 entity.Property(e => e.Certificate)
                     .HasMaxLength(25)
@@ -92,7 +102,6 @@ namespace kursovajaEF
                 entity.Property(e => e.Paid40pct).HasColumnName("paid_40pct");
 
                 entity.Property(e => e.PayDate40pct)
-                    .IsRequired()
                     .HasMaxLength(10)
                     .HasColumnName("pay_date_40pct");
 
@@ -119,6 +128,16 @@ namespace kursovajaEF
                 entity.Property(e => e.WhoPay)
                     .HasMaxLength(55)
                     .HasColumnName("who_pay");
+
+                entity.Property(e => e.Bank)
+                    .HasMaxLength(55)
+                    .HasColumnName("bank");
+
+                entity.HasOne(d => d.Listener)
+                    .WithMany(p => p.Contracts)
+                    .HasForeignKey(d => d.ListenerId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("listener_id_fkey2");
             });
 
             modelBuilder.Entity<ContractInfo>(entity =>
@@ -134,6 +153,9 @@ namespace kursovajaEF
                 entity.Property(e => e.StudyHours).HasColumnName("study_hours");
 
                 entity.Property(e => e.DisciplineId).HasColumnName("discipline_id");
+
+                entity.HasIndex(e => e.ContractId, "unique_index_contract_id")
+                    .IsUnique();
 
                 entity.Property(e => e.DisciplineName)
                     .HasMaxLength(30)
@@ -162,7 +184,7 @@ namespace kursovajaEF
                     .HasMaxLength(100)
                     .HasColumnName("department_name");
             });
-
+            
             modelBuilder.Entity<Discipline>(entity =>
             {
                 entity.ToTable("disciplines");
@@ -182,16 +204,19 @@ namespace kursovajaEF
 
             modelBuilder.Entity<DisciplinesTeacher>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(keys => new { keys.DisciplineId, keys.TeacherId });
 
                 entity.ToTable("disciplines_teachers");
-
-                entity.HasIndex(e => new { e.DisciplineId, e.TeacherId }, "unique_dis_teach")
-                    .IsUnique();
 
                 entity.Property(e => e.DisciplineId).HasColumnName("discipline_id");
 
                 entity.Property(e => e.TeacherId).HasColumnName("teacher_id");
+
+                entity.Property(e => e.Number).HasColumnName("number");
+
+                entity.Property(e => e.Date).
+                    HasMaxLength(10).
+                    HasColumnName("date");
 
                 entity.HasOne(d => d.Discipline)
                     .WithMany()
@@ -289,27 +314,27 @@ namespace kursovajaEF
                     .HasConstraintName("group_id_fkey");
             });
 
-            modelBuilder.Entity<GroupInfoListener>(entity =>
+            modelBuilder.Entity<GroupInfoTeacher>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(keys => new { keys.GroupInfoId, keys.TeacherId });
 
-                entity.ToTable("group_info_listeners");
+                entity.ToTable("group_info_teacher");
 
                 entity.Property(e => e.GroupInfoId).HasColumnName("group_info_id");
 
-                entity.Property(e => e.ListenerId).HasColumnName("listener_id");
+                entity.Property(e => e.TeacherId).HasColumnName("teacher_id");
 
                 entity.HasOne(d => d.GroupInfo)
                     .WithMany()
                     .HasForeignKey(d => d.GroupInfoId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("group_info_id_fkey");
+                    .HasConstraintName("group_info_fkey");
 
-                entity.HasOne(d => d.Listener)
+                entity.HasOne(d => d.Teacher)
                     .WithMany()
-                    .HasForeignKey(d => d.ListenerId)
+                    .HasForeignKey(d => d.TeacherId)
                     .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("listener_id_fkey");
+                    .HasConstraintName("teacher_fkey");
             });
 
             modelBuilder.Entity<GroupInfoContractInfo>(entity =>
@@ -410,16 +435,11 @@ namespace kursovajaEF
             {
                 entity.ToTable("listeners");
 
-                entity.HasIndex(e => e.ContractId, "unique_contract_id")
-                    .IsUnique();
-
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
                     .HasDefaultValueSql("nextval('list_id_seq'::regclass)");
 
                 entity.Property(e => e.Code).HasColumnName("code");
-
-                entity.Property(e => e.ContractId).HasColumnName("contract_id");
 
                 entity.Property(e => e.Doi)
                     .HasMaxLength(10)
@@ -477,11 +497,9 @@ namespace kursovajaEF
                     .HasMaxLength(10)
                     .HasColumnName("yob");
 
-                entity.HasOne(d => d.Contract)
-                    .WithOne(p => p.Listener)
-                    .HasForeignKey<Listener>(d => d.ContractId)
-                    .OnDelete(DeleteBehavior.Cascade)
-                    .HasConstraintName("contracts_fkey");
+                entity.Property(e => e.ListenerCategory)
+                    .HasMaxLength(30)
+                    .HasColumnName("listener_category");
             });
 
             modelBuilder.Entity<ListenerWish>(entity =>
@@ -555,6 +573,14 @@ namespace kursovajaEF
                 entity.Property(e => e.Title)
                     .HasMaxLength(40)
                     .HasColumnName("title");
+
+                entity.Property(e => e.ChairId).HasColumnName("chair_id");
+
+                entity.HasOne(t => t.Chair)
+                    .WithMany(c => c.Teachers)
+                    .HasForeignKey(t => t.ChairId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("chair_id_fkey");
             });
 
             modelBuilder.Entity<Timetable>(entity =>
@@ -577,6 +603,79 @@ namespace kursovajaEF
                 entity.Property(e => e.Weekday)
                     .HasMaxLength(11)
                     .HasColumnName("weekday");
+            });
+
+            modelBuilder.Entity<Chair>(entity =>
+            {
+                entity.ToTable("chairs");
+
+                entity.HasKey(key => key.ChairId);
+
+                entity.Property(e => e.ChairId).HasColumnName("chair_id");
+
+                entity.Property(e => e.ChairName)
+                    .HasMaxLength(65)
+                    .HasColumnName("chair_name");
+            });
+
+            modelBuilder.Entity<ListenerEnrollmentOrder>(entity =>
+            {
+                entity.ToTable("listener_enrollment_orders");
+
+                entity.HasKey(e => e.ListenerEnrollmentOrderId)
+                    .HasName("listener_enrollment_orders_pkey");
+
+                entity.Property(e => e.ListenerEnrollmentOrderId)
+                    .HasColumnName("listener_enrollment_order_id")
+                    .HasDefaultValueSql("nextval('\"ListenerEnrollmentOrderIdSequence\"')");
+
+                entity.Property(e => e.ContractId).HasColumnName("contract_id");
+
+                entity.Property(e => e.Number).HasColumnName("number");
+
+                entity.Property(e => e.Date)
+                    .HasMaxLength(10)
+                    .HasColumnName("date")
+                    .IsRequired();
+
+                entity.HasIndex(e => e.ContractId, "unique_index_contract_id_listener_enrollment_orders")
+                    .IsUnique();
+
+                entity.HasOne(d => d.Contract)
+                    .WithMany(p => p.ListenerEnrollmentOrders)
+                    .HasForeignKey(d => d.ContractId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("listener_enrollment_orders_contract_id__fkey");
+            });
+
+            modelBuilder.Entity<ListenerExpulsionOrder>(entity =>
+            {
+                entity.ToTable("listener_expulsion_orders");
+
+                entity.HasKey(e => e.ListenerExpulsionOrderId)
+                    .HasName("listener_expulsion_orders_pkey");
+
+                entity.Property(e => e.ListenerExpulsionOrderId)
+                    .HasColumnName("listener_expulsion_order_id")
+                    .HasDefaultValueSql("nextval('\"ListenerExpulsionOrderIdSequence\"')");
+
+                entity.Property(e => e.ContractId).HasColumnName("contract_id");
+
+                entity.Property(e => e.Number).HasColumnName("number");
+
+                entity.Property(e => e.Date)
+                    .HasMaxLength(10)
+                    .HasColumnName("date")
+                    .IsRequired();
+
+                entity.HasIndex(e => e.ContractId, "unique_index_contract_id_listener_expulsion_orders")
+                    .IsUnique();
+
+                entity.HasOne(d => d.Contract)
+                    .WithMany(p => p.ListenerExpulsionOrders)
+                    .HasForeignKey(d => d.ContractId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("listener_expulsion_orders_contract_id__fkey");
             });
 
             OnModelCreatingPartial(modelBuilder);

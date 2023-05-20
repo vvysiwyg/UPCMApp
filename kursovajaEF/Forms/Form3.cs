@@ -37,12 +37,12 @@ namespace kursovajaEF.Forms
                     Sex = s.Sex, 
                     Id = s.Id, 
                     Matriculation = s.Matriculation, 
-                    ContractId = s.ContractId, 
                     PhoneNum = s.PhoneNum, 
                     SchoolGrade = s.SchoolGrade, 
-                    Email = s.Email}))
-                    dataGridView1.Rows.Add(l.Firstname, l.Midname, l.Lastname, l.Yob, l.Sex, l.Id, l.Matriculation, l.ContractId,
-                        l.PhoneNum, l.SchoolGrade, l.Email);
+                    Email = s.Email,
+                    ListenerCategory = s.ListenerCategory}))
+                    dataGridView1.Rows.Add(l.Firstname, l.Midname, l.Lastname, l.Yob, l.Sex, l.Id, l.Matriculation,
+                        l.PhoneNum, l.SchoolGrade, l.Email, l.ListenerCategory);
             }
         }
 
@@ -137,40 +137,6 @@ namespace kursovajaEF.Forms
 
         private void delBtn_Click(object sender, EventArgs e)
         {
-            // Удаление нескольких строк
-
-            /*cli::array<int>^ selrow = gcnew cli::array<int>(dataGridView1.SelectedCells.Count);
-            int iter = 0;
-
-            //for (int i = 0; i < dataGridView1.RowCount; i++)
-                //dataGridView1.Rows[i].Selected == true ? selrow = i : NULL;
-            //MessageBox::Show(dataGridView1.GetCellCount(DataGridViewElementStates::Selected).ToString());
-
-            for (int i = 0; i < dataGridView1.SelectedCells.Count; i++)
-                selrow[i] = dataGridView1.SelectedCells[i].RowIndex;
-
-            for (int i = 0; i < selrow.Length; i++)
-                for (int j = i + 1; j < selrow.Length; j++)
-                    selrow[i] == selrow[j] ? selrow[j] = -1 : NULL;
-
-            System::Array::Sort(selrow);
-
-            //MessageBox::Show(dataGridView1[0, 0].Value.ToString());
-            //MessageBox::Show(dataGridView1.SelectedCells[i].OwningColumn.Name + " : " + dataGridView1.SelectedCells[i].Value.ToString());
-            //MessageBox::Show(dataGridView1.SelectedCells[i].RowIndex.ToString());
-
-            for (int i = 0; i < selrow.Length; i++) {
-                if (selrow[i] != -1) {
-                    sql = "DELETE FROM list WHERE id =" + 
-                        dataGridView1.Rows[selrow[i] - iter].Cells[dataGridView1.Columns["idCol"].Index].Value.ToString() +
-                        ";";
-                    dml = gcnew OdbcCommand(sql, conn);
-                    dml.ExecuteNonQuery();
-                    dataGridView1.Rows.RemoveAt(selrow[i] - iter);
-                    iter++;
-                }
-            }*/
-
             if (dataGridView1.SelectedCells.Count == 0)
                 return; // Если ни одна клетка не выбрана, то ничего не делаем
 
@@ -231,7 +197,8 @@ namespace kursovajaEF.Forms
                     EF.Functions.Like(w.Matriculation, $"%{txt}%") ||
                     EF.Functions.Like(w.PhoneNum.ToString(), $"{txt}%") ||
                     EF.Functions.Like(w.SchoolGrade, $"%{txt}%") ||
-                    EF.Functions.Like(w.Email, $"%{txt}%"));
+                    EF.Functions.Like(w.Email, $"%{txt}%") ||
+                    EF.Functions.Like(w.ListenerCategory, $"%{txt}%"));
 
                     dataGridView1.Rows.Clear();
 
@@ -245,10 +212,10 @@ namespace kursovajaEF.Forms
                             elem.Sex,
                             elem.Id,
                             elem.Matriculation,
-                            elem.ContractId,
                             elem.PhoneNum,
                             elem.SchoolGrade,
-                            elem.Email
+                            elem.Email,
+                            elem.ListenerCategory
                             );
                     }
                 }

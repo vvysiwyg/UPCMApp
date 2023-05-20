@@ -16,10 +16,14 @@ namespace kursovajaEF.Forms
     public partial class Form7 : AdvancedForm
     {
         private NpgsqlConnection conn;
-        public string chosenDis = "0";
+        public DataGridViewRow disciplinesRow;
+        public string chosenDis;
+        public string formName;
         public Form7(NpgsqlConnection conn)
         {
             this.conn = conn;
+            chosenDis = "0";
+            formName = "0";
             InitializeComponent();
         }
 
@@ -244,13 +248,33 @@ namespace kursovajaEF.Forms
             }
         }
 
-        private void setDisBtn_Click(object sender, EventArgs e)
+        private void setDiscipline()
         {
             if (disciplines.SelectedCells.Count == 1)
             {
                 chosenDis = disciplines.SelectedCells[0].OwningRow.Cells["disCol"].Value.ToString();
                 Close();
             }
+        }
+
+        private void setDisciplineRow()
+        {
+            if (disciplines.SelectedCells.Count == 1)
+            {
+                DataGridViewRow selectedRow = disciplines.SelectedCells[0].OwningRow;
+                disciplinesRow = (DataGridViewRow)selectedRow.Clone();
+                for (int i = 0; i < selectedRow.Cells.Count; ++i)
+                    disciplinesRow.Cells[i].Value = selectedRow.Cells[i].Value;
+                Close();
+            }
+        }
+
+        private void setDisBtn_Click(object sender, EventArgs e)
+        {
+            if (formName == "Form2")
+                setDiscipline();
+            else if (formName == "Form10")
+                setDisciplineRow();
         }
 
         private void disciplines_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

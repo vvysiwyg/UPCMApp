@@ -32,6 +32,9 @@ namespace kursovajaEF.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.addingCheck = new System.Windows.Forms.Label();
             this.contractId = new System.Windows.Forms.Label();
             this.updatingCheck = new System.Windows.Forms.Label();
@@ -58,6 +61,17 @@ namespace kursovajaEF.Forms
             this.panel1 = new System.Windows.Forms.Panel();
             this.phoneNum = new System.Windows.Forms.MaskedTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.group_info = new System.Windows.Forms.DataGridView();
+            this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numOfHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractInfoIdCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.setDisBtn = new System.Windows.Forms.Button();
             this.discipline = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -69,15 +83,7 @@ namespace kursovajaEF.Forms
             this.hoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numOfPeopleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contractInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numOfHoursCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupInfoIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endLearningCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delGIBtn = new System.Windows.Forms.Button();
             this.delCIBtn = new System.Windows.Forms.Button();
             this.delCIBtn2 = new System.Windows.Forms.Button();
             this.addCIBtn = new System.Windows.Forms.Button();
@@ -89,17 +95,17 @@ namespace kursovajaEF.Forms
             this.numOfPeople = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.PayDate40pct = new System.Windows.Forms.DateTimePicker();
-            this.paymentDeadline = new System.Windows.Forms.DateTimePicker();
+            this.paymentDeadline = new System.Windows.Forms.TextBox();
+            this.bank = new System.Windows.Forms.TextBox();
             this.restOfSum = new System.Windows.Forms.TextBox();
-            this.transferGroup = new System.Windows.Forms.TextBox();
             this.whoPay = new System.Windows.Forms.TextBox();
             this.payedSum = new System.Windows.Forms.TextBox();
+            this.PayDate40pct = new System.Windows.Forms.TextBox();
             this.totalSum = new System.Windows.Forms.TextBox();
             this.crn = new System.Windows.Forms.TextBox();
             this.wishes = new System.Windows.Forms.DataGridView();
@@ -124,9 +130,14 @@ namespace kursovajaEF.Forms
             this.updBtn = new System.Windows.Forms.Button();
             this.closeBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
+            this.transferGroupBtn = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.listenerCategory = new System.Windows.Forms.ComboBox();
+            this.addOrderBtn = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.group_info)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contract_info)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wishes)).BeginInit();
             this.SuspendLayout();
@@ -235,7 +246,7 @@ namespace kursovajaEF.Forms
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(12, 353);
+            this.label8.Location = new System.Drawing.Point(12, 406);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 28);
             this.label8.TabIndex = 1;
@@ -245,7 +256,7 @@ namespace kursovajaEF.Forms
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(12, 403);
+            this.label9.Location = new System.Drawing.Point(12, 451);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(59, 28);
             this.label9.TabIndex = 1;
@@ -329,7 +340,7 @@ namespace kursovajaEF.Forms
             // schoolGrade
             // 
             this.schoolGrade.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.schoolGrade.Location = new System.Drawing.Point(222, 350);
+            this.schoolGrade.Location = new System.Drawing.Point(222, 403);
             this.schoolGrade.Name = "schoolGrade";
             this.schoolGrade.Size = new System.Drawing.Size(494, 34);
             this.schoolGrade.TabIndex = 10;
@@ -337,7 +348,7 @@ namespace kursovajaEF.Forms
             // email
             // 
             this.email.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.email.Location = new System.Drawing.Point(222, 400);
+            this.email.Location = new System.Drawing.Point(222, 448);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(494, 34);
             this.email.TabIndex = 11;
@@ -377,6 +388,7 @@ namespace kursovajaEF.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoScroll = true;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.group_info);
             this.panel2.Controls.Add(this.setDisBtn);
             this.panel2.Controls.Add(this.discipline);
             this.panel2.Controls.Add(this.panel3);
@@ -384,6 +396,7 @@ namespace kursovajaEF.Forms
             this.panel2.Controls.Add(this.newGroupBtn);
             this.panel2.Controls.Add(this.addGIBtn);
             this.panel2.Controls.Add(this.contract_info);
+            this.panel2.Controls.Add(this.delGIBtn);
             this.panel2.Controls.Add(this.delCIBtn);
             this.panel2.Controls.Add(this.delCIBtn2);
             this.panel2.Controls.Add(this.addCIBtn);
@@ -395,17 +408,17 @@ namespace kursovajaEF.Forms
             this.panel2.Controls.Add(this.numOfPeople);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.PayDate40pct);
             this.panel2.Controls.Add(this.paymentDeadline);
+            this.panel2.Controls.Add(this.bank);
             this.panel2.Controls.Add(this.restOfSum);
-            this.panel2.Controls.Add(this.transferGroup);
             this.panel2.Controls.Add(this.whoPay);
             this.panel2.Controls.Add(this.payedSum);
+            this.panel2.Controls.Add(this.PayDate40pct);
             this.panel2.Controls.Add(this.totalSum);
             this.panel2.Controls.Add(this.crn);
             this.panel2.Controls.Add(this.label2);
@@ -415,12 +428,127 @@ namespace kursovajaEF.Forms
             this.panel2.Size = new System.Drawing.Size(938, 921);
             this.panel2.TabIndex = 12;
             // 
+            // group_info
+            // 
+            this.group_info.AllowUserToAddRows = false;
+            this.group_info.AllowUserToDeleteRows = false;
+            this.group_info.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.group_info.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.group_info.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.group_info.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.group_info.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.group_info.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.group_info.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.groupNumCol,
+            this.numOfHoursCol,
+            this.groupInfoIdCol,
+            this.weekdayCol,
+            this.startTimeCol,
+            this.endTimeCol,
+            this.startLearningCol,
+            this.endLearningCol,
+            this.groupIdCol,
+            this.contractInfoIdCol2});
+            this.group_info.Location = new System.Drawing.Point(439, 289);
+            this.group_info.Name = "group_info";
+            this.group_info.ReadOnly = true;
+            this.group_info.RowHeadersWidth = 51;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.group_info.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.group_info.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.group_info.RowTemplate.Height = 29;
+            this.group_info.Size = new System.Drawing.Size(472, 216);
+            this.group_info.TabIndex = 17;
+            this.group_info.Visible = false;
+            // 
+            // groupNumCol
+            // 
+            this.groupNumCol.HeaderText = "Номер группы";
+            this.groupNumCol.MinimumWidth = 6;
+            this.groupNumCol.Name = "groupNumCol";
+            this.groupNumCol.ReadOnly = true;
+            // 
+            // numOfHoursCol
+            // 
+            this.numOfHoursCol.HeaderText = "Часы";
+            this.numOfHoursCol.MinimumWidth = 6;
+            this.numOfHoursCol.Name = "numOfHoursCol";
+            this.numOfHoursCol.ReadOnly = true;
+            // 
+            // groupInfoIdCol
+            // 
+            this.groupInfoIdCol.HeaderText = "id информации о группе";
+            this.groupInfoIdCol.MinimumWidth = 6;
+            this.groupInfoIdCol.Name = "groupInfoIdCol";
+            this.groupInfoIdCol.ReadOnly = true;
+            this.groupInfoIdCol.Visible = false;
+            // 
+            // weekdayCol
+            // 
+            this.weekdayCol.HeaderText = "День недели";
+            this.weekdayCol.MinimumWidth = 6;
+            this.weekdayCol.Name = "weekdayCol";
+            this.weekdayCol.ReadOnly = true;
+            // 
+            // startTimeCol
+            // 
+            this.startTimeCol.HeaderText = "Время начала";
+            this.startTimeCol.MinimumWidth = 6;
+            this.startTimeCol.Name = "startTimeCol";
+            this.startTimeCol.ReadOnly = true;
+            // 
+            // endTimeCol
+            // 
+            this.endTimeCol.HeaderText = "Время окончания";
+            this.endTimeCol.MinimumWidth = 6;
+            this.endTimeCol.Name = "endTimeCol";
+            this.endTimeCol.ReadOnly = true;
+            // 
+            // startLearningCol
+            // 
+            this.startLearningCol.HeaderText = "Дата начала обучения";
+            this.startLearningCol.MinimumWidth = 6;
+            this.startLearningCol.Name = "startLearningCol";
+            this.startLearningCol.ReadOnly = true;
+            this.startLearningCol.Visible = false;
+            // 
+            // endLearningCol
+            // 
+            this.endLearningCol.HeaderText = "Дата окончания обучения";
+            this.endLearningCol.MinimumWidth = 6;
+            this.endLearningCol.Name = "endLearningCol";
+            this.endLearningCol.ReadOnly = true;
+            this.endLearningCol.Visible = false;
+            // 
+            // groupIdCol
+            // 
+            this.groupIdCol.HeaderText = "id группы";
+            this.groupIdCol.MinimumWidth = 6;
+            this.groupIdCol.Name = "groupIdCol";
+            this.groupIdCol.ReadOnly = true;
+            this.groupIdCol.Visible = false;
+            // 
+            // contractInfoIdCol2
+            // 
+            this.contractInfoIdCol2.HeaderText = "id информации о договоре";
+            this.contractInfoIdCol2.MinimumWidth = 6;
+            this.contractInfoIdCol2.Name = "contractInfoIdCol2";
+            this.contractInfoIdCol2.ReadOnly = true;
+            this.contractInfoIdCol2.Visible = false;
+            // 
             // setDisBtn
             // 
             this.setDisBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.setDisBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.setDisBtn.ForeColor = System.Drawing.Color.Green;
-            this.setDisBtn.Location = new System.Drawing.Point(244, 239);
+            this.setDisBtn.Location = new System.Drawing.Point(243, 237);
             this.setDisBtn.Name = "setDisBtn";
             this.setDisBtn.Size = new System.Drawing.Size(46, 46);
             this.setDisBtn.TabIndex = 21;
@@ -432,7 +560,7 @@ namespace kursovajaEF.Forms
             // 
             this.discipline.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.discipline.Location = new System.Drawing.Point(22, 249);
+            this.discipline.Location = new System.Drawing.Point(21, 247);
             this.discipline.Name = "discipline";
             this.discipline.ReadOnly = true;
             this.discipline.Size = new System.Drawing.Size(208, 34);
@@ -444,16 +572,16 @@ namespace kursovajaEF.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.AutoScroll = true;
-            this.panel3.Location = new System.Drawing.Point(21, 650);
+            this.panel3.Location = new System.Drawing.Point(21, 633);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(865, 265);
+            this.panel3.Size = new System.Drawing.Size(865, 282);
             this.panel3.TabIndex = 19;
             // 
             // cbWish
             // 
             this.cbWish.AutoSize = true;
             this.cbWish.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbWish.Location = new System.Drawing.Point(22, 602);
+            this.cbWish.Location = new System.Drawing.Point(21, 600);
             this.cbWish.Name = "cbWish";
             this.cbWish.Size = new System.Drawing.Size(253, 24);
             this.cbWish.TabIndex = 18;
@@ -464,7 +592,7 @@ namespace kursovajaEF.Forms
             // newGroupBtn
             // 
             this.newGroupBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.newGroupBtn.Location = new System.Drawing.Point(497, 522);
+            this.newGroupBtn.Location = new System.Drawing.Point(496, 520);
             this.newGroupBtn.Name = "newGroupBtn";
             this.newGroupBtn.Size = new System.Drawing.Size(389, 49);
             this.newGroupBtn.TabIndex = 17;
@@ -474,7 +602,7 @@ namespace kursovajaEF.Forms
             // 
             // addGIBtn
             // 
-            this.addGIBtn.Location = new System.Drawing.Point(22, 522);
+            this.addGIBtn.Location = new System.Drawing.Point(21, 520);
             this.addGIBtn.Name = "addGIBtn";
             this.addGIBtn.Size = new System.Drawing.Size(389, 49);
             this.addGIBtn.TabIndex = 17;
@@ -491,38 +619,29 @@ namespace kursovajaEF.Forms
             this.contract_info.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.contract_info.BackgroundColor = System.Drawing.SystemColors.Control;
             this.contract_info.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.contract_info.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.contract_info.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.contract_info.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.contract_info.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.disciplineNameCol,
             this.hoursCol,
             this.numOfPeopleCol,
-            this.contractInfoIdCol,
-            this.groupNumCol,
-            this.numOfHoursCol,
-            this.groupInfoIdCol,
-            this.weekdayCol,
-            this.startTimeCol,
-            this.endTimeCol,
-            this.startLearningCol,
-            this.endLearningCol,
-            this.groupIdCol});
-            this.contract_info.Location = new System.Drawing.Point(22, 291);
+            this.contractInfoIdCol});
+            this.contract_info.Location = new System.Drawing.Point(21, 289);
             this.contract_info.Name = "contract_info";
             this.contract_info.ReadOnly = true;
             this.contract_info.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.contract_info.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.contract_info.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.contract_info.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.contract_info.RowTemplate.Height = 29;
-            this.contract_info.Size = new System.Drawing.Size(864, 216);
+            this.contract_info.Size = new System.Drawing.Size(361, 216);
             this.contract_info.TabIndex = 16;
             this.contract_info.Visible = false;
             this.contract_info.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.contract_info_CellClick);
@@ -556,84 +675,25 @@ namespace kursovajaEF.Forms
             this.contractInfoIdCol.ReadOnly = true;
             this.contractInfoIdCol.Visible = false;
             // 
-            // groupNumCol
+            // delGIBtn
             // 
-            this.groupNumCol.HeaderText = "Номер группы";
-            this.groupNumCol.MinimumWidth = 6;
-            this.groupNumCol.Name = "groupNumCol";
-            this.groupNumCol.ReadOnly = true;
-            this.groupNumCol.Visible = false;
-            // 
-            // numOfHoursCol
-            // 
-            this.numOfHoursCol.HeaderText = "Часы";
-            this.numOfHoursCol.MinimumWidth = 6;
-            this.numOfHoursCol.Name = "numOfHoursCol";
-            this.numOfHoursCol.ReadOnly = true;
-            this.numOfHoursCol.Visible = false;
-            // 
-            // groupInfoIdCol
-            // 
-            this.groupInfoIdCol.HeaderText = "id информации о группе";
-            this.groupInfoIdCol.MinimumWidth = 6;
-            this.groupInfoIdCol.Name = "groupInfoIdCol";
-            this.groupInfoIdCol.ReadOnly = true;
-            this.groupInfoIdCol.Visible = false;
-            // 
-            // weekdayCol
-            // 
-            this.weekdayCol.HeaderText = "День недели";
-            this.weekdayCol.MinimumWidth = 6;
-            this.weekdayCol.Name = "weekdayCol";
-            this.weekdayCol.ReadOnly = true;
-            this.weekdayCol.Visible = false;
-            // 
-            // startTimeCol
-            // 
-            this.startTimeCol.HeaderText = "Время начала";
-            this.startTimeCol.MinimumWidth = 6;
-            this.startTimeCol.Name = "startTimeCol";
-            this.startTimeCol.ReadOnly = true;
-            this.startTimeCol.Visible = false;
-            // 
-            // endTimeCol
-            // 
-            this.endTimeCol.HeaderText = "Время окончания";
-            this.endTimeCol.MinimumWidth = 6;
-            this.endTimeCol.Name = "endTimeCol";
-            this.endTimeCol.ReadOnly = true;
-            this.endTimeCol.Visible = false;
-            // 
-            // startLearningCol
-            // 
-            this.startLearningCol.HeaderText = "Дата начала обучения";
-            this.startLearningCol.MinimumWidth = 6;
-            this.startLearningCol.Name = "startLearningCol";
-            this.startLearningCol.ReadOnly = true;
-            this.startLearningCol.Visible = false;
-            // 
-            // endLearningCol
-            // 
-            this.endLearningCol.HeaderText = "Дата окончания обучения";
-            this.endLearningCol.MinimumWidth = 6;
-            this.endLearningCol.Name = "endLearningCol";
-            this.endLearningCol.ReadOnly = true;
-            this.endLearningCol.Visible = false;
-            // 
-            // groupIdCol
-            // 
-            this.groupIdCol.HeaderText = "id группы";
-            this.groupIdCol.MinimumWidth = 6;
-            this.groupIdCol.Name = "groupIdCol";
-            this.groupIdCol.ReadOnly = true;
-            this.groupIdCol.Visible = false;
+            this.delGIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.delGIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.delGIBtn.ForeColor = System.Drawing.Color.Red;
+            this.delGIBtn.Location = new System.Drawing.Point(388, 388);
+            this.delGIBtn.Name = "delGIBtn";
+            this.delGIBtn.Size = new System.Drawing.Size(46, 46);
+            this.delGIBtn.TabIndex = 14;
+            this.delGIBtn.Text = "x";
+            this.delGIBtn.UseVisualStyleBackColor = true;
+            this.delGIBtn.Click += new System.EventHandler(this.delGIBtn_Click);
             // 
             // delCIBtn
             // 
             this.delCIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.delCIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.delCIBtn.ForeColor = System.Drawing.Color.Red;
-            this.delCIBtn.Location = new System.Drawing.Point(799, 239);
+            this.delCIBtn.Location = new System.Drawing.Point(798, 237);
             this.delCIBtn.Name = "delCIBtn";
             this.delCIBtn.Size = new System.Drawing.Size(46, 46);
             this.delCIBtn.TabIndex = 14;
@@ -646,7 +706,7 @@ namespace kursovajaEF.Forms
             this.delCIBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.delCIBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.delCIBtn2.ForeColor = System.Drawing.Color.Red;
-            this.delCIBtn2.Location = new System.Drawing.Point(799, 239);
+            this.delCIBtn2.Location = new System.Drawing.Point(798, 237);
             this.delCIBtn2.Name = "delCIBtn2";
             this.delCIBtn2.Size = new System.Drawing.Size(46, 46);
             this.delCIBtn2.TabIndex = 14;
@@ -660,7 +720,7 @@ namespace kursovajaEF.Forms
             this.addCIBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addCIBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.addCIBtn.ForeColor = System.Drawing.Color.Green;
-            this.addCIBtn.Location = new System.Drawing.Point(727, 239);
+            this.addCIBtn.Location = new System.Drawing.Point(726, 237);
             this.addCIBtn.Name = "addCIBtn";
             this.addCIBtn.Size = new System.Drawing.Size(46, 46);
             this.addCIBtn.TabIndex = 15;
@@ -673,7 +733,7 @@ namespace kursovajaEF.Forms
             this.addCIBtn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addCIBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.addCIBtn2.ForeColor = System.Drawing.Color.Green;
-            this.addCIBtn2.Location = new System.Drawing.Point(727, 239);
+            this.addCIBtn2.Location = new System.Drawing.Point(726, 237);
             this.addCIBtn2.Name = "addCIBtn2";
             this.addCIBtn2.Size = new System.Drawing.Size(46, 46);
             this.addCIBtn2.TabIndex = 15;
@@ -687,7 +747,7 @@ namespace kursovajaEF.Forms
             this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(525, 205);
+            this.label22.Location = new System.Drawing.Point(524, 203);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(200, 28);
             this.label22.TabIndex = 8;
@@ -698,7 +758,7 @@ namespace kursovajaEF.Forms
             this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.Location = new System.Drawing.Point(323, 205);
+            this.label23.Location = new System.Drawing.Point(322, 203);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(178, 28);
             this.label23.TabIndex = 9;
@@ -708,7 +768,7 @@ namespace kursovajaEF.Forms
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(22, 207);
+            this.label24.Location = new System.Drawing.Point(21, 205);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(118, 28);
             this.label24.TabIndex = 10;
@@ -718,7 +778,7 @@ namespace kursovajaEF.Forms
             // 
             this.hours.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.hours.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.hours.Location = new System.Drawing.Point(323, 251);
+            this.hours.Location = new System.Drawing.Point(322, 249);
             this.hours.Name = "hours";
             this.hours.Size = new System.Drawing.Size(143, 34);
             this.hours.TabIndex = 11;
@@ -727,7 +787,7 @@ namespace kursovajaEF.Forms
             // 
             this.numOfPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numOfPeople.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numOfPeople.Location = new System.Drawing.Point(525, 251);
+            this.numOfPeople.Location = new System.Drawing.Point(524, 249);
             this.numOfPeople.Name = "numOfPeople";
             this.numOfPeople.Size = new System.Drawing.Size(143, 34);
             this.numOfPeople.TabIndex = 12;
@@ -736,7 +796,7 @@ namespace kursovajaEF.Forms
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(576, 155);
+            this.label16.Location = new System.Drawing.Point(635, 60);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(130, 28);
             this.label16.TabIndex = 1;
@@ -746,37 +806,37 @@ namespace kursovajaEF.Forms
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(22, 156);
+            this.label15.Location = new System.Drawing.Point(397, 113);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(219, 28);
             this.label15.TabIndex = 1;
             this.label15.Text = "Кто оплатил обучение";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.Location = new System.Drawing.Point(21, 161);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(55, 28);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "Банк";
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(411, 110);
+            this.label14.Location = new System.Drawing.Point(22, 113);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(231, 28);
             this.label14.TabIndex = 1;
             this.label14.Text = "Остаток по оплате(руб.)";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(21, 110);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(227, 28);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Переведен(-а) в группу";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(348, 60);
+            this.label12.Location = new System.Drawing.Point(321, 60);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(174, 28);
             this.label12.TabIndex = 1;
@@ -796,65 +856,66 @@ namespace kursovajaEF.Forms
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(530, 14);
+            this.label10.Location = new System.Drawing.Point(502, 14);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(187, 28);
             this.label10.TabIndex = 1;
             this.label10.Text = "Общая сумма(руб.)";
             // 
-            // PayDate40pct
-            // 
-            this.PayDate40pct.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PayDate40pct.Location = new System.Drawing.Point(548, 62);
-            this.PayDate40pct.Name = "PayDate40pct";
-            this.PayDate40pct.Size = new System.Drawing.Size(184, 27);
-            this.PayDate40pct.TabIndex = 4;
-            // 
             // paymentDeadline
             // 
-            this.paymentDeadline.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.paymentDeadline.Location = new System.Drawing.Point(728, 157);
+            this.paymentDeadline.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.paymentDeadline.Location = new System.Drawing.Point(771, 57);
             this.paymentDeadline.Name = "paymentDeadline";
-            this.paymentDeadline.Size = new System.Drawing.Size(184, 27);
-            this.paymentDeadline.TabIndex = 4;
+            this.paymentDeadline.Size = new System.Drawing.Size(132, 34);
+            this.paymentDeadline.TabIndex = 1;
+            // 
+            // bank
+            // 
+            this.bank.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bank.Location = new System.Drawing.Point(82, 159);
+            this.bank.Name = "bank";
+            this.bank.Size = new System.Drawing.Size(192, 34);
+            this.bank.TabIndex = 1;
             // 
             // restOfSum
             // 
             this.restOfSum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.restOfSum.Location = new System.Drawing.Point(668, 107);
+            this.restOfSum.Location = new System.Drawing.Point(259, 110);
             this.restOfSum.Name = "restOfSum";
             this.restOfSum.Size = new System.Drawing.Size(132, 34);
             this.restOfSum.TabIndex = 1;
             // 
-            // transferGroup
-            // 
-            this.transferGroup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.transferGroup.Location = new System.Drawing.Point(274, 107);
-            this.transferGroup.Name = "transferGroup";
-            this.transferGroup.Size = new System.Drawing.Size(132, 34);
-            this.transferGroup.TabIndex = 1;
-            // 
             // whoPay
             // 
             this.whoPay.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.whoPay.Location = new System.Drawing.Point(247, 153);
+            this.whoPay.Location = new System.Drawing.Point(622, 110);
             this.whoPay.Name = "whoPay";
-            this.whoPay.Size = new System.Drawing.Size(323, 34);
+            this.whoPay.Size = new System.Drawing.Size(299, 34);
             this.whoPay.TabIndex = 1;
             // 
             // payedSum
             // 
             this.payedSum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.payedSum.Location = new System.Drawing.Point(203, 57);
+            this.payedSum.Location = new System.Drawing.Point(183, 57);
             this.payedSum.Name = "payedSum";
             this.payedSum.Size = new System.Drawing.Size(132, 34);
             this.payedSum.TabIndex = 1;
             this.payedSum.Leave += new System.EventHandler(this.totalSum_Leave);
             // 
+            // PayDate40pct
+            // 
+            this.PayDate40pct.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PayDate40pct.Location = new System.Drawing.Point(497, 57);
+            this.PayDate40pct.Name = "PayDate40pct";
+            this.PayDate40pct.Size = new System.Drawing.Size(132, 34);
+            this.PayDate40pct.TabIndex = 1;
+            this.PayDate40pct.Leave += new System.EventHandler(this.totalSum_Leave);
+            // 
             // totalSum
             // 
             this.totalSum.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalSum.Location = new System.Drawing.Point(743, 11);
+            this.totalSum.Location = new System.Drawing.Point(695, 10);
             this.totalSum.Name = "totalSum";
             this.totalSum.Size = new System.Drawing.Size(132, 34);
             this.totalSum.TabIndex = 1;
@@ -863,7 +924,7 @@ namespace kursovajaEF.Forms
             // crn
             // 
             this.crn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.crn.Location = new System.Drawing.Point(384, 11);
+            this.crn.Location = new System.Drawing.Point(364, 11);
             this.crn.Name = "crn";
             this.crn.Size = new System.Drawing.Size(132, 34);
             this.crn.TabIndex = 1;
@@ -882,15 +943,15 @@ namespace kursovajaEF.Forms
             this.wStartTimeCol,
             this.wEndTimeCol,
             this.wContractIdCol});
-            this.wishes.Location = new System.Drawing.Point(35, 613);
+            this.wishes.Location = new System.Drawing.Point(35, 646);
             this.wishes.Name = "wishes";
             this.wishes.ReadOnly = true;
             this.wishes.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.wishes.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.wishes.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.wishes.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.wishes.RowTemplate.Height = 29;
-            this.wishes.Size = new System.Drawing.Size(700, 206);
+            this.wishes.Size = new System.Drawing.Size(700, 179);
             this.wishes.TabIndex = 7;
             this.wishes.Visible = false;
             // 
@@ -935,7 +996,7 @@ namespace kursovajaEF.Forms
             // 
             this.delWishBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.delWishBtn.ForeColor = System.Drawing.Color.Red;
-            this.delWishBtn.Location = new System.Drawing.Point(689, 548);
+            this.delWishBtn.Location = new System.Drawing.Point(689, 581);
             this.delWishBtn.Name = "delWishBtn";
             this.delWishBtn.Size = new System.Drawing.Size(46, 46);
             this.delWishBtn.TabIndex = 6;
@@ -947,7 +1008,7 @@ namespace kursovajaEF.Forms
             // 
             this.delWishBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.delWishBtn2.ForeColor = System.Drawing.Color.Red;
-            this.delWishBtn2.Location = new System.Drawing.Point(689, 548);
+            this.delWishBtn2.Location = new System.Drawing.Point(689, 581);
             this.delWishBtn2.Name = "delWishBtn2";
             this.delWishBtn2.Size = new System.Drawing.Size(46, 46);
             this.delWishBtn2.TabIndex = 6;
@@ -960,7 +1021,7 @@ namespace kursovajaEF.Forms
             // 
             this.addWishBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.addWishBtn.ForeColor = System.Drawing.Color.Green;
-            this.addWishBtn.Location = new System.Drawing.Point(614, 548);
+            this.addWishBtn.Location = new System.Drawing.Point(614, 581);
             this.addWishBtn.Name = "addWishBtn";
             this.addWishBtn.Size = new System.Drawing.Size(46, 46);
             this.addWishBtn.TabIndex = 6;
@@ -972,7 +1033,7 @@ namespace kursovajaEF.Forms
             // 
             this.addWishBtn2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.addWishBtn2.ForeColor = System.Drawing.Color.Green;
-            this.addWishBtn2.Location = new System.Drawing.Point(614, 548);
+            this.addWishBtn2.Location = new System.Drawing.Point(614, 581);
             this.addWishBtn2.Name = "addWishBtn2";
             this.addWishBtn2.Size = new System.Drawing.Size(46, 46);
             this.addWishBtn2.TabIndex = 6;
@@ -993,7 +1054,7 @@ namespace kursovajaEF.Forms
             "Пт",
             "Сб",
             "Вс"});
-            this.weekday.Location = new System.Drawing.Point(35, 558);
+            this.weekday.Location = new System.Drawing.Point(35, 591);
             this.weekday.Name = "weekday";
             this.weekday.Size = new System.Drawing.Size(151, 36);
             this.weekday.TabIndex = 5;
@@ -1003,7 +1064,7 @@ namespace kursovajaEF.Forms
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(422, 512);
+            this.label21.Location = new System.Drawing.Point(422, 545);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(175, 28);
             this.label21.TabIndex = 1;
@@ -1013,7 +1074,7 @@ namespace kursovajaEF.Forms
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(225, 512);
+            this.label20.Location = new System.Drawing.Point(225, 545);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(138, 28);
             this.label20.TabIndex = 1;
@@ -1023,7 +1084,7 @@ namespace kursovajaEF.Forms
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(35, 514);
+            this.label19.Location = new System.Drawing.Point(35, 547);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(129, 28);
             this.label19.TabIndex = 1;
@@ -1033,7 +1094,7 @@ namespace kursovajaEF.Forms
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(12, 461);
+            this.label17.Location = new System.Drawing.Point(12, 494);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(218, 28);
             this.label17.TabIndex = 1;
@@ -1042,7 +1103,7 @@ namespace kursovajaEF.Forms
             // startTime
             // 
             this.startTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.startTime.Location = new System.Drawing.Point(225, 558);
+            this.startTime.Location = new System.Drawing.Point(225, 591);
             this.startTime.Name = "startTime";
             this.startTime.Size = new System.Drawing.Size(175, 34);
             this.startTime.TabIndex = 1;
@@ -1050,7 +1111,7 @@ namespace kursovajaEF.Forms
             // endTime
             // 
             this.endTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.endTime.Location = new System.Drawing.Point(422, 558);
+            this.endTime.Location = new System.Drawing.Point(422, 591);
             this.endTime.Name = "endTime";
             this.endTime.Size = new System.Drawing.Size(175, 34);
             this.endTime.TabIndex = 1;
@@ -1071,7 +1132,7 @@ namespace kursovajaEF.Forms
             this.endEduBtn.AutoSize = true;
             this.endEduBtn.Location = new System.Drawing.Point(35, 834);
             this.endEduBtn.Name = "endEduBtn";
-            this.endEduBtn.Size = new System.Drawing.Size(267, 40);
+            this.endEduBtn.Size = new System.Drawing.Size(194, 40);
             this.endEduBtn.TabIndex = 13;
             this.endEduBtn.Text = "Завершить обучение";
             this.endEduBtn.UseVisualStyleBackColor = true;
@@ -1084,7 +1145,7 @@ namespace kursovajaEF.Forms
             this.updBtn.AutoSize = true;
             this.updBtn.Location = new System.Drawing.Point(35, 893);
             this.updBtn.Name = "updBtn";
-            this.updBtn.Size = new System.Drawing.Size(267, 40);
+            this.updBtn.Size = new System.Drawing.Size(194, 40);
             this.updBtn.TabIndex = 13;
             this.updBtn.Text = "Изменить";
             this.updBtn.UseVisualStyleBackColor = true;
@@ -1095,9 +1156,9 @@ namespace kursovajaEF.Forms
             // 
             this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.closeBtn.AutoSize = true;
-            this.closeBtn.Location = new System.Drawing.Point(330, 893);
+            this.closeBtn.Location = new System.Drawing.Point(246, 893);
             this.closeBtn.Name = "closeBtn";
-            this.closeBtn.Size = new System.Drawing.Size(267, 40);
+            this.closeBtn.Size = new System.Drawing.Size(194, 40);
             this.closeBtn.TabIndex = 13;
             this.closeBtn.Text = "Отмена";
             this.closeBtn.UseVisualStyleBackColor = true;
@@ -1109,20 +1170,73 @@ namespace kursovajaEF.Forms
             this.addBtn.AutoSize = true;
             this.addBtn.Location = new System.Drawing.Point(35, 893);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(267, 40);
+            this.addBtn.Size = new System.Drawing.Size(194, 40);
             this.addBtn.TabIndex = 13;
             this.addBtn.Text = "Добавить";
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // transferGroupBtn
+            // 
+            this.transferGroupBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.transferGroupBtn.AutoSize = true;
+            this.transferGroupBtn.Location = new System.Drawing.Point(246, 834);
+            this.transferGroupBtn.Name = "transferGroupBtn";
+            this.transferGroupBtn.Size = new System.Drawing.Size(194, 40);
+            this.transferGroupBtn.TabIndex = 13;
+            this.transferGroupBtn.Text = "Перевести в группу";
+            this.transferGroupBtn.UseVisualStyleBackColor = true;
+            this.transferGroupBtn.Visible = false;
+            this.transferGroupBtn.Click += new System.EventHandler(this.transferGroupBtn_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label25.Location = new System.Drawing.Point(12, 351);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(206, 28);
+            this.label25.TabIndex = 1;
+            this.label25.Text = "Категория слушателя";
+            // 
+            // listenerCategory
+            // 
+            this.listenerCategory.FormattingEnabled = true;
+            this.listenerCategory.Items.AddRange(new object[] {
+            "Школьник",
+            "Студент",
+            "Взрослый"});
+            this.listenerCategory.Location = new System.Drawing.Point(222, 355);
+            this.listenerCategory.Name = "listenerCategory";
+            this.listenerCategory.Size = new System.Drawing.Size(494, 28);
+            this.listenerCategory.TabIndex = 14;
+            this.listenerCategory.Text = "Школьник";
+            this.listenerCategory.SelectedIndexChanged += new System.EventHandler(this.listenerCategory_SelectedIndexChanged);
+            // 
+            // addOrderBtn
+            // 
+            this.addOrderBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addOrderBtn.AutoSize = true;
+            this.addOrderBtn.Location = new System.Drawing.Point(457, 893);
+            this.addOrderBtn.Name = "addOrderBtn";
+            this.addOrderBtn.Size = new System.Drawing.Size(194, 40);
+            this.addOrderBtn.TabIndex = 13;
+            this.addOrderBtn.Text = "Добавить распоряжение";
+            this.addOrderBtn.UseVisualStyleBackColor = true;
+            this.addOrderBtn.Visible = false;
+            this.addOrderBtn.Click += new System.EventHandler(this.addOrderBtn_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1772, 940);
+            this.Controls.Add(this.listenerCategory);
             this.Controls.Add(this.addBtn);
+            this.Controls.Add(this.addOrderBtn);
             this.Controls.Add(this.closeBtn);
             this.Controls.Add(this.updBtn);
+            this.Controls.Add(this.transferGroupBtn);
             this.Controls.Add(this.endEduBtn);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.phoneNum);
@@ -1135,6 +1249,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.midname);
             this.Controls.Add(this.yob);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.label25);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.delWishBtn);
             this.Controls.Add(this.delWishBtn2);
@@ -1158,6 +1273,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.addingCheck);
             this.Controls.Add(this.endTime);
             this.Controls.Add(this.startTime);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "Form2";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1167,6 +1283,7 @@ namespace kursovajaEF.Forms
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.group_info)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contract_info)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wishes)).EndInit();
             this.ResumeLayout(false);
@@ -1186,7 +1303,6 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         public System.Windows.Forms.TextBox firstname;
         private System.Windows.Forms.Panel panel4;
@@ -1211,16 +1327,12 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.TextBox startTime;
         public System.Windows.Forms.TextBox endTime;
-        public System.Windows.Forms.DateTimePicker PayDate40pct;
-        public System.Windows.Forms.DateTimePicker paymentDeadline;
         public System.Windows.Forms.TextBox restOfSum;
-        public System.Windows.Forms.TextBox transferGroup;
         public System.Windows.Forms.TextBox whoPay;
         public System.Windows.Forms.TextBox payedSum;
         public System.Windows.Forms.TextBox totalSum;
@@ -1255,10 +1367,8 @@ namespace kursovajaEF.Forms
         public System.Windows.Forms.Button addWishBtn2;
         private System.Windows.Forms.Button setDisBtn;
         public System.Windows.Forms.TextBox discipline;
-        private System.Windows.Forms.DataGridViewTextBoxColumn disciplineNameCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hoursCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numOfPeopleCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol;
+        public System.Windows.Forms.DataGridView group_info;
+        public System.Windows.Forms.Button delGIBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupNumCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn numOfHoursCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupInfoIdCol;
@@ -1268,5 +1378,19 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn startLearningCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn endLearningCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn groupIdCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn disciplineNameCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hoursCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numOfPeopleCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contractInfoIdCol;
+        public System.Windows.Forms.TextBox PayDate40pct;
+        public System.Windows.Forms.TextBox paymentDeadline;
+        public System.Windows.Forms.Button transferGroupBtn;
+        private System.Windows.Forms.Label label13;
+        public System.Windows.Forms.TextBox bank;
+        private System.Windows.Forms.Label label25;
+        public System.Windows.Forms.ComboBox listenerCategory;
+        public System.Windows.Forms.Label label8;
+        public System.Windows.Forms.Button addOrderBtn;
     }
 }

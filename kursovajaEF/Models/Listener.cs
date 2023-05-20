@@ -20,12 +20,12 @@ namespace kursovajaEF
         public string Doi { get; set; }
         public int Id { get; set; }
         public string Matriculation { get; set; }
-        public int? ContractId { get; set; }
         public decimal? PhoneNum { get; set; }
         public string SchoolName { get; set; }
         public string SchoolGrade { get; set; }
         public string Email { get; set; }
+        public string ListenerCategory { get; set; }
 
-        public virtual Contract Contract { get; set; }
+        public virtual ICollection<Contract> Contracts { get; set; }
     }
 }

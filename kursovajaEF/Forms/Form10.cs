@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,10 @@ namespace kursovajaEF.Forms
 {
     public partial class Form10 : Form
     {
-        public Form10()
+        private NpgsqlConnection conn;
+        public Form10(NpgsqlConnection conn)
         {
+            this.conn = conn;
             InitializeComponent();
         }
 
@@ -27,8 +30,7 @@ namespace kursovajaEF.Forms
                 pedEx.Text.Length == 0 || 
                 overEx.Text.Length == 0 || 
                 degree.Text.Length == 0 || 
-                phone_num.Text.Length == 0 || 
-                email.Text.Length == 0)
+                chair.Text.Length == 0)
             {
                 MessageBox.Show("Строка не может быть пустой", "Ошибка");
                 return;
@@ -45,7 +47,8 @@ namespace kursovajaEF.Forms
                     OverallExperience = overEx.Text,
                     Degree = degree.Text,
                     PhoneNum = decimal.Parse(phone_num.Text),
-                    Email = email.Text
+                    Email = email.Text,
+                    ChairId = int.Parse(chairId.Text)
                 };
 
                 db.Teachers.Add(t);
@@ -54,6 +57,30 @@ namespace kursovajaEF.Forms
                 teachId = (from teach in db.Teachers
                          orderby teach.TeacherId descending
                          select teach.TeacherId).FirstOrDefault();
+
+                foreach(DataGridViewRow row in disciplines.Rows)
+                {
+                    DisciplinesTeacher dt = new()
+                    {
+                        DisciplineId = int.Parse(row.Cells["disciplineIdCol"].Value.ToString()),
+                        TeacherId = teachId
+                    };
+
+                    db.DisciplinesTeachers.Add(dt);
+                    db.SaveChanges();
+                }
+
+                foreach (DataGridViewRow row in group_info.Rows)
+                {
+                    GroupInfoTeacher git = new()
+                    {
+                        GroupInfoId = int.Parse(row.Cells["groupInfoIdCol"].Value.ToString()),
+                        TeacherId = teachId
+                    };
+
+                    db.GroupInfoTeachers.Add(git);
+                    db.SaveChanges();
+                }
             }
             
             label10.Text = teachId.ToString();
@@ -73,8 +100,7 @@ namespace kursovajaEF.Forms
                 pedEx.Text.Length == 0 || 
                 overEx.Text.Length == 0 ||
                 degree.Text.Length == 0 || 
-                phone_num.Text.Length == 0 || 
-                email.Text.Length == 0)
+                chair.Text.Length == 0)
             {
                 MessageBox.Show("Строка не может быть пустой", "Ошибка");
                 return;
@@ -92,22 +118,11 @@ namespace kursovajaEF.Forms
                 t.Degree = degree.Text;
                 t.PhoneNum = decimal.Parse(phone_num.Text);
                 t.Email = email.Text;
+                t.ChairId = int.Parse(chairId.Text);
 
                 db.Update(t);
                 db.SaveChanges();
             }
-            //    sql = "UPDATE teachers SET fio = '" +
-            //fio.Text + "', dob = '" +
-            //dob.Value.ToString().Remove(10) + "', title = '" +
-            //title.Text + "', position = '" +
-            //position.Text + "', pedagogical_experience = '" +
-            //pedEx.Text + "', overall_experience = '" +
-            //overEx.Text + "', degree = '" +
-            //degree.Text + "', phone_num = " +
-            //phone_num.Text + ", email = '" +
-            //email.Text + "' WHERE teacher_id = '" + label11.Text + "';";
-            //    dml = gcnew OdbcCommand(sql, conn);
-            //    dml.ExecuteNonQuery();
             label10.Text = "1";
             Close();
         }
@@ -123,6 +138,8 @@ namespace kursovajaEF.Forms
             degree.Text = "";
             phone_num.Text = "";
             email.Text = "";
+            chair.Text = "";
+            chairId.Text = "0";
         }
 
         private void fio_TextChanged(object sender, EventArgs e)
@@ -296,6 +313,89 @@ namespace kursovajaEF.Forms
             {
                 button1.Enabled = true;
                 button3.Enabled = true;
+            }
+        }
+
+        private void addDisBtn_Click(object sender, EventArgs e)
+        {
+            Form7 f = new(conn);
+            f.setDisBtn.Visible = true;
+            f.formName = "Form10";
+            f.ShowDialog();
+            if (f.disciplinesRow != null)
+                disciplines.Rows.Add(f.disciplinesRow);
+        }
+
+        private void addGIBtn_Click(object sender, EventArgs e)
+        {
+            Form15 f = new(conn);
+            f.chooseGIBtn.Visible = true;
+            f.ShowDialog();
+            if (f.gi_rows != null)
+                group_info.Rows.AddRange(f.gi_rows);
+        }
+
+        private void addDisBtn2_Click(object sender, EventArgs e)
+        {
+            int discipline_id;
+            Form7 f = new(conn);
+            f.setDisBtn.Visible = true;
+            f.formName = "Form10";
+            f.ShowDialog();
+            if (f.disciplinesRow != null)
+            {
+                discipline_id = int.Parse(f.disciplinesRow.Cells["idCol"].Value.ToString());
+                using(testDBContext db = new())
+                {
+                    DisciplinesTeacher dt = new()
+                    {
+                        DisciplineId = discipline_id,
+                        TeacherId = int.Parse(label11.Text)
+                    };
+
+                    db.DisciplinesTeachers.Add(dt);
+                    db.SaveChanges();
+                }
+                disciplines.Rows.Add(f.disciplinesRow);
+            }
+        }
+
+        private void addGIBtn2_Click(object sender, EventArgs e)
+        {
+            int group_info_id;
+            Form15 f = new(conn);
+            f.chooseGIBtn.Visible = true;
+            f.ShowDialog();
+            if (f.gi_rows != null)
+            {
+                foreach (DataGridViewRow row in f.gi_rows)
+                {
+                    group_info_id = int.Parse(row.Cells[5].Value.ToString());
+                    using (testDBContext db = new())
+                    {
+                        GroupInfoTeacher git = new()
+                        {
+                            GroupInfoId = group_info_id,
+                            TeacherId = int.Parse(label11.Text)
+                        };
+
+                        db.GroupInfoTeachers.Add(git);
+                        db.SaveChanges();
+                    }
+                }
+                group_info.Rows.AddRange(f.gi_rows);
+            }
+        }
+
+        private void addChairBtn_Click(object sender, EventArgs e)
+        {
+            Form17 f = new();
+            f.chooseСBtn.Visible = true;
+            f.ShowDialog();
+            if (f.chosenChair != "0")
+            {
+                chair.Text = f.chosenChair;
+                chairId.Text = f.chosenChairId;
             }
         }
     }

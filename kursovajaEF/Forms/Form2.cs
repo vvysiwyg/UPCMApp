@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using kursovajaEF.Models;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using Npgsql;
 
 namespace kursovajaEF.Forms
@@ -14,9 +15,11 @@ namespace kursovajaEF.Forms
     public partial class Form2 : AdvancedForm
     {
         private NpgsqlConnection conn;
+        private int tempIndex;
         public Form2(NpgsqlConnection conn)
         {
             this.conn = conn;
+            tempIndex = 0;
             InitializeComponent();
         }
 
@@ -110,98 +113,116 @@ namespace kursovajaEF.Forms
             }
         }
 
+        private void delGIBtn_Click(object sender, EventArgs e)
+        {
+            if(group_info.SelectedRows.Count == 1 || group_info.SelectedCells.Count == 1)
+            {
+                DataGridViewRow selectedRow = group_info.SelectedCells[0].OwningRow;
+                group_info.Rows.Remove(selectedRow);
+
+                if(updBtn.Visible)
+                    using(testDBContext db = new())
+                    {
+                        var gici = db.GroupInfoContractInfos.
+                            Where(f => f.GroupInfoId == int.Parse(selectedRow.Cells["groupInfoIdCol"].Value.ToString())).
+                            Where(s => s.ContractInfoId == int.Parse(selectedRow.Cells["contractInfoIdCol2"].Value.ToString()));
+
+                        db.Remove(gici.FirstOrDefault());
+                        db.SaveChanges();
+                    }
+            }
+        }
+
         private void delCIBtn_Click(object sender, EventArgs e)
         {
-            if (contract_info.SelectedRows.Count == 1)
-                contract_info.Rows.Remove(contract_info.SelectedRows[0]);
+            if (contract_info.SelectedRows.Count == 1 || contract_info.SelectedCells.Count == 1)
+            {
+                DataGridViewRow row = contract_info.SelectedCells[0].OwningRow;
+                dataGridViewDeleteRowsWithCondition(group_info, "contractInfoIdCol2", row.Cells["contractInfoIdCol"].Value.ToString());
+                contract_info.Rows.Remove(row);
+            }
         }
 
         private void addCIBtn_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(hours.Text) && !string.IsNullOrWhiteSpace(numOfPeople.Text))
+            if (contract_info.Rows.Count == 0)
             {
-                contract_info.Rows.Add(discipline.Text, hours.Text, numOfPeople.Text, "", "", "");
-                hours.Text = "";
-                numOfPeople.Text = "";
-                if (contract_info.Visible == false)
-                    contract_info.Visible = true;
+                if (!string.IsNullOrWhiteSpace(numOfPeople.Text))
+                {
+                    contract_info.Rows.Add(discipline.Text, hours.Text, numOfPeople.Text, tempIndex);
+                    tempIndex++;
+                    hours.Text = "";
+                    numOfPeople.Text = "";
+                    if (!contract_info.Visible)
+                    {
+                        contract_info.Visible = true;
+                        group_info.Visible = true;
+                    }
+                }
             }
+            else
+                MessageBox.Show("В договоре может быть только одна программа!");
         }
 
         private void delCIBtn2_Click(object sender, EventArgs e)
         {
-            if (contract_info.SelectedRows.Count == 1 &&
-                !string.IsNullOrWhiteSpace(contract_info.SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString()) &&
-                !string.IsNullOrWhiteSpace(contract_info.SelectedRows[0].Cells["groupInfoIdCol"].Value.ToString()))
+            if (contract_info.SelectedRows.Count == 1 || contract_info.SelectedCells.Count == 1)
             {
-                int count = 0;
-
-                foreach (DataGridViewRow row in contract_info.Rows)
-                    if (row.Cells["contractInfoIdCol"].Value.ToString() == contract_info.
-                        SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString())
-                        count++;
-
+                DataGridViewRow row = contract_info.SelectedCells[0].OwningRow;
                 using (testDBContext db = new())
                 {
-                    if (count == 1)
-                    {
-                        ContractInfo ci = db.ContractInfos.
-                            Find(int.Parse(contract_info.SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString()));
-                        db.Remove(ci);
-                    }
-
-                    var gici = db.GroupInfoContractInfos.
-                    Where(f => f.GroupInfoId == int.Parse(contract_info.SelectedRows[0].Cells["groupInfoIdCol"].Value.ToString())).
-                    Where(s => s.ContractInfoId == int.Parse(contract_info.SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString()));
-                   
-                    db.Remove(gici.FirstOrDefault());
+                    ContractInfo ci = db.ContractInfos.
+                        Find(int.Parse(row.Cells["contractInfoIdCol"].Value.ToString()));
+                    db.Remove(ci);
                     db.SaveChanges();
                 }
-                contract_info.Rows.Remove(contract_info.SelectedRows[0]);
+                dataGridViewDeleteRowsWithCondition(group_info, "contractInfoIdCol2", row.Cells["contractInfoIdCol"].Value.ToString());
+                contract_info.Rows.Remove(row);
             }
         }
 
         private void addCIBtn2_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(hours.Text) && !string.IsNullOrWhiteSpace(numOfPeople.Text))
+            if (contract_info.Rows.Count == 0)
             {
-                int discipline_id, contract_info_id;
-
-                using(testDBContext db = new())
+                if (!string.IsNullOrWhiteSpace(numOfPeople.Text))
                 {
-                    discipline_id = (from dis in db.Disciplines
-                                  where dis.DisciplineName == discipline.Text
-                                  select dis.DisciplineId).FirstOrDefault();
+                    int discipline_id, contract_info_id;
 
-                    ContractInfo contractInfo = new() 
-                    { 
-                        DisciplineName = discipline.Text,
-                        StudyHours = Int16.Parse(hours.Text),
-                        NumOfPeople = Int16.Parse(numOfPeople.Text),
-                        ContractId = int.Parse(contractId.Text),
-                        DisciplineId = discipline_id
-                    };
+                    using (testDBContext db = new())
+                    {
+                        discipline_id = (from dis in db.Disciplines
+                                         where dis.DisciplineName == discipline.Text
+                                         select dis.DisciplineId).FirstOrDefault();
 
-                    db.ContractInfos.Add(contractInfo);
-                    db.SaveChanges();
+                        ContractInfo contractInfo = new()
+                        {
+                            DisciplineName = discipline.Text,
+                            StudyHours = Int16.Parse(hours.Text),
+                            NumOfPeople = Int16.Parse(numOfPeople.Text),
+                            ContractId = int.Parse(contractId.Text),
+                            DisciplineId = discipline_id
+                        };
 
-                    contract_info_id = (from coninfo in db.ContractInfos
-                              orderby coninfo.ContractInfoId descending
-                              select coninfo.ContractInfoId).FirstOrDefault();
+                        db.ContractInfos.Add(contractInfo);
+                        db.SaveChanges();
 
-                    contract_info.Rows.Add(
-                        discipline.Text,
-                        hours.Text,
-                        numOfPeople.Text,
-                        contract_info_id,
-                        "",
-                        "");
+                        contract_info_id = (from coninfo in db.ContractInfos
+                                            orderby coninfo.ContractInfoId descending
+                                            select coninfo.ContractInfoId).FirstOrDefault();
+
+                        contract_info.Rows.Add(
+                            discipline.Text,
+                            hours.Text,
+                            numOfPeople.Text,
+                            contract_info_id);
+                    }
+                    hours.Text = "";
+                    numOfPeople.Text = "";
                 }
-                hours.Text = "";
-                numOfPeople.Text = "";
-                if (contract_info.Visible == false)
-                    contract_info.Visible = true;
             }
+            else
+                MessageBox.Show("В договоре может быть только одна программа!");
         }
 
         private void addWishBtn2_Click(object sender, EventArgs e)
@@ -322,6 +343,9 @@ namespace kursovajaEF.Forms
             using (testDBContext db = new()) {
                 Listener l = db.Listeners.Find(int.Parse(addingCheck.Text));
 
+                if (listenerCategory.Text != "Школьник")
+                    schoolGrade.Text = string.Empty;
+
                 l.Firstname = firstname.Text;
                 l.Midname = midname.Text;
                 l.Lastname = lastname.Text;
@@ -330,6 +354,7 @@ namespace kursovajaEF.Forms
                 l.PhoneNum = decimal.Parse(phoneNum.Text);
                 l.SchoolGrade = schoolGrade.Text;
                 l.Email = email.Text;
+                l.ListenerCategory = listenerCategory.Text;
 
                 db.Listeners.Update(l);
 
@@ -338,11 +363,11 @@ namespace kursovajaEF.Forms
                 c.Crn = crn.Text;
                 c.TotalSum = decimal.Parse(totalSum.Text);
                 c.PayedSum = decimal.Parse(payedSum.Text);
-                c.PayDate40pct = PayDate40pct.Value.ToString().Remove(10);
-                c.TransferGroup = transferGroup.Text;
+                c.PayDate40pct = PayDate40pct.Text;
                 c.RestOfSum = decimal.Parse(restOfSum.Text);
                 c.WhoPay = whoPay.Text;
-                c.PaymentDeadline = paymentDeadline.Value.ToString().Remove(10);
+                c.PaymentDeadline = paymentDeadline.Text;
+                c.Bank = bank.Text;
 
                 db.Contracts.Update(c);
 
@@ -354,75 +379,54 @@ namespace kursovajaEF.Forms
 
         private void addGIBtn_Click(object sender, EventArgs e)
         {
-            int counter = 0;
-            foreach (Control ctrl in panel3.Controls)
+            if (panel3.Controls.Count != 0)
             {
-                if (ctrl.GetType().ToString().Equals("System.Windows.Forms.DataGridView"))
+                bool similarRowsFlag = false;
+                DataGridView dgv;
+
+                if (panel3.Controls[0].Visible == true)
+                    dgv = (DataGridView)panel3.Controls[0];
+                else
+                    dgv = (DataGridView)panel3.Controls[1];
+
+                if ((dgv.SelectedRows.Count == 1 || dgv.SelectedCells.Count == 1) &&
+                    (contract_info.SelectedRows.Count == 1 || contract_info.SelectedCells.Count == 1))
                 {
-                    DataGridView dgv = ((DataGridView)ctrl);
-                    if (dgv.SelectedRows.Count > 0 && contract_info.SelectedRows.Count == 1)
+                    DataGridViewRow r = dgv.SelectedCells[0].OwningRow, r2 = contract_info.SelectedCells[0].OwningRow;
+
+                    foreach (DataGridViewRow row in group_info.Rows)
+                        if (row.Cells["groupInfoIdCol"].Value.ToString() == r.Cells["dgvtbc4Col"].Value.ToString() &&
+                            row.Cells["contractInfoIdCol2"].Value.ToString() == r2.Cells["contractInfoIdCol"].Value.ToString())
+                            similarRowsFlag = true;
+
+                    if (!similarRowsFlag)
                     {
-                        foreach (DataGridViewRow row in contract_info.Rows)
+                        group_info.Rows.Add(
+                            r.Cells["dgvtbc2Col"].Value,
+                            r.Cells["dgvtbc3Col"].Value,
+                            r.Cells["dgvtbc4Col"].Value,
+                            r.Cells["dgvtbc5Col"].Value,
+                            r.Cells["dgvtbc6Col"].Value,
+                            r.Cells["dgvtbc7Col"].Value,
+                            r.Cells["dgvtbc8Col"].Value,
+                            r.Cells["dgvtbc9Col"].Value,
+                            r.Cells["dgvtbc10Col"].Value,
+                            r2.Cells["contractInfoIdCol"].Value);
+
+                        if (updBtn.Visible == true)
                         {
-                            if (row.Cells["disciplineNameCol"].Value.ToString() == contract_info.SelectedRows[0]
-                                .Cells["disciplineNameCol"].Value.ToString())
-                                counter++;
-                        }
-                        foreach (DataGridViewRow row in dgv.SelectedRows)
-                        {
-                            if (string.IsNullOrWhiteSpace(contract_info.SelectedRows[0].Cells["groupNumCol"].Value.ToString()))
+                            GroupInfoContractInfo gici = new()
                             {
-                                contract_info.SelectedRows[0].Cells["groupNumCol"].Value = row.Cells["dgvtbc2Col"].Value;
-                                contract_info.SelectedRows[0].Cells["numOfHoursCol"].Value = row.Cells["dgvtbc3Col"].Value;
-                                contract_info.SelectedRows[0].Cells["groupInfoIdCol"].Value = row.Cells["dgvtbc4Col"].Value;
-                                contract_info.SelectedRows[0].Cells["weekdayCol"].Value = row.Cells["dgvtbc5Col"].Value;
-                                contract_info.SelectedRows[0].Cells["startTimeCol"].Value = row.Cells["dgvtbc6Col"].Value;
-                                contract_info.SelectedRows[0].Cells["endTimeCol"].Value = row.Cells["dgvtbc7Col"].Value;
-                                contract_info.SelectedRows[0].Cells["startLearningCol"].Value = row.Cells["dgvtbc8Col"].Value;
-                                contract_info.SelectedRows[0].Cells["endLearningCol"].Value = row.Cells["dgvtbc9Col"].Value;
-                                contract_info.SelectedRows[0].Cells["groupIdCol"].Value = row.Cells["dgvtbc10Col"].Value;
-                            }
-                            else if (counter >= 1)
+                                GroupInfoId = int.Parse(r.Cells["dgvtbc4Col"].Value.ToString()),
+                                ContractInfoId = int.Parse(r2.Cells["contractInfoIdCol"].Value.ToString())
+                            };
+                            using (testDBContext db = new())
                             {
-                                contract_info.Rows.Add(
-                                contract_info.SelectedRows[0].Cells["disciplineNameCol"].Value,
-                                contract_info.SelectedRows[0].Cells["hoursCol"].Value,
-                                contract_info.SelectedRows[0].Cells["numOfPeopleCol"].Value,
-                                contract_info.SelectedRows[0].Cells["contractInfoIdCol"].Value,
-                                row.Cells["dgvtbc2Col"].Value,
-                                row.Cells["dgvtbc3Col"].Value,
-                                row.Cells["dgvtbc4Col"].Value,
-                                row.Cells["dgvtbc5Col"].Value,
-                                row.Cells["dgvtbc6Col"].Value,
-                                row.Cells["dgvtbc7Col"].Value,
-                                row.Cells["dgvtbc8Col"].Value,
-                                row.Cells["dgvtbc9Col"].Value,
-                                row.Cells["dgvtbc10Col"].Value
-                                );
+                                db.GroupInfoContractInfos.Add(gici);
+                                db.SaveChanges();
                             }
-                            if (updBtn.Visible == true)
-                            {
-                                GroupInfoContractInfo gici = new()
-                                {
-                                    GroupInfoId = int.Parse(row.Cells["dgvtbc4Col"].Value.ToString()),
-                                    ContractInfoId = int.Parse(contract_info.SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString())
-                                };
-                                using (testDBContext db = new())
-                                {
-                                    db.GroupInfoContractInfos.Add(gici);
-                                    db.SaveChanges();
-                                }
-                            }
-                            counter++;
-                        }
-                        foreach (DataGridViewColumn col in contract_info.Columns)
-                        {
-                            if (col.Name == "contractInfoIdCol" || col.Name == "groupInfoIdCol" || col.Name == "groupIdCol")
-                                col.Visible = false;
-                            else col.Visible = true;
                         }
                     }
-                    else MessageBox.Show("В таблице выше можно выбрать только одну строку, в таблице ниже - хотя бы одну строку.");
                 }
             }
         }
@@ -438,121 +442,119 @@ namespace kursovajaEF.Forms
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            contract_info.Sort(new RowComparer(SortOrder.Descending));
-
-            string sex;
-            string matriculation;
-            string dis;
-
-            int count = 0;
-            int contract_info_id = -1;
-            int contract_id = -1;
-
-            dis = contract_info.Rows[0].Cells[0].Value.ToString();
-
-            if (sexM.Checked == false && sexF.Checked == false)
+            if (contract_info.Rows.Count > 1)
             {
-                MessageBox.Show("Отметьте пол.", "Ошибка");
-                return;
+                MessageBox.Show("В договоре может быть только одна программа!");
             }
-            else if (sexM.Checked == true)
-                sex = sexM.Text;
-            else sex = sexF.Text;
-
-            if (yes.Checked == false && no.Checked == false)
+            else
             {
-                MessageBox.Show("Отметьте Зачислен.", "Ошибка");
-                return;
-            }
-            else if (yes.Checked == true)
-                matriculation = yes.Text;
-            else matriculation = no.Text;
+                string sex;
+                string matriculation;
 
-            int[,] matr = new int[contract_info.Rows.Count, 3];
+                int contract_info_id = -1;
+                int contract_id = -1, listener_id = -1;
 
-            for (int i = 0; i < contract_info.Rows.Count; i++)
-                for (int j = i + 1; j < contract_info.Rows.Count; j++)
+                DataGridViewRow contract_info_first_row;
+
+                if (sexM.Checked == false && sexF.Checked == false)
                 {
-                    if (contract_info.Rows[i].Cells[0].Value.ToString() == contract_info.Rows[j].Cells[0].Value.ToString() &&
-                        contract_info.Rows[i].Cells[1].Value.ToString() == contract_info.Rows[j].Cells[1].Value.ToString() &&
-                        contract_info.Rows[i].Cells[2].Value.ToString() == contract_info.Rows[j].Cells[2].Value.ToString())
-                    {
-                        matr[j, 0] = -1;
-                        matr[j, 1] = -1;
-                        matr[j, 2] = -1;
-                    }
+                    MessageBox.Show("Отметьте пол.", "Ошибка");
+                    return;
                 }
+                else if (sexM.Checked == true)
+                    sex = sexM.Text;
+                else sex = sexF.Text;
 
-            Dictionary<string, int> dis_name_id = new();
-            using (testDBContext db = new()) {
-                foreach (DataGridViewRow row in contract_info.Rows)
+                if (yes.Checked == false && no.Checked == false)
                 {
-                    if (!dis_name_id.ContainsKey(row.Cells[0].Value.ToString()))
-                    {
-                        int discipline_id = (from d in db.Disciplines
-                                          where d.DisciplineName == row.Cells[0].Value.ToString()
-                                          select d.DisciplineId).FirstOrDefault();
-                        dis_name_id.Add(row.Cells[0].Value.ToString(), discipline_id);
-                    }
+                    MessageBox.Show("Отметьте Зачислен.", "Ошибка");
+                    return;
                 }
+                else if (yes.Checked == true)
+                    matriculation = yes.Text;
+                else matriculation = no.Text;
 
-                Contract c = new()
+                Dictionary<string, int> dis_name_id = new();
+                using (testDBContext db = new())
                 {
-                    Crn = crn.Text,
-                    TotalSum = decimal.Parse(totalSum.Text),
-                    PayedSum = decimal.Parse(payedSum.Text),
-                    PayDate40pct = PayDate40pct.Value.ToString().Remove(10),
-                    TransferGroup = transferGroup.Text,
-                    RestOfSum = decimal.Parse(restOfSum.Text),
-                    WhoPay = whoPay.Text,
-                    PaymentDeadline = paymentDeadline.Value.ToString().Remove(10)
-                };
-                db.Contracts.Add(c);
-                db.SaveChanges();
-
-                contract_id = (from contr in db.Contracts
-                               orderby contr.ContractId descending
-                               select contr.ContractId).FirstOrDefault();
-
-                foreach (DataGridViewRow row in wishes.Rows)
-                {
-                    ListenerWish lw = new()
+                    foreach (DataGridViewRow row in contract_info.Rows)
                     {
-                        Weekday = row.Cells["wWeekdayCol"].Value.ToString(),
-                        StartTime = row.Cells["wStartTimeCol"].Value.ToString(),
-                        EndTime = row.Cells["wEndTimeCol"].Value.ToString(),
-                        ContractId = contract_id
+                        if (!dis_name_id.ContainsKey(row.Cells[0].Value.ToString()))
+                        {
+                            int discipline_id = (from d in db.Disciplines
+                                                 where d.DisciplineName == row.Cells[0].Value.ToString()
+                                                 select d.DisciplineId).FirstOrDefault();
+                            dis_name_id.Add(row.Cells[0].Value.ToString(), discipline_id);
+                        }
+                    }
+
+                    if (updatingCheck.Text == "0")
+                    {
+                        Listener l = new()
+                        {
+                            Firstname = firstname.Text,
+                            Midname = midname.Text,
+                            Lastname = lastname.Text,
+                            Yob = yob.Value.ToString().Remove(10),
+                            Sex = sex,
+                            Matriculation = matriculation,
+                            PhoneNum = decimal.Parse(phoneNum.Text),
+                            SchoolGrade = schoolGrade.Text,
+                            Email = email.Text,
+                            ListenerCategory = listenerCategory.Text
+                        };
+                        db.Listeners.Add(l);
+                        db.SaveChanges();
+
+                        listener_id = (from listr in db.Listeners
+                                       orderby listr.Id descending
+                                       select listr.Id).FirstOrDefault();
+                    }
+                    else
+                        listener_id = int.Parse(updatingCheck.Text.ToString());
+
+                    Contract c = new()
+                    {
+                        Crn = crn.Text,
+                        TotalSum = decimal.Parse(totalSum.Text),
+                        PayedSum = decimal.Parse(payedSum.Text),
+                        PayDate40pct = PayDate40pct.Text,
+                        RestOfSum = decimal.Parse(restOfSum.Text),
+                        WhoPay = whoPay.Text,
+                        PaymentDeadline = paymentDeadline.Text,
+                        Bank = bank.Text,
+                        ListenerId = listener_id
                     };
-                    db.ListenerWishes.Add(lw);
-                }
+                    db.Contracts.Add(c);
+                    db.SaveChanges();
 
-                Listener l = new()
-                {
-                    Firstname = firstname.Text,
-                    Midname = midname.Text,
-                    Lastname = lastname.Text,
-                    Yob = yob.Value.ToString().Remove(10),
-                    Sex = sex,
-                    Matriculation = matriculation,
-                    ContractId = contract_id,
-                    PhoneNum = decimal.Parse(phoneNum.Text),
-                    SchoolGrade = schoolGrade.Text,
-                    Email = email.Text
-                };
-                db.Listeners.Add(l);
-                db.SaveChanges();
+                    contract_id = (from contr in db.Contracts
+                                   orderby contr.ContractId descending
+                                   select contr.ContractId).FirstOrDefault();
 
-                foreach (DataGridViewRow row in contract_info.Rows)
-                {
-                    if (matr[count, 0] != -1 || matr[count, 1] != -1 || matr[count, 2] != -1)
+                    foreach (DataGridViewRow row in wishes.Rows)
                     {
+                        ListenerWish lw = new()
+                        {
+                            Weekday = row.Cells["wWeekdayCol"].Value.ToString(),
+                            StartTime = row.Cells["wStartTimeCol"].Value.ToString(),
+                            EndTime = row.Cells["wEndTimeCol"].Value.ToString(),
+                            ContractId = contract_id
+                        };
+                        db.ListenerWishes.Add(lw);
+                    }
+
+
+                    if (contract_info.Rows.Count != 0)
+                    {
+                        contract_info_first_row = contract_info.Rows[0];
                         ContractInfo ci = new()
                         {
-                            DisciplineName = row.Cells[0].Value.ToString(),
-                            StudyHours = Int16.Parse(row.Cells[1].Value.ToString()),
-                            NumOfPeople = Int16.Parse(row.Cells[2].Value.ToString()),
+                            DisciplineName = contract_info_first_row.Cells[0].Value.ToString(),
+                            StudyHours = Int16.Parse(contract_info_first_row.Cells[1].Value.ToString()),
+                            NumOfPeople = Int16.Parse(contract_info_first_row.Cells[2].Value.ToString()),
                             ContractId = contract_id,
-                            DisciplineId = dis_name_id[row.Cells[0].Value.ToString()]
+                            DisciplineId = dis_name_id[contract_info_first_row.Cells[0].Value.ToString()]
                         };
                         db.ContractInfos.Add(ci);
                         db.SaveChanges();
@@ -560,19 +562,24 @@ namespace kursovajaEF.Forms
                         contract_info_id = (from Ci in db.ContractInfos
                                             orderby Ci.ContractInfoId descending
                                             select Ci.ContractInfoId).FirstOrDefault();
+
+                        foreach (DataGridViewRow row2 in group_info.Rows)
+                            if (row2.Cells["contractInfoIdCol2"].Value.ToString() == 
+                                contract_info_first_row.Cells["contractInfoIdCol"].Value.ToString())
+                            {
+                                GroupInfoContractInfo gici = new()
+                                {
+                                    GroupInfoId = int.Parse(row2.Cells["groupInfoIdCol"].Value.ToString()),
+                                    ContractInfoId = contract_info_id
+                                };
+                                db.GroupInfoContractInfos.Add(gici);
+                                db.SaveChanges();
+                            }
                     }
-                    count++;
-                    GroupInfoContractInfo gici = new()
-                    {
-                        GroupInfoId = int.Parse(row.Cells["groupInfoIdCol"].Value.ToString()),
-                        ContractInfoId = contract_info_id
-                    };
-                    db.GroupInfoContractInfos.Add(gici);
-                    db.SaveChanges();
                 }
+                Close();
+                addingCheck.Text = "1";
             }
-            Close();
-            addingCheck.Text = "1";
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
@@ -582,9 +589,11 @@ namespace kursovajaEF.Forms
 
         private void endEduBtn_Click(object sender, EventArgs e)
         {
-            Form2_1 form = new(conn);
+            Form2_1 form = new();
             form.contract_id.Text = contractId.Text;
             form.ShowDialog();
+            if(form.contract_id.Text == "-1")
+                updatingCheck.Text = "1";
         }
 
         private void newGroupBtn_Click(object sender, EventArgs e)
@@ -599,8 +608,18 @@ namespace kursovajaEF.Forms
             DataGridView contractInfo = ((DataGridView)sender);
             if (contractInfo.SelectedCells.Count == 1)
             {
+                DataGridViewRow selectedRow = contract_info.SelectedCells[0].OwningRow;
+
+                foreach (DataGridViewRow row in group_info.Rows)
+                {
+                    if (row.Cells["contractInfoIdCol2"].Value.ToString() == selectedRow.Cells["contractInfoIdCol"].Value.ToString())
+                        row.Visible = true;
+                    else
+                        row.Visible = false;
+                }
+
                 panel3.Controls.Clear();
-                string disName = contractInfo.SelectedCells[0].OwningRow.Cells["disciplineNameCol"].Value.ToString();
+                string disName = selectedRow.Cells["disciplineNameCol"].Value.ToString();
                 for (int i = 0; i < 2; i++)
                 {
                     DataGridView dgv = new();
@@ -615,10 +634,11 @@ namespace kursovajaEF.Forms
                     DataGridViewTextBoxColumn dgvtbc8 = new();
                     DataGridViewTextBoxColumn dgvtbc9 = new();
                     DataGridViewTextBoxColumn dgvtbc10 = new();
-                    dgv.Location = new Point(0, 0); //sendBtn.Location.X, sendBtn.Location.Y + sendBtn.Size.Height + 30 * (i + 1) + 150 * i
+                    dgv.Location = new Point(0, 0);
                     dgv.Size = panel3.Size;
                     dgv.BackgroundColor = Color.White;
                     dgv.BorderStyle = BorderStyle.Fixed3D;
+                    dgv.BackgroundColor = SystemColors.Control;
                     dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     dgv.ReadOnly = true;
                     dgv.AllowUserToAddRows = false;
@@ -785,9 +805,42 @@ namespace kursovajaEF.Forms
         {
             Form7 f = new(conn);
             f.setDisBtn.Visible = true;
+            f.formName = "Form2";
             f.ShowDialog();
             if(f.chosenDis != "0")
                 discipline.Text = f.chosenDis;
+        }
+
+        private void transferGroupBtn_Click(object sender, EventArgs e)
+        {
+            Form2_2 form = new();
+            form.contract_id.Text = contractId.Text;
+            form.ShowDialog();
+            if(form.contract_id.Text == "-1")
+                updatingCheck.Text = "1";
+        }
+
+        private void listenerCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listenerCategory.Text == "Школьник")
+            {
+                label8.Visible = true;
+                schoolGrade.Visible = true;
+            }
+            else
+            {
+                label8.Visible = false;
+                schoolGrade.Visible = false;
+            }
+        }
+
+        private void addOrderBtn_Click(object sender, EventArgs e)
+        {
+            Form2_3 form = new();
+            form.contract_id.Text = contractId.Text;
+            form.ShowDialog();
+            if(form.contract_id.Text == "-1")
+                updatingCheck.Text = "1";
         }
     }
 }

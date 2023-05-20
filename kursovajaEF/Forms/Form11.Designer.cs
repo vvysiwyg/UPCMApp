@@ -29,6 +29,7 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form11));
             this.timetable = new System.Windows.Forms.DataGridView();
             this.idCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +64,7 @@ namespace kursovajaEF.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.timetable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.timetable.BackgroundColor = System.Drawing.Color.White;
+            this.timetable.BackgroundColor = System.Drawing.SystemColors.Control;
             this.timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idCol,
@@ -204,7 +205,7 @@ namespace kursovajaEF.Forms
             this.disciplines.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.disciplines.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.disciplines.BackgroundColor = System.Drawing.Color.White;
+            this.disciplines.BackgroundColor = System.Drawing.SystemColors.Control;
             this.disciplines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.disciplines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.disciplineIdCol2,
@@ -257,7 +258,7 @@ namespace kursovajaEF.Forms
             this.groups.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groups.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.groups.BackgroundColor = System.Drawing.Color.White;
+            this.groups.BackgroundColor = System.Drawing.SystemColors.Control;
             this.groups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.groups.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.groupNumCol,
@@ -302,6 +303,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.groups);
             this.Controls.Add(this.disciplines);
             this.Controls.Add(this.timetable);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form11";
             this.Text = "Расписание";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

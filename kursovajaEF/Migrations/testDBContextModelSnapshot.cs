@@ -20,6 +20,12 @@ namespace kursovajaEF.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+            modelBuilder.HasSequence<int>("ListenerEnrollmentOrderIdSequence", "public")
+                .HasMax(2147483647L);
+
+            modelBuilder.HasSequence<int>("ListenerExpulsionOrderIdSequence", "public")
+                .HasMax(2147483647L);
+
             modelBuilder.Entity("kursovajaEF.Contract", b =>
                 {
                     b.Property<int>("ContractId")
@@ -27,6 +33,11 @@ namespace kursovajaEF.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("contract_id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Bank")
+                        .HasMaxLength(55)
+                        .HasColumnType("character varying(55)")
+                        .HasColumnName("bank");
 
                     b.Property<string>("Certificate")
                         .HasMaxLength(25)
@@ -53,12 +64,15 @@ namespace kursovajaEF.Migrations
                         .HasColumnType("character varying(5)")
                         .HasColumnName("listened_hours");
 
+                    b.Property<int?>("ListenerId")
+                        .HasColumnType("integer")
+                        .HasColumnName("listener_id");
+
                     b.Property<bool?>("Paid40pct")
                         .HasColumnType("boolean")
                         .HasColumnName("paid_40pct");
 
                     b.Property<string>("PayDate40pct")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("character varying(10)")
                         .HasColumnName("pay_date_40pct");
@@ -95,6 +109,8 @@ namespace kursovajaEF.Migrations
 
                     b.HasKey("ContractId");
 
+                    b.HasIndex("ListenerId");
+
                     b.ToTable("contracts");
                 });
 
@@ -129,9 +145,10 @@ namespace kursovajaEF.Migrations
 
                     b.HasKey("ContractInfoId");
 
-                    b.HasIndex("ContractId");
-
                     b.HasIndex("DisciplineId");
+
+                    b.HasIndex(new[] { "ContractId" }, "unique_index_contract_id")
+                        .IsUnique();
 
                     b.ToTable("contract_info");
                 });
@@ -191,10 +208,18 @@ namespace kursovajaEF.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("teacher_id");
 
-                    b.HasIndex("TeacherId");
+                    b.Property<string>("Date")
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("date");
 
-                    b.HasIndex(new[] { "DisciplineId", "TeacherId" }, "unique_dis_teach")
-                        .IsUnique();
+                    b.Property<int?>("Number")
+                        .HasColumnType("integer")
+                        .HasColumnName("number");
+
+                    b.HasKey("DisciplineId", "TeacherId");
+
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("disciplines_teachers");
                 });
@@ -294,21 +319,21 @@ namespace kursovajaEF.Migrations
                     b.ToTable("group_info");
                 });
 
-            modelBuilder.Entity("kursovajaEF.GroupInfoListener", b =>
+            modelBuilder.Entity("kursovajaEF.GroupInfoTeacher", b =>
                 {
                     b.Property<int?>("GroupInfoId")
                         .HasColumnType("integer")
                         .HasColumnName("group_info_id");
 
-                    b.Property<int?>("ListenerId")
+                    b.Property<int?>("TeacherId")
                         .HasColumnType("integer")
-                        .HasColumnName("listener_id");
+                        .HasColumnName("teacher_id");
 
-                    b.HasIndex("GroupInfoId");
+                    b.HasKey("GroupInfoId", "TeacherId");
 
-                    b.HasIndex("ListenerId");
+                    b.HasIndex("TeacherId");
 
-                    b.ToTable("group_info_listeners");
+                    b.ToTable("group_info_teacher");
                 });
 
             modelBuilder.Entity("kursovajaEF.GroupsListener", b =>
@@ -376,10 +401,6 @@ namespace kursovajaEF.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("code");
 
-                    b.Property<int?>("ContractId")
-                        .HasColumnType("integer")
-                        .HasColumnName("contract_id");
-
                     b.Property<string>("Doi")
                         .HasMaxLength(10)
                         .HasColumnType("character varying(10)")
@@ -405,6 +426,11 @@ namespace kursovajaEF.Migrations
                         .HasColumnType("character varying(24)")
                         .HasColumnName("lastname");
 
+                    b.Property<string>("ListenerCategory")
+                        .HasMaxLength(30)
+                        .HasColumnType("character varying(30)")
+                        .HasColumnName("listener_category");
+
                     b.Property<string>("Matriculation")
                         .HasMaxLength(3)
                         .HasColumnType("character varying(3)")
@@ -421,7 +447,7 @@ namespace kursovajaEF.Migrations
 
                     b.Property<decimal?>("PhoneNum")
                         .HasPrecision(11)
-                        .HasColumnType("numeric(11,0)")
+                        .HasColumnType("numeric(11)")
                         .HasColumnName("phone_num");
 
                     b.Property<string>("Pob")
@@ -454,9 +480,6 @@ namespace kursovajaEF.Migrations
                         .HasColumnName("yob");
 
                     b.HasKey("Id");
-
-                    b.HasIndex(new[] { "ContractId" }, "unique_contract_id")
-                        .IsUnique();
 
                     b.ToTable("listeners");
                 });
@@ -493,6 +516,24 @@ namespace kursovajaEF.Migrations
                     b.ToTable("listener_wishes");
                 });
 
+            modelBuilder.Entity("kursovajaEF.Models.Chair", b =>
+                {
+                    b.Property<int>("ChairId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("chair_id")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("ChairName")
+                        .HasMaxLength(65)
+                        .HasColumnType("character varying(65)")
+                        .HasColumnName("chair_name");
+
+                    b.HasKey("ChairId");
+
+                    b.ToTable("chairs");
+                });
+
             modelBuilder.Entity("kursovajaEF.Models.GroupInfoContractInfo", b =>
                 {
                     b.Property<int>("GroupInfoId")
@@ -510,6 +551,68 @@ namespace kursovajaEF.Migrations
                     b.ToTable("group_info_contract_info");
                 });
 
+            modelBuilder.Entity("kursovajaEF.Models.ListenerEnrollmentOrder", b =>
+                {
+                    b.Property<int>("ListenerEnrollmentOrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("listener_enrollment_order_id")
+                        .HasDefaultValueSql("nextval('\"ListenerEnrollmentOrderIdSequence\"')");
+
+                    b.Property<int?>("ContractId")
+                        .HasColumnType("integer")
+                        .HasColumnName("contract_id");
+
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("date");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("integer")
+                        .HasColumnName("number");
+
+                    b.HasKey("ListenerEnrollmentOrderId")
+                        .HasName("listener_enrollment_orders_pkey");
+
+                    b.HasIndex(new[] { "ContractId" }, "unique_index_contract_id_listener_enrollment_orders")
+                        .IsUnique();
+
+                    b.ToTable("listener_enrollment_orders");
+                });
+
+            modelBuilder.Entity("kursovajaEF.Models.ListenerExpulsionOrder", b =>
+                {
+                    b.Property<int>("ListenerExpulsionOrderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("listener_expulsion_order_id")
+                        .HasDefaultValueSql("nextval('\"ListenerExpulsionOrderIdSequence\"')");
+
+                    b.Property<int?>("ContractId")
+                        .HasColumnType("integer")
+                        .HasColumnName("contract_id");
+
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
+                        .HasColumnName("date");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("integer")
+                        .HasColumnName("number");
+
+                    b.HasKey("ListenerExpulsionOrderId")
+                        .HasName("listener_expulsion_orders_pkey");
+
+                    b.HasIndex(new[] { "ContractId" }, "unique_index_contract_id_listener_expulsion_orders")
+                        .IsUnique();
+
+                    b.ToTable("listener_expulsion_orders");
+                });
+
             modelBuilder.Entity("kursovajaEF.Teacher", b =>
                 {
                     b.Property<int>("TeacherId")
@@ -517,6 +620,10 @@ namespace kursovajaEF.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("teacher_id")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int?>("ChairId")
+                        .HasColumnType("integer")
+                        .HasColumnName("chair_id");
 
                     b.Property<string>("Degree")
                         .HasMaxLength(100)
@@ -550,7 +657,7 @@ namespace kursovajaEF.Migrations
 
                     b.Property<decimal?>("PhoneNum")
                         .HasPrecision(11)
-                        .HasColumnType("numeric(11,0)")
+                        .HasColumnType("numeric(11)")
                         .HasColumnName("phone_num");
 
                     b.Property<string>("Position")
@@ -564,6 +671,8 @@ namespace kursovajaEF.Migrations
                         .HasColumnName("title");
 
                     b.HasKey("TeacherId");
+
+                    b.HasIndex("ChairId");
 
                     b.ToTable("teachers");
                 });
@@ -595,6 +704,17 @@ namespace kursovajaEF.Migrations
                         .HasName("timetable_pkey");
 
                     b.ToTable("timetable");
+                });
+
+            modelBuilder.Entity("kursovajaEF.Contract", b =>
+                {
+                    b.HasOne("kursovajaEF.Listener", "Listener")
+                        .WithMany("Contracts")
+                        .HasForeignKey("ListenerId")
+                        .HasConstraintName("listener_id_fkey2")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Listener");
                 });
 
             modelBuilder.Entity("kursovajaEF.ContractInfo", b =>
@@ -629,7 +749,8 @@ namespace kursovajaEF.Migrations
                         .WithMany()
                         .HasForeignKey("TeacherId")
                         .HasConstraintName("teacher_id_fkey")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Discipline");
 
@@ -679,23 +800,25 @@ namespace kursovajaEF.Migrations
                     b.Navigation("Group");
                 });
 
-            modelBuilder.Entity("kursovajaEF.GroupInfoListener", b =>
+            modelBuilder.Entity("kursovajaEF.GroupInfoTeacher", b =>
                 {
                     b.HasOne("kursovajaEF.GroupInfo", "GroupInfo")
                         .WithMany()
                         .HasForeignKey("GroupInfoId")
-                        .HasConstraintName("group_info_id_fkey")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasConstraintName("group_info_fkey")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("kursovajaEF.Listener", "Listener")
+                    b.HasOne("kursovajaEF.Teacher", "Teacher")
                         .WithMany()
-                        .HasForeignKey("ListenerId")
-                        .HasConstraintName("listener_id_fkey")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TeacherId")
+                        .HasConstraintName("teacher_fkey")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("GroupInfo");
 
-                    b.Navigation("Listener");
+                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("kursovajaEF.GroupsListener", b =>
@@ -759,17 +882,6 @@ namespace kursovajaEF.Migrations
                     b.Navigation("Tt");
                 });
 
-            modelBuilder.Entity("kursovajaEF.Listener", b =>
-                {
-                    b.HasOne("kursovajaEF.Contract", "Contract")
-                        .WithOne("Listener")
-                        .HasForeignKey("kursovajaEF.Listener", "ContractId")
-                        .HasConstraintName("contracts_fkey")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Contract");
-                });
-
             modelBuilder.Entity("kursovajaEF.ListenerWish", b =>
                 {
                     b.HasOne("kursovajaEF.Contract", "Contract")
@@ -802,11 +914,46 @@ namespace kursovajaEF.Migrations
                     b.Navigation("GroupInfo");
                 });
 
+            modelBuilder.Entity("kursovajaEF.Models.ListenerEnrollmentOrder", b =>
+                {
+                    b.HasOne("kursovajaEF.Contract", "Contract")
+                        .WithMany("ListenerEnrollmentOrders")
+                        .HasForeignKey("ContractId")
+                        .HasConstraintName("listener_enrollment_orders_contract_id__fkey")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Contract");
+                });
+
+            modelBuilder.Entity("kursovajaEF.Models.ListenerExpulsionOrder", b =>
+                {
+                    b.HasOne("kursovajaEF.Contract", "Contract")
+                        .WithMany("ListenerExpulsionOrders")
+                        .HasForeignKey("ContractId")
+                        .HasConstraintName("listener_expulsion_orders_contract_id__fkey")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Contract");
+                });
+
+            modelBuilder.Entity("kursovajaEF.Teacher", b =>
+                {
+                    b.HasOne("kursovajaEF.Models.Chair", "Chair")
+                        .WithMany("Teachers")
+                        .HasForeignKey("ChairId")
+                        .HasConstraintName("chair_id_fkey")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Chair");
+                });
+
             modelBuilder.Entity("kursovajaEF.Contract", b =>
                 {
                     b.Navigation("ContractInfos");
 
-                    b.Navigation("Listener");
+                    b.Navigation("ListenerEnrollmentOrders");
+
+                    b.Navigation("ListenerExpulsionOrders");
 
                     b.Navigation("ListenerWishes");
                 });
@@ -821,6 +968,16 @@ namespace kursovajaEF.Migrations
             modelBuilder.Entity("kursovajaEF.Group", b =>
                 {
                     b.Navigation("GroupInfos");
+                });
+
+            modelBuilder.Entity("kursovajaEF.Listener", b =>
+                {
+                    b.Navigation("Contracts");
+                });
+
+            modelBuilder.Entity("kursovajaEF.Models.Chair", b =>
+                {
+                    b.Navigation("Teachers");
                 });
 #pragma warning restore 612, 618
         }

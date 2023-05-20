@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kursovajaEF.Models;
+using System;
 using System.Collections.Generic;
 
 #nullable disable
@@ -17,5 +18,8 @@ namespace kursovajaEF
         public decimal? PhoneNum { get; set; }
         public string Email { get; set; }
         public int TeacherId { get; set; }
+        public int? ChairId { get; set; }
+
+        public virtual Chair Chair { get; set; }
     }
 }

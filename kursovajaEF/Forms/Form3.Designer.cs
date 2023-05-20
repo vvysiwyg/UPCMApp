@@ -29,6 +29,7 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.firstnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.midnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,10 +38,10 @@ namespace kursovajaEF.Forms
             this.sexCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.matriculationCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schoolGradeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenerCategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.addBtn = new System.Windows.Forms.Button();
@@ -67,10 +68,10 @@ namespace kursovajaEF.Forms
             this.sexCol,
             this.idCol,
             this.matriculationCol,
-            this.contractIdCol,
             this.phoneNumCol,
             this.schoolGradeCol,
-            this.emailCol});
+            this.emailCol,
+            this.listenerCategoryCol});
             this.dataGridView1.Location = new System.Drawing.Point(12, 49);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -122,13 +123,6 @@ namespace kursovajaEF.Forms
             this.matriculationCol.MinimumWidth = 6;
             this.matriculationCol.Name = "matriculationCol";
             // 
-            // contractIdCol
-            // 
-            this.contractIdCol.HeaderText = "Id контракта";
-            this.contractIdCol.MinimumWidth = 6;
-            this.contractIdCol.Name = "contractIdCol";
-            this.contractIdCol.Visible = false;
-            // 
             // phoneNumCol
             // 
             this.phoneNumCol.HeaderText = "Номер телефона";
@@ -146,6 +140,12 @@ namespace kursovajaEF.Forms
             this.emailCol.HeaderText = "Email";
             this.emailCol.MinimumWidth = 6;
             this.emailCol.Name = "emailCol";
+            // 
+            // listenerCategoryCol
+            // 
+            this.listenerCategoryCol.HeaderText = "Категория слушателя";
+            this.listenerCategoryCol.MinimumWidth = 6;
+            this.listenerCategoryCol.Name = "listenerCategoryCol";
             // 
             // label1
             // 
@@ -208,6 +208,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form3";
             this.Text = "Список слушателей";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -233,9 +234,9 @@ namespace kursovajaEF.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn sexCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn idCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn matriculationCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contractIdCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn schoolGradeCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailCol;
+        private System.Windows.Forms.DataGridViewTextBoxColumn listenerCategoryCol;
     }
 }
