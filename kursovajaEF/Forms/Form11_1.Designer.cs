@@ -29,12 +29,13 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form11_1));
             this.groups_timetable = new System.Windows.Forms.DataGridView();
-            this.disciplines_timetable = new System.Windows.Forms.DataGridView();
             this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.weekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disciplines_timetable = new System.Windows.Forms.DataGridView();
             this.disciplineCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.weekdayCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTimeCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +49,7 @@ namespace kursovajaEF.Forms
             this.groups_timetable.AllowUserToAddRows = false;
             this.groups_timetable.AllowUserToDeleteRows = false;
             this.groups_timetable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.groups_timetable.BackgroundColor = System.Drawing.Color.White;
+            this.groups_timetable.BackgroundColor = System.Drawing.SystemColors.Control;
             this.groups_timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.groups_timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.groupNumCol,
@@ -63,27 +64,6 @@ namespace kursovajaEF.Forms
             this.groups_timetable.Size = new System.Drawing.Size(570, 413);
             this.groups_timetable.TabIndex = 0;
             this.groups_timetable.Sorted += new System.EventHandler(this.dataGridView_Sorted);
-            // 
-            // disciplines_timetable
-            // 
-            this.disciplines_timetable.AllowUserToAddRows = false;
-            this.disciplines_timetable.AllowUserToDeleteRows = false;
-            this.disciplines_timetable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.disciplines_timetable.BackgroundColor = System.Drawing.Color.White;
-            this.disciplines_timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.disciplines_timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.disciplineCol,
-            this.weekdayCol2,
-            this.startTimeCol2,
-            this.endTimeCol2});
-            this.disciplines_timetable.Location = new System.Drawing.Point(12, 33);
-            this.disciplines_timetable.Name = "disciplines_timetable";
-            this.disciplines_timetable.ReadOnly = true;
-            this.disciplines_timetable.RowHeadersWidth = 51;
-            this.disciplines_timetable.RowTemplate.Height = 29;
-            this.disciplines_timetable.Size = new System.Drawing.Size(570, 413);
-            this.disciplines_timetable.TabIndex = 0;
-            this.disciplines_timetable.Sorted += new System.EventHandler(this.dataGridView_Sorted);
             // 
             // groupNumCol
             // 
@@ -112,6 +92,27 @@ namespace kursovajaEF.Forms
             this.endTimeCol.MinimumWidth = 6;
             this.endTimeCol.Name = "endTimeCol";
             this.endTimeCol.ReadOnly = true;
+            // 
+            // disciplines_timetable
+            // 
+            this.disciplines_timetable.AllowUserToAddRows = false;
+            this.disciplines_timetable.AllowUserToDeleteRows = false;
+            this.disciplines_timetable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.disciplines_timetable.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.disciplines_timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.disciplines_timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.disciplineCol,
+            this.weekdayCol2,
+            this.startTimeCol2,
+            this.endTimeCol2});
+            this.disciplines_timetable.Location = new System.Drawing.Point(12, 33);
+            this.disciplines_timetable.Name = "disciplines_timetable";
+            this.disciplines_timetable.ReadOnly = true;
+            this.disciplines_timetable.RowHeadersWidth = 51;
+            this.disciplines_timetable.RowTemplate.Height = 29;
+            this.disciplines_timetable.Size = new System.Drawing.Size(570, 413);
+            this.disciplines_timetable.TabIndex = 0;
+            this.disciplines_timetable.Sorted += new System.EventHandler(this.dataGridView_Sorted);
             // 
             // disciplineCol
             // 
@@ -148,6 +149,7 @@ namespace kursovajaEF.Forms
             this.ClientSize = new System.Drawing.Size(1249, 474);
             this.Controls.Add(this.disciplines_timetable);
             this.Controls.Add(this.groups_timetable);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form11_1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список связей";

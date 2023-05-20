@@ -29,6 +29,7 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form15_1));
             this.groups_timetable = new System.Windows.Forms.DataGridView();
             this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.weekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +51,7 @@ namespace kursovajaEF.Forms
             this.groups_timetable.AllowUserToAddRows = false;
             this.groups_timetable.AllowUserToDeleteRows = false;
             this.groups_timetable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.groups_timetable.BackgroundColor = System.Drawing.Color.White;
+            this.groups_timetable.BackgroundColor = System.Drawing.SystemColors.Control;
             this.groups_timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.groups_timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.groupNumCol,
@@ -103,7 +104,7 @@ namespace kursovajaEF.Forms
             this.groups_teachers.AllowUserToAddRows = false;
             this.groups_teachers.AllowUserToDeleteRows = false;
             this.groups_teachers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.groups_teachers.BackgroundColor = System.Drawing.Color.White;
+            this.groups_teachers.BackgroundColor = System.Drawing.SystemColors.Control;
             this.groups_teachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.groups_teachers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.groupNumCol2,
@@ -123,7 +124,7 @@ namespace kursovajaEF.Forms
             this.groupNumCol2.MinimumWidth = 6;
             this.groupNumCol2.Name = "groupNumCol2";
             this.groupNumCol2.ReadOnly = true;
-            this.groupNumCol2.Width = 141;
+            this.groupNumCol2.Width = 129;
             // 
             // teacherFioCol
             // 
@@ -131,14 +132,14 @@ namespace kursovajaEF.Forms
             this.teacherFioCol.MinimumWidth = 6;
             this.teacherFioCol.Name = "teacherFioCol";
             this.teacherFioCol.ReadOnly = true;
-            this.teacherFioCol.Width = 177;
+            this.teacherFioCol.Width = 162;
             // 
             // groups_listeners
             // 
             this.groups_listeners.AllowUserToAddRows = false;
             this.groups_listeners.AllowUserToDeleteRows = false;
             this.groups_listeners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.groups_listeners.BackgroundColor = System.Drawing.Color.White;
+            this.groups_listeners.BackgroundColor = System.Drawing.SystemColors.Control;
             this.groups_listeners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.groups_listeners.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.groupNumCol3,
@@ -176,6 +177,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.groups_listeners);
             this.Controls.Add(this.groups_teachers);
             this.Controls.Add(this.groups_timetable);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form15_1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список связей";

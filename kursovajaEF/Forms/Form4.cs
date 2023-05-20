@@ -27,11 +27,8 @@ namespace kursovajaEF.Forms
 					break;
 				}
 				else midname.ForeColor = Color.Black;
-
-				/*if(i==0 && (textBox2.Text[0] < char(192) || textBox2.Text[0] > char(223)))
-					MessageBox.Show("Фамилия должна начинаться с заглавной буквы", "Ошибка");*/
 			}
-			// 21-34: Блокировка/Разблокирование кнопок. Если хотя бы в одном поле есть недопустимый символ
+			// 21-30: Блокировка/Разблокирование кнопок. Если хотя бы в одном поле есть недопустимый символ
 			// то кнопки блокируются, иначе они становятся доступными.
 			if (lastname.ForeColor == Color.Red || midname.ForeColor == Color.Red || firstname.ForeColor == Color.Red)
 			{
@@ -116,8 +113,6 @@ namespace kursovajaEF.Forms
 				label12.Text = id.ToString();
 
 			}
-				
-			//MessageBox.Show("Данные успешно добавлены", "Форма заявления");
 			Close(); // Закрывает форму после добавления слушателя
 			}
 

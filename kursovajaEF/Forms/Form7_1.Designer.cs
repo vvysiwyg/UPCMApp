@@ -29,10 +29,11 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form7_1));
             this.disciplines_teachers = new System.Windows.Forms.DataGridView();
-            this.disciplines_timetable = new System.Windows.Forms.DataGridView();
             this.disciplineNameCol2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teacherFioCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.disciplines_timetable = new System.Windows.Forms.DataGridView();
             this.disciplineNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.weekdayCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startTimeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +47,7 @@ namespace kursovajaEF.Forms
             this.disciplines_teachers.AllowUserToAddRows = false;
             this.disciplines_teachers.AllowUserToDeleteRows = false;
             this.disciplines_teachers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.disciplines_teachers.BackgroundColor = System.Drawing.Color.White;
+            this.disciplines_teachers.BackgroundColor = System.Drawing.SystemColors.Control;
             this.disciplines_teachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.disciplines_teachers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.disciplineNameCol2,
@@ -56,30 +57,9 @@ namespace kursovajaEF.Forms
             this.disciplines_teachers.ReadOnly = true;
             this.disciplines_teachers.RowHeadersWidth = 51;
             this.disciplines_teachers.RowTemplate.Height = 29;
-            this.disciplines_teachers.Size = new System.Drawing.Size(448, 409);
+            this.disciplines_teachers.Size = new System.Drawing.Size(516, 409);
             this.disciplines_teachers.TabIndex = 0;
             this.disciplines_teachers.Sorted += new System.EventHandler(this.dataGridView_Sorted);
-            // 
-            // disciplines_timetable
-            // 
-            this.disciplines_timetable.AllowUserToAddRows = false;
-            this.disciplines_timetable.AllowUserToDeleteRows = false;
-            this.disciplines_timetable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.disciplines_timetable.BackgroundColor = System.Drawing.Color.White;
-            this.disciplines_timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.disciplines_timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.disciplineNameCol,
-            this.weekdayCol,
-            this.startTimeCol,
-            this.endTimeCol});
-            this.disciplines_timetable.Location = new System.Drawing.Point(12, 37);
-            this.disciplines_timetable.Name = "disciplines_timetable";
-            this.disciplines_timetable.ReadOnly = true;
-            this.disciplines_timetable.RowHeadersWidth = 51;
-            this.disciplines_timetable.RowTemplate.Height = 29;
-            this.disciplines_timetable.Size = new System.Drawing.Size(603, 409);
-            this.disciplines_timetable.TabIndex = 0;
-            this.disciplines_timetable.Sorted += new System.EventHandler(this.dataGridView_Sorted);
             // 
             // disciplineNameCol2
             // 
@@ -97,6 +77,27 @@ namespace kursovajaEF.Forms
             this.teacherFioCol.ReadOnly = true;
             this.teacherFioCol.Width = 162;
             // 
+            // disciplines_timetable
+            // 
+            this.disciplines_timetable.AllowUserToAddRows = false;
+            this.disciplines_timetable.AllowUserToDeleteRows = false;
+            this.disciplines_timetable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.disciplines_timetable.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.disciplines_timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.disciplines_timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.disciplineNameCol,
+            this.weekdayCol,
+            this.startTimeCol,
+            this.endTimeCol});
+            this.disciplines_timetable.Location = new System.Drawing.Point(12, 37);
+            this.disciplines_timetable.Name = "disciplines_timetable";
+            this.disciplines_timetable.ReadOnly = true;
+            this.disciplines_timetable.RowHeadersWidth = 51;
+            this.disciplines_timetable.RowTemplate.Height = 29;
+            this.disciplines_timetable.Size = new System.Drawing.Size(603, 409);
+            this.disciplines_timetable.TabIndex = 0;
+            this.disciplines_timetable.Sorted += new System.EventHandler(this.dataGridView_Sorted);
+            // 
             // disciplineNameCol
             // 
             this.disciplineNameCol.HeaderText = "Дисциплина";
@@ -111,7 +112,7 @@ namespace kursovajaEF.Forms
             this.weekdayCol.MinimumWidth = 6;
             this.weekdayCol.Name = "weekdayCol";
             this.weekdayCol.ReadOnly = true;
-            this.weekdayCol.Width = 127;
+            this.weekdayCol.Width = 117;
             // 
             // startTimeCol
             // 
@@ -119,7 +120,7 @@ namespace kursovajaEF.Forms
             this.startTimeCol.MinimumWidth = 6;
             this.startTimeCol.Name = "startTimeCol";
             this.startTimeCol.ReadOnly = true;
-            this.startTimeCol.Width = 136;
+            this.startTimeCol.Width = 125;
             // 
             // endTimeCol
             // 
@@ -133,9 +134,10 @@ namespace kursovajaEF.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 458);
+            this.ClientSize = new System.Drawing.Size(1163, 458);
             this.Controls.Add(this.disciplines_timetable);
             this.Controls.Add(this.disciplines_teachers);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form7_1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Список связей";

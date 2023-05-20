@@ -29,6 +29,7 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form15));
             this.groups = new System.Windows.Forms.DataGridView();
             this.groupNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +54,17 @@ namespace kursovajaEF.Forms
             this.emailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teacherIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listeners = new System.Windows.Forms.DataGridView();
+            this.firstnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.midnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yobCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sexCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenerIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.matriculationCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.schoolGradeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listenerCategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timetable = new System.Windows.Forms.DataGridView();
             this.ttIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,17 +79,6 @@ namespace kursovajaEF.Forms
             this.showLinkBtn = new System.Windows.Forms.Button();
             this.linkBtn = new System.Windows.Forms.Button();
             this.chooseGIBtn = new System.Windows.Forms.Button();
-            this.firstnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.midnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.yobCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sexCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listenerIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.matriculationCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneNumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.schoolGradeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.listenerCategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groups)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listeners)).BeginInit();
@@ -92,7 +93,7 @@ namespace kursovajaEF.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groups.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.groups.BackgroundColor = System.Drawing.Color.White;
+            this.groups.BackgroundColor = System.Drawing.SystemColors.Control;
             this.groups.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.groups.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.groupNumCol,
@@ -222,7 +223,7 @@ namespace kursovajaEF.Forms
             this.teachers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.teachers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.teachers.BackgroundColor = System.Drawing.Color.White;
+            this.teachers.BackgroundColor = System.Drawing.SystemColors.Control;
             this.teachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.teachers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.fioCol,
@@ -323,7 +324,7 @@ namespace kursovajaEF.Forms
             this.listeners.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listeners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.listeners.BackgroundColor = System.Drawing.Color.White;
+            this.listeners.BackgroundColor = System.Drawing.SystemColors.Control;
             this.listeners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listeners.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.firstnameCol,
@@ -347,6 +348,84 @@ namespace kursovajaEF.Forms
             this.listeners.Visible = false;
             this.listeners.Sorted += new System.EventHandler(this.dataGridView_Sorted);
             // 
+            // firstnameCol
+            // 
+            this.firstnameCol.HeaderText = "Имя";
+            this.firstnameCol.MinimumWidth = 6;
+            this.firstnameCol.Name = "firstnameCol";
+            this.firstnameCol.ReadOnly = true;
+            // 
+            // midnameCol
+            // 
+            this.midnameCol.HeaderText = "Фамилия";
+            this.midnameCol.MinimumWidth = 6;
+            this.midnameCol.Name = "midnameCol";
+            this.midnameCol.ReadOnly = true;
+            // 
+            // lastnameCol
+            // 
+            this.lastnameCol.HeaderText = "Отчество";
+            this.lastnameCol.MinimumWidth = 6;
+            this.lastnameCol.Name = "lastnameCol";
+            this.lastnameCol.ReadOnly = true;
+            // 
+            // yobCol
+            // 
+            this.yobCol.HeaderText = "Дата рождения";
+            this.yobCol.MinimumWidth = 6;
+            this.yobCol.Name = "yobCol";
+            this.yobCol.ReadOnly = true;
+            // 
+            // sexCol
+            // 
+            this.sexCol.HeaderText = "Пол";
+            this.sexCol.MinimumWidth = 6;
+            this.sexCol.Name = "sexCol";
+            this.sexCol.ReadOnly = true;
+            // 
+            // listenerIdCol
+            // 
+            this.listenerIdCol.HeaderText = "Id слушателя";
+            this.listenerIdCol.MinimumWidth = 6;
+            this.listenerIdCol.Name = "listenerIdCol";
+            this.listenerIdCol.ReadOnly = true;
+            this.listenerIdCol.Visible = false;
+            // 
+            // matriculationCol
+            // 
+            this.matriculationCol.HeaderText = "Зачисление";
+            this.matriculationCol.MinimumWidth = 6;
+            this.matriculationCol.Name = "matriculationCol";
+            this.matriculationCol.ReadOnly = true;
+            // 
+            // phoneNumCol
+            // 
+            this.phoneNumCol.HeaderText = "Номер телефона";
+            this.phoneNumCol.MinimumWidth = 6;
+            this.phoneNumCol.Name = "phoneNumCol";
+            this.phoneNumCol.ReadOnly = true;
+            // 
+            // schoolGradeCol
+            // 
+            this.schoolGradeCol.HeaderText = "Класс";
+            this.schoolGradeCol.MinimumWidth = 6;
+            this.schoolGradeCol.Name = "schoolGradeCol";
+            this.schoolGradeCol.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "email";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // listenerCategoryCol
+            // 
+            this.listenerCategoryCol.HeaderText = "Категория слушателя";
+            this.listenerCategoryCol.MinimumWidth = 6;
+            this.listenerCategoryCol.Name = "listenerCategoryCol";
+            this.listenerCategoryCol.ReadOnly = true;
+            // 
             // timetable
             // 
             this.timetable.AllowUserToAddRows = false;
@@ -354,7 +433,7 @@ namespace kursovajaEF.Forms
             this.timetable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.timetable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.timetable.BackgroundColor = System.Drawing.Color.White;
+            this.timetable.BackgroundColor = System.Drawing.SystemColors.Control;
             this.timetable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.timetable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ttIdCol,
@@ -507,84 +586,6 @@ namespace kursovajaEF.Forms
             this.chooseGIBtn.Visible = false;
             this.chooseGIBtn.Click += new System.EventHandler(this.chooseGIBtn_Click);
             // 
-            // firstnameCol
-            // 
-            this.firstnameCol.HeaderText = "Имя";
-            this.firstnameCol.MinimumWidth = 6;
-            this.firstnameCol.Name = "firstnameCol";
-            this.firstnameCol.ReadOnly = true;
-            // 
-            // midnameCol
-            // 
-            this.midnameCol.HeaderText = "Фамилия";
-            this.midnameCol.MinimumWidth = 6;
-            this.midnameCol.Name = "midnameCol";
-            this.midnameCol.ReadOnly = true;
-            // 
-            // lastnameCol
-            // 
-            this.lastnameCol.HeaderText = "Отчество";
-            this.lastnameCol.MinimumWidth = 6;
-            this.lastnameCol.Name = "lastnameCol";
-            this.lastnameCol.ReadOnly = true;
-            // 
-            // yobCol
-            // 
-            this.yobCol.HeaderText = "Дата рождения";
-            this.yobCol.MinimumWidth = 6;
-            this.yobCol.Name = "yobCol";
-            this.yobCol.ReadOnly = true;
-            // 
-            // sexCol
-            // 
-            this.sexCol.HeaderText = "Пол";
-            this.sexCol.MinimumWidth = 6;
-            this.sexCol.Name = "sexCol";
-            this.sexCol.ReadOnly = true;
-            // 
-            // listenerIdCol
-            // 
-            this.listenerIdCol.HeaderText = "Id слушателя";
-            this.listenerIdCol.MinimumWidth = 6;
-            this.listenerIdCol.Name = "listenerIdCol";
-            this.listenerIdCol.ReadOnly = true;
-            this.listenerIdCol.Visible = false;
-            // 
-            // matriculationCol
-            // 
-            this.matriculationCol.HeaderText = "Зачисление";
-            this.matriculationCol.MinimumWidth = 6;
-            this.matriculationCol.Name = "matriculationCol";
-            this.matriculationCol.ReadOnly = true;
-            // 
-            // phoneNumCol
-            // 
-            this.phoneNumCol.HeaderText = "Номер телефона";
-            this.phoneNumCol.MinimumWidth = 6;
-            this.phoneNumCol.Name = "phoneNumCol";
-            this.phoneNumCol.ReadOnly = true;
-            // 
-            // schoolGradeCol
-            // 
-            this.schoolGradeCol.HeaderText = "Класс";
-            this.schoolGradeCol.MinimumWidth = 6;
-            this.schoolGradeCol.Name = "schoolGradeCol";
-            this.schoolGradeCol.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "email";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // listenerCategoryCol
-            // 
-            this.listenerCategoryCol.HeaderText = "Категория слушателя";
-            this.listenerCategoryCol.MinimumWidth = 6;
-            this.listenerCategoryCol.Name = "listenerCategoryCol";
-            this.listenerCategoryCol.ReadOnly = true;
-            // 
             // Form15
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -603,6 +604,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.listeners);
             this.Controls.Add(this.teachers);
             this.Controls.Add(this.groups);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form15";
             this.Text = "Список групп";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

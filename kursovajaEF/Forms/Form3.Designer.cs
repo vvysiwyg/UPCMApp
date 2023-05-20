@@ -29,12 +29,8 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.addBtn = new System.Windows.Forms.Button();
-            this.updBtn = new System.Windows.Forms.Button();
-            this.delBtn = new System.Windows.Forms.Button();
             this.firstnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.midnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastnameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +42,11 @@ namespace kursovajaEF.Forms
             this.schoolGradeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.listenerCategoryCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.addBtn = new System.Windows.Forms.Button();
+            this.updBtn = new System.Windows.Forms.Button();
+            this.delBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,56 +79,6 @@ namespace kursovajaEF.Forms
             this.dataGridView1.Size = new System.Drawing.Size(1432, 577);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.Sorted += new System.EventHandler(this.dataGridView1_Sorted);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 28);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Поиск";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(88, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(289, 24);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // addBtn
-            // 
-            this.addBtn.Location = new System.Drawing.Point(409, 6);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(258, 37);
-            this.addBtn.TabIndex = 3;
-            this.addBtn.Text = "Добавить слушателя";
-            this.addBtn.UseVisualStyleBackColor = true;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
-            // 
-            // updBtn
-            // 
-            this.updBtn.Location = new System.Drawing.Point(798, 6);
-            this.updBtn.Name = "updBtn";
-            this.updBtn.Size = new System.Drawing.Size(258, 37);
-            this.updBtn.TabIndex = 3;
-            this.updBtn.Text = "Изменить";
-            this.updBtn.UseVisualStyleBackColor = true;
-            this.updBtn.Click += new System.EventHandler(this.updBtn_Click);
-            // 
-            // delBtn
-            // 
-            this.delBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.delBtn.Location = new System.Drawing.Point(1186, 6);
-            this.delBtn.Name = "delBtn";
-            this.delBtn.Size = new System.Drawing.Size(258, 37);
-            this.delBtn.TabIndex = 3;
-            this.delBtn.Text = "Удалить слушателя";
-            this.delBtn.UseVisualStyleBackColor = true;
-            this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
             // 
             // firstnameCol
             // 
@@ -196,6 +147,56 @@ namespace kursovajaEF.Forms
             this.listenerCategoryCol.MinimumWidth = 6;
             this.listenerCategoryCol.Name = "listenerCategoryCol";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 28);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Поиск";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(88, 12);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(289, 24);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // addBtn
+            // 
+            this.addBtn.Location = new System.Drawing.Point(409, 6);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(258, 37);
+            this.addBtn.TabIndex = 3;
+            this.addBtn.Text = "Добавить слушателя";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
+            // 
+            // updBtn
+            // 
+            this.updBtn.Location = new System.Drawing.Point(798, 6);
+            this.updBtn.Name = "updBtn";
+            this.updBtn.Size = new System.Drawing.Size(258, 37);
+            this.updBtn.TabIndex = 3;
+            this.updBtn.Text = "Изменить";
+            this.updBtn.UseVisualStyleBackColor = true;
+            this.updBtn.Click += new System.EventHandler(this.updBtn_Click);
+            // 
+            // delBtn
+            // 
+            this.delBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.delBtn.Location = new System.Drawing.Point(1186, 6);
+            this.delBtn.Name = "delBtn";
+            this.delBtn.Size = new System.Drawing.Size(258, 37);
+            this.delBtn.TabIndex = 3;
+            this.delBtn.Text = "Удалить слушателя";
+            this.delBtn.UseVisualStyleBackColor = true;
+            this.delBtn.Click += new System.EventHandler(this.delBtn_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -207,6 +208,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form3";
             this.Text = "Список слушателей";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

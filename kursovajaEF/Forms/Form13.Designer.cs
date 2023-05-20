@@ -29,6 +29,7 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form13));
             this.contracts = new System.Windows.Forms.DataGridView();
             this.crnCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalSumCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,7 +75,7 @@ namespace kursovajaEF.Forms
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.contracts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.contracts.BackgroundColor = System.Drawing.Color.White;
+            this.contracts.BackgroundColor = System.Drawing.SystemColors.Control;
             this.contracts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.contracts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.crnCol,
@@ -276,7 +277,7 @@ namespace kursovajaEF.Forms
             this.listeners.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listeners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.listeners.BackgroundColor = System.Drawing.Color.White;
+            this.listeners.BackgroundColor = System.Drawing.SystemColors.Control;
             this.listeners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listeners.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.firstnameCol,
@@ -399,6 +400,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.delBtn);
             this.Controls.Add(this.listeners);
             this.Controls.Add(this.contracts);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form13";
             this.Text = "Список договоров";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

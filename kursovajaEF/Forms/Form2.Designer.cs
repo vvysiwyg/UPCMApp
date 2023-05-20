@@ -34,6 +34,7 @@ namespace kursovajaEF.Forms
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.addingCheck = new System.Windows.Forms.Label();
             this.contractId = new System.Windows.Forms.Label();
             this.updatingCheck = new System.Windows.Forms.Label();
@@ -1272,6 +1273,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.addingCheck);
             this.Controls.Add(this.endTime);
             this.Controls.Add(this.startTime);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
             this.Text = "Form2";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

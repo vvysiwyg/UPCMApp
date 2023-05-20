@@ -29,6 +29,7 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form17));
             this.chairs = new System.Windows.Forms.DataGridView();
             this.chairIdCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chairNameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +47,7 @@ namespace kursovajaEF.Forms
             this.chairs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chairs.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.chairs.BackgroundColor = System.Drawing.Color.White;
+            this.chairs.BackgroundColor = System.Drawing.SystemColors.Control;
             this.chairs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.chairs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.chairIdCol,
@@ -85,7 +86,7 @@ namespace kursovajaEF.Forms
             this.chooseСBtn.Name = "chooseСBtn";
             this.chooseСBtn.Size = new System.Drawing.Size(269, 44);
             this.chooseСBtn.TabIndex = 2;
-            this.chooseСBtn.Text = "Выбрать расписание";
+            this.chooseСBtn.Text = "Выбрать кафедру";
             this.chooseСBtn.UseVisualStyleBackColor = true;
             this.chooseСBtn.Visible = false;
             this.chooseСBtn.Click += new System.EventHandler(this.chooseСBtn_Click);
@@ -136,6 +137,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.updBtn);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.chairs);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form17";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Кафедры";

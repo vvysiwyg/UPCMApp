@@ -36,7 +36,8 @@ namespace kursovajaEF
             using (testDBContext db = new())
             {
                 var l_s = db.Listeners.AsNoTracking();
-                var с_ci_leno_lexo_s = db.Contracts.Include(i => i.ContractInfos).
+                var с_ci_leno_lexo_s = db.Contracts.
+                    Include(i => i.ContractInfos).
                     Include(i => i.ListenerEnrollmentOrders).
                     Include(i => i.ListenerExpulsionOrders).
                     Select(s => new 
@@ -76,12 +77,11 @@ namespace kursovajaEF
                             })
                     }).
                     AsNoTracking();
-                var g_gi_gicis = db.GroupInfoContractInfos.Include(gici => gici.GroupInfo).
+                var g_gi_gicis = db.GroupInfoContractInfos.
+                    Include(gici => gici.GroupInfo).
                     ThenInclude(gi => gi.Group).
                     AsNoTracking();
                 var w_s = db.ListenerWishes.AsNoTracking();
-                var sw = new Stopwatch();
-                sw.Start();
                 foreach (var l in l_s.ToList())
                 {
                     dataGridView1.Rows.Add(
@@ -100,9 +100,6 @@ namespace kursovajaEF
                     notExpelledListenersDictionary.Add(l.Id, dataGridView1.Rows[it]);
                     it++;
                 }
-                sw.Stop();
-                MessageBox.Show($"1 замер: {sw.ElapsedMilliseconds} мс");
-
                 it = 0;
 
                 foreach (var с_ci_leno_lexo in с_ci_leno_lexo_s.ToList())
@@ -197,267 +194,13 @@ namespace kursovajaEF
                 if (dataGridView4.Rows.Count != 0)
                     currentCellDgv4 = dataGridView4.Rows[0].Cells[0];
             }
-            //string sql = "SELECT * FROM main_info;";
-            //NpgsqlCommand cmd = new NpgsqlCommand(sql, conn);
-            //NpgsqlDataReader r = cmd.ExecuteReader();
-
-            //for(; r.Read();)
-            //    dataGridView1.Rows.Add(
-            //        !r.IsDBNull(0) ? r.GetString(0) : "",
-            //        !r.IsDBNull(1) ? r.GetString(1) : "",
-            //        !r.IsDBNull(2) ? r.GetString(2) : "",
-            //        !r.IsDBNull(3) ? r.GetString(3) : "",
-            //        !r.IsDBNull(4) ? r.GetString(4) : "",
-            //        !r.IsDBNull(5) ? r.GetDecimal(5) : "",
-            //        !r.IsDBNull(6) ? r.GetString(6) : "",
-            //        !r.IsDBNull(7) ? r.GetString(7) : "",
-            //        !r.IsDBNull(8) ? r.GetString(8) : "",
-            //        !r.IsDBNull(9) ? r.GetDecimal(9) : "",
-            //        !r.IsDBNull(10) ? r.GetDecimal(10) : "",
-            //        !r.IsDBNull(11) ? r.GetDecimal(11) : "",
-            //        !r.IsDBNull(12) ? r.GetString(12) : "",
-            //        !r.IsDBNull(13) ? r.GetString(13) : "",
-            //        !r.IsDBNull(14) ? r.GetString(14) : "",
-            //        !r.IsDBNull(15) ? r.GetString(15) : "",
-            //        !r.IsDBNull(16) ? r.GetString(16) : "",
-            //        !r.IsDBNull(17) ? r.GetString(17) : "",
-            //        !r.IsDBNull(18) ? r.GetString(18) : "",
-            //        !r.IsDBNull(19) ? r.GetInt16(19) : "",
-            //        !r.IsDBNull(20) ? r.GetInt32(20) : "",
-            //        !r.IsDBNull(21) ? r.GetString(21) : "",
-            //        !r.IsDBNull(22) ? r.GetString(22) : "",
-            //        !r.IsDBNull(23) ? r.GetString(23) : "",
-            //        !r.IsDBNull(24) ? r.GetString(24) : "",
-            //        !r.IsDBNull(25) ? r.GetString(25) : "",
-            //        !r.IsDBNull(26) ? r.GetString(26) : "",
-            //        !r.IsDBNull(27) ? r.GetString(27) : "",
-            //        !r.IsDBNull(28) ? r.GetString(28) : "",
-            //        !r.IsDBNull(29) ? r.GetString(29) : "",
-            //        !r.IsDBNull(30) ? r.GetInt16(30) : "",
-            //        !r.IsDBNull(31) ? r.GetInt32(31) : "",
-            //        !r.IsDBNull(32) ? r.GetInt32(32) : "",
-            //        !r.IsDBNull(33) ? r.GetInt32(33) : "",
-            //        !r.IsDBNull(34) ? r.GetInt32(34) : "",
-            //        !r.IsDBNull(35) ? r.GetInt32(35) : "",
-            //        !r.IsDBNull(36) ? r.GetInt32(36) : "");
-            //r.Close();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-                //var result = from c in db.Contracts
-                //             join ci in db.ContractInfos on c.ContractId equals ci.ContractId
-                //             into lj
-                //             from leftJoin in lj.DefaultIfEmpty()
-                //             select new
-                //             {
-                //                 C = c,
-                //                 Ci = leftJoin
-                //             };
-                //foreach(var el in result)
-                //{
-                //    dataGridView1.Rows.Add(
-                //        el.C.Crn);
-                //}
-
-                fetch();
-                if (dataGridView1.RowCount != 0)
-                    dataGridView1.Rows[0].Selected = true;
-
-                //var res = from l in db.Listeners
-                //          join gil in db.GroupInfoListeners on l.Id equals gil.ListenerId
-                //          into lj1
-                //          from leftJoin1 in lj1.DefaultIfEmpty()
-                //          join gi in db.GroupInfos on leftJoin1.GroupInfoId equals gi.GroupInfoId
-                //          into lj2
-                //          from leftJoin2 in lj2.DefaultIfEmpty()
-                //          join g in db.Groups on leftJoin2.GroupId equals g.GroupId
-                //          into lj3
-                //          from leftJoin3 in lj3.DefaultIfEmpty()
-                //          join c in db.Contracts on l.ContractId equals c.ContractId
-                //          into lj4
-                //          from leftJoin4 in lj4.DefaultIfEmpty()
-                //          join ci in db.ContractInfos on leftJoin3.SubjectId equals ci.SubjectId
-                //          into lj5
-                //          from leftJoin5 in lj5.DefaultIfEmpty()
-                //          where leftJoin4.ContractId == leftJoin5.ContractId
-                //          orderby l.Firstname, l.Midname, l.Lastname
-                //          select new
-                //          {
-                //              L = l,
-                //              Gil = leftJoin1,
-                //              Gi = leftJoin2,
-                //              G = leftJoin3,
-                //              C = leftJoin4,
-                //              Ci = leftJoin5,
-                //          };
-
-                //var res1 = from l in db.Listeners
-                //           join gil in db.GroupInfoListeners on l.Id equals gil.ListenerId
-                //           into lj1
-                //           from leftJoin1 in lj1.DefaultIfEmpty()
-                //           select new
-                //           {
-                //               L = l,
-                //               Gil = leftJoin1
-                //           };
-                //var res2 = from r in res1
-                //           join gi in db.GroupInfos on r.Gil.GroupInfoId equals gi.GroupInfoId
-                //           into lj2
-                //           from leftJoin2 in lj2.DefaultIfEmpty()
-                //           select new
-                //           {
-                //               L = r.L,
-                //               Gil = r.Gil,
-                //               Gi = (leftJoin2 == null ? new GroupInfo(): leftJoin2)
-                //           };
-                //var res3 = from r in res2
-                //           join g in db.Groups on r.Gi.GroupId equals g.GroupId
-                //           into lj3
-                //           from leftJoin3 in lj3.DefaultIfEmpty()
-                //           select new
-                //           {
-                //               L = r.L,
-                //               Gil = r.Gil,
-                //               Gi = r.Gi,
-                //               G = leftJoin3
-                //           };
-                //var res4 = from r in res3
-                //           join c in db.Contracts on r.L.ContractId equals c.ContractId
-                //           into lj4
-                //           from leftJoin4 in lj4.DefaultIfEmpty()
-                //           select new
-                //           {
-                //               L = r.L,
-                //               Gil = r.Gil,
-                //               Gi = r.Gi,
-                //               G = r.G,
-                //               C = (leftJoin4 == null ? new Contract(): leftJoin4)
-                //           };
-                //var res = from r in res4
-                //          join ci in db.ContractInfos on
-                //          r.G.SubjectId equals ci.SubjectId
-                //          into lj5
-                //          from leftJoin5 in (from ci in lj5
-                //                             where ci.ContractId == r.C.ContractId
-                //                             select ci).DefaultIfEmpty()
-                //          orderby r.L.Firstname, r.L.Midname, r.L.Lastname
-                //          select new
-                //          {
-                //              L = r.L,
-                //              Gil = r.Gil,
-                //              Gi = r.Gi,
-                //              G = r.G,
-                //              C = r.C,
-                //              Ci = (leftJoin5 == null ? new ContractInfo(): leftJoin5),
-                //          };
-
-                //var res = db.GroupInfoListeners
-                //    .Include(gi => gi.GroupInfo)
-                //    .ThenInclude(g => g.Group)
-                //    .Include(l => l.Listener)
-                //    .ThenInclude(c => c.Contract)
-                //    .ThenInclude(ci => ci.ContractInfos);
-                //foreach(var el in res)
-                //{
-                //    dataGridView1.Rows.Add(
-                //        el.Listener.Midname);
-                //}
-
-                //var res = db.Listeners.FromSqlRaw("select l.midname, l.firstname, l.lastname, l.yob, l.sex, l.pob, " +
-                //    "l.series, l.num, l.issued, l.code, l.doi, l.phone_num, l.email, l.school_name, l.school_grade," +
-                //    " c.crn, c.total_sum, c.payed_sum, c.rest_of_sum, c.pay_date_40pct, c.payment_deadline, c.who_pay," +
-                //    " g.discipline_name, ci.subject_name, gi.start_learning, gi.end_learning, g.group_num, ci.num_of_people," +
-                //    " g.num_of_hours, gi.weekday, gi.start_time, gi.end_time, l.matriculation, c.expulsion_date," +
-                //    " c.listened_hours, c.transfer_group, c.certificate, c.issue_certificate, ci.study_hours, l.id," +
-                //    " c.contract_id, g.group_id, g.subject_id, g.discipline_id, ci.contract_info_id, gi.group_info_id" +
-                //    "  from listeners l left join group_info_listeners gil on (l.id = gil.listener_id) left join group_info" +
-                //    " gi on (gil.group_info_id = gi.group_info_id) left join groups g on (gi.group_id = g.group_id)" +
-                //    " left join contracts c on (l.contract_id = c.contract_id) left join contract_info ci on" +
-                //    " (g.subject_id = ci.subject_id and c.contract_id = ci.contract_id)" +
-                //    " order by firstname, midname, lastname;").ToList();
-                //foreach(var el in res)
-                //{
-                //    dataGridView1.Rows.Add(el.Midname);
-                //}
-
-                //foreach (var element in res)
-                //{
-                //    dataGridView1.Rows.Add(
-                //        element.L.Midname,
-                //        element.L.Firstname,
-                //        element.L.Lastname,
-                //        element.L.Yob,
-                //        element.L.Sex,
-                //        element.L.PhoneNum,
-                //        element.L.Email,
-                //        element.L.SchoolGrade,
-                //        element.C.Crn,
-                //        element.C.TotalSum,
-                //        element.C.PayedSum,
-                //        element.C.RestOfSum,
-                //        element.C.PayDate40pct,
-                //        element.C.PaymentDeadline,
-                //        element.C.WhoPay,
-                //        element.G.DisciplineName,
-                //        element.Ci.SubjectName,
-                //        element.Gi.StartLearning,
-                //        element.Gi.EndLearning,
-                //        element.G.GroupNum,
-                //        element.Ci.NumOfPeople,
-                //        element.G.NumOfHours,
-                //        element.Gi.Weekday,
-                //        element.Gi.StartTime,
-                //        element.Gi.EndTime,
-                //        element.L.Matriculation,
-                //        element.C.ExpulsionDate,
-                //        element.C.ListenedHours,
-                //        element.C.TransferGroup,
-                //        element.C.Certificate,
-                //        element.C.IssueCertificate,
-                //        element.Ci.StudyHours,
-                //        element.L.Id,
-                //        element.C.ContractId,
-                //        element.G.GroupId,
-                //        element.G.SubjectId,
-                //        element.G.DisciplineId,
-                //        element.Ci.ContractInfoId,
-                //        element.Gi.GroupInfoId);
-                //}
-
-
-                //var result = db.Listeners.LeftJoin(
-                //    db.GroupInfoListeners,
-                //    l => l.Id,
-                //    gil => gil.ListenerId,
-                //    (l, gil) => new
-                //    {
-                //        lID = l.Id,
-                //        lFN = l.Firstname,
-                //        lMN = l.Midname,
-                //        lLN = l.Lastname,
-                //        lYob = l.Yob,
-                //        lSex = l.Sex,
-                //        lPob = l.Pob,
-                //        lSeries = l.Series,
-                //        lNum = l.Num,
-                //        lIssued = l.Issued,
-                //        lCode = l.Code,
-                //        lDoi = l.Doi,
-                //        lMatriculation = l.Matriculation,
-                //        lPN = l.PhoneNum,
-                //        lSN = l.SchoolName,
-                //        lSG = l.SchoolGrade,
-                //        lEmail = l.Email,
-                //        gilGIID = gil.GroupInfoId
-                //    }).LeftJoin(
-                //    db.GroupInfos,
-                //    gil => gil.gilGIID,
-                //    gi => gi.GroupInfoId,
-                //    (gil, gi) => new
-                //    {
-
-                //    })
+            fetch();
+            if (dataGridView1.RowCount != 0)
+                dataGridView1.Rows[0].Selected = true;
         }
 
         private void addBtn_Click(object sender, EventArgs e)
@@ -599,37 +342,6 @@ namespace kursovajaEF
                 }
             }
             else MessageBox.Show("Изменить можно только одну строку.", "Ошибка");
-        }
-
-        private void delBtn_Click(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count == 1 && 
-                !string.IsNullOrWhiteSpace(dataGridView1.SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString()) &&
-                !string.IsNullOrWhiteSpace(dataGridView1.SelectedRows[0].Cells["groupInfoIdCol"].Value.ToString()))
-            {
-                int count = 0;
-                string contractInfoId = dataGridView1.SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString();
-
-                foreach(DataGridViewRow row in dataGridView1.Rows)
-                    if (row.Cells["contractInfoIdCol"].Value.ToString() == contractInfoId)
-                        count++;
-                using (testDBContext db = new()) 
-                {
-                    if (count == 1)
-                    {
-                        ContractInfo ci = db.ContractInfos.Find(int.Parse(contractInfoId));
-                        db.Remove(ci);
-                    }
-                    var gici = db.GroupInfoContractInfos.
-                    Where(f => f.GroupInfoId == int.Parse(dataGridView1.SelectedRows[0].Cells["groupInfoIdCol"].Value.ToString())).
-                    Where(s => s.ContractInfoId == int.Parse(dataGridView1.SelectedRows[0].Cells["contractInfoIdCol"].Value.ToString()));
-
-                    db.Remove(gici.FirstOrDefault());
-                    db.SaveChanges();
-                }
-
-                dataGridView1.Rows.Remove(dataGridView1.SelectedRows[0]);
-            }
         }
 
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)

@@ -29,6 +29,7 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form9_2));
             this.orderDate = new System.Windows.Forms.DateTimePicker();
             this.issueAnOrderBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -166,6 +167,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.label4);
             this.Controls.Add(this.discipline_id);
             this.Controls.Add(this.teacher_id);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form9_2";
             this.Text = "Оформление распоряжения";
             this.ResumeLayout(false);

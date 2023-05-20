@@ -29,6 +29,7 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2_2));
             this.label1 = new System.Windows.Forms.Label();
             this.transferBtn = new System.Windows.Forms.Button();
             this.contract_id = new System.Windows.Forms.Label();
@@ -82,6 +83,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.contract_id);
             this.Controls.Add(this.transferBtn);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2_2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Перевод в группу";

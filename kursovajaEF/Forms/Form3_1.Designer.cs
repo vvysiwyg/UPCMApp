@@ -29,6 +29,7 @@ namespace kursovajaEF.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3_1));
             this.label1 = new System.Windows.Forms.Label();
             this.yesBtn = new System.Windows.Forms.Button();
             this.noBtn = new System.Windows.Forms.Button();
@@ -74,6 +75,7 @@ namespace kursovajaEF.Forms
             this.Controls.Add(this.noBtn);
             this.Controls.Add(this.yesBtn);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form3_1";
             this.Text = "Form3_1";
             this.ResumeLayout(false);

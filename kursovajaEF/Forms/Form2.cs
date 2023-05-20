@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using kursovajaEF.Models;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using Npgsql;
 
 namespace kursovajaEF.Forms
@@ -633,10 +634,11 @@ namespace kursovajaEF.Forms
                     DataGridViewTextBoxColumn dgvtbc8 = new();
                     DataGridViewTextBoxColumn dgvtbc9 = new();
                     DataGridViewTextBoxColumn dgvtbc10 = new();
-                    dgv.Location = new Point(0, 0); //sendBtn.Location.X, sendBtn.Location.Y + sendBtn.Size.Height + 30 * (i + 1) + 150 * i
+                    dgv.Location = new Point(0, 0);
                     dgv.Size = panel3.Size;
                     dgv.BackgroundColor = Color.White;
                     dgv.BorderStyle = BorderStyle.Fixed3D;
+                    dgv.BackgroundColor = SystemColors.Control;
                     dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
                     dgv.ReadOnly = true;
                     dgv.AllowUserToAddRows = false;

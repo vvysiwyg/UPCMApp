@@ -60,19 +60,6 @@ namespace kursovajaEF.Forms
             showAllRows(dgv, rowIndex - 1);
         }
 
-        //public void showExpelledListeners(DataGridView dgv, int rowIndex)
-        //{
-        //    if (rowIndex == -1)
-        //        return;
-
-        //    if(!string.IsNullOrWhiteSpace(dgv.Rows[rowIndex].Cells["expulsionDateCol"].Value.ToString()))
-        //        dgv.Rows[rowIndex].Visible = true;
-        //    else
-        //        dgv.Rows[rowIndex].Visible = false;
-
-        //    showExpelledListeners(dgv, rowIndex - 1);
-        //}
-
         public void dataGridViewSorted(object sender)
         {
             DataGridView dgv = (DataGridView)sender;
@@ -81,17 +68,6 @@ namespace kursovajaEF.Forms
                 dgv.Columns[i].HeaderCell.Style.Font = fontRegular;
 
             dgv.SortedColumn.HeaderCell.Style.Font = fontBold; // Делаем шрифт сортируемого столбца жирным
-        }
-
-        public int dataGridViewVisibleRowCount(DataGridView dgv)
-        {
-            int count = 0;
-
-            foreach (DataGridViewRow row in dgv.Rows)
-                if (row.Visible)
-                    count++;
-
-            return count;
         }
 
         public int dataGridViewSelectedCellStyleCount(DataGridView dgv, int rowIndex)
