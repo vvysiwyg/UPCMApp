@@ -39,7 +39,7 @@ namespace kursovajaEF.Forms
             return selectedCellStyle;
         }
 
-        public void resetForm(List<DataGridView> dgvs, List<GroupBox> gbs)
+        public void resetForm(List<DataGridView> dgvs, List<GroupBox> gbs, Dictionary<int, DataGridViewRow> dict = null)
         {
             foreach (DataGridView dgv in dgvs)
                 dgv.Rows.Clear();
@@ -48,6 +48,9 @@ namespace kursovajaEF.Forms
                 foreach (Control ctrl in gb.Controls)
                     if (ctrl.GetType().ToString().Equals("System.Windows.Forms.TextBox"))
                         ctrl.Text = string.Empty;
+
+            if (dict != null)
+                dict.Clear();
         }
 
         public void showAllRows(DataGridView dgv, int rowIndex)

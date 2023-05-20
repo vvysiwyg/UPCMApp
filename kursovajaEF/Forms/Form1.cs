@@ -215,7 +215,7 @@ namespace kursovajaEF
                     dataGridView3,
                     dataGridView4}, new List<GroupBox> {
                     extendedInfoGB,
-                    listenerWishesGB});
+                    listenerWishesGB}, notExpelledListenersDictionary);
 
                 fetch();
 
@@ -336,7 +336,7 @@ namespace kursovajaEF
                     dataGridView3,
                     dataGridView4}, new List<GroupBox> {
                     extendedInfoGB,
-                    listenerWishesGB});
+                    listenerWishesGB}, notExpelledListenersDictionary);
 
                     fetch();
                 }
@@ -635,7 +635,7 @@ namespace kursovajaEF
                     dataGridView3,
                     dataGridView4}, new List<GroupBox> {
                     extendedInfoGB,
-                    listenerWishesGB});
+                    listenerWishesGB}, notExpelledListenersDictionary);
 
                     fetch();
 

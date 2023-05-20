@@ -311,7 +311,7 @@ namespace kursovajaEF.Forms
             this.phone_num.Location = new System.Drawing.Point(832, 93);
             this.phone_num.Mask = "9(999) 000-0000";
             this.phone_num.Name = "phone_num";
-            this.phone_num.Size = new System.Drawing.Size(109, 27);
+            this.phone_num.Size = new System.Drawing.Size(141, 27);
             this.phone_num.TabIndex = 4;
             this.phone_num.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
