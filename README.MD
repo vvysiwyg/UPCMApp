@@ -1,9 +1,9 @@
-#UPCMApp - University Preparatory Course Management Application
+# UPCMApp - University Preparatory Course Management Application
 
-##ПО, необходимое для работы приложения
+## ПО, необходимое для работы приложения
 
 Для работы приложения необходимо наличие СУБД PostgreSQL версии >= 13.4
 
-##Инструкция по запуску приложения
+## Инструкция по запуску приложения
 
 После скачивания и распаковки архива на своем ПК, необходимо перейти в директорию UPCMApp -> bin -> Release -> net5.0-windows. В этой директории необходимо найти исполняемый файл UPCMApp.exe и запустить.
