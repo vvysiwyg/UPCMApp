@@ -14,11 +14,11 @@ namespace kursovajaEF.Forms
 {
     public partial class Form15 : AdvancedForm
     {
-        private NpgsqlConnection conn;
+        private NpgsqlConnection con;
         public DataGridViewRow[] gi_rows;
         public Form15(NpgsqlConnection conn)
         {
-            this.conn = conn;
+            this.con = conn;
             InitializeComponent();
         }
 
@@ -313,7 +313,7 @@ namespace kursovajaEF.Forms
                 if (dgv.SelectedRows.Count == 1)
                 {
                     string sql = $"INSERT INTO {table} VALUES((@idCol), (@dgvIdCol));";
-                    NpgsqlCommand cmd = new NpgsqlCommand(sql, conn)
+                    NpgsqlCommand cmd = new NpgsqlCommand(sql, con)
                     {
                         Parameters =
                         {

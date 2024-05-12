@@ -13,7 +13,7 @@ namespace kursovajaEF
 {
     public partial class Form1 : AdvancedForm
     {
-        private NpgsqlConnection conn;
+        private NpgsqlConnection con;
         private DataGridViewCell currentCellDgv2;
         private DataGridViewCell currentCellDgv3;
         private DataGridViewCell currentCellDgv4;
@@ -23,9 +23,9 @@ namespace kursovajaEF
             notExpelledListenersDictionary = new();
             using (testDBContext db = new())
             {
-                conn = new NpgsqlConnection(db.connectionString);
-                if (conn.State == ConnectionState.Closed)
-                    conn.Open();
+                con = new NpgsqlConnection(db.connectionString);
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
             }
             InitializeComponent();
         }
@@ -205,7 +205,7 @@ namespace kursovajaEF
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            Form2 form = new Form2(conn);
+            Form2 form = new Form2(con);
             form.ShowDialog();
             if (form.addingCheck.Text != "0")
             {
@@ -232,7 +232,7 @@ namespace kursovajaEF
                 string contractInfoId = "";
                 DataGridViewRow selectedRow = dataGridView1.SelectedCells[0].OwningRow;
                 DataGridViewRow selectedRow2 = dataGridView2.SelectedCells[0].OwningRow;
-                Form2 fm = new(conn);
+                Form2 fm = new(con);
 
                 fm.addBtn.Visible = false;
                 fm.updBtn.Visible = true;
@@ -354,22 +354,22 @@ namespace kursovajaEF
                     form = new Form5();
                     break;
                 case "Программы":
-                    form = new Form7(conn);
+                    form = new Form7(con);
                     break;
                 case "Преподаватели":
-                    form = new Form9(conn);
+                    form = new Form9(con);
                     break;
                 case "Расписания":
-                    form = new Form11(conn);
+                    form = new Form11(con);
                     break;
                 case "Договоры":
-                    form = new Form13(conn);
+                    form = new Form13(con);
                     break;
                 case "Группы":
-                    form = new Form15(conn);
+                    form = new Form15(con);
                     break;
                 case "Слушатели":
-                    form = new Form3(conn);
+                    form = new Form3(con);
                     break;
                 default:
                     return;
@@ -599,7 +599,7 @@ namespace kursovajaEF
             if (dataGridView1.SelectedRows.Count == 1 || dataGridView1.SelectedCells.Count == 1)
             {
                 DataGridViewRow selectedRow = dataGridView1.SelectedCells[0].OwningRow;
-                Form2 fm = new Form2(conn);
+                Form2 fm = new Form2(con);
 
                 fm.updatingCheck.Text = selectedRow.Cells["listenerIdCol"].Value.ToString();
                 fm.midname.Text = selectedRow.Cells["midnameCol"].Value.ToString();

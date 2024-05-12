@@ -14,10 +14,10 @@ namespace kursovajaEF.Forms
 {
     public partial class Form13 : AdvancedForm
     {
-        private NpgsqlConnection conn;
+        private NpgsqlConnection con;
         public Form13(NpgsqlConnection conn)
         {
-            this.conn = conn;
+            this.con = conn;
             InitializeComponent();
         }
 
@@ -255,7 +255,7 @@ namespace kursovajaEF.Forms
             if (contracts.SelectedRows.Count == 1 && listeners.SelectedRows.Count == 1)
             {
                 string sql= "UPDATE listeners SET contract_id = (@contractIdCol) WHERE id = (@idCol);";
-                NpgsqlCommand cmd = new NpgsqlCommand(sql, conn)
+                NpgsqlCommand cmd = new NpgsqlCommand(sql, con)
                 {
                     Parameters =
                     {

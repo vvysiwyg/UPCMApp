@@ -14,10 +14,10 @@ namespace kursovajaEF.Forms
 {
     public partial class Form11 : AdvancedForm
     {
-        private NpgsqlConnection conn;
+        private NpgsqlConnection con;
         public Form11(NpgsqlConnection conn)
         {
-            this.conn = conn;
+            this.con = conn;
             InitializeComponent();
         }
 
@@ -154,7 +154,7 @@ namespace kursovajaEF.Forms
                 {
                     string sql = $"INSERT INTO {table} VALUES((@dgvIdCol), (@idCol));";
 
-                    NpgsqlCommand cmd = new NpgsqlCommand(sql, conn)
+                    NpgsqlCommand cmd = new NpgsqlCommand(sql, con)
                     {
                         Parameters =
                         {
