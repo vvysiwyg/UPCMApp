@@ -177,7 +177,7 @@ namespace kursovajaEF.Forms
             this.teachers.ReadOnly = true;
             this.teachers.RowHeadersWidth = 51;
             this.teachers.RowTemplate.Height = 29;
-            this.teachers.Size = new System.Drawing.Size(596, 330);
+            this.teachers.Size = new System.Drawing.Size(696, 330);
             this.teachers.TabIndex = 1;
             this.teachers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.teachers_CellClick);
             this.teachers.Sorted += new System.EventHandler(this.dataGridView_Sorted);
@@ -310,12 +310,12 @@ namespace kursovajaEF.Forms
             this.appointmentTeacherOrderNumberCol,
             this.appointmentTeacherOrderDateCol,
             this.teacherIdCol2});
-            this.disciplines.Location = new System.Drawing.Point(616, 53);
+            this.disciplines.Location = new System.Drawing.Point(714, 53);
             this.disciplines.Name = "disciplines";
             this.disciplines.ReadOnly = true;
             this.disciplines.RowHeadersWidth = 51;
             this.disciplines.RowTemplate.Height = 29;
-            this.disciplines.Size = new System.Drawing.Size(515, 330);
+            this.disciplines.Size = new System.Drawing.Size(554, 330);
             this.disciplines.TabIndex = 1;
             this.disciplines.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.disciplines_CellClick);
             this.disciplines.Sorted += new System.EventHandler(this.dataGridView_Sorted);
@@ -803,13 +803,13 @@ namespace kursovajaEF.Forms
             this.dataGridViewTextBoxColumn2,
             this.groupInfoIdCol,
             this.teacherIdCol3});
-            this.group_info.Location = new System.Drawing.Point(1138, 53);
+            this.group_info.Location = new System.Drawing.Point(1274, 53);
             this.group_info.Name = "group_info";
             this.group_info.ReadOnly = true;
             this.group_info.RowHeadersWidth = 51;
             this.group_info.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.group_info.RowTemplate.Height = 24;
-            this.group_info.Size = new System.Drawing.Size(628, 330);
+            this.group_info.Size = new System.Drawing.Size(492, 330);
             this.group_info.TabIndex = 10;
             this.group_info.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.group_info_CellClick);
             // 

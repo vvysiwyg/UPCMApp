@@ -13,10 +13,10 @@ namespace kursovajaEF.Forms
 {
     public partial class Form10 : Form
     {
-        private NpgsqlConnection conn;
+        private NpgsqlConnection con;
         public Form10(NpgsqlConnection conn)
         {
-            this.conn = conn;
+            this.con = conn;
             InitializeComponent();
         }
 
@@ -318,7 +318,7 @@ namespace kursovajaEF.Forms
 
         private void addDisBtn_Click(object sender, EventArgs e)
         {
-            Form7 f = new(conn);
+            Form7 f = new(con);
             f.setDisBtn.Visible = true;
             f.formName = "Form10";
             f.ShowDialog();
@@ -328,7 +328,7 @@ namespace kursovajaEF.Forms
 
         private void addGIBtn_Click(object sender, EventArgs e)
         {
-            Form15 f = new(conn);
+            Form15 f = new(con);
             f.chooseGIBtn.Visible = true;
             f.ShowDialog();
             if (f.gi_rows != null)
@@ -338,7 +338,7 @@ namespace kursovajaEF.Forms
         private void addDisBtn2_Click(object sender, EventArgs e)
         {
             int discipline_id;
-            Form7 f = new(conn);
+            Form7 f = new(con);
             f.setDisBtn.Visible = true;
             f.formName = "Form10";
             f.ShowDialog();
@@ -363,7 +363,7 @@ namespace kursovajaEF.Forms
         private void addGIBtn2_Click(object sender, EventArgs e)
         {
             int group_info_id;
-            Form15 f = new(conn);
+            Form15 f = new(con);
             f.chooseGIBtn.Visible = true;
             f.ShowDialog();
             if (f.gi_rows != null)
